@@ -34,22 +34,17 @@ public class JobBase : MonoBehaviour {
 		get{ return moveSpeed; }
 		private set{ moveSpeed = value; }
 	}
-	private PlayerOrAI playerControl;
+	public PlayerOrAI playerControl;
 	#endregion
 
 	// Use this for initialization
 	void Start () {
-		//-----test
-		playerControl = PlayerControl.Instance;
-		playerControl.ChangeMode (WalkMode.Instance);
-		//---------
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//test-----
-		playerControl.controller.Excute ();
-		//test-----
+		
 	}
 	#region Function
 	/// <summary>

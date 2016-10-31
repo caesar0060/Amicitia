@@ -16,6 +16,8 @@ public class PlayerControl : PlayerOrAI {
 		}
 	}
 	override public void ChangeMode(Controller newMode){
+		controller.Exit ();
 		controller = newMode;
+		controller.Enter ();
 	}
 }
