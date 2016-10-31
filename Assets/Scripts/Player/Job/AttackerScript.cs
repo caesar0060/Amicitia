@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TankScript : JobBase {
+public class AttackerScript : JobBase {
 	#region Properties
 
 
@@ -23,9 +23,8 @@ public class TankScript : JobBase {
 		//test-----
 	}
 	#region Function
-
 	override public void Skill1(){
-		Debug.Log ("Tank Skill1");
+		Debug.Log ("Attacker Skill1");
 	}
 	override public void Skill2(){}
 	override public void Skill3(){}

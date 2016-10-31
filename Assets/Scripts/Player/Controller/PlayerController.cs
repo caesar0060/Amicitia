@@ -18,15 +18,16 @@ public class WalkMode : Controller {
 			return instance;
 		}
 	}
-	override public void Enter()
+	override public void Enter(JobBase jb)
 	{
 		Debug.Log("WEnter");
 	}
-	override public void Excute()
+	override public void Excute(JobBase jb)
 	{
 		Debug.Log("WExcute");
+		jb.Skill1 ();
 	}
-	override public void Exit()
+	override public void Exit(JobBase jb)
 	{
 		Debug.Log("WExit");
 	}
@@ -48,15 +49,16 @@ public class BattelMode : Controller {
 			return instance;
 		}
 	}
-	override public void Enter()
+	override public void Enter(JobBase jb)
 	{
 		Debug.Log("Enter");
 	}
-	override public void Excute()
+	override public void Excute(JobBase jb)
 	{
 		Debug.Log("Excute");
+		jb.Attack ();
 	}
-	override public void Exit()
+	override public void Exit(JobBase jb)
 	{
 		Debug.Log("Exit");
 	}
