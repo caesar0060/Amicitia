@@ -12,7 +12,6 @@ public class AttackerScript : JobBase {
 		battelStatus = BattelStatus.NORMAL;
 		//-----test
 		controller = BattelMode.Instance;
-		ChangeMode (WalkMode.Instance);
 		//---------
 	}
 	

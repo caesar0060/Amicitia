@@ -17,13 +17,14 @@ public class JobBase : MonoBehaviour {
 	public enum BattelStatus
 	{
 		NONE =-1,
-		NORMAL,		//通常
-		DEAD,		//死亡
-		APRAXIA,	//行動不能
-		PATROL,		//巡回
-		CHASE,		//追跡
-		PROTECT,	//保護
-		SUPPORT,	//支援
+		NOT_IN_BATTEL,
+		NORMAL,			//通常
+		DEAD,			//死亡
+		APRAXIA,		//行動不能
+		PATROL,			//巡回
+		CHASE,			//追跡
+		PROTECT,		//保護
+		SUPPORT,		//支援
 		NUM_OF_TYPE,
 	}
 	private BattelStatus b_status;
@@ -62,10 +63,39 @@ public class JobBase : MonoBehaviour {
 	/// モードを変更する
 	/// </summary>
 	/// <param name="newMode">New mode.</param>
-	virtual public void ChangeMode(Controller newMode){
-		controller.Exit (this);
-		controller = newMode;
-		controller.Enter (this);
+	public void ChangeMode(Controller newMode){
+		if (controller != newMode) {
+			controller.Exit (this);
+			controller = newMode;
+			controller.Enter (this);
+		} else
+			Debug.Log ("same");
+	}
+	/// <summary>
+	/// Objectは前にいるかどうかをチェックする
+	/// </summary>
+	/// <returns><c>true</c>, 前にいるなら, <c>false</c> 違う場合.</returns>
+	/// <param name="other">Object.</param>
+	public bool CheckIsFront(GameObject other){
+		bool isFront = false;
+		// プレイヤーが現在向いている方向を保管
+		Vector3 heading = this.transform.TransformDirection (Vector3.forward);
+		// プレイヤーから見たObjectの方向を保管
+		Vector3 to_other = other.transform.position - this.transform.position;
+		heading.y = 0;
+		to_other.y = 0;
+		//正規化する
+		heading.Normalize ();
+		to_other.Normalize ();
+		//内積を求める
+		float dp = Vector3.Dot (heading, to_other);
+		//内積が45度のコサイン値未満なら、falseを返す
+		if (dp < Mathf.Cos (45)) {
+			return isFront;
+		}
+		//内積が45度のコサイン以上なら、trueを返す
+		isFront = true;	
+		return isFront;
 	}
 	/// <summary>
 	/// 攻撃
