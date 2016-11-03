@@ -112,6 +112,7 @@ public class BattelMode : Controller {
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
+	private GameObject p_object;
 	#endregion
 	// バトルモードのインスタンス
 	private static BattelMode instance;
@@ -130,21 +131,40 @@ public class BattelMode : Controller {
 	{
 		layerMask = LayerMask.GetMask (new string[] { "Player", "Party" });
 		u_layerMask = LayerMask.GetMask (new string[] { "Command" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
 	}
 	override public void Excute(JobBase jb)
 	{
 		#region マウス操作
-		if (Input.GetMouseButton (0)) {
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit = new RaycastHit ();
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask)) {
+		switch(jb.battelStatus){
+		case (BattelStatus.NORMAL):
+			if (Input.GetMouseButtonDown (0)) {
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit = new RaycastHit ();
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+				}
 			}
-		}
-		if(Input.GetMouseButtonUp(0)){
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit = new RaycastHit ();
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask)) {
+			if (Input.GetMouseButton (0)) {
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit = new RaycastHit ();
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask)) {
+				}
 			}
+			if(Input.GetMouseButtonUp(0)){
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit = new RaycastHit ();
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
+				}
+			}
+			break;
+		case(BattelStatus.TARGET_CHOOSE):
+			if (Input.GetMouseButtonDown (0)) {
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit = new RaycastHit ();
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
+				}
+			}
+			break;
 		}
 		#endregion
 	}

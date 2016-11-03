@@ -22,11 +22,6 @@ public class AttackerScript : JobBase {
 		//test-----
 	}
 	#region Function
-	override public void Skill1(){
-		Debug.Log ("Attacker Skill1");
-	}
-	override public void Skill2(){}
-	override public void Skill3(){}
-	override public void Skill4(){}
+
 	#endregion
 }

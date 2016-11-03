@@ -1,5 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+// 戦闘用ステータス
+public enum BattelStatus
+{
+	NONE =-1,
+	NOT_IN_BATTEL,
+	TARGET_CHOOSE,
+	NORMAL,			//通常
+	DEAD,			//死亡
+	APRAXIA,		//行動不能
+	PATROL,			//巡回
+	CHASE,			//追跡
+	PROTECT,		//保護
+	SUPPORT,		//支援
+	NUM_OF_TYPE,
+}
+// condition
+public enum StatusCondition
+{
+	PALSY,			//麻痺
+	SLEEP,			//睡眠
+	SLOW,			//遅鈍
+	GRAVITATE,		//引き寄せられる
+	POWER_UP,		//力アップ
+	MAGIC_UP,		//魔力アップ
+	P_DEF_UP,		//物理防御アップ
+	M_DEF_UP,		//魔法防御アップ
+	NO_DAMAGE,		//無敵
+	ALL_DAMAGE_DOWN,//全てダメージダウン
+	M_DAMAGE_DOWN,	//魔法ダメージダウン
+	P_DAMAGE_DOWN,	//物理ダメージダウン
+	NUM_OF_TYPE,
+}
 
 public class JobBase : MonoBehaviour {
 	#region Properties
@@ -14,30 +47,12 @@ public class JobBase : MonoBehaviour {
 	//ターゲット
 	public GameObject _target;
 	// 戦闘用ステータス
-	public enum BattelStatus
-	{
-		NONE =-1,
-		NOT_IN_BATTEL,
-		NORMAL,			//通常
-		DEAD,			//死亡
-		APRAXIA,		//行動不能
-		PATROL,			//巡回
-		CHASE,			//追跡
-		PROTECT,		//保護
-		SUPPORT,		//支援
-		NUM_OF_TYPE,
-	}
 	private BattelStatus b_status;
 	public BattelStatus battelStatus{
 		get{ return b_status;}
 		set{ b_status = value; }
 	}
 	// condition
-	public enum StatusCondition
-	{
-		POSION,		//中毒
-		NUM_OF_TYPE,
-	}
 	private StatusCondition c_status;
 	public StatusCondition statusCondition{
 		get{ return c_status;}
@@ -47,6 +62,11 @@ public class JobBase : MonoBehaviour {
 	public float moveSpeed;
 	//インスタンスを保存するコントローラ
 	public Controller controller;
+	// Skillを保存用配列
+	public delegate void funcDelegate();
+	public static Dictionary<string, funcDelegate> skill_list = new Dictionary<string, funcDelegate> ();
+	//
+	public funcDelegate skillUse;
 	#endregion
 
 	// Use this for initialization
@@ -57,6 +77,31 @@ public class JobBase : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	public void OnTriggerStay(Collider other){
+		switch(battelStatus){
+		case BattelStatus.NOT_IN_BATTEL:
+			GameObject other_go = other.gameObject;
+			if(other_go.layer == LayerMask.NameToLayer("NPC")){
+				if (_target == null) {
+					if (CheckIsFront (other_go))
+						_target = other_go;
+				} else if (_target == other_go) {
+					if (!CheckIsFront (other_go))
+						_target = null;
+				}
+			}
+			break;
+		}
+	}
+
+	public void OnTriggerExit(Collider other){
+		switch(battelStatus){
+		case BattelStatus.NOT_IN_BATTEL:
+			if (_target == other.gameObject)
+				_target = null;
+			break;
+		}
 	}
 	#region Function
 	/// <summary>
@@ -114,18 +159,6 @@ public class JobBase : MonoBehaviour {
 	/// </summary>
 	virtual public void Jump(){
 		Debug.Log ("Jump");
-	}
-	virtual public void Skill1(){
-		Debug.Log ("Skill1");
-	}
-	virtual public void Skill2(){
-		Debug.Log ("Skill2");
-	}
-	virtual public void Skill3(){
-		Debug.Log ("Skill3");
-	}
-	virtual public void Skill4(){
-		Debug.Log ("Skill4");
 	}
 	#endregion
 }
