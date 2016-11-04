@@ -175,33 +175,41 @@ public class BattelMode : Controller {
 }
 
 /// <summary>
-/// AI用のWorldMode Singleton
+/// ターゲットを選択用 Singleton
 /// </summary>
-public class WorldMode : Controller {
+public class TargetMode : Controller {
 	// バトルモードのインスタンス
-	private static WorldMode instance;
+	private static TargetMode instance;
 	/// <summary>
-	/// WorldModeのインスタンスを取得
+	/// TargetModeeのインスタンスを取得
 	/// </summary>
-	/// <value>WorldModeのインスタンス</value>
-	public static WorldMode Instance{
+	/// <value>TargetModeのインスタンス</value>
+	public static TargetMode Instance{
 		get {
 			if(instance == null)
-				instance = new WorldMode();
+				instance = new TargetMode();
 			return instance;
 		}
 	}
+	// タッチのレイヤーマスク
+	private int d_layerMask;
 	override public void Enter(JobBase jb)
 	{
-		Debug.Log("Enter");
+		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
 	}
 	override public void Excute(JobBase jb)
 	{
-		Debug.Log("Excute");
+		if (Input.GetMouseButtonDown (0)) {
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit = new RaycastHit ();
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
+			}
+		}
 	}
 	override public void Exit(JobBase jb)
 	{
 		Debug.Log("Exit");
 	}
 }
+
 

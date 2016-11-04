@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,11 +10,15 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		battelStatus = BattelStatus.NOT_IN_BATTEL;
+		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
 		ChangeMode (WalkMode.Instance);
-		//---------
+		//---------		
+		foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
+			if (!CheckFlag (status))
+				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
+		}
 	}
 
 	// Update is called once per frame

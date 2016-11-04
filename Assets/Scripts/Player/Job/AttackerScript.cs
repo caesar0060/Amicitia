@@ -9,7 +9,7 @@ public class AttackerScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		battelStatus = BattelStatus.NORMAL;
+		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = BattelMode.Instance;
 		//---------

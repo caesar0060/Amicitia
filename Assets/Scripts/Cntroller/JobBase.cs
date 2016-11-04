@@ -1,40 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-// 戦闘用ステータス
-public enum BattelStatus
-{
-	NONE =-1,
-	NOT_IN_BATTEL,
-	TARGET_CHOOSE,
-	NORMAL,			//通常
-	DEAD,			//死亡
-	APRAXIA,		//行動不能
-	PATROL,			//巡回
-	CHASE,			//追跡
-	PROTECT,		//保護
-	SUPPORT,		//支援
-	NUM_OF_TYPE,
-}
-// condition
-public enum StatusCondition
-{
-	PALSY,			//麻痺
-	SLEEP,			//睡眠
-	SLOW,			//遅鈍
-	GRAVITATE,		//引き寄せられる
-	POWER_UP,		//力アップ
-	MAGIC_UP,		//魔力アップ
-	P_DEF_UP,		//物理防御アップ
-	M_DEF_UP,		//魔法防御アップ
-	NO_DAMAGE,		//無敵
-	ALL_DAMAGE_DOWN,//全てダメージダウン
-	M_DAMAGE_DOWN,	//魔法ダメージダウン
-	P_DAMAGE_DOWN,	//物理ダメージダウン
-	NUM_OF_TYPE,
-}
 
-public class JobBase : MonoBehaviour {
+
+public class JobBase : StatusControl {
 	#region Properties
 	// HP
 	public int _hp;
@@ -46,18 +16,6 @@ public class JobBase : MonoBehaviour {
 	public int _defence;
 	//ターゲット
 	public GameObject _target;
-	// 戦闘用ステータス
-	private BattelStatus b_status;
-	public BattelStatus battelStatus{
-		get{ return b_status;}
-		set{ b_status = value; }
-	}
-	// condition
-	private StatusCondition c_status;
-	public StatusCondition statusCondition{
-		get{ return c_status;}
-		set{ c_status = value; }
-	}
 	//Playerの移動速度
 	public float moveSpeed;
 	//インスタンスを保存するコントローラ
@@ -66,7 +24,8 @@ public class JobBase : MonoBehaviour {
 	public delegate void funcDelegate();
 	public static Dictionary<string, funcDelegate> skill_list = new Dictionary<string, funcDelegate> ();
 	//
-	public funcDelegate skillUse;
+	public funcDelegate nowSkill;
+	public funcDelegate previousSkill;
 	#endregion
 
 	// Use this for initialization
@@ -159,6 +118,45 @@ public class JobBase : MonoBehaviour {
 	/// </summary>
 	virtual public void Jump(){
 		Debug.Log ("Jump");
+	}
+	/// <summary>
+	/// 異常状態を設定し、カウントする
+	/// </summary>
+	/// <param name="c_status">C status.</param>
+	/// <param name="time">Time.</param>
+	public void SetCondition (ConditionStatus c_status, float time){
+		Set_c_Status (c_status);
+		StartCoroutine(StatusCounter(c_status ,time));
+	} 
+	#endregion
+	#region Co-routine
+	/// <summary>
+	/// 状態の時間をカウント
+	/// </summary>
+	/// <returns>The counter.</returns>
+	/// <param name="time">Time.</param>
+	public IEnumerator StatusCounter(ConditionStatus c_status, float time){
+		float startTime = Time.time;
+		while (true) {
+			if (CheckFlag (c_status)) {
+				if ((Time.time - startTime) >= time) {
+					Remove_c_status (c_status);
+					yield break;
+				}
+				yield return new WaitForSeconds (COROUTINE_WAIT_TIME);
+			} else
+				yield break;
+		}
+	}
+	public IEnumerator CheckStatus(){
+		while (true) {
+			foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
+				if (CheckFlag (status)) {
+					Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
+				}
+			}
+			yield return new WaitForSeconds (COROUTINE_WAIT_TIME);
+		}
 	}
 	#endregion
 }
