@@ -91,5 +91,8 @@ public class StatusControl : MonoBehaviour{
 	public bool CheckFlag(ConditionStatus newStatus){
 		return ((conditionStatus & newStatus) == newStatus);
 	}
+	public bool CanTakeAction(){
+		return !(CheckFlag (ConditionStatus.PALSY) || CheckFlag (ConditionStatus.SLEEP));
+	}
 	#endregion
 }

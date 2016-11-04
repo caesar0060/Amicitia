@@ -26,6 +26,8 @@ public class JobBase : StatusControl {
 	//
 	public funcDelegate nowSkill;
 	public funcDelegate previousSkill;
+	//
+	public GameObject p_object = null;
 	#endregion
 
 	// Use this for initialization
