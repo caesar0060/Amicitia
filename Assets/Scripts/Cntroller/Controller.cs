@@ -16,3 +16,19 @@ public class Controller {
 
 	}
 }
+
+public class RootController{
+
+	virtual public void Enter(PlayerRoot pr = null)
+	{
+
+	}
+	virtual public void Excute(PlayerRoot pr = null)
+	{
+
+	}
+	virtual public void Exit(PlayerRoot pr = null)
+	{
+
+	}
+}

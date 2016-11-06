@@ -11,7 +11,7 @@ public class AttackerScript : JobBase {
 	void Start () {
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
-		controller = BattelMode.Instance;
+		controller = WorldMode.Instance;
 		//---------
 	}
 	

@@ -16,18 +16,14 @@ public class JobBase : StatusControl {
 	public int _defence;
 	//ターゲット
 	public GameObject _target;
-	//Playerの移動速度
-	public float moveSpeed;
 	//インスタンスを保存するコントローラ
 	public Controller controller;
 	// Skillを保存用配列
-	public delegate void funcDelegate();
-	public static Dictionary<string, funcDelegate> skill_list = new Dictionary<string, funcDelegate> ();
-	//
-	public funcDelegate nowSkill;
-	public funcDelegate previousSkill;
+	public GameObject[] SkillList;
 	//
 	public GameObject p_object = null;
+	//
+	public Delegate skillUse;
 	#endregion
 
 	// Use this for initialization

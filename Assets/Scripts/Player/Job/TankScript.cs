@@ -13,7 +13,7 @@ public class TankScript : JobBase {
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
-		ChangeMode (BattelMode.Instance);
+		ChangeMode (WorldMode.Instance);
 		//---------		
 		foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
@@ -29,7 +29,7 @@ public class TankScript : JobBase {
 	}
 
 	#region Function
-	public static void Skill1(){
+	public void Skill1(){
 		Debug.Log ("Tank Skill1");
 	}
 	#endregion

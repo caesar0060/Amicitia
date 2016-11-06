@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
 /// WalkMode Singleton
 /// </summary>
-public class WalkMode : Controller {
+public class WalkMode : RootController {
 	#region Property
 	//移動速度
 	private const float MOVE_SPEED = 30;
@@ -16,6 +17,7 @@ public class WalkMode : Controller {
 	private Quaternion s_defaultRot;
 	// GameObjectを取得
 	private GameObject cameraSupport;
+	private Vector3 touchPoint;
 	#endregion
 	// 移動モードのインスタンス
 	private static WalkMode instance;
@@ -30,30 +32,29 @@ public class WalkMode : Controller {
 			return instance;
 		}
 	}
-	override public void Enter(JobBase jb)
+	override public void Enter(PlayerRoot pr = null)
 	{	
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
-
 	}
-	override public void Excute(JobBase jb)
+	override public void Excute(PlayerRoot pr = null)
 	{
 		#region キャラクターのコントロール
 		if(Input.GetKey(KeyCode.W)){
-			jb.transform.Translate (Vector3.forward * MOVE_SPEED * Time.deltaTime);
+			pr.p_jb.transform.Translate (Vector3.forward * MOVE_SPEED * Time.deltaTime);
 			ReturnDefault();
 		}
 		if(Input.GetKey(KeyCode.S)){
-			jb.transform.Translate (Vector3.back * MOVE_SPEED * Time.deltaTime);
+			pr.p_jb.transform.Translate (Vector3.back * MOVE_SPEED * Time.deltaTime);
 			ReturnDefault();
 		}
 		if(Input.GetKey(KeyCode.A)){
-			jb.transform.Rotate (Vector3.down * ROTATE_SPEED * Time.deltaTime);
+			pr.p_jb.transform.Rotate (Vector3.down * ROTATE_SPEED * Time.deltaTime);
 			ReturnDefault();
 		}
 		if(Input.GetKey(KeyCode.D)){
-			jb.transform.Rotate (Vector3.up * ROTATE_SPEED * Time.deltaTime);
+			pr.p_jb.transform.Rotate (Vector3.up * ROTATE_SPEED * Time.deltaTime);
 			ReturnDefault();
 		}
 		#endregion
@@ -74,21 +75,27 @@ public class WalkMode : Controller {
 		}
 		//マウス操作
 		if(Input.GetMouseButtonDown(1)){
+			touchPoint = Input.mousePosition;
 		}
 		if(Input.GetMouseButton(1)){
+			Vector3 tempPoint = Input.mousePosition - touchPoint;
+			cameraSupport.transform.Rotate
+			(new Vector3(0,-tempPoint.x,0) * ROTATE_SPEED * Time.deltaTime, Space.Self);
+			Camera.main.transform.Rotate (new Vector3(tempPoint.y,0,0) * ROTATE_SPEED * Time.deltaTime);
+			touchPoint = Input.mousePosition;
 		}
 		#endregion
 		#region 操作
 		if(Input.GetKeyDown(KeyCode.Space)){
-			if (jb._target != null)
-				Debug.Log (jb._target.name);
+			if (pr.p_jb._target != null)
+				Debug.Log (pr.p_jb._target.name);
 		}
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			Debug.Log("Esc");
 		}
 		#endregion
 	}
-	override public void Exit(JobBase jb)
+	override public void Exit(PlayerRoot pr = null)
 	{
 		Debug.Log("WExit");
 	}
@@ -107,7 +114,7 @@ public class WalkMode : Controller {
 /// <summary>
 /// BattelMode Singleton
 /// </summary>
-public class BattelMode : Controller {
+public class BattelMode : RootController {
 	#region Property
 	// 長押しの時間
 	private const float SHOW_COMMAND_TIME = 1;
@@ -131,13 +138,13 @@ public class BattelMode : Controller {
 			return instance;
 		}
 	}
-	override public void Enter(JobBase jb)
+	override public void Enter(PlayerRoot pr = null)
 	{
-		layerMask = LayerMask.GetMask (new string[] { "Player", "Party" });
+		layerMask = LayerMask.GetMask (new string[] { "Player", "Party", "Command" });
 		u_layerMask = LayerMask.GetMask (new string[] { "Command" });
 		d_layerMask = LayerMask.GetMask (new string[] { "Player", "Party" });
 	}
-	override public void Excute(JobBase jb)
+	override public void Excute(PlayerRoot pr = null)
 	{
 		#region マウス操作
 		if (Input.GetMouseButtonDown (0)) {
@@ -148,24 +155,31 @@ public class BattelMode : Controller {
 				Debug.Log(obj.name);
 				Debug.Log(obj.GetComponent<JobBase>().CanTakeAction());
 				if(obj.GetComponent<JobBase>().CanTakeAction()){
-					jb.p_object = obj;
+					pr.p_jb = obj.GetComponent<JobBase>();
 				}
 			}
 		}
 		if (Input.GetMouseButton (0)) {
-			if(jb.p_object !=null){
-				
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit = new RaycastHit ();
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
+				if(pr.p_jb.gameObject == hit.collider.gameObject){
+					
+				}
 			}
 		}
 		if(Input.GetMouseButtonUp(0)){
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
+				Debug.Log("press");
+				GameObject obj = hit.collider.gameObject;
+				pr.p_jb.skillUse = obj.GetComponent<SkillScript>().skillMethod;
 			}
 		}
 		#endregion
 	}
-	override public void Exit(JobBase jb)
+	override public void Exit(PlayerRoot pr = null)
 	{
 		Debug.Log("Exit");
 	}
@@ -174,7 +188,7 @@ public class BattelMode : Controller {
 /// <summary>
 /// ターゲットを選択用 Singleton
 /// </summary>
-public class TargetMode : Controller {
+public class TargetMode : RootController {
 	// バトルモードのインスタンス
 	private static TargetMode instance;
 	/// <summary>
@@ -190,11 +204,11 @@ public class TargetMode : Controller {
 	}
 	// タッチのレイヤーマスク
 	private int d_layerMask;
-	override public void Enter(JobBase jb)
+	override public void Enter(PlayerRoot pr = null)
 	{
 		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
 	}
-	override public void Excute(JobBase jb)
+	override public void Excute(PlayerRoot pr = null)
 	{
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -203,10 +217,10 @@ public class TargetMode : Controller {
 			}
 		}
 		if (Input.GetMouseButtonDown (1)) {
-			jb.ChangeMode (BattelMode.Instance);
+			pr.p_jb.ChangeMode (WorldMode.Instance);
 		}
 	}
-	override public void Exit(JobBase jb)
+	override public void Exit(PlayerRoot pr = null)
 	{
 		Debug.Log("Exit");
 	}
