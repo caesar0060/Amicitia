@@ -10,6 +10,7 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
+		p_funcList = new Delegate[]{ Skill1 };
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;

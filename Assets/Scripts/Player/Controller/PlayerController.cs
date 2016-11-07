@@ -119,11 +119,13 @@ public class BattelMode : RootController {
 	// 長押しの時間
 	private const float SHOW_COMMAND_TIME = 1;
 	// タイマー
-	private int timer;
+	private float timer = 0;
 	// タッチのレイヤーマスク
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
+	//
+	private bool isBtnGenerate = false;
 	#endregion
 	// バトルモードのインスタンス
 	private static BattelMode instance;
@@ -164,7 +166,14 @@ public class BattelMode : RootController {
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
 				if(pr.p_jb.gameObject == hit.collider.gameObject){
-					
+					if(isBtnGenerate == false){
+						timer += Time.deltaTime;
+						if(timer >= SHOW_COMMAND_TIME){
+							pr.p_jb.skillBtnGenerate();
+							isBtnGenerate = true;
+							timer = 0;
+						}
+					}
 				}
 			}
 		}

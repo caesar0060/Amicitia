@@ -23,7 +23,8 @@ public class SkillScript : MonoBehaviour {
 	public float s_effectTime;			//効果時間
 	public string s_description;		//詳細
 	public bool s_isRune = false;		//ルーンかどうか
-	public Delegate skillMethod;
+	public float coolDown = 0;
+	public Delegate skillMethod = null;
 
 	// Use this for initialization
 	void Start () {

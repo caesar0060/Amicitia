@@ -27,8 +27,8 @@ public class PlayerRoot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//-----test
-		controller = BattelMode.Instance;
-		ChangeMode (WalkMode.Instance);
+		controller = WalkMode.Instance;
+		ChangeMode (BattelMode.Instance);
 		//---------
 	}
 	

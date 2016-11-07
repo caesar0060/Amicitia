@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class JobBase : StatusControl {
 	#region Properties
+	private static float BUTTON_DISTANCE = 1;
 	// HP
 	public int _hp;
 	// MP
@@ -19,7 +20,8 @@ public class JobBase : StatusControl {
 	//インスタンスを保存するコントローラ
 	public Controller controller;
 	// Skillを保存用配列
-	public GameObject[] SkillList;
+	public GameObject[] p_skillList;
+	public Delegate[] p_funcList;
 	//
 	public GameObject p_object = null;
 	//
@@ -28,7 +30,6 @@ public class JobBase : StatusControl {
 
 	// Use this for initialization
 	void Start () {
-
 	}
 
 	// Update is called once per frame
@@ -126,13 +127,24 @@ public class JobBase : StatusControl {
 		Set_c_Status (c_status);
 		StartCoroutine(StatusCounter(c_status ,time));
 	} 
+	public void skillBtnGenerate(){
+		float a = 360 / p_skillList.Length;
+		Vector3 pos;
+		for (int i = 0; i < p_skillList.Length; i++) {
+			pos = new Vector3 ((Mathf.Sin (a * i)) * BUTTON_DISTANCE, (Mathf.Cos (a * i)) * BUTTON_DISTANCE, 0);
+			GameObject p_skillBtn = Instantiate (p_skillList [i]) as GameObject;
+			p_skillBtn.transform.SetParent (this.transform, false);
+			p_skillBtn.transform.localPosition = pos;
+			p_skillBtn.GetComponent<SkillScript> ().skillMethod = p_funcList [i];
+		}
+	}
 	#endregion
 	#region Co-routine
 	/// <summary>
 	/// 状態の時間をカウント
 	/// </summary>
-	/// <returns>The counter.</returns>
-	/// <param name="time">Time.</param>
+	/// <param name="c_status">状態</param>
+	/// <param name="time">効果時間</param>
 	public IEnumerator StatusCounter(ConditionStatus c_status, float time){
 		float startTime = Time.time;
 		while (true) {
@@ -146,6 +158,9 @@ public class JobBase : StatusControl {
 				yield break;
 		}
 	}
+	/// <summary>
+	/// どんな状態が立っているを検査する
+	/// </summary>
 	public IEnumerator CheckStatus(){
 		while (true) {
 			foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
