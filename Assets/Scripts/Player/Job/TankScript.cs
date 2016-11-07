@@ -10,16 +10,16 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		p_funcList = new Delegate[]{ Skill1 };
+		p_funcList = new Delegate[]{ Skill1, Skill1, Skill1, Skill1, Skill1, Skill1 };
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
 		ChangeMode (WorldMode.Instance);
 		//---------		
-		foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
+		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
-		}
+		}*/
 	}
 
 	// Update is called once per frame

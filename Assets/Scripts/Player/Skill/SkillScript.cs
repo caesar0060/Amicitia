@@ -24,7 +24,7 @@ public class SkillScript : MonoBehaviour {
 	public string s_description;		//詳細
 	public bool s_isRune = false;		//ルーンかどうか
 	public float coolDown = 0;
-	public Delegate skillMethod = null;
+	public Delegate skillMethod;
 
 	// Use this for initialization
 	void Start () {

@@ -181,10 +181,12 @@ public class BattelMode : RootController {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
-				Debug.Log("press");
 				GameObject obj = hit.collider.gameObject;
 				pr.p_jb.skillUse = obj.GetComponent<SkillScript>().skillMethod;
+				pr.p_jb.skillUse();
 			}
+			isBtnGenerate =false;
+			//pr.p_jb.skillBtnRemove();
 		}
 		#endregion
 	}
@@ -215,7 +217,7 @@ public class TargetMode : RootController {
 	private int d_layerMask;
 	override public void Enter(PlayerRoot pr = null)
 	{
-		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Enemy", "Player" });
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{

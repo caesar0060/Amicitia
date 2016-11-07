@@ -72,7 +72,7 @@ public class JobBase : StatusControl {
 			controller = newMode;
 			controller.Enter (this);
 		} else
-			Debug.Log ("same");
+			Debug.LogError ("same");
 	}
 	/// <summary>
 	/// Objectは前にいるかどうかをチェックする
@@ -131,11 +131,18 @@ public class JobBase : StatusControl {
 		float a = 360 / p_skillList.Length;
 		Vector3 pos;
 		for (int i = 0; i < p_skillList.Length; i++) {
-			pos = new Vector3 ((Mathf.Sin (a * i)) * BUTTON_DISTANCE, (Mathf.Cos (a * i)) * BUTTON_DISTANCE, 0);
+			pos = new Vector3 (Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
+				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
 			GameObject p_skillBtn = Instantiate (p_skillList [i]) as GameObject;
-			p_skillBtn.transform.SetParent (this.transform, false);
+			p_skillBtn.transform.SetParent (this.transform);
 			p_skillBtn.transform.localPosition = pos;
-			p_skillBtn.GetComponent<SkillScript> ().skillMethod = p_funcList [i];
+			p_skillBtn.GetComponentInChildren<SkillScript> ().skillMethod = p_funcList [i];
+		}
+	}
+	public void skillBtnRemove(){
+		GameObject[] btnList = GameObject.FindGameObjectsWithTag ("SkillButton");
+		foreach (var obj in btnList) {
+			Destroy (obj);
 		}
 	}
 	#endregion

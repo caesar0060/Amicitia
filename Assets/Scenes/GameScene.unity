@@ -463,6 +463,11 @@ MonoBehaviour:
   _target: {fileID: 0}
   p_skillList:
   - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
+  - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
+  - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
+  - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
+  - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
+  - {fileID: 118918, guid: 99f0bf751e3432149a83eea5528ca122, type: 2}
   p_object: {fileID: 0}
 --- !u!54 &1008769526
 Rigidbody:

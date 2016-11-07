@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Camera
   - GameRoot
+  - SkillButton
   layers:
   - Default
   - TransparentFX

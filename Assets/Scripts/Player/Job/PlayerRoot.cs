@@ -16,13 +16,11 @@ public class PlayerRoot : MonoBehaviour {
 	void Awake(){
 		if (p_jb == null)
 			p_jb = GameObject.FindGameObjectWithTag ("Player").GetComponent<JobBase>();
-		Debug.Log (p_jb._hp);
 	}
 	void OnLevelWasLoaded(int level){
 		//if(SceneManager.GetSceneAt(level).name == )
 		if (p_jb == null)
 			p_jb = GameObject.FindGameObjectWithTag ("Player").GetComponent<JobBase>();
-		Debug.Log (p_jb._hp);
 	}
 	// Use this for initialization
 	void Start () {
@@ -46,6 +44,6 @@ public class PlayerRoot : MonoBehaviour {
 			controller = newMode;
 			controller.Enter (this);
 		} else
-			Debug.Log ("same");
+			Debug.LogError ("same");
 	}
 }
