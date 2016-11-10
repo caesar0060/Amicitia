@@ -17,6 +17,7 @@ public class WalkMode : RootController {
 	private Quaternion s_defaultRot;
 	// GameObjectを取得
 	private GameObject cameraSupport;
+	//
 	private Vector3 touchPoint;
 	#endregion
 	// 移動モードのインスタンス
@@ -186,7 +187,7 @@ public class BattelMode : RootController {
 				pr.p_jb.skillUse();
 			}
 			isBtnGenerate =false;
-			//pr.p_jb.skillBtnRemove();
+			pr.p_jb.skillBtnRemove();
 		}
 		#endregion
 	}
