@@ -8,19 +8,20 @@ using System.Collections;
 public class WalkMode : RootController {
 	#region Property
 	//移動速度
-	private const float MOVE_SPEED = 30;
+	private const float MOVE_SPEED = 20;
 	//回転速度
-	private const float ROTATE_SPEED = 100;
-	//回転速度
-	private const float CAMERA_ROTATE_SPEED = 60;
+	private const float CAMERA_ROTATE_SPEED = 50;
 	// カメラの角度の初期値
 	private Quaternion c_defaultRot;
 	// cameraSupportの角度の初期値
 	private Quaternion s_defaultRot;
 	// GameObjectを取得
 	private GameObject cameraSupport;
-	//
+	// 
 	private Vector3 touchPoint;
+	//
+	private Animator p_animator;
+
 	#endregion
 	// 移動モードのインスタンス
 	private static WalkMode instance;
@@ -41,41 +42,66 @@ public class WalkMode : RootController {
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
+		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
 		#region キャラクターのコントロール
-		if(Input.GetKey(KeyCode.W)){
-			pr.p_jb.transform.Translate (Vector3.forward * MOVE_SPEED * Time.deltaTime);
+		//移動用vector3
+		Vector3  move_vector = Vector3.zero;
+		//現在位置を保管する
+		Vector3 p_pos = pr.p_jb.transform.position;
+		//移動中かどうか
+		bool isMoved =false;
+		if(Input.GetKey(KeyCode.A)){	//左
+			move_vector += Vector3.left;
+			isMoved = true;
+		}
+		if(Input.GetKey(KeyCode.D)){	//右
+			move_vector += Vector3.right;
+			isMoved = true;
+		}
+		if(Input.GetKey(KeyCode.W)){	//上
+			move_vector += Vector3.forward;
+			isMoved = true;
+		}
+		if(Input.GetKey(KeyCode.S)){	//下
+			move_vector += Vector3.back;
+			isMoved = true;
+		}
+		//移動vector3を正規化して,移動方向を求める
+		move_vector.Normalize();
+		move_vector *= MOVE_SPEED * Time.deltaTime;
+		p_pos += move_vector;
+		p_pos.y = pr.p_jb.transform.position.y;
+		pr.p_jb.transform.position = p_pos;
+		//移動したら
+		if(move_vector.magnitude >0.01f){
+			//Playerの向きを移動方向に変える
+			Quaternion q = Quaternion.LookRotation(move_vector, Vector3.up);
+			pr.p_jb.transform.rotation = Quaternion.Lerp(pr.p_jb.transform.rotation, q, 0.2f);
 			ReturnDefault();
 		}
-		if(Input.GetKey(KeyCode.S)){
-			pr.p_jb.transform.Translate (Vector3.back * MOVE_SPEED * Time.deltaTime);
-			ReturnDefault();
+		else {
+			isMoved = false;
 		}
-		if(Input.GetKey(KeyCode.A)){
-			pr.p_jb.transform.Rotate (Vector3.down * ROTATE_SPEED * Time.deltaTime);
-			ReturnDefault();
-		}
-		if(Input.GetKey(KeyCode.D)){
-			pr.p_jb.transform.Rotate (Vector3.up * ROTATE_SPEED * Time.deltaTime);
-			ReturnDefault();
-		}
+		p_animator.SetBool("isMoved", isMoved);
+
 		#endregion
 		#region カメラのコントロール
 		if(Input.GetKey(KeyCode.UpArrow)){
-			Camera.main.transform.Rotate (Vector3.right * ROTATE_SPEED * Time.deltaTime);
+			Camera.main.transform.Rotate (Vector3.right * CAMERA_ROTATE_SPEED * Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.DownArrow)){
-			Camera.main.transform.Rotate (Vector3.left * ROTATE_SPEED * Time.deltaTime);
+			Camera.main.transform.Rotate (Vector3.left * CAMERA_ROTATE_SPEED * Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.LeftArrow)){
 			cameraSupport.transform.Rotate
-			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
+			(Vector3.up * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		if(Input.GetKey(KeyCode.RightArrow)){
 			cameraSupport.transform.Rotate
-			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
+			(Vector3.down * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		//マウス操作
 		if(Input.GetMouseButtonDown(1)){
