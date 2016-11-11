@@ -11,6 +11,8 @@ public class WalkMode : RootController {
 	private const float MOVE_SPEED = 30;
 	//回転速度
 	private const float ROTATE_SPEED = 100;
+	//回転速度
+	private const float CAMERA_ROTATE_SPEED = 60;
 	// カメラの角度の初期値
 	private Quaternion c_defaultRot;
 	// cameraSupportの角度の初期値
@@ -35,6 +37,7 @@ public class WalkMode : RootController {
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{	
+		//初期化
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
@@ -81,8 +84,8 @@ public class WalkMode : RootController {
 		if(Input.GetMouseButton(1)){
 			Vector3 tempPoint = Input.mousePosition - touchPoint;
 			cameraSupport.transform.Rotate
-			(new Vector3(0,-tempPoint.x,0) * ROTATE_SPEED * Time.deltaTime, Space.Self);
-			Camera.main.transform.Rotate (new Vector3(tempPoint.y,0,0) * ROTATE_SPEED * Time.deltaTime);
+			(new Vector3(0,-tempPoint.x,0) * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
+			Camera.main.transform.Rotate (new Vector3(tempPoint.y,0,0) * CAMERA_ROTATE_SPEED * Time.deltaTime);
 			touchPoint = Input.mousePosition;
 		}
 		#endregion
@@ -143,9 +146,11 @@ public class BattelMode : RootController {
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
-		layerMask = LayerMask.GetMask (new string[] { "Player", "Party", "Command" });
+		//初期化
+		pr.p_jb.s_script = null;
+		layerMask = LayerMask.GetMask (new string[] { "Player", "Command" });
 		u_layerMask = LayerMask.GetMask (new string[] { "Command" });
-		d_layerMask = LayerMask.GetMask (new string[] { "Player", "Party" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Player" });
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -154,11 +159,12 @@ public class BattelMode : RootController {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,d_layerMask)) {
-				GameObject obj = hit.collider.gameObject;
-				Debug.Log(obj.name);
-				Debug.Log(obj.GetComponent<JobBase>().CanTakeAction());
-				if(obj.GetComponent<JobBase>().CanTakeAction()){
-					pr.p_jb = obj.GetComponent<JobBase>();
+				if(isBtnGenerate ==false){
+					GameObject obj = hit.collider.gameObject;
+					Debug.Log(obj.name);
+					if(obj.GetComponent<JobBase>().CanTakeAction()){
+						pr.p_jb = obj.GetComponent<JobBase>();
+					}
 				}
 			}
 		}
@@ -182,12 +188,28 @@ public class BattelMode : RootController {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
-				GameObject obj = hit.collider.gameObject;
-				pr.p_jb.skillUse = obj.GetComponent<SkillScript>().skillMethod;
-				pr.p_jb.skillUse();
+				pr.p_jb.s_script = hit.collider.gameObject.GetComponent<SkillScript>();
+				switch(pr.p_jb.s_script.s_targetNum){
+				case TargetNum.SELF:
+					pr.p_jb.s_script.skillMethod();
+					break;
+				default :
+					if(pr.p_jb.s_script.isEnemyTarget)
+						pr.ChangeMode(E_TargetMode.Instance);
+					else
+						pr.ChangeMode(P_TargetMode.Instance);
+					break;
+				}
 			}
 			isBtnGenerate =false;
 			pr.p_jb.skillBtnRemove();
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			if(isBtnGenerate ==true){
+				isBtnGenerate = false;
+				pr.p_jb.skillBtnRemove();
+				pr.p_jb.s_script = null;
+			}
 		}
 		#endregion
 	}
@@ -200,17 +222,17 @@ public class BattelMode : RootController {
 /// <summary>
 /// ターゲットを選択用 Singleton
 /// </summary>
-public class TargetMode : RootController {
+public class P_TargetMode : RootController {
 	// バトルモードのインスタンス
-	private static TargetMode instance;
+	private static P_TargetMode instance;
 	/// <summary>
 	/// TargetModeeのインスタンスを取得
 	/// </summary>
 	/// <value>TargetModeのインスタンス</value>
-	public static TargetMode Instance{
+	public static P_TargetMode Instance{
 		get {
 			if(instance == null)
-				instance = new TargetMode();
+				instance = new P_TargetMode();
 			return instance;
 		}
 	}
@@ -218,7 +240,9 @@ public class TargetMode : RootController {
 	private int d_layerMask;
 	override public void Enter(PlayerRoot pr = null)
 	{
-		d_layerMask = LayerMask.GetMask (new string[] { "Enemy", "Player" });
+		//初期化
+		d_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player" });
+		//何々をする
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -226,15 +250,79 @@ public class TargetMode : RootController {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
+				switch (hit.collider.gameObject.layer) {
+				case 8:
+				case 11:
+					pr.p_jb._target = hit.collider.gameObject;
+					pr.p_jb.s_script.skillMethod ();
+					pr.ChangeMode (BattelMode.Instance);
+					break;
+				default :
+					break;
+				}
 			}
 		}
 		if (Input.GetMouseButtonDown (1)) {
-			pr.p_jb.ChangeMode (WorldMode.Instance);
+			pr.ChangeMode (BattelMode.Instance);
 		}
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
 		Debug.Log("Exit");
+		//何々をする
+	}
+}
+
+/// <summary>
+/// ターゲットを選択用 Singleton
+/// </summary>
+public class E_TargetMode : RootController {
+	// バトルモードのインスタンス
+	private static E_TargetMode instance;
+	/// <summary>
+	/// TargetModeeのインスタンスを取得
+	/// </summary>
+	/// <value>TargetModeのインスタンス</value>
+	public static E_TargetMode Instance{
+		get {
+			if(instance == null)
+				instance = new E_TargetMode();
+			return instance;
+		}
+	}
+	// タッチのレイヤーマスク
+	private int d_layerMask;
+	override public void Enter(PlayerRoot pr = null)
+	{
+		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
+		//何々をする
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+
+		if (Input.GetMouseButtonDown (0)) {
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit = new RaycastHit ();
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
+				switch (hit.collider.gameObject.layer) {
+				case 12:
+					pr.p_jb._target = hit.collider.gameObject;
+					pr.p_jb.s_script.skillMethod ();
+					pr.ChangeMode (BattelMode.Instance);
+					break;
+				default :
+					break;
+				}
+			}
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			pr.ChangeMode (BattelMode.Instance);
+		}
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
+		Debug.Log("Exit");
+		//何々をする
 	}
 }
 

@@ -19,9 +19,9 @@ TagManager:
   - Player
   - NPC
   - Command
-  - Party
+  - Ground
   - Enemy
-  - 
+  - Sprite
   - 
   - 
   - 

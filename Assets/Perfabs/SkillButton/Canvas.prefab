@@ -165,10 +165,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_name: skill1
   isEnemyTarget: 0
+  t_num: 1
   s_effectTime: 5
   s_description: skill1
   s_isRune: 0
   coolDown: 0
+  s_range: 0
 --- !u!114 &11461464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,6 +428,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: t_num
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

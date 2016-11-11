@@ -23,9 +23,7 @@ public class JobBase : StatusControl {
 	public GameObject[] p_skillList;
 	public Delegate[] p_funcList;
 	//
-	public GameObject p_object = null;
-	//
-	public Delegate skillUse;
+	public SkillScript s_script;
 	#endregion
 
 	// Use this for initialization

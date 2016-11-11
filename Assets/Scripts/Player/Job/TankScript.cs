@@ -14,7 +14,7 @@ public class TankScript : JobBase {
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
-		ChangeMode (WorldMode.Instance);
+		controller.Enter (this);
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))

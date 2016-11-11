@@ -15,7 +15,7 @@ public class SkillScript : MonoBehaviour {
 	
 	public string s_name;				//名前
 	public bool isEnemyTarget = false;	//対象は敵かどうか
-	private TargetNum t_num;			//対象数
+	public TargetNum t_num;			//対象数
 	public TargetNum s_targetNum{		
 		get{ return t_num; }
 		set{ t_num = value;}
@@ -24,6 +24,7 @@ public class SkillScript : MonoBehaviour {
 	public string s_description;		//詳細
 	public bool s_isRune = false;		//ルーンかどうか
 	public float coolDown = 0;
+	public float s_range;
 	public Delegate skillMethod;
 
 	// Use this for initialization
