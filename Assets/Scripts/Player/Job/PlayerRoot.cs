@@ -24,6 +24,7 @@ public class PlayerRoot : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad (this.gameObject);
 		//-----test
 		controller = WalkMode.Instance;
 		controller.Enter (this);
