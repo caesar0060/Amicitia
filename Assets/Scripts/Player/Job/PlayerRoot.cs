@@ -24,8 +24,9 @@ public class PlayerRoot : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad (this.gameObject);
 		//-----test
-		controller = WalkMode.Instance;
+		controller = BattelMode.Instance;
 		controller.Enter (this);
 		//---------
 	}
@@ -45,5 +46,13 @@ public class PlayerRoot : MonoBehaviour {
 			controller.Enter (this);
 		} else
 			Debug.LogError ("same");
+	}
+	void OnGUI() {
+		if (GUI.Button (new Rect (10, 10, 100, 20), "Battel Mode"))
+			ChangeMode (BattelMode.Instance);
+
+		if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
+			ChangeMode (WalkMode.Instance);
+
 	}
 }
