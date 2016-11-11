@@ -10,6 +10,7 @@ public class WalkMode : RootController {
 	//移動速度
 	private const float MOVE_SPEED = 20;
 	//回転速度
+	private const float ROTATE_SPEED = 100;
 	private const float CAMERA_ROTATE_SPEED = 50;
 	// カメラの角度の初期値
 	private Quaternion c_defaultRot;
@@ -54,32 +55,26 @@ public class WalkMode : RootController {
 		//移動中かどうか
 		bool isMoved =false;
 		if(Input.GetKey(KeyCode.A)){	//左
-			move_vector += Vector3.left;
-			isMoved = true;
+			pr.p_jb.transform.Rotate
+			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		if(Input.GetKey(KeyCode.D)){	//右
-			move_vector += Vector3.right;
-			isMoved = true;
+			pr.p_jb.transform.Rotate
+			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		if(Input.GetKey(KeyCode.W)){	//上
-			move_vector += Vector3.forward;
+			move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
 			isMoved = true;
 		}
 		if(Input.GetKey(KeyCode.S)){	//下
-			move_vector += Vector3.back;
+			move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
 			isMoved = true;
 		}
 		//移動vector3を正規化して,移動方向を求める
-		move_vector.Normalize();
-		move_vector *= MOVE_SPEED * Time.deltaTime;
-		p_pos += move_vector;
-		p_pos.y = pr.p_jb.transform.position.y;
-		pr.p_jb.transform.position = p_pos;
+		pr.p_jb.transform.Translate(move_vector,Space.Self);
 		//移動したら
 		if(move_vector.magnitude >0.01f){
 			//Playerの向きを移動方向に変える
-			Quaternion q = Quaternion.LookRotation(move_vector, Vector3.up);
-			pr.p_jb.transform.rotation = Quaternion.Lerp(pr.p_jb.transform.rotation, q, 0.2f);
 			ReturnDefault();
 		}
 		else {

@@ -130,8 +130,8 @@ public class JobBase : StatusControl {
 		Vector3 pos;
 		for (int i = 0; i < p_skillList.Length; i++) {
 			pos = new Vector3 (Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
-				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
-			GameObject p_skillBtn = Instantiate (p_skillList [i]) as GameObject;
+				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE + 1 , -1);
+			GameObject p_skillBtn = Instantiate (p_skillList [i],Vector3.zero,Camera.main.transform.rotation) as GameObject;
 			p_skillBtn.transform.SetParent (this.transform);
 			p_skillBtn.transform.localPosition = pos;
 			p_skillBtn.GetComponentInChildren<SkillScript> ().skillMethod = p_funcList [i];
