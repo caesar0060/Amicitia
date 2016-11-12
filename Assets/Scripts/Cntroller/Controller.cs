@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Player用
+/// </summary>
 public class Controller {
 
 	virtual public void Enter(JobBase jb)
@@ -16,7 +18,9 @@ public class Controller {
 
 	}
 }
-
+/// <summary>
+/// Root用
+/// </summary>
 public class RootController{
 
 	virtual public void Enter(PlayerRoot pr = null)
@@ -31,4 +35,23 @@ public class RootController{
 	{
 
 	}
+}
+/// <summary>
+/// エネミー用
+/// </summary>
+public class e_Controller
+{
+
+    virtual public void Enter(EnemyBase eb = null)
+    {
+
+    }
+    virtual public void Excute(EnemyBase eb = null)
+    {
+
+    }
+    virtual public void Exit(EnemyBase eb = null)
+    {
+
+    }
 }
