@@ -98,24 +98,7 @@ public class JobBase : StatusControl {
 		isFront = true;	
 		return isFront;
 	}
-	/// <summary>
-	/// 攻撃
-	/// </summary>
-	virtual public void Attack(){
-		Debug.Log ("Attack");
-	}
-	/// <summary>
-	/// 防御
-	/// </summary>
-	virtual public void Defense(){
-		Debug.Log ("Defense");
-	}
-	/// <summary>
-	/// Jump
-	/// </summary>
-	virtual public void Jump(){
-		Debug.Log ("Jump");
-	}
+
 	/// <summary>
 	/// 異常状態を設定し、カウントする
 	/// </summary>
