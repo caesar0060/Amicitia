@@ -30,8 +30,42 @@ public class TankScript : JobBase {
 	}
 
 	#region Function
-	public void Skill1(){
+	public void Skill1(GameObject target = null, float time = 0){
 		Debug.Log ("Tank Skill1");
+	}
+	/// <summary>
+	/// カウンター
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="time">効果時間.</param>
+	public void Counter(GameObject target = null, float time = 0){
+		Set_c_Status(ConditionStatus.PULL);
+		StatusCounter (ConditionStatus.PULL, time);
+	}
+	/// <summary>
+	/// イース
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="time">効果時間.</param>
+	public void Skill2(GameObject target = null, float time = 0){
+		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
+		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, s_script.s_effectTime);
+	}
+	/// <summary>
+	/// 肩代わり
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="time">効果時間.</param>
+	public void Skill3(GameObject target = null, float time = 0){
+	}
+	/// <summary>
+	/// 魔法、物理攻撃１０％カット
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="time">効果時間.</param>
+	public void Skill4(GameObject target = null, float time = 0){
+		JobBase jb = target.GetComponent<JobBase> ();
+		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);
 	}
 	#endregion
 }

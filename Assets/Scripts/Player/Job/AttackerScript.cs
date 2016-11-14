@@ -24,7 +24,7 @@ public class AttackerScript : JobBase {
 		//test-----
 	}
 	#region Function
-	public void Skill1(){
+	public void Skill1(GameObject target = null, float time = 0){
 		Debug.Log ("Tank Skill1");
 	}
 	#endregion
