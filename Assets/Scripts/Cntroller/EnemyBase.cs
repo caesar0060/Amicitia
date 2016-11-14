@@ -34,7 +34,6 @@ public class EnemyBase : StatusControl {
 	void Update () {
 	
 	}
-
 	#region Function
 	/// <summary>
 	/// モードを変更する

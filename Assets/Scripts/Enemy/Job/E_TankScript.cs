@@ -8,7 +8,7 @@ public class E_TankScript : EnemyBase {
 	// Use this for initialization
 	void Start () {
 		//-----test
-		controller = WorldMode.Instance;
+		controller = Defender1.Instance;
 		controller.Enter (this);
 		//---------	
 	}

@@ -45,7 +45,7 @@ public class Defender2 : e_Controller {
 	public static Defender2 Instance{
 		get {
 			if(instance == null)
-				instance = new Defender1();
+				instance = new Defender2();
 			return instance;
 		}
 	}
@@ -76,7 +76,7 @@ public class Defender3 : e_Controller {
 	public static Defender3 Instance{
 		get {
 			if(instance == null)
-				instance = new Defender1();
+				instance = new Defender3();
 			return instance;
 		}
 	}

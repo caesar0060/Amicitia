@@ -22,7 +22,7 @@ public enum ConditionStatus
 	PALSY = 0x001,		//麻痺
 	SLEEP = 0x002,		//睡眠
 	SLOW = 0x004,		//遅鈍
-	GRAVITATE = 0x008,	//引き寄せられる
+	PULL = 0x008,		//敵を引き寄せる
 	POWER_UP = 0x010,	//力アップ
 	MAGIC_UP = 0x020,	//魔力アップ
 	P_DEF_UP = 0x040,	//物理防御アップ
@@ -74,7 +74,7 @@ public class StatusControl : MonoBehaviour{
 	public void Set_c_Status(ConditionStatus newStatus){
 		if (CheckFlag (newStatus))
 			return;
-		conditionStatus = conditionStatus | newStatus;
+		conditionStatus |= newStatus;
 	}
 	/// <summary>
 	/// 異常状態を解除する

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 //引数および返り値のないデリゲート
-public delegate void Delegate ();
+public delegate void Delegate (GameObject target =null, float time = 0);
 //対象数
 public enum TargetNum{
 	SELF =0,
