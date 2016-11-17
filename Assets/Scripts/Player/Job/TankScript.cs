@@ -29,12 +29,14 @@ public class TankScript : JobBase {
 		//test-----
 	}
 
-	#region Function
+	#region Skill
 	public void Skill1(GameObject target = null, float time = 0){
 		Debug.Log ("Tank Skill1");
 	}
 	/// <summary>
 	/// カウンター
+    /// 敵視を集め、一定時間攻撃受ける
+    /// カウンター：受けた回数×１０自身の攻撃に上乗せする　
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
@@ -44,15 +46,16 @@ public class TankScript : JobBase {
 	}
 	/// <summary>
 	/// イース
+    /// 全攻撃２０％カット
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
 	public void Skill2(GameObject target = null, float time = 0){
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, s_script.s_effectTime);
+		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, time);
 	}
 	/// <summary>
-	/// 肩代わり
+    /// 対象の攻撃を肩代わりする
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>

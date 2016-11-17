@@ -20,17 +20,17 @@ public enum ConditionStatus
 {
 	NORMAL =0,			//通常
 	PALSY = 0x001,		//麻痺
-	SLEEP = 0x002,		//睡眠
-	SLOW = 0x004,		//遅鈍
+	SLEEP = 0x002,		//眠り
+	SLOW = 0x004,		//スロウ
 	PULL = 0x008,		//敵を引き寄せる
 	POWER_UP = 0x010,	//力アップ
 	MAGIC_UP = 0x020,	//魔力アップ
 	P_DEF_UP = 0x040,	//物理防御アップ
 	M_DEF_UP = 0x080,	//魔法防御アップ
 	NO_DAMAGE = 0x100,	//無敵
-	ALL_DAMAGE_DOWN = 0x200,//全てダメージダウン
-	M_DAMAGE_DOWN = 0x400,	//魔法ダメージダウン
-	P_DAMAGE_DOWN = 0x800,	//物理ダメージダウン
+	ALL_DAMAGE_DOWN = 0x200,//全てダメージカット
+    TAKE_OVER = 0x400,	//肩代わり
+    POSION = 0x800,	    //毒
 }
 
 public class StatusControl : MonoBehaviour{

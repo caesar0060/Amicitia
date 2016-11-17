@@ -13,27 +13,27 @@ public enum EnemyType{
 public class EnemyBase : StatusControl {
 	#region Properties
 	// HP
-	public int _hp;
+	public int e_hp;
 	// MP
-	public int _mp;
+	public int e_mp;
 	// 攻撃力
-	public int _attack;
+	public int e_attack;
 	//防御力
-	public int _defence;
+	public int e_defence;
+    //エネミーのタイプ
+    public EnemyType e_type;
 	//インスタンスを保存するコントローラ
-	public e_Controller controller;
+    public e_Controller controller = null;
 	//ターゲット
-	public GameObject _target;
+    [HideInInspector] public GameObject e_target;
+    //PlayerRootを保存する
+    public PlayerRoot e_pr;
+    // プレイヤーのリーダーを保管する
+    [HideInInspector] public GameObject p_leader;
+    // 使うスキルを保管する
+    public Delegate skillMethod;
 	#endregion
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 	#region Function
 	/// <summary>
 	/// モードを変更する
@@ -47,9 +47,40 @@ public class EnemyBase : StatusControl {
 		} else
 			Debug.LogError ("same");
 	}
+    /// <summary>
+    /// チームの構成による役目を変える
+    /// </summary>
+    /// <returns>result</returns>
+    public int GetSelfMode()
+    {
+        int result = 0;
+        foreach (var enemy in e_pr.enemyList)
+        {
+            result += (int)enemy.e_type;
+        }
+        return result;
+    }
 	#endregion
-	#region Co-routine
-	/// <summary>
+    #region Skill
+    virtual public void Skill1(GameObject target = null, float time = 0)
+    {
+
+    }
+    virtual public void Skill2(GameObject target = null, float time = 0)
+    {
+
+    }
+    virtual public void Skill3(GameObject target = null, float time = 0)
+    {
+
+    }
+    virtual public void Skill4(GameObject target = null, float time = 0)
+    {
+
+    }
+    #endregion
+    #region Co-routine
+    /// <summary>
 	/// 状態の時間をカウント
 	/// </summary>
 	/// <param name="c_status">状態</param>

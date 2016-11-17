@@ -39,9 +39,8 @@ public class RootController{
 /// <summary>
 /// エネミー用
 /// </summary>
-public class e_Controller
+public class E_Controller
 {
-
     virtual public void Enter(EnemyBase eb = null)
     {
 

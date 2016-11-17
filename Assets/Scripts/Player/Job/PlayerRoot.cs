@@ -3,20 +3,24 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerRoot : MonoBehaviour {
-	//インスタンスを保存するコントローラ
+public class PlayerRoot : MonoBehaviour
+{
+    #region Properties
+    //インスタンスを保存するコントローラ
 	public RootController controller;
 	//
 	public JobBase p_jb;
 	//
-	private List<GameObject> EnemyList = new List<GameObject> ();
+	private List<GameObject> enemyList = new List<GameObject> ();
 	//
-	private List<JobBase> PartyList = new List<JobBase> ();
+	private List<JobBase>partyList = new List<JobBase> ();
+    #endregion
 
-	void Awake(){
+    void Awake(){
 		if (p_jb == null)
 			p_jb = GameObject.FindGameObjectWithTag ("Player").GetComponent<JobBase>();
 	}
+
 	void OnLevelWasLoaded(int level){
 		//if(SceneManager.GetSceneAt(level).name == )
 		if (p_jb == null)
