@@ -23,7 +23,7 @@ public class EnemyBase : StatusControl {
     //エネミーのタイプ
     public EnemyType e_type;
 	//インスタンスを保存するコントローラ
-    public e_Controller controller = null;
+	public E_Controller controller = null;
 	//ターゲット
     [HideInInspector] public GameObject e_target;
     //PlayerRootを保存する
@@ -39,7 +39,7 @@ public class EnemyBase : StatusControl {
 	/// モードを変更する
 	/// </summary>
 	/// <param name="newMode">New mode.</param>
-	public void ChangeMode(e_Controller newMode){
+	public void ChangeMode(E_Controller newMode){
 		if (controller != newMode) {
 			controller.Exit (this);
 			controller = newMode;
@@ -56,7 +56,7 @@ public class EnemyBase : StatusControl {
         int result = 0;
         foreach (var enemy in e_pr.enemyList)
         {
-            result += (int)enemy.e_type;
+			result += (int)enemy.GetComponent<EnemyBase>().e_type;
         }
         return result;
     }

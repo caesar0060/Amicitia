@@ -11,9 +11,9 @@ public class PlayerRoot : MonoBehaviour
 	//
 	public JobBase p_jb;
 	//
-	private List<GameObject> enemyList = new List<GameObject> ();
+	public List<GameObject> enemyList = new List<GameObject> ();
 	//
-	private List<JobBase>partyList = new List<JobBase> ();
+	public List<JobBase>partyList = new List<JobBase> ();
     #endregion
 
     void Awake(){

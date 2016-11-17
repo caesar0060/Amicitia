@@ -194,10 +194,10 @@ public class T_Normal : E_Controller
     }
     override public void Excute(EnemyBase eb = null)
     {
-        if (CanTakeAction)
+		if (eb.CanTakeAction())
         {
-            if (!CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                eb.SkillMethod = eb.Skill2;
+            if (!eb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+                eb.skillMethod = eb.Skill2;
         }
         else
             Debug.Log("TODO: 状態異常のモードに移動");
@@ -230,7 +230,7 @@ public class E_SkillMode : E_Controller
     }
     override public void Enter(EnemyBase eb = null)
     {
-        eb.SkillMethod();
+        eb.skillMethod();
     }
     override public void Excute(EnemyBase eb = null)
     {
