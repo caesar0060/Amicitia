@@ -242,9 +242,15 @@ public class P_TargetMode : RootController {
 	override public void Enter(PlayerRoot pr = null)
 	{
 		//初期化
-		layerMask = LayerMask.GetMask (new string[] { "Player", "Enemy", "Ground" });
-		u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
-		d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+		if (pr.s_script.s_targetype == TargetType.PLAYER) {
+			layerMask = LayerMask.GetMask (new string[] { "Player", "Ground" });
+			u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player" });
+			d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+		} else {
+			layerMask = LayerMask.GetMask (new string[] { "Enemy", "Ground" });
+			u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Enemy" });
+			d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+		}
 		// ボタンの初期位置を保管する
 		btnTempPos = pr.btn.transform.position;
 	}
@@ -298,6 +304,7 @@ public class P_TargetMode : RootController {
 						if (hit.collider.gameObject.layer ==
 						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
 							pr.s_script.skillMethod (hit.collider.gameObject, pr.s_script.s_effectTime);
+							pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(pr.btn, pr.s_script.s_recast));
 							pr.ChangeMode (BattelMode.Instance);
 						}
 						else
@@ -308,6 +315,7 @@ public class P_TargetMode : RootController {
 					// SELFなら、即発動
 					else{
 						pr.s_script.skillMethod(pr.p_jb.gameObject, pr.s_script.s_effectTime);
+						pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(pr.btn, pr.s_script.s_recast));
 						pr.ChangeMode (BattelMode.Instance);
 					}
 				}

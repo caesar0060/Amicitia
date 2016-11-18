@@ -33,10 +33,10 @@ public class SkillScript : MonoBehaviour {
 	public float s_effectTime;			//効果時間
 	public string s_description;		//詳細
 	public bool s_isRune = false;		//ルーンかどうか
-	public float s_recast = 0;			//
-	public float s_range = 0;			//
-	public Delegate skillMethod;		//
-	public bool isTarget = false;		//
+	public float s_recast = 0;			//リーキャストタイム
+	public bool isRecast = false;		//リーキャスト中
+	public float s_range = 0;			//範囲
+	public Delegate skillMethod;		//スキルを保管する
 
 	#endregion
 	// Use this for initialization

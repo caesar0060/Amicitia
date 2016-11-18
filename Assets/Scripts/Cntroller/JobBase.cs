@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -147,7 +148,8 @@ public class JobBase : StatusControl {
 	public void ShowSkillBtn(){
 		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < parent.childCount; i++) {
-			parent.GetChild (i).GetComponent<Collider> ().enabled = true;
+			if(parent.GetChild (i).GetComponent <SkillScript>().isRecast == false)
+				parent.GetChild (i).GetComponent<Collider> ().enabled = true;
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
@@ -190,7 +192,22 @@ public class JobBase : StatusControl {
 	/// <param name="btn">ボタン.</param>
 	/// <param name="time">リーキャストタイム.</param>
 	public IEnumerator SkillRecast(GameObject btn, float time){
-		yield break;
+		btn.GetComponent<SkillScript> ().isRecast = true;
+		Image img = btn.transform.FindChild("Image"). GetComponent<Image> ();
+		img.fillAmount = 1;
+		btn.GetComponent<Collider> ().enabled = false;
+		float startTime = Time.time;
+		while(true){
+			float rate = 1 - (Time.time - startTime) / time;
+			if(rate <=0){
+				img.fillAmount = rate;
+				btn.GetComponent<Collider> ().enabled = true;
+				btn.GetComponent<SkillScript> ().isRecast = false;
+				yield break;
+			}
+			img.fillAmount = rate;
+			yield return new WaitForEndOfFrame();
+		}
 	}
 	#endregion
 }
