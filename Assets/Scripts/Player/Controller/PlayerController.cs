@@ -18,9 +18,9 @@ public class WalkMode : RootController {
 	private Quaternion s_defaultRot;
 	// GameObjectを取得
 	private GameObject cameraSupport;
-	// 
+	// タッチの位置
 	private Vector3 touchPoint;
-	//
+	// プレイヤーのAnimator
 	private Animator p_animator;
 
 	#endregion
@@ -141,16 +141,13 @@ public class WalkMode : RootController {
 /// </summary>
 public class BattelMode : RootController {
 	#region Property
-	// 長押しの時間
-	private const float SHOW_COMMAND_TIME = 1;
-	// タイマー
-	private float timer = 0;
+
 	// タッチのレイヤーマスク
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
 	//
-	private bool isBtnGenerate = false;
+	private bool isBtnShow = false;
 	#endregion
 	// バトルモードのインスタンス
 	private static BattelMode instance;
@@ -168,10 +165,12 @@ public class BattelMode : RootController {
 	override public void Enter(PlayerRoot pr = null)
 	{
 		//初期化
-		pr.p_jb.s_script = null;
-		layerMask = LayerMask.GetMask (new string[] { "Player", "Command" });
-		u_layerMask = LayerMask.GetMask (new string[] { "Command" });
-		d_layerMask = LayerMask.GetMask (new string[] { "Player" });
+		pr.s_script = null;
+		pr.btn = null;
+		isBtnShow = false;
+		layerMask = LayerMask.GetMask (new string[] { "Player", "Enemy", "Ground" });
+		u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Player", "Command" });
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -180,56 +179,31 @@ public class BattelMode : RootController {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,d_layerMask)) {
-				if(isBtnGenerate ==false){
-					GameObject obj = hit.collider.gameObject;
-					Debug.Log(obj.name);
-					if(obj.GetComponent<JobBase>().CanTakeAction()){
-						pr.p_jb = obj.GetComponent<JobBase>();
-					}
-				}
-			}
-		}
-		if (Input.GetMouseButton (0)) {
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit = new RaycastHit ();
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
-				if(pr.p_jb.gameObject == hit.collider.gameObject){
-					if(isBtnGenerate == false){
-						timer += Time.deltaTime;
-						if(timer >= SHOW_COMMAND_TIME){
-							pr.p_jb.skillBtnGenerate();
-							isBtnGenerate = true;
-							timer = 0;
+				switch(hit.collider.gameObject.layer){
+				case 8: //Player
+					if(!isBtnShow){	//ボタンはまだ生成していない
+						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+						if(pr.p_jb.CanTakeAction()){
+							pr.p_jb.ShowSkillBtn();
+							isBtnShow = true;
 						}
 					}
-				}
-			}
-		}
-		if(Input.GetMouseButtonUp(0)){
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit = new RaycastHit ();
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
-				pr.p_jb.s_script = hit.collider.gameObject.GetComponent<SkillScript>();
-				switch(pr.p_jb.s_script.s_targetNum){
-				case TargetNum.SELF:
-					pr.p_jb.s_script.skillMethod();
+					// すでに生成したら
+					else{
+						pr.p_jb.HideSkillBtn();
+						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+						pr.p_jb.ShowSkillBtn();
+					}
 					break;
-				default :
-					if(pr.p_jb.s_script.isEnemyTarget)
-						pr.ChangeMode(E_TargetMode.Instance);
-					else
+				case 10: //Command
+					if(isBtnShow){	// ボタンを選択したら
+						// 選択したボタンを保管
+						pr.btn = hit.collider.gameObject;
+						pr.s_script = pr.btn.GetComponent<SkillScript>();
 						pr.ChangeMode(P_TargetMode.Instance);
+					}
 					break;
 				}
-			}
-			isBtnGenerate =false;
-			pr.p_jb.skillBtnRemove();
-		}
-		if (Input.GetMouseButtonDown (1)) {
-			if(isBtnGenerate ==true){
-				isBtnGenerate = false;
-				pr.p_jb.skillBtnRemove();
-				pr.p_jb.s_script = null;
 			}
 		}
 		#endregion
@@ -244,7 +218,7 @@ public class BattelMode : RootController {
 /// ターゲットを選択用 Singleton
 /// </summary>
 public class P_TargetMode : RootController {
-	// バトルモードのインスタンス
+	// ターゲットモードのインスタンス
 	private static P_TargetMode instance;
 	/// <summary>
 	/// TargetModeeのインスタンスを取得
@@ -257,94 +231,98 @@ public class P_TargetMode : RootController {
 			return instance;
 		}
 	}
+	#region Property
+	// ボタンの初期位置
+	private Vector3 btnTempPos;
 	// タッチのレイヤーマスク
 	private int d_layerMask;
+	private int layerMask;
+	private int u_layerMask;
+	#endregion
 	override public void Enter(PlayerRoot pr = null)
 	{
 		//初期化
-		d_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player" });
-		//何々をする
+		layerMask = LayerMask.GetMask (new string[] { "Player", "Enemy", "Ground" });
+		u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+		// ボタンの初期位置を保管する
+		btnTempPos = pr.btn.transform.position;
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
+		// ボタンがなければ
+		if (pr.btn == null)
+			pr.ChangeMode (BattelMode.Instance);
+		#region マウス操作
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
-				switch (hit.collider.gameObject.layer) {
-				case 8:
-				case 11:
-					pr.p_jb._target = hit.collider.gameObject;
-					pr.p_jb.s_script.skillMethod ();
+				switch(hit.collider.gameObject.layer){
+				case 8: //Player
+					pr.p_jb.HideSkillBtn ();
+					pr.p_jb = hit.collider.gameObject.GetComponent<JobBase> ();
+					pr.p_jb.ShowSkillBtn ();
 					pr.ChangeMode (BattelMode.Instance);
 					break;
-				default :
+				case 10: //Command
+					// 選択したボタンを保管
+					pr.btn = hit.collider.gameObject;
+					pr.s_script = pr.btn.GetComponent<SkillScript>();
+					btnTempPos = pr.btn.transform.position;
 					break;
 				}
 			}
 		}
-		if (Input.GetMouseButtonDown (1)) {
-			pr.ChangeMode (BattelMode.Instance);
-		}
-	}
-	override public void Exit(PlayerRoot pr = null)
-	{
-		Debug.Log("Exit");
-		//何々をする
-	}
-}
-
-/// <summary>
-/// ターゲットを選択用 Singleton
-/// </summary>
-public class E_TargetMode : RootController {
-	// バトルモードのインスタンス
-	private static E_TargetMode instance;
-	/// <summary>
-	/// TargetModeeのインスタンスを取得
-	/// </summary>
-	/// <value>TargetModeのインスタンス</value>
-	public static E_TargetMode Instance{
-		get {
-			if(instance == null)
-				instance = new E_TargetMode();
-			return instance;
-		}
-	}
-	// タッチのレイヤーマスク
-	private int d_layerMask;
-	override public void Enter(PlayerRoot pr = null)
-	{
-		d_layerMask = LayerMask.GetMask (new string[] { "Enemy" });
-		//何々をする
-	}
-	override public void Excute(PlayerRoot pr = null)
-	{
-
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity, d_layerMask)) {
-				switch (hit.collider.gameObject.layer) {
-				case 12:
-					pr.p_jb._target = hit.collider.gameObject;
-					pr.p_jb.s_script.skillMethod ();
-					pr.ChangeMode (BattelMode.Instance);
-					break;
-				default :
-					break;
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
+				Debug.Log(hit.collider.gameObject.name);
+				if(pr.btn != null){
+					// ボタンを動かす
+					Vector3 pos = hit.point;
+					if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+						pos.y += 0.2f;
+					pr.btn.transform.position = pos;
+				}
+			}
+		}
+		if(Input.GetMouseButtonUp(0)){
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit = new RaycastHit ();
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
+				if(pr.btn != null){
+					if(pr.s_script.s_targetNum != TargetNum.SELF){
+						//レイヤーが同じなら
+						if (hit.collider.gameObject.layer ==
+						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
+							pr.s_script.skillMethod (hit.collider.gameObject, pr.s_script.s_effectTime);
+							pr.ChangeMode (BattelMode.Instance);
+						}
+						else
+						//ボタンを初期位置に戻す
+						pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
+							pr.btn.transform.position, 1));
+					}
+					// SELFなら、即発動
+					else{
+						pr.s_script.skillMethod(pr.p_jb.gameObject, pr.s_script.s_effectTime);
+						pr.ChangeMode (BattelMode.Instance);
+					}
 				}
 			}
 		}
 		if (Input.GetMouseButtonDown (1)) {
-			pr.ChangeMode (BattelMode.Instance);
+				pr.ChangeMode (BattelMode.Instance);
 		}
+		#endregion
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		Debug.Log("Exit");
-		//何々をする
+		//ボタンを初期位置に戻す
+		pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
+		pr.btn.transform.position, 1));
+		pr.p_jb.HideSkillBtn();
 	}
 }
-
-

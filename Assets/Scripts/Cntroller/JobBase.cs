@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class JobBase : StatusControl {
 	#region Properties
-	private static float BUTTON_DISTANCE = 1;
+	private static float BUTTON_DISTANCE = 0.5f;
 	// HP
 	public int _hp;
 	// MP
@@ -16,14 +16,12 @@ public class JobBase : StatusControl {
 	//防御力
 	public int _defence;
 	//ターゲット
-	public GameObject _target;
+	[HideInInspector] public GameObject _target;
 	//インスタンスを保存するコントローラ
 	public Controller controller;
 	// Skillを保存用配列
 	public GameObject[] p_skillList;
 	public Delegate[] p_funcList;
-	//
-	public SkillScript s_script;
 	#endregion
 
 	// Use this for initialization
@@ -108,23 +106,50 @@ public class JobBase : StatusControl {
 		Set_c_Status (c_status);
 		StartCoroutine(StatusCounter(c_status ,time));
 	} 
+	/// <summary>
+	/// ボタンを生成する
+	/// </summary>
 	public void skillBtnGenerate(){
 		float a = 360 / p_skillList.Length;
 		Vector3 pos;
+		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < p_skillList.Length; i++) {
 			pos = new Vector3 (Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
-				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE + 1 , -1);
+				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
 			GameObject p_skillBtn = Instantiate (p_skillList [i],Vector3.zero,Camera.main.transform.rotation) as GameObject;
-			p_skillBtn.transform.SetParent (this.transform);
+			p_skillBtn.transform.SetParent (parent);
 			p_skillBtn.transform.localPosition = pos;
 			p_skillBtn.GetComponentInChildren<SkillScript> ().skillMethod = p_funcList [i];
 		}
 	}
-	public void skillBtnRemove(){
-		GameObject[] btnList = GameObject.FindGameObjectsWithTag ("SkillButton");
-		foreach (var obj in btnList) {
-			Destroy (obj);
+	/// <summary>
+	/// ボタンを隠す
+	/// </summary>
+	public void HideSkillBtn(){
+		Transform parent = this.transform.GetChild (0);
+		for (int i = 0; i < parent.childCount; i++) {
+			parent.GetChild (i).GetComponent<Collider> ().enabled = false;
 		}
+		parent.GetComponent<Canvas> ().enabled = false;
+	}
+	/// <summary>
+	/// ボタンを削除する
+	/// </summary>
+	public void RemoveSkillBtn(){
+		Transform parent = this.transform.GetChild (0);
+		for (int i = 0; i < parent.childCount; i++) {
+			Destroy (parent.GetChild (i).gameObject);
+		}
+	}
+	/// <summary>
+	/// ボタンを表す
+	/// </summary>
+	public void ShowSkillBtn(){
+		Transform parent = this.transform.GetChild (0);
+		for (int i = 0; i < parent.childCount; i++) {
+			parent.GetChild (i).GetComponent<Collider> ().enabled = true;
+		}
+		parent.GetComponent<Canvas> ().enabled = true;
 	}
 	#endregion
 	#region Co-routine
@@ -158,6 +183,14 @@ public class JobBase : StatusControl {
 			}
 			yield return new WaitForSeconds (COROUTINE_WAIT_TIME);
 		}
+	}
+	/// <summary>
+	/// スキルのリーキャストタイム
+	/// </summary>
+	/// <param name="btn">ボタン.</param>
+	/// <param name="time">リーキャストタイム.</param>
+	public IEnumerator SkillRecast(GameObject btn, float time){
+		yield break;
 	}
 	#endregion
 }

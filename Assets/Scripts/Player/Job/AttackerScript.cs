@@ -15,6 +15,8 @@ public class AttackerScript : JobBase {
 		controller = WorldMode.Instance;
 		controller.Enter (this);
 		//---------
+		skillBtnGenerate ();
+		HideSkillBtn ();
 	}
 	
 	// Update is called once per frame

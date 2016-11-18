@@ -10,7 +10,7 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		p_funcList = new Delegate[]{ Skill1, Skill1, Skill1, Skill1, Skill1, Skill1 };
+		p_funcList = new Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
@@ -20,6 +20,8 @@ public class TankScript : JobBase {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
 		}*/
+		skillBtnGenerate ();
+		HideSkillBtn ();
 	}
 
 	// Update is called once per frame
@@ -30,9 +32,6 @@ public class TankScript : JobBase {
 	}
 
 	#region Skill
-	public void Skill1(GameObject target = null, float time = 0){
-		Debug.Log ("Tank Skill1");
-	}
 	/// <summary>
 	/// カウンター
     /// 敵視を集め、一定時間攻撃受ける
@@ -40,9 +39,10 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-	public void Counter(GameObject target = null, float time = 0){
+	public void Skill1(GameObject target = null, float time = 0){
 		Set_c_Status(ConditionStatus.PULL);
 		StatusCounter (ConditionStatus.PULL, time);
+		Debug.Log ("Tank");
 	}
 	/// <summary>
 	/// イース
