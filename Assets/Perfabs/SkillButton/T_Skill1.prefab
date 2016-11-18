@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 224: {fileID: 22485364}
   - 222: {fileID: 22233612}
+  - 114: {fileID: 11475756}
   - 114: {fileID: 11446064}
   - 114: {fileID: 11429372}
   - 65: {fileID: 6578342}
-  - 114: {fileID: 11475756}
   m_Layer: 10
   m_Name: T_Skill1
   m_TagString: SkillButton
@@ -64,7 +64,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 50, z: 0.1}
+  m_Size: {x: 50, y: 50, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11429372
 MonoBehaviour:
@@ -216,15 +216,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5546ab90f40460849b80cdf6f50b6317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_name: skill1
-  isEnemyTarget: 0
+  s_name: 
   t_num: 1
+  t_type: 0
   s_effectTime: 5
   s_description: skill1
   s_isRune: 0
-  s_recast: 0
+  s_recast: 5
+  isRecast: 0
   s_range: 0
-  isTarget: 0
 --- !u!222 &22216900
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -338,6 +338,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isEnemyTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: s_recast
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -842,7 +842,6 @@ MonoBehaviour:
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
-  s_script: {fileID: 0}
 --- !u!54 &1008769526
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -892,7 +891,7 @@ GameObject:
   - 4: {fileID: 1491382564}
   - 218: {fileID: 1491382563}
   - 154: {fileID: 1491382562}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,6 +981,8 @@ MonoBehaviour:
   p_jb: {fileID: 0}
   enemyList: []
   partyList: []
+  btn: {fileID: 0}
+  s_script: {fileID: 0}
 --- !u!4 &1528108654
 Transform:
   m_ObjectHideFlags: 0
@@ -1118,7 +1119,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!65 &1955358719
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1129,8 +1130,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0, z: 1}
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &1955358720
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1169,7 +1170,6 @@ MonoBehaviour:
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
-  s_script: {fileID: 0}
 --- !u!4 &1955358722
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1955358717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.38, y: 0.5, z: 17.41}
+  m_LocalPosition: {x: 21.38, y: 0, z: 17.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1707198930}
