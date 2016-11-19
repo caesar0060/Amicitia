@@ -8,6 +8,7 @@ TagManager:
   - GameRoot
   - SkillButton
   - Member
+  - Tank
   layers:
   - Default
   - TransparentFX

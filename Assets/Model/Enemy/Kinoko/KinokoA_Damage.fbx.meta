@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: a3819b018ad1a7248b5bad98452f31bc
+timeCreated: 1479531769
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: kinokoA_Walk00_05:back
+    100004: kinokoA_Walk00_05:bottom
+    100006: kinokoA_Walk00_05:joint1
+    100008: kinokoA_Walk00_05:joint10
+    100010: kinokoA_Walk00_05:joint11
+    100012: kinokoA_Walk00_05:joint12
+    100014: kinokoA_Walk00_05:joint13
+    100016: kinokoA_Walk00_05:joint14
+    100018: kinokoA_Walk00_05:joint15
+    100020: kinokoA_Walk00_05:joint16
+    100022: kinokoA_Walk00_05:joint17
+    100024: kinokoA_Walk00_05:joint18
+    100026: kinokoA_Walk00_05:joint19
+    100028: kinokoA_Walk00_05:joint2
+    100030: kinokoA_Walk00_05:joint20
+    100032: kinokoA_Walk00_05:joint21
+    100034: kinokoA_Walk00_05:joint22
+    100036: kinokoA_Walk00_05:joint3
+    100038: kinokoA_Walk00_05:joint4
+    100040: kinokoA_Walk00_05:joint5
+    100042: kinokoA_Walk00_05:joint6
+    100044: kinokoA_Walk00_05:joint7
+    100046: kinokoA_Walk00_05:joint8
+    100048: kinokoA_Walk00_05:joint9
+    100050: kinokoA_Walk00_05:pSphere10
+    100052: kinokoA_Walk00_05:pSphere9
+    100054: kinokoA_Walk00_05:transform3
+    400000: //RootNode
+    400002: kinokoA_Walk00_05:back
+    400004: kinokoA_Walk00_05:bottom
+    400006: kinokoA_Walk00_05:joint1
+    400008: kinokoA_Walk00_05:joint10
+    400010: kinokoA_Walk00_05:joint11
+    400012: kinokoA_Walk00_05:joint12
+    400014: kinokoA_Walk00_05:joint13
+    400016: kinokoA_Walk00_05:joint14
+    400018: kinokoA_Walk00_05:joint15
+    400020: kinokoA_Walk00_05:joint16
+    400022: kinokoA_Walk00_05:joint17
+    400024: kinokoA_Walk00_05:joint18
+    400026: kinokoA_Walk00_05:joint19
+    400028: kinokoA_Walk00_05:joint2
+    400030: kinokoA_Walk00_05:joint20
+    400032: kinokoA_Walk00_05:joint21
+    400034: kinokoA_Walk00_05:joint22
+    400036: kinokoA_Walk00_05:joint3
+    400038: kinokoA_Walk00_05:joint4
+    400040: kinokoA_Walk00_05:joint5
+    400042: kinokoA_Walk00_05:joint6
+    400044: kinokoA_Walk00_05:joint7
+    400046: kinokoA_Walk00_05:joint8
+    400048: kinokoA_Walk00_05:joint9
+    400050: kinokoA_Walk00_05:pSphere10
+    400052: kinokoA_Walk00_05:pSphere9
+    400054: kinokoA_Walk00_05:transform3
+    4300000: kinokoA_Walk00_05:pSphere10
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: kinokoA_Walk00_05:pSphere10
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

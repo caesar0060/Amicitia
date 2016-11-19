@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// WalkMode Singleton
@@ -40,6 +41,8 @@ public class WalkMode : RootController {
 	override public void Enter(PlayerRoot pr = null)
 	{	
 		//初期化
+		SceneManager.LoadScene("NormalScene");
+		pr.CreatePlayer();
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
@@ -51,15 +54,15 @@ public class WalkMode : RootController {
 		//移動用vector3
 		Vector3  move_vector = Vector3.zero;
 		//現在位置を保管する
-		Vector3 p_pos = pr.p_jb.transform.position;
+		Vector3 p_pos = pr.transform.position;
 		//移動中かどうか
 		bool isMoved =false;
 		if(Input.GetKey(KeyCode.A)){	//左
-			pr.p_jb.transform.Rotate
+			pr.transform.Rotate
 			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		if(Input.GetKey(KeyCode.D)){	//右
-			pr.p_jb.transform.Rotate
+			pr.transform.Rotate
 			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
 		if(Input.GetKey(KeyCode.W)){	//上
@@ -71,7 +74,7 @@ public class WalkMode : RootController {
 			isMoved = true;
 		}
 		//移動vector3を正規化して,移動方向を求める
-		pr.p_jb.transform.Translate(move_vector,Space.Self);
+		pr.transform.Translate(move_vector,Space.Self);
 		//移動したら
 		if(move_vector.magnitude >0.01f){
 			//Playerの向きを移動方向に変える
@@ -122,7 +125,12 @@ public class WalkMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		Debug.Log("WExit");
+		// TODO@
+		// cameraSupport.transform.position =
+		// TODO@
+		pr.DestroyChild("Player");
+		SceneManager.LoadScene("BattelScene");
+		Debug.Log ("hi");
 	}
 	#region Function
 	/// <summary>
@@ -205,6 +213,9 @@ public class BattelMode : RootController {
 					break;
 				}
 			}
+			if (Input.GetMouseButtonDown (1)) {
+				pr.p_jb.HideSkillBtn();
+			}
 		}
 		#endregion
 	}
@@ -243,14 +254,12 @@ public class P_TargetMode : RootController {
 	{
 		//初期化
 		if (pr.s_script.s_targetype == TargetType.PLAYER) {
-			layerMask = LayerMask.GetMask (new string[] { "Player", "Ground" });
-			u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Player" });
-			d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+			u_layerMask = LayerMask.GetMask (new string[] { "Player", "Ground" });
 		} else {
-			layerMask = LayerMask.GetMask (new string[] { "Enemy", "Ground" });
-			u_layerMask = LayerMask.GetMask (new string[] { "Ground", "Enemy" });
-			d_layerMask = LayerMask.GetMask (new string[] { "Command" });
+			u_layerMask = LayerMask.GetMask (new string[] { "Enemy", "Ground" });
 		}
+		layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
+		d_layerMask = LayerMask.GetMask (new string[] { "Command" });
 		// ボタンの初期位置を保管する
 		btnTempPos = pr.btn.transform.position;
 	}

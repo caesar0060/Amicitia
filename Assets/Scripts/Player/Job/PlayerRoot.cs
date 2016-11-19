@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerRoot : MonoBehaviour
+public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 {
     #region Properties
 	public static float BUTTON_RETURN_TIME = 0.5f;
@@ -14,7 +14,7 @@ public class PlayerRoot : MonoBehaviour
 	// 敵を保管する配列
 	[HideInInspector] public List<GameObject> enemyList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
-	public List<JobBase>partyList = new List<JobBase> ();
+	public List<GameObject>partyList = new List<GameObject> ();
 	// ボタンの移動用タイマー
 	private float timer =0;
 	// ターゲットのレイヤー
@@ -25,27 +25,17 @@ public class PlayerRoot : MonoBehaviour
 	[HideInInspector] public SkillScript s_script;
     #endregion
 
-    void Awake(){
-		if (p_jb == null)
-			p_jb = GameObject.FindGameObjectWithTag ("Player").GetComponent<JobBase>();
-	}
-
-	void OnLevelWasLoaded(int level){
-		//if(SceneManager.GetSceneAt(level).name == )
-		if (p_jb == null)
-			p_jb = GameObject.FindGameObjectWithTag ("Player").GetComponent<JobBase>();
-	}
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (this.gameObject);
 		//-----test
-		controller = BattelMode.Instance;
+		controller = WalkMode.Instance;
 		controller.Enter (this);
 		//---------
 		CreateDictionary();
-
 	}
-	// use for Test
+	// ------------------------------------------------------------------------------------
+	//										Debug用
 	void OnGUI() {
 		if (GUI.Button (new Rect (10, 10, 100, 20), "Battel Mode"))
 			ChangeMode (BattelMode.Instance);
@@ -54,6 +44,7 @@ public class PlayerRoot : MonoBehaviour
 			ChangeMode (WalkMode.Instance);
 
 	}
+	//--------------------------------------------------------------------------------------
 	// Update is called once per frame
 	void Update () {
 			controller.Excute(this);
@@ -90,6 +81,9 @@ public class PlayerRoot : MonoBehaviour
 			yield return new WaitForEndOfFrame ();
 		}
 	}
+	/// <summary>
+	/// Creates the dictionary.
+	/// </summary>
 	public void CreateDictionary(){
 		Dictionary<TargetNum , int> playerList = new Dictionary<TargetNum, int> () {
 			{TargetNum.ONE, LayerMask.NameToLayer("Player")},
@@ -103,6 +97,22 @@ public class PlayerRoot : MonoBehaviour
 			{ TargetType.PLAYER, playerList },
 			{ TargetType.ENEMY, enemyList }
 		};
+	}
+	/// <summary>
+	/// プレイヤーを生成する
+	/// </summary>
+	public void CreatePlayer(){
+		GameObject player = Instantiate (partyList [0]) as GameObject;
+		player.transform.parent = this.transform;
+		player.name = "Player";
+		player.transform.localPosition = Vector3.zero;
+		p_jb = player.GetComponent<JobBase> ();
+	}
+	/// <summary>
+	/// 子供を削除する
+	/// </summary>
+	public void DestroyChild(string name){
+		Destroy (this.transform.FindChild (name).gameObject);
 	}
 	#endregion
 }
