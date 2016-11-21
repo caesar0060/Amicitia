@@ -44,6 +44,9 @@ public class WalkMode : RootController {
 		SceneManager.LoadScene("NormalScene");
 		pr.CreatePlayer();
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
+		// TODO@
+		// cameraSupport.transform.position = defaultPos;
+		// TODO@
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
@@ -126,11 +129,10 @@ public class WalkMode : RootController {
 	override public void Exit(PlayerRoot pr = null)
 	{
 		// TODO@
-		// cameraSupport.transform.position =
+		// cameraSupport.transform.position = battelPos;
 		// TODO@
 		pr.DestroyChild("Player");
 		SceneManager.LoadScene("BattelScene");
-		Debug.Log ("hi");
 	}
 	#region Function
 	/// <summary>
@@ -142,6 +144,46 @@ public class WalkMode : RootController {
 		cameraSupport.transform.localRotation = Quaternion.Slerp(cameraSupport.transform.localRotation,
 			s_defaultRot, Time.deltaTime * 5);
 	}
+	#endregion
+}
+/// <summary>
+/// BattelStart Singleton
+/// </summary>
+public class BattelStart : RootController
+{
+	#region Property
+
+	#endregion
+	// インスタンス
+	private static BattelStart instance;
+	/// <summary>
+	/// インスタンスを取得
+	/// </summary>
+	/// <value>インスタンス</value>
+	public static BattelStart Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new BattelStart();
+			return instance;
+		}
+	}
+	override public void Enter(PlayerRoot pr = null)
+	{
+		pr.ChangeMode(BattelMode.Instance);
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+		
+
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
+
+	}
+	#region Function
+
 	#endregion
 }
 /// <summary>

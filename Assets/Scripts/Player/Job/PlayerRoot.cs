@@ -38,7 +38,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	//										Debug用
 	void OnGUI() {
 		if (GUI.Button (new Rect (10, 10, 100, 20), "Battel Mode"))
-			ChangeMode (BattelMode.Instance);
+			ChangeMode (BattelStart.Instance);
 
 		if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
 			ChangeMode (WalkMode.Instance);
@@ -102,7 +102,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// プレイヤーを生成する
 	/// </summary>
 	public void CreatePlayer(){
-		GameObject player = Instantiate (partyList [0]) as GameObject;
+		GameObject player = Instantiate (partyList [0], Vector3.zero, this.transform.rotation) as GameObject;
 		player.transform.parent = this.transform;
 		player.name = "Player";
 		player.transform.localPosition = Vector3.zero;
