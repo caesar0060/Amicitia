@@ -2,22 +2,22 @@
 using System.Collections;
 
 /// <summary>
-/// T_D3 Singleton
+/// M_M3 Singleton
 /// </summary>
-public class T_D3 : E_Controller
+public class M_M3 : E_Controller
 {
     // インスタンス
-    private static T_D3 instance;
+	private static M_M3 instance;
     /// <summary>
     /// インスタンスを取得
     /// </summary>
     /// <value>インスタンス</value>
-    public static T_D3 Instance
+	public static M_M3 Instance
     {
         get
         {
             if (instance == null)
-                instance = new T_D3();
+				instance = new M_M3();
             return instance;
         }
     }
@@ -36,21 +36,21 @@ public class T_D3 : E_Controller
 }
 
 /// <summary>
-/// T_A2D1 Singleton
+/// M_M2D1 Singleton
 /// </summary>
-public class T_A2D1 : E_Controller
+public class M_M2D1 : E_Controller
 {
 	// インスタンス
-    private static T_A2D1 instance;
+	private static M_M2D1 instance;
 	/// <summary>
 	/// インスタンスを取得
 	/// </summary>
 	/// <value>インスタンス</value>
-    public static T_A2D1 Instance
+	public static M_M2D1 Instance
     {
 		get {
 			if(instance == null)
-                instance = new T_A2D1();
+				instance = new M_M2D1();
 			return instance;
 		}
 	}
@@ -69,21 +69,21 @@ public class T_A2D1 : E_Controller
 }
 
 /// <summary>
-/// T_D2M1 Singleton
+/// M_D2M1 Singleton
 /// </summary>
-public class T_D2M1 : E_Controller
+public class M_D2M1 : E_Controller
 {
 	// インスタンス
-    private static T_D2M1 instance;
+	private static M_D2M1 instance;
 	/// <summary>
 	/// インスタンスを取得
 	/// </summary>
 	/// <value>インスタンス</value>
-    public static T_D2M1 Instance
+	public static M_D2M1 Instance
     {
 		get {
 			if(instance == null)
-                instance = new T_D2M1();
+				instance = new M_D2M1();
 			return instance;
 		}
 	}
@@ -102,21 +102,21 @@ public class T_D2M1 : E_Controller
 }
 
 /// <summary>
-/// T_D2A1 Singleton
+/// M_M2A1 Singleton
 /// </summary>
-public class T_D2A1 : E_Controller
+public class M_M2A1 : E_Controller
 {
     // インスタンス
-    private static T_D2A1 instance;
+	private static M_M2A1 instance;
     /// <summary>
     /// インスタンスを取得
     /// </summary>
     /// <value>インスタンス</value>
-    public static T_D2A1 Instance
+	public static M_M2A1 Instance
     {
 		get {
 			if(instance == null)
-                instance = new T_D2A1();
+				instance = new M_M2A1();
 			return instance;
 		}
 	}
@@ -135,22 +135,22 @@ public class T_D2A1 : E_Controller
 }
 
 /// <summary>
-/// T_M2D1 Singleton
+/// M_A2M1 Singleton
 /// </summary>
-public class T_M2D1 : E_Controller
+public class M_A2M1 : E_Controller
 {
     // インスタンス
-    private static T_M2D1 instance;
+	private static M_A2M1 instance;
     /// <summary>
     /// インスタンスを取得
     /// </summary>
     /// <value>インスタンス</value>
-    public static T_M2D1 Instance
+	public static M_A2M1 Instance
     {
         get
         {
             if (instance == null)
-                instance = new T_M2D1();
+				instance = new M_A2M1();
             return instance;
         }
     }
@@ -169,22 +169,22 @@ public class T_M2D1 : E_Controller
 }
 
 /// <summary>
-/// T_Normal Singleton
+/// M_Normal Singleton
 /// </summary>
-public class T_Normal : E_Controller
+public class M_Normal : E_Controller
 {
     // インスタンス
-    private static T_Normal instance;
+	private static M_Normal instance;
     /// <summary>
     /// インスタンスを取得
     /// </summary>
     /// <value>インスタンス</value>
-    public static T_Normal Instance
+	public static M_Normal Instance
     {
         get
         {
             if (instance == null)
-                instance = new T_Normal();
+				instance = new M_Normal();
             return instance;
         }
     }
@@ -196,8 +196,7 @@ public class T_Normal : E_Controller
     {
 		if (eb.CanTakeAction())
         {
-            if (!eb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                eb.skillMethod = eb.Skill2;
+                            
         }
         else
             Debug.Log("TODO: 状態異常のモードに移動");
@@ -205,39 +204,5 @@ public class T_Normal : E_Controller
     override public void Exit(EnemyBase eb = null)
     {
         Debug.Log("T_Normal_Exit");
-    }
-}
-
-/// <summary>
-/// E_SkillMode Singleton
-/// </summary>
-public class E_SkillMode : E_Controller
-{
-    // インスタンス
-    private static E_SkillMode instance;
-    /// <summary>
-    /// インスタンスを取得
-    /// </summary>
-    /// <value>インスタンス</value>
-    public static E_SkillMode Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new E_SkillMode();
-            return instance;
-        }
-    }
-    override public void Enter(EnemyBase eb = null)
-    {
-        eb.skillMethod();
-    }
-    override public void Excute(EnemyBase eb = null)
-    {
-        Debug.Log("PExcute");
-    }
-    override public void Exit(EnemyBase eb = null)
-    {
-        Debug.Log("PExit");
     }
 }

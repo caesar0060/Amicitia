@@ -42,7 +42,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 
 		if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
 			ChangeMode (WalkMode.Instance);
-
 	}
 	//--------------------------------------------------------------------------------------
 	// Update is called once per frame

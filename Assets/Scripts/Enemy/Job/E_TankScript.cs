@@ -9,10 +9,16 @@ public class E_TankScript : EnemyBase {
 	#endregion
 	// Use this for initialization
 	void Start () {
+		// Skillの配列に登録--------
+		skillArray = new Delegate[]{Skill1,Skill2,Skill3,Skill4};
+		string skillDate = GetSKillDate ("Tank_Skill.json");
+		CreateSkillList (skillArray, skillDate);
+		//---------------------------
 		Set_b_Status(BattelStatus.NORMAL);
 		controller = T_Normal.Instance;
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
-		switch (GetSelfMode())
+		// チームによるモードを変更する
+		switch (GetModeNumber())
 		{
 		case 6:
 			ChangeMode(T_D3.Instance);
