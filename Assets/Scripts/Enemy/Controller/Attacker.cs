@@ -200,7 +200,7 @@ public class A_Normal : E_Controller
 			{
 				JobBase jb = target.GetComponent<JobBase>();
 				if(jb.p_hp/jb.p_maxHP * 100 < 50 && jb.p_type == JobType.Leader){
-					eb.skillList[0].skillMethod(target, eb.skillList[0].s_effectTime, eb.skillList[0].s_recast);
+					eb.SkillUse (target, eb.skillList [0]);
 				}
 			}
 
@@ -209,14 +209,13 @@ public class A_Normal : E_Controller
 				JobBase jb = target.GetComponent<JobBase>();
 				//TODO: リーダーを攻撃するものを攻撃
 				if(jb.p_type == JobType.Attacker || jb.p_type == JobType.Magician){
-					eb.skillList[0].skillMethod(target, eb.skillList[0].s_effectTime, eb.skillList[0].s_recast);
+					eb.SkillUse (target, eb.skillList [0]);
 				}
 			}
 				
 			int count = eb.e_pr.partyList.Count;
 			int num = Random.Range (0, count - 1);
-			eb.skillList[0].skillMethod(eb.e_pr.partyList[num], eb.skillList[0].s_effectTime, eb.skillList[0].s_recast);
-
+			eb.SkillUse (eb.e_pr.partyList[num], eb.skillList [0]);
 		}
 		else
 			Debug.Log("TODO: 状態異常のモードに移動");
