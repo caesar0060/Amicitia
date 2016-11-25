@@ -9,6 +9,7 @@ public enum JobType{
 	Attacker = 1,
 	Defender = 2,
 	Magician = 5,
+	Leader,
 }
 [Serializable]
 public class Skill{
