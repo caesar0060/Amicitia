@@ -39,9 +39,10 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-	public void Skill1(GameObject target = null, float time = 0){
+    public void Skill1(GameObject target = null, float effectTime = 0)
+    {
 		Set_c_Status(ConditionStatus.PULL);
-		StatusCounter (ConditionStatus.PULL, time);
+        StatusCounter(ConditionStatus.PULL, effectTime);
 		Debug.Log ("Tank");
 	}
 	/// <summary>
@@ -50,25 +51,29 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-	public void Skill2(GameObject target = null, float time = 0){
+    public void Skill2(GameObject target = null, float effectTime = 0)
+    {
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, time);
+		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
 	}
 	/// <summary>
     /// 対象の攻撃を肩代わりする
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-	public void Skill3(GameObject target = null, float time = 0){
+    public void Skill3(GameObject target = null, float effectTime = 0)
+    {
 	}
 	/// <summary>
 	/// 魔法、物理攻撃１０％カット
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-	public void Skill4(GameObject target = null, float time = 0){
+    public void Skill4(GameObject target = null, float effectTime = 0)
+    {
 		JobBase jb = target.GetComponent<JobBase> ();
 		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);
+        StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
 	}
 	#endregion
 }

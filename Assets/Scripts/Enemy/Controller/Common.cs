@@ -23,7 +23,7 @@ public class E_SkillMode : E_Controller
 	}
 	override public void Enter(EnemyBase eb = null)
 	{
-		//eb.skillMethod();
+		Debug.Log("PEnter");
 	}
 	override public void Excute(EnemyBase eb = null)
 	{

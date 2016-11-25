@@ -1,34 +1,36 @@
 {
-	"skills" : {
-		"s_name" : "力の精霊",
-		"s_effectTime" : 10,
-		"s_isRune" : false,
-		"s_recast" : 4,
-		"isRecast" : false,
-		"s_range" :  0
-    },
-	{
-		"s_name" : "魔力の精霊",
-		"s_effectTime" : 10,
-		"s_isRune" : false,
-		"s_recast" : 4,
-		"isRecast" : false,
-		"s_range" :  0
-    },
-	{
-		"s_name" : "守りの精霊",
-		"s_effectTime" : 10,
-		"s_isRune" : false,
-		"s_recast" : 4,
-		"isRecast" : false,
-		"s_range" :  0
-    },
-	{
-		"s_name" : "癒しの精霊",
-		"s_effectTime" : 0,
-		"s_isRune" : false,
-		"s_recast" : 4,
-		"isRecast" : false,
-		"s_range" :  0
-    }
+	"skills" : [
+		{
+			"s_name" : "力の精霊",
+			"s_effectTime" : 10,
+			"s_isRune" : false,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    },
+		{
+			"s_name" : "魔力の精霊",
+			"s_effectTime" : 10,
+			"s_isRune" : false,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    },
+		{
+			"s_name" : "守りの精霊",
+			"s_effectTime" : 10,
+			"s_isRune" : false,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    },
+		{
+			"s_name" : "癒しの精霊",
+			"s_effectTime" : 0,
+			"s_isRune" : false,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    }
+	]
 }
