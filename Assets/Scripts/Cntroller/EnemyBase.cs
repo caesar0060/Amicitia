@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum EnemyType{
+public enum JobType{
 	NONE = 0,
 	Attacker = 1,
 	Defender = 2,
@@ -25,14 +25,14 @@ public class EnemyBase : StatusControl {
 	#region Properties
 	// HP
 	public int e_hp;
-	// MP
-	public int e_mp;
+    // HP
+    public int e_maxHP;
 	// 攻撃力
 	public int e_attack;
 	//防御力
 	public int e_defence;
     //エネミーのタイプ
-    public EnemyType e_type;
+    public JobType e_type;
 	//インスタンスを保存するコントローラ
 	public E_Controller controller = null;
 	//ターゲット
@@ -96,19 +96,19 @@ public class EnemyBase : StatusControl {
 	}
 	#endregion
     #region Skill
-    virtual public void Skill1(GameObject target = null, float time = 0)
+    virtual public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
     {
 
     }
-    virtual public void Skill2(GameObject target = null, float time = 0)
+    virtual public void Skill2(GameObject target = null, float effectTime = 0, float recastTime = 0)
     {
 
     }
-    virtual public void Skill3(GameObject target = null, float time = 0)
+    virtual public void Skill3(GameObject target = null, float effectTime = 0, float recastTime = 0)
     {
 
     }
-    virtual public void Skill4(GameObject target = null, float time = 0)
+    virtual public void Skill4(GameObject target = null, float effectTime = 0, float recastTime = 0)
     {
 
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class E_TankScript : EnemyBase {
+public class E_Magician : EnemyBase {
 	#region Properties
 	private int hit_count;		//撃たれた回数
 	[HideInInspector]
@@ -15,25 +15,25 @@ public class E_TankScript : EnemyBase {
 		CreateSkillList (skillArray, skillDate);
 		//---------------------------
 		Set_b_Status(BattelStatus.NORMAL);
-		controller = T_Normal.Instance;
+		controller = M_Normal.Instance;
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
 		// チームによるモードを変更する
 		switch (GetModeNumber())
 		{
-		case 6:
-			ChangeMode(T_D3.Instance);
-			break;
-		case 4:
-			ChangeMode(T_A2D1.Instance);
-			break;
-		case 9:
-			ChangeMode(T_D2M1.Instance);
-			break;
-		case 5:
-			ChangeMode(T_D2A1.Instance);
+		case 15:
+			ChangeMode(M_M3.Instance);
 			break;
 		case 12:
-			ChangeMode(T_M2D1.Instance);
+			ChangeMode(M_M2D1.Instance);
+			break;
+		case 11:
+			ChangeMode(M_M2A1.Instance);
+			break;
+		case 7:
+			ChangeMode(M_A2M1.Instance);
+			break;
+		case 9:
+			ChangeMode(M_D2M1.Instance);
 			break;
 		default:
 			controller.Enter (this);
@@ -47,58 +47,49 @@ public class E_TankScript : EnemyBase {
 	}
 	#region Skill
 	/// <summary>
-	/// カウンター
-	/// 敵視を集め、一定時間攻撃受ける
-	/// カウンター：受けた回数×１０自身の攻撃に上乗せする　
+    /// ルーン
+    /// 魔法攻撃　
 	/// </summary>
 	/// <param name="target">ターゲット</param>
 	/// <param name="time">効果時間</param>
     override public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
 	{
-		Set_c_Status(ConditionStatus.PULL);
-		StatusCounter(ConditionStatus.PULL, effectTime);
         StartCoroutine(SkillRecast(skillList[0], recastTime));
         ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
-	/// イース
-	/// 全攻撃２０％カット
+    /// エオロー
+    /// 魔法攻撃
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
     override public void Skill2(GameObject target = null, float effectTime = 0, float recastTime = 0)
 	{
-		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-		StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
         StartCoroutine(SkillRecast(skillList[1], recastTime));
         ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
-	/// 対象の攻撃を肩代わりする
+    /// ハーガル
+    /// スロウ状態にする
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
     override public void Skill3(GameObject target = null, float effectTime = 0, float recastTime = 0)
 	{
-		Set_c_Status(ConditionStatus.TAKE_OVER);
-		StatusCounter(ConditionStatus.TAKE_OVER, effectTime);
+        target.GetComponent<EnemyBase>().Set_c_Status(ConditionStatus.SLOW);
+        target.GetComponent<EnemyBase>().StatusCounter(ConditionStatus.SLOW, effectTime);
         StartCoroutine(SkillRecast(skillList[2], recastTime));
         ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
-	/// 魔法、物理攻撃１０％カット
+    /// 範囲魔法攻撃
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
     override public void Skill4(GameObject target = null, float effectTime = 0, float recastTime = 0)
 	{
-		if (target != null)
-		{
-			JobBase jb = target.GetComponent<JobBase>();
-			jb.Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-            StartCoroutine(SkillRecast(skillList[3], recastTime));
-            ChangeMode(E_SkillMode.Instance);
-		}
+        StartCoroutine(SkillRecast(skillList[3], recastTime));
+        ChangeMode(E_SkillMode.Instance);
 	}
 	#endregion
 }

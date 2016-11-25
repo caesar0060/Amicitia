@@ -9,13 +9,15 @@ public class JobBase : StatusControl {
 	#region Properties
 	private static float BUTTON_DISTANCE = 0.5f;
 	// HP
-	public int _hp;
-	// MP
-	public int _mp;
+	public int p_hp;
+    // MAX HP
+    public int p_maxHP;
 	// 攻撃力
-	public int _attack;
-	//防御力
-	public int _defence;
+	public int p_attack;
+	// 防御力
+	public int p_defence;
+    // Job
+    public JobType p_type;
 	//ターゲット
 	[HideInInspector] public GameObject _target;
 	//インスタンスを保存するコントローラ

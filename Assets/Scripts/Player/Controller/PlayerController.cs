@@ -354,9 +354,7 @@ public class P_TargetMode : RootController {
 						//レイヤーが同じなら
 						if (hit.collider.gameObject.layer ==
 						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
-							pr.s_script.skillMethod (hit.collider.gameObject, pr.s_script.s_effectTime);
-							pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(pr.btn, pr.s_script.s_recast));
-							pr.ChangeMode (BattelMode.Instance);
+							SkillUse (pr, hit.collider.gameObject, pr.btn , pr.s_script.s_recast, pr.s_script.s_effectTime);
 						}
 						else
 						//ボタンを初期位置に戻す
@@ -365,9 +363,7 @@ public class P_TargetMode : RootController {
 					}
 					// SELFなら、即発動
 					else{
-						pr.s_script.skillMethod(pr.p_jb.gameObject, pr.s_script.s_effectTime);
-						pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(pr.btn, pr.s_script.s_recast));
-						pr.ChangeMode (BattelMode.Instance);
+                        SkillUse(pr, pr.p_jb.gameObject,pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
 					}
 				}
 			}
@@ -384,4 +380,9 @@ public class P_TargetMode : RootController {
 		pr.btn.transform.position, 1));
 		pr.p_jb.HideSkillBtn();
 	}
+    private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
+        pr.s_script.skillMethod(target, effectTime);
+        pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
+        pr.ChangeMode(BattelMode.Instance);
+    }
 }
