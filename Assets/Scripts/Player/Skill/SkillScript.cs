@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 //引数および返り値のないデリゲート
-public delegate void Delegate (GameObject target = null, float effectTime = 0, float recastTime = 0);
+public delegate void Delegate (GameObject target = null, float effectTime = 0);
 //対象数
 public enum TargetNum{
 	SELF = 0,

@@ -52,10 +52,9 @@ public class E_Magician : EnemyBase {
 	/// </summary>
 	/// <param name="target">ターゲット</param>
 	/// <param name="time">効果時間</param>
-    override public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
-        StartCoroutine(SkillRecast(skillList[0], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+
 	}
 	/// <summary>
     /// エオロー
@@ -63,10 +62,9 @@ public class E_Magician : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill2(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
-        StartCoroutine(SkillRecast(skillList[1], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+
 	}
 	/// <summary>
     /// ハーガル
@@ -74,22 +72,19 @@ public class E_Magician : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill3(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
         target.GetComponent<EnemyBase>().Set_c_Status(ConditionStatus.SLOW);
         target.GetComponent<EnemyBase>().StatusCounter(ConditionStatus.SLOW, effectTime);
-        StartCoroutine(SkillRecast(skillList[2], recastTime));
-        ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
     /// 範囲魔法攻撃
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill4(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill4(GameObject target = null, float effectTime = 0)
 	{
-        StartCoroutine(SkillRecast(skillList[3], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+
 	}
 	#endregion
 }

@@ -37,12 +37,11 @@ public class E_Leader : EnemyBase {
 	/// </summary>
 	/// <param name="target">ターゲット</param>
 	/// <param name="time">効果時間</param>
-    override public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		Set_c_Status(ConditionStatus.POWER_UP);
         StatusCounter(ConditionStatus.POWER_UP, effectTime);
-        StartCoroutine(SkillRecast(skillList[0], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+
 	}
 	/// <summary>
     /// 守りの精霊
@@ -50,14 +49,12 @@ public class E_Leader : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill2(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
         Set_c_Status(ConditionStatus.P_DEF_UP);
         StatusCounter(ConditionStatus.P_DEF_UP, effectTime);
         Set_c_Status(ConditionStatus.M_DEF_UP);
-        StatusCounter(ConditionStatus.M_DEF_UP, effectTime);
-        StartCoroutine(SkillRecast(skillList[1], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+        StatusCounter(ConditionStatus.M_DEF_UP, effectTime);     
 	}
 	/// <summary>
     /// 魔力の精霊
@@ -65,12 +62,10 @@ public class E_Leader : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill3(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
         Set_c_Status(ConditionStatus.MAGIC_UP);
         StatusCounter(ConditionStatus.MAGIC_UP, effectTime);
-        StartCoroutine(SkillRecast(skillList[2], recastTime));
-        ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
     /// 癒しの精霊
@@ -78,10 +73,9 @@ public class E_Leader : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill4(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill4(GameObject target = null, float effectTime = 0)
 	{
-        StartCoroutine(SkillRecast(skillList[3], recastTime));
-        ChangeMode(E_SkillMode.Instance);
+
 	}
 	#endregion
 }

@@ -26,7 +26,7 @@ public class AttackerScript : JobBase {
 		//test-----
 	}
 	#region Function
-    public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    public void Skill1(GameObject target = null, float effectTime = 0)
     {
 		Debug.Log ("Tank Skill1");
 	}

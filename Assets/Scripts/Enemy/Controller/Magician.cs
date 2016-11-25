@@ -200,7 +200,7 @@ public class M_Normal : E_Controller
             {
                 JobBase jb = target.GetComponent<JobBase>();
                 if(jb.p_hp/jb.p_maxHP * 100 < 30){
-                    eb.skillList[0].skillMethod(target, eb.skillList[0].s_effectTime, eb.skillList[0].s_recast);
+					eb.SkillUse (target, eb.skillList [0]);
                 }
             }
             foreach (var target in eb.e_pr.partyList)
@@ -210,10 +210,12 @@ public class M_Normal : E_Controller
                 {
                     if (jb.CheckFlag(ConditionStatus.SLOW))
                     {
-                        eb.skillList[2].skillMethod(target, eb.skillList[2].s_effectTime, eb.skillList[2].s_recast);
+						eb.SkillUse (target, eb.skillList [2]);
                     }
                 }
             }
+			eb.SkillUse(eb.e_pr.partyList[0], eb.skillList[0]);
+			Debug.Log("T_Normal_Excute");
         }
         else
             Debug.Log("TODO: 状態異常のモードに移動");

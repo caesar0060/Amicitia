@@ -53,12 +53,10 @@ public class E_TankScript : EnemyBase {
 	/// </summary>
 	/// <param name="target">ターゲット</param>
 	/// <param name="time">効果時間</param>
-    override public void Skill1(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		Set_c_Status(ConditionStatus.PULL);
 		StatusCounter(ConditionStatus.PULL, effectTime);
-        StartCoroutine(SkillRecast(skillList[0], recastTime));
-        ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
 	/// イース
@@ -66,38 +64,32 @@ public class E_TankScript : EnemyBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill2(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
 		StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
-        StartCoroutine(SkillRecast(skillList[1], recastTime));
-        ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
 	/// 対象の攻撃を肩代わりする
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill3(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
 		Set_c_Status(ConditionStatus.TAKE_OVER);
 		StatusCounter(ConditionStatus.TAKE_OVER, effectTime);
-        StartCoroutine(SkillRecast(skillList[2], recastTime));
-        ChangeMode(E_SkillMode.Instance);
 	}
 	/// <summary>
 	/// 魔法、物理攻撃１０％カット
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    override public void Skill4(GameObject target = null, float effectTime = 0, float recastTime = 0)
+    override public void Skill4(GameObject target = null, float effectTime = 0)
 	{
 		if (target != null)
 		{
 			JobBase jb = target.GetComponent<JobBase>();
 			jb.Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-            StartCoroutine(SkillRecast(skillList[3], recastTime));
-            ChangeMode(E_SkillMode.Instance);
 		}
 	}
 	#endregion

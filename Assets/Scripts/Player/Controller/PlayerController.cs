@@ -380,6 +380,14 @@ public class P_TargetMode : RootController {
 		pr.btn.transform.position, 1));
 		pr.p_jb.HideSkillBtn();
 	}
+	/// <summary>
+	/// スキルを使う
+	/// </summary>
+	/// <param name="pr">PlayerRoot.</param>
+	/// <param name="target">Target.</param>
+	/// <param name="btn">Skill Button.</param>
+	/// <param name="recastTime">Recast time.</param>
+	/// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
         pr.s_script.skillMethod(target, effectTime);
         pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
