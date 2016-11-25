@@ -1,34 +1,34 @@
 {
 	"skills" : [
 		{
-			"s_name" : "カウンター",
-			"s_effectTime" : 8,
+			"s_name" : "ルーン",
+			"s_effectTime" : 0,
 			"s_isRune" : false,
-			"s_recast" : 20,
+			"s_recast" : 6,
 			"isRecast" : false,
 			"s_range" :  0
 	    },
 		{
-			"s_name" : "イース",
-			"s_effectTime" : 15,
+			"s_name" : "エオロー",
+			"s_effectTime" : 0,
 			"s_isRune" : false,
-			"s_recast" : 20,
+			"s_recast" : 3,
 			"isRecast" : false,
 			"s_range" :  0
 	    },
 		{
-			"s_name" : "Skill3",
+			"s_name" : "ハーガル",
 			"s_effectTime" : 10,
 			"s_isRune" : false,
-			"s_recast" : 15,
+			"s_recast" : 10,
 			"isRecast" : false,
 			"s_range" :  0
 	    },
 		{
 			"s_name" : "Skill4",
-			"s_effectTime" : 15,
+			"s_effectTime" : 0,
 			"s_isRune" : false,
-			"s_recast" : 20,
+			"s_recast" : 3,
 			"isRecast" : false,
 			"s_range" :  0
 	    }

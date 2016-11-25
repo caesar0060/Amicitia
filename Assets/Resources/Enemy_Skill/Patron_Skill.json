@@ -1,34 +1,34 @@
 {
 	"skills" : [
 		{
-			"s_name" : "カウンター",
-			"s_effectTime" : 8,
-			"s_isRune" : false,
-			"s_recast" : 20,
-			"isRecast" : false,
-			"s_range" :  0
-	    },
-		{
-			"s_name" : "イース",
-			"s_effectTime" : 15,
-			"s_isRune" : false,
-			"s_recast" : 20,
-			"isRecast" : false,
-			"s_range" :  0
-	    },
-		{
-			"s_name" : "Skill3",
+			"s_name" : "力の精霊",
 			"s_effectTime" : 10,
 			"s_isRune" : false,
-			"s_recast" : 15,
+			"s_recast" : 4,
 			"isRecast" : false,
 			"s_range" :  0
 	    },
 		{
-			"s_name" : "Skill4",
-			"s_effectTime" : 15,
+			"s_name" : "魔力の精霊",
+			"s_effectTime" : 10,
 			"s_isRune" : false,
-			"s_recast" : 20,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    },
+		{
+			"s_name" : "守りの精霊",
+			"s_effectTime" : 10,
+			"s_isRune" : false,
+			"s_recast" : 4,
+			"isRecast" : false,
+			"s_range" :  0
+	    },
+		{
+			"s_name" : "癒しの精霊",
+			"s_effectTime" : 0,
+			"s_isRune" : false,
+			"s_recast" : 4,
 			"isRecast" : false,
 			"s_range" :  0
 	    }
