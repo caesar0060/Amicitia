@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
     /// <summary>
     /// シーン遷移時のフェードイン・アウトを制御するためのクラス
@@ -12,7 +13,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     /// <summary>フェード中の透明度</summary>
     private float fadeAlpha = 0;
     /// <summary>フェード中かどうか</summary>
-    private bool isFading = false;
+    public bool isFading = false;
     public void start()
     {
         //ここで黒テクスチャ作る
@@ -61,7 +62,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         }
 
         //シーン切替
-        Application.LoadLevel(scene);
+		SceneManager.LoadScene(scene);
 
         //だんだん明るく
         time = 0;

@@ -1,33 +1,33 @@
 {
 	"skills" : {
-		"s_name" : "カウンター",
-		"s_effectTime" : 8,
+		"s_name" : "スラッシュ",
+		"s_effectTime" : 0,
 		"s_isRune" : false,
-		"s_recast" : 20,
+		"s_recast" : 5,
 		"isRecast" : false,
 		"s_range" :  0
     },
 	{
-		"s_name" : "イース",
-		"s_effectTime" : 15,
+		"s_name" : "Skill2",
+		"s_effectTime" : 0,
 		"s_isRune" : false,
-		"s_recast" : 20,
+		"s_recast" : 8,
 		"isRecast" : false,
 		"s_range" :  0
     },
 	{
 		"s_name" : "Skill3",
-		"s_effectTime" : 10,
+		"s_effectTime" : 0,
 		"s_isRune" : false,
 		"s_recast" : 15,
 		"isRecast" : false,
 		"s_range" :  0
     },
 	{
-		"s_name" : "Skill4",
-		"s_effectTime" : 15,
+		"s_name" : "回転切り",
+		"s_effectTime" : 0,
 		"s_isRune" : false,
-		"s_recast" : 20,
+		"s_recast" : 5,
 		"isRecast" : false,
 		"s_range" :  0
     }

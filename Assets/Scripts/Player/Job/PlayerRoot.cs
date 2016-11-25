@@ -39,13 +39,13 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	void OnGUI() {
         if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
         {
-            //ChangeMode(BattelStart.Instance);
+            ChangeMode(BattelStart.Instance);
 			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2);
         }
 
         if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
         {
-            //ChangeMode(WalkMode.Instance);
+            ChangeMode(WalkMode.Instance);
         
         }
 
