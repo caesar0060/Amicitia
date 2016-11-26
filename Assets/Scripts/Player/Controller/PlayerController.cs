@@ -349,8 +349,8 @@ public class P_TargetMode : RootController {
 				if(pr.btn != null){
 					if(pr.s_script.s_targetNum != TargetNum.SELF){
 						//レイヤーが同じなら
-						if (hit.collider.gameObject.layer ==
-						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
+                        if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+                        {
 							SkillUse (pr, hit.collider.gameObject, pr.btn , pr.s_script.s_recast, pr.s_script.s_effectTime);
 						}
 						else

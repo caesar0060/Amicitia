@@ -35,7 +35,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 		controller = WalkMode.Instance;
 		controller.Enter (this);
 		//---------
-		CreateDictionary();
 	}
 	// ------------------------------------------------------------------------------------
 	//										Debug用
@@ -89,23 +88,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 			obj.transform.position = Vector3.Lerp (endPos, startPos, moveRate);
 			yield return new WaitForEndOfFrame ();
 		}
-	}
-	/// <summary>
-	/// Creates the dictionary.
-	/// </summary>
-	public void CreateDictionary(){
-		Dictionary<TargetNum , int> playerList = new Dictionary<TargetNum, int> () {
-			{TargetNum.ONE, LayerMask.NameToLayer("Player")},
-			{TargetNum.MUTIPLE, LayerMask.NameToLayer("Player")}
-		};
-		Dictionary<TargetNum , int> enemyList = new Dictionary<TargetNum, int> () {
-			{TargetNum.ONE, LayerMask.NameToLayer("Enemy")},
-			{TargetNum.MUTIPLE, LayerMask.NameToLayer("Enemy")}
-		};
-		s_targetLayer = new Dictionary<TargetType, Dictionary<TargetNum, int>> () {
-			{ TargetType.PLAYER, playerList },
-			{ TargetType.ENEMY, enemyList }
-		};
 	}
 	/// <summary>
     /// 子供を生成する
