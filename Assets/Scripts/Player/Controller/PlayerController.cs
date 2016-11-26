@@ -39,9 +39,8 @@ public class WalkMode : RootController {
 		}
 	}
 	override public void Enter(PlayerRoot pr = null)
-	{	
-		pr.GetComponent<FadeManager>().LoadLevel("NormalScene", 2);
-		pr.CreatePlayer();
+	{
+        pr.CreateChild("Player");
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		// TODO@
 		// cameraSupport.transform.position = defaultPos;
@@ -131,7 +130,6 @@ public class WalkMode : RootController {
 		// cameraSupport.transform.position = battelPos;
 		// TODO@
 		pr.DestroyChild("Player");
-		pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2);
 	}
 	#region Function
 	/// <summary>
