@@ -11,6 +11,7 @@ public class TankScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		p_funcList = new Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
+		skillBtnGenerate ();
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
 		controller = WorldMode.Instance;
@@ -20,7 +21,6 @@ public class TankScript : JobBase {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
 		}*/
-		skillBtnGenerate ();
 		HideSkillBtn ();
 	}
 

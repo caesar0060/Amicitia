@@ -441,9 +441,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_jb: {fileID: 0}
-  enemyList: []
+  e_prefabList: []
+  p_prefabList:
+  - {fileID: 182342, guid: 8bc8ce07fbfea6c4e9f0661795a318a6, type: 2}
   partyList:
   - {fileID: 182342, guid: 8bc8ce07fbfea6c4e9f0661795a318a6, type: 2}
+  enemyList: []
   btn: {fileID: 0}
   s_script: {fileID: 0}
 --- !u!4 &1528108654
@@ -471,3 +474,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackTexture: {fileID: 2800000, guid: 0db19c609eba0a34eab77d236040bb17, type: 3}
+  isFading: 0

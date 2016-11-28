@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// WalkMode Singleton
@@ -39,9 +38,8 @@ public class WalkMode : RootController {
 		}
 	}
 	override public void Enter(PlayerRoot pr = null)
-	{	
-		pr.GetComponent<FadeManager>().LoadLevel("NormalScene", 2);
-		pr.CreatePlayer();
+	{
+		pr.CreateChild("Player", pr.p_prefabList[0]);
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		// TODO@
 		// cameraSupport.transform.position = defaultPos;
@@ -127,11 +125,7 @@ public class WalkMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		// TODO@
-		// cameraSupport.transform.position = battelPos;
-		// TODO@
-		pr.DestroyChild("Player");
-		pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2);
+
 	}
 	#region Function
 	/// <summary>
@@ -170,6 +164,10 @@ public class BattelStart : RootController
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
+		pr.DestroyChild("Player");
+		// TODO@
+		// cameraSupport.transform.position = battelPos;
+		// TODO@
 		pr.ChangeMode(BattelMode.Instance);
 	}
 	override public void Excute(PlayerRoot pr = null)
@@ -185,6 +183,7 @@ public class BattelStart : RootController
 
 	#endregion
 }
+
 /// <summary>
 /// BattelMode Singleton
 /// </summary>
@@ -351,8 +350,8 @@ public class P_TargetMode : RootController {
 				if(pr.btn != null){
 					if(pr.s_script.s_targetNum != TargetNum.SELF){
 						//レイヤーが同じなら
-						if (hit.collider.gameObject.layer ==
-						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
+                        if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+                        {
 							SkillUse (pr, hit.collider.gameObject, pr.btn , pr.s_script.s_recast, pr.s_script.s_effectTime);
 						}
 						else
@@ -366,9 +365,12 @@ public class P_TargetMode : RootController {
 					}
 				}
 			}
+			else//ボタンを初期位置に戻す
+				pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
+					pr.btn.transform.position, 1));
 		}
 		if (Input.GetMouseButtonDown (1)) {
-				pr.ChangeMode (BattelMode.Instance);
+			pr.ChangeMode (BattelMode.Instance);
 		}
 		#endregion
 	}
