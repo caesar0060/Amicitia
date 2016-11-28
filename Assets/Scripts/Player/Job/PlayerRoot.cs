@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 {
     #region Properties
+
     //シーンの転移の時、フェイドアウト・インの時間
     public static float SCENE_FADE_TIME = 2f;
     //ボタンが元の場所に戻るまでの時間
@@ -15,13 +16,16 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// JobBaseを保管する
 	public JobBase p_jb;
 	// 敵を保管する配列
-	[HideInInspector] public List<GameObject> enemyList = new List<GameObject> ();
+	//[HideInInspector] 
+	public List<GameObject> e_prefabList = new List<GameObject> ();
+	// プレイヤーのプレハブを保管する配列
+	public List<GameObject> p_prefabList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
-	public List<GameObject>partyList = new List<GameObject> ();
+	[HideInInspector] public List<GameObject> partyList = new List<GameObject>();
+	// 敵を保管する配列
+	[HideInInspector] public List<GameObject> enemyList = new List<GameObject>();
 	// ボタンの移動用タイマー
 	private float timer =0;
-	// ターゲットのレイヤー
-	public Dictionary<TargetType,Dictionary<TargetNum, int>> s_targetLayer;
 	// 
 	[HideInInspector] public GameObject btn = null;
 	//
@@ -41,8 +45,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	void OnGUI() {
         if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
         {
-            ChangeMode(BattelStart.Instance);
-			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelMode.Instance);
+			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
         }
 
         if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
@@ -92,7 +95,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// <summary>
     /// 子供を生成する
 	/// </summary>
-	public void CreateChild(string name, GameObject obj = partList[0]){
+	public void CreateChild(string name, GameObject obj){
 		GameObject child = Instantiate (obj, Vector3.zero, this.transform.rotation) as GameObject;
         child.transform.parent = this.transform;
         child.name = name;
@@ -105,5 +108,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	public void DestroyChild(string name){
 		Destroy (this.transform.FindChild (name).gameObject);
 	}
+
 	#endregion
 }

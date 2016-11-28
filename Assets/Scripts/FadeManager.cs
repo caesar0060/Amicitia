@@ -59,7 +59,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 		SceneManager.LoadScene(scene);
         // Rootのmodeを変更する
         if(rc != null)
-            this.GetComponet<PlayerRoot>().ChangeMode(rc);
+            this.GetComponent<PlayerRoot>().ChangeMode(rc);
 
         //だんだん明るく
         time = 0;

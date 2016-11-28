@@ -9,6 +9,8 @@ TagManager:
   - SkillButton
   - Member
   - Tank
+  - PartyRoot
+  - EnemyRoot
   layers:
   - Default
   - TransparentFX
