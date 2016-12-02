@@ -8,7 +8,7 @@ using System.Collections;
 public class WalkMode : RootController {
 	#region Property
 	//移動速度
-	private const float MOVE_SPEED = 20;
+	private const float MOVE_SPEED = 10;
 	//回転速度
 	private const float ROTATE_SPEED = 100;
 	private const float CAMERA_ROTATE_SPEED = 50;
@@ -22,7 +22,8 @@ public class WalkMode : RootController {
 	private Vector3 touchPoint;
 	// プレイヤーのAnimator
 	private Animator p_animator;
-
+	private Vector3 NormalPos = Vector3.zero;
+	private Vector3 NormalRot = Vector3.zero;
 	#endregion
 	// 移動モードのインスタンス
 	private static WalkMode instance;
@@ -41,9 +42,10 @@ public class WalkMode : RootController {
 	{
 		pr.CreateChild("Player", pr.p_prefabList[0]);
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
-		// TODO@
-		// cameraSupport.transform.position = defaultPos;
-		// TODO@
+		// 初期化する
+		cameraSupport.transform.localPosition = NormalPos;
+		cameraSupport.transform.localEulerAngles = NormalRot;
+		//　初期値を保存する
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
@@ -145,7 +147,10 @@ public class WalkMode : RootController {
 public class BattelStart : RootController
 {
 	#region Property
-
+	// GameObjectを取得
+	private GameObject cameraSupport;
+	private Vector3 battelPos = new Vector3 (17.7f, 0.6f, 8.4f);
+	private Vector3 battelRot = new Vector3 (0.5f, 3.3f, 2.2f);
 	#endregion
 	// インスタンス
 	private static BattelStart instance;
@@ -164,10 +169,11 @@ public class BattelStart : RootController
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
+		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		pr.DestroyChild("Player");
-		// TODO@
-		// cameraSupport.transform.position = battelPos;
-		// TODO@
+		// 初期化する
+		cameraSupport.transform.position = battelPos;
+		cameraSupport.transform.Rotate (battelRot);
 		pr.ChangeMode(BattelMode.Instance);
 	}
 	override public void Excute(PlayerRoot pr = null)
@@ -229,18 +235,20 @@ public class BattelMode : RootController {
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,d_layerMask)) {
 				switch(hit.collider.gameObject.layer){
 				case 8: //Player
-					if(!isBtnShow){	//ボタンはまだ生成していない
-						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-						if(pr.p_jb.CanTakeAction()){
-							pr.p_jb.ShowSkillBtn();
-							isBtnShow = true;
+					if(hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance){
+						if(!isBtnShow){	//ボタンはまだ生成していない
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							if(pr.p_jb.CanTakeAction()){
+								pr.p_jb.ShowSkillBtn();
+								isBtnShow = true;
+							}
 						}
-					}
-					// すでに生成したら
-					else{
-						pr.p_jb.HideSkillBtn();
-						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-						pr.p_jb.ShowSkillBtn();
+						// すでに生成したら
+						else{
+							pr.p_jb.HideSkillBtn();
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							pr.p_jb.ShowSkillBtn();
+						}
 					}
 					break;
 				case 10: //Command
@@ -254,6 +262,7 @@ public class BattelMode : RootController {
 				}
 			}
 			if (Input.GetMouseButtonDown (1)) {
+				Debug.Log("1");
 				pr.p_jb.HideSkillBtn();
 			}
 		}
@@ -356,8 +365,8 @@ public class P_TargetMode : RootController {
 						}
 						else
 						//ボタンを初期位置に戻す
-						pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
-							pr.btn.transform.position, 1));
+						pr.StartCoroutine(pr.LerpMove(pr.btn, 
+								pr.btn.transform.position, btnTempPos, 1));
 					}
 					// SELFなら、即発動
 					else{
@@ -366,8 +375,8 @@ public class P_TargetMode : RootController {
 				}
 			}
 			else//ボタンを初期位置に戻す
-				pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
-					pr.btn.transform.position, 1));
+				pr.StartCoroutine(pr.LerpMove(pr.btn, 
+					pr.btn.transform.position, btnTempPos, 1));
 		}
 		if (Input.GetMouseButtonDown (1)) {
 			pr.ChangeMode (BattelMode.Instance);
@@ -377,8 +386,8 @@ public class P_TargetMode : RootController {
 	override public void Exit(PlayerRoot pr = null)
 	{
 		//ボタンを初期位置に戻す
-		pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
-		pr.btn.transform.position, 1));
+		pr.StartCoroutine(pr.LerpMove(pr.btn, 
+			pr.btn.transform.position, btnTempPos, 1));
 		pr.p_jb.HideSkillBtn();
 	}
 	/// <summary>
@@ -392,6 +401,7 @@ public class P_TargetMode : RootController {
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
         pr.s_script.skillMethod(pr.s_script, target, effectTime);
         pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
+		pr.p_jb.ChangeMode (SkillMode.Instance);
         pr.ChangeMode(BattelMode.Instance);
     }
 }

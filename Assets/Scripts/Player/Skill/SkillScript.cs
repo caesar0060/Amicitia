@@ -38,7 +38,7 @@ public class SkillScript : MonoBehaviour {
 	public string s_description;		//詳細
 	public bool s_isRune = false;		//ルーンかどうか
 	public float s_recast = 0;			//リーキャストタイム
-	public bool isRecast = false;		//リーキャスト中
+	[HideInInspector] public bool isRecast = false;		//リーキャスト中
 	public float s_range = 0;			//範囲
 	public P_Delegate skillMethod;		//スキルを保管する
 

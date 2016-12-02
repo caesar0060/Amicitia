@@ -189,6 +189,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 489136}
   - 114: {fileID: 11448370}
+  - 136: {fileID: 13633160}
   m_Layer: 12
   m_Name: Kinoko
   m_TagString: Untagged
@@ -638,7 +639,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0012931824, y: -0.08516374, z: -2.1474972}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 457948}
@@ -782,7 +783,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.72, y: 0.08516374, z: 27.13}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450956}
@@ -852,6 +853,19 @@ MonoBehaviour:
   p_leader: {fileID: 0}
   skillList: []
   t_myTarget: {fileID: 0}
+--- !u!136 &13633160
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &13786656
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

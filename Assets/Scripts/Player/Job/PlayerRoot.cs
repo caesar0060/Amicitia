@@ -24,8 +24,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	[HideInInspector] public List<GameObject> partyList = new List<GameObject>();
 	// 敵を保管する配列
 	[HideInInspector] public List<GameObject> enemyList = new List<GameObject>();
-	// ボタンの移動用タイマー
-	private float timer =0;
 	// 
 	[HideInInspector] public GameObject btn = null;
 	//
@@ -78,17 +76,18 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// </summary>
 	/// <param name="obj">対象.</param>
 	/// <param name="timeRate">Time rate.</param>
-	public IEnumerator LerpMove(GameObject obj,Vector3 startPos, Vector3 endPos, float time, float speed =1){
+	public IEnumerator LerpMove(GameObject obj,Vector3 startPos, Vector3 endPos, float speed =1){
+		// ボタンの移動用タイマー
+		float timer =0;
 		while (true) {
 			timer += Time.deltaTime * speed;
 			float moveRate = timer / BUTTON_RETURN_TIME;
 			if (moveRate  >= 1) {
 				moveRate = 1;
-				obj.transform.position = Vector3.Lerp (endPos, startPos, moveRate);
-				timer = 0;
+				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				yield break;
 			}
-			obj.transform.position = Vector3.Lerp (endPos, startPos, moveRate);
+			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 			yield return new WaitForEndOfFrame ();
 		}
 	}

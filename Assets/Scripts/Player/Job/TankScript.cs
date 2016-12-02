@@ -14,7 +14,7 @@ public class TankScript : JobBase {
 		skillBtnGenerate ();
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
-		controller = WorldMode.Instance;
+		controller = ReadyMode.Instance;
 		controller.Enter (this);
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
