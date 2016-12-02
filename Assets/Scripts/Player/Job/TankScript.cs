@@ -10,7 +10,7 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		p_funcList = new Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
+		p_funcList = new P_Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
 		skillBtnGenerate ();
 		Set_b_Status (BattelStatus.NORMAL);
 		//-----test
@@ -39,7 +39,7 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    public void Skill1(GameObject target = null, float effectTime = 0)
+	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		Set_c_Status(ConditionStatus.PULL);
         StatusCounter(ConditionStatus.PULL, effectTime);
@@ -51,7 +51,7 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    public void Skill2(GameObject target = null, float effectTime = 0)
+	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
 		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
@@ -61,7 +61,7 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    public void Skill3(GameObject target = null, float effectTime = 0)
+	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 	}
 	/// <summary>
@@ -69,7 +69,7 @@ public class TankScript : JobBase {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="time">効果時間.</param>
-    public void Skill4(GameObject target = null, float effectTime = 0)
+	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		JobBase jb = target.GetComponent<JobBase> ();
 		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);

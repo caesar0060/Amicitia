@@ -21,7 +21,7 @@ public class Skill{
 	public float s_recast;		//リーキャストタイム
 	public bool isRecast;		//リーキャスト中
 	public float s_range;		//範囲
-	public Delegate skillMethod;//スキルを保管する
+	public E_Delegate skillMethod;//スキルを保管する
 }
 [Serializable]
 public class SkillCollect{
@@ -49,7 +49,7 @@ public class EnemyBase : StatusControl {
     // プレイヤーのリーダーを保管する
     [HideInInspector] public GameObject p_leader;
     // スキルを保管する
-	[HideInInspector] public Delegate[] skillArray;
+	[HideInInspector] public E_Delegate[] skillArray;
 	[HideInInspector] public List<Skill> skillList;
 	#endregion
 
@@ -84,7 +84,7 @@ public class EnemyBase : StatusControl {
 	/// </summary>
 	/// <param name="sa">Skill Array.</param>
 	/// <param name="sd">Skill Date.</param>
-	public void CreateSkillList(Delegate[] sa,string sd){
+	public void CreateSkillList(E_Delegate[] sa,string sd){
 		SkillCollect sc = JsonUtility.FromJson<SkillCollect> (sd);
 		for (int i = 0; i < sa.Length; i++) {
 			sc.skills[i].skillMethod = sa [i];

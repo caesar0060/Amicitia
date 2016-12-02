@@ -24,7 +24,7 @@ public class JobBase : StatusControl {
 	public Controller controller;
 	// Skillを保存用配列
 	public GameObject[] p_skillList;
-	public Delegate[] p_funcList;
+	public P_Delegate[] p_funcList;
 	#endregion
 
 	// Use this for initialization

@@ -3,8 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-//引数および返り値のないデリゲート
-public delegate void Delegate (GameObject target = null, float effectTime = 0);
+//Enemyデリゲート
+public delegate void E_Delegate (GameObject target = null, float effectTime = 0);
+//Playerデリゲート
+public delegate void P_Delegate (SkillScript sc, GameObject target = null, float effectTime = 0);
+
 //対象数
 public enum TargetNum{
 	SELF = 0,
@@ -20,6 +23,7 @@ public enum TargetType{
 public class SkillScript : MonoBehaviour {
 	#region Properties
 	public string s_name;				//名前
+	public int s_power;
 	public TargetNum t_num;				//対象数
 	public TargetNum s_targetNum{		
 		get{ return t_num; }
@@ -36,7 +40,7 @@ public class SkillScript : MonoBehaviour {
 	public float s_recast = 0;			//リーキャストタイム
 	public bool isRecast = false;		//リーキャスト中
 	public float s_range = 0;			//範囲
-	public Delegate skillMethod;		//スキルを保管する
+	public P_Delegate skillMethod;		//スキルを保管する
 
 	#endregion
 	// Use this for initialization

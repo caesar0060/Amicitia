@@ -390,7 +390,7 @@ public class P_TargetMode : RootController {
 	/// <param name="recastTime">Recast time.</param>
 	/// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
-        pr.s_script.skillMethod(target, effectTime);
+        pr.s_script.skillMethod(pr.s_script, target, effectTime);
         pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
         pr.ChangeMode(BattelMode.Instance);
     }
