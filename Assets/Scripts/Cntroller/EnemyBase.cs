@@ -109,6 +109,7 @@ public class EnemyBase : StatusControl {
 	public void SkillUse(GameObject target, Skill skill){
 		skill.skillMethod (target, skill.s_effectTime);
 		StartCoroutine(SkillRecast(skill, skill.s_recast));
+		ChangeMode (E_SkillMode.Instance);
 	}
 	#endregion
     #region Skill

@@ -41,7 +41,7 @@ public class WalkMode : RootController {
 	override public void Enter(PlayerRoot pr = null)
 	{	
 		pr.GetComponent<FadeManager>().LoadLevel("NormalScene", 2);
-		pr.CreatePlayer();
+		pr.CreatePlayer ();
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		// TODO@
 		// cameraSupport.transform.position = defaultPos;
@@ -262,7 +262,7 @@ public class BattelMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		Debug.Log("Exit");
+		pr.p_jb = null;
 	}
 }
 
