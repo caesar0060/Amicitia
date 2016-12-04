@@ -173,7 +173,7 @@ public class BattelStart : RootController
 		pr.DestroyChild("Player");
 		// ³õÆÚ»¯¤¹¤ë
 		cameraSupport.transform.position = battelPos;
-		cameraSupport.transform.Rotate (battelRot);
+		cameraSupport.transform.rotation = Quaternion.Euler (battelRot);
 		pr.ChangeMode(BattelMode.Instance);
 	}
 	override public void Excute(PlayerRoot pr = null)

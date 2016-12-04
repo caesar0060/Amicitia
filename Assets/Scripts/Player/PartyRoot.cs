@@ -4,6 +4,12 @@ using System.Collections;
 public class PartyRoot : MonoBehaviour {
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	public static float BATTEL_START_RECAST_TIME = 5.0f;
+	//
+	public static Vector3[]  posArray= new Vector3[] {new Vector3(0,0,-2),
+		new Vector3(0,0,2), new Vector3(2,0,0), new Vector3(-2,0,0)
+	};
+	//
+	public Transform enemyRoot;
 	// Use this for initialization
 	void Start () {
 		ReadyBattel();
@@ -18,13 +24,18 @@ public class PartyRoot : MonoBehaviour {
 	/// </summary>
 	public void ReadyBattel()
 	{
-		foreach (var obj in PlayerRoot.Instance.p_prefabList)
-		{
-			GameObject player = Instantiate(obj, Vector3.zero, this.transform.rotation) as GameObject;
+		for (int i = 0; i < PlayerRoot.Instance.p_prefabList.Count; i++) {
+			GameObject player = Instantiate (PlayerRoot.Instance.p_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
 			player.transform.parent = this.transform;
-			player.transform.localPosition = Vector3.zero;
+			player.transform.localPosition = posArray[i];
 			StartCoroutine ("BattelStartRecast", player);
 			player.GetComponentInChildren<Animator> ().SetTrigger ("Battel");
+		}
+		for (int i = 0; i < PlayerRoot.Instance.e_prefabList.Count; i++) {
+			GameObject enemy = Instantiate (PlayerRoot.Instance.e_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
+			enemy.transform.parent = enemyRoot;
+			enemy.transform.localPosition = posArray[i];
+			//StartCoroutine (BattelStartRecast, player);
 		}
 	}
 	/// <summary>

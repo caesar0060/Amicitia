@@ -446,7 +446,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_jb: {fileID: 0}
-  e_prefabList: []
+  e_prefabList:
+  - {fileID: 146568, guid: 7632404dd0025a04bb012e357892d314, type: 2}
+  - {fileID: 146568, guid: 7632404dd0025a04bb012e357892d314, type: 2}
+  - {fileID: 146568, guid: 7632404dd0025a04bb012e357892d314, type: 2}
+  - {fileID: 146568, guid: 7632404dd0025a04bb012e357892d314, type: 2}
   p_prefabList:
   - {fileID: 182342, guid: 8bc8ce07fbfea6c4e9f0661795a318a6, type: 2}
   partyList:
