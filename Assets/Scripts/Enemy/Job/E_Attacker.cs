@@ -10,7 +10,7 @@ public class E_Attacker : EnemyBase {
 	// Use this for initialization
 	void Start () {
 		// Skillの配列に登録--------
-		skillArray = new Delegate[]{Skill1,Skill2,Skill3,Skill4};
+		skillArray = new E_Delegate[]{Skill1,Skill2,Skill3,Skill4};
 		string skillDate = GetSKillDate ("Tank_Skill.json");
 		CreateSkillList (skillArray, skillDate);
 		//---------------------------

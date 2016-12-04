@@ -1,36 +1,36 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// WalkMode Singleton
 /// </summary>
 public class WalkMode : RootController {
 	#region Property
-	//ç§»å‹•é€Ÿåº¦
-	private const float MOVE_SPEED = 20;
-	//å›è»¢é€Ÿåº¦
+	//ˆÚ“®‘¬“x
+	private const float MOVE_SPEED = 10;
+	//‰ñ“]‘¬“x
 	private const float ROTATE_SPEED = 100;
 	private const float CAMERA_ROTATE_SPEED = 50;
-	// ã‚«ãƒ¡ãƒ©ã®è§’åº¦ã®åˆæœŸå€¤
+	// ƒJƒƒ‰‚ÌŠp“x‚Ì‰Šú’l
 	private Quaternion c_defaultRot;
-	// cameraSupportã®è§’åº¦ã®åˆæœŸå€¤
+	// cameraSupport‚ÌŠp“x‚Ì‰Šú’l
 	private Quaternion s_defaultRot;
-	// GameObjectã‚’å–å¾—
+	// GameObject‚ğæ“¾
 	private GameObject cameraSupport;
-	// ã‚¿ãƒƒãƒã®ä½ç½®
+	// ƒ^ƒbƒ`‚ÌˆÊ’u
 	private Vector3 touchPoint;
-	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®Animator
+	// ƒvƒŒƒCƒ„[‚ÌAnimator
 	private Animator p_animator;
-
+	private Vector3 NormalPos = Vector3.zero;
+	private Vector3 NormalRot = Vector3.zero;
 	#endregion
-	// ç§»å‹•ãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	// ˆÚ“®ƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
 	private static WalkMode instance;
 	/// <summary>
-	/// ç§»å‹•ãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—
+	/// ˆÚ“®ƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾
 	/// </summary>
-	/// <value>ç§»å‹•ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</value>
+	/// <value>ˆÚ“®‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</value>
 	public static WalkMode Instance{
 		get {
 			if(instance == null)
@@ -39,47 +39,47 @@ public class WalkMode : RootController {
 		}
 	}
 	override public void Enter(PlayerRoot pr = null)
-	{	
-		pr.GetComponent<FadeManager>().LoadLevel("NormalScene", 2);
-		pr.CreatePlayer ();
+	{
+		pr.CreateChild("Player", pr.p_prefabList[0]);
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
-		// TODO@
-		// cameraSupport.transform.position = defaultPos;
-		// TODO@
+		// ‰Šú‰»‚·‚é
+		cameraSupport.transform.localPosition = NormalPos;
+		cameraSupport.transform.localEulerAngles = NormalRot;
+		//@‰Šú’l‚ğ•Û‘¶‚·‚é
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		#region ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«
-		//ç§»å‹•ç”¨vector3
+		#region ƒLƒƒƒ‰ƒNƒ^[‚ÌƒRƒ“ƒgƒ[ƒ‹
+		//ˆÚ“®—pvector3
 		Vector3  move_vector = Vector3.zero;
-		//ç¾åœ¨ä½ç½®ã‚’ä¿ç®¡ã™ã‚‹
+		//Œ»İˆÊ’u‚ğ•ÛŠÇ‚·‚é
 		Vector3 p_pos = pr.transform.position;
-		//ç§»å‹•ä¸­ã‹ã©ã†ã‹
+		//ˆÚ“®’†‚©‚Ç‚¤‚©
 		bool isMoved =false;
-		if(Input.GetKey(KeyCode.A)){	//å·¦
+		if(Input.GetKey(KeyCode.A)){	//¶
 			pr.transform.Rotate
 			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		if(Input.GetKey(KeyCode.D)){	//å³
+		if(Input.GetKey(KeyCode.D)){	//‰E
 			pr.transform.Rotate
 			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		if(Input.GetKey(KeyCode.W)){	//ä¸Š
+		if(Input.GetKey(KeyCode.W)){	//ã
 			move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
 			isMoved = true;
 		}
-		if(Input.GetKey(KeyCode.S)){	//ä¸‹
+		if(Input.GetKey(KeyCode.S)){	//‰º
 			move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
 			isMoved = true;
 		}
-		//ç§»å‹•vector3ã‚’æ­£è¦åŒ–ã—ã¦,ç§»å‹•æ–¹å‘ã‚’æ±‚ã‚ã‚‹
+		//ˆÚ“®vector3‚ğ³‹K‰»‚µ‚Ä,ˆÚ“®•ûŒü‚ğ‹‚ß‚é
 		pr.transform.Translate(move_vector,Space.Self);
-		//ç§»å‹•ã—ãŸã‚‰
+		//ˆÚ“®‚µ‚½‚ç
 		if(move_vector.magnitude >0.01f){
-			//Playerã®å‘ãã‚’ç§»å‹•æ–¹å‘ã«å¤‰ãˆã‚‹
+			//Player‚ÌŒü‚«‚ğˆÚ“®•ûŒü‚É•Ï‚¦‚é
 			ReturnDefault();
 		}
 		else {
@@ -88,7 +88,7 @@ public class WalkMode : RootController {
 		p_animator.SetBool("isMoved", isMoved);
 
 		#endregion
-		#region ã‚«ãƒ¡ãƒ©ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«
+		#region ƒJƒƒ‰‚ÌƒRƒ“ƒgƒ[ƒ‹
 		if(Input.GetKey(KeyCode.UpArrow)){
 			Camera.main.transform.Rotate (Vector3.right * CAMERA_ROTATE_SPEED * Time.deltaTime);
 		}
@@ -103,7 +103,7 @@ public class WalkMode : RootController {
 			cameraSupport.transform.Rotate
 			(Vector3.down * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		//ãƒã‚¦ã‚¹æ“ä½œ
+		//ƒ}ƒEƒX‘€ì
 		if(Input.GetMouseButtonDown(1)){
 			touchPoint = Input.mousePosition;
 		}
@@ -115,7 +115,7 @@ public class WalkMode : RootController {
 			touchPoint = Input.mousePosition;
 		}
 		#endregion
-		#region æ“ä½œ
+		#region ‘€ì
 		if(Input.GetKeyDown(KeyCode.Space)){
 			if (pr.p_jb._target != null)
 				Debug.Log (pr.p_jb._target.name);
@@ -127,15 +127,11 @@ public class WalkMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		// TODO@
-		// cameraSupport.transform.position = battelPos;
-		// TODO@
-		pr.DestroyChild("Player");
-		pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2);
+
 	}
 	#region Function
 	/// <summary>
-	/// åˆæœŸå€¤ã«æˆ»ã‚‹
+	/// ‰Šú’l‚É–ß‚é
 	/// </summary>
 	private void ReturnDefault(){
 		Camera.main.transform.localRotation = Quaternion.Slerp(Camera.main.transform.localRotation,
@@ -151,14 +147,17 @@ public class WalkMode : RootController {
 public class BattelStart : RootController
 {
 	#region Property
-
+	// GameObject‚ğæ“¾
+	private GameObject cameraSupport;
+	private Vector3 battelPos = new Vector3 (17.7f, 0.6f, 8.4f);
+	private Vector3 battelRot = new Vector3 (0.5f, 3.3f, 2.2f);
 	#endregion
-	// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	// ƒCƒ“ƒXƒ^ƒ“ƒX
 	private static BattelStart instance;
 	/// <summary>
-	/// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—
+	/// ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾
 	/// </summary>
-	/// <value>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</value>
+	/// <value>ƒCƒ“ƒXƒ^ƒ“ƒX</value>
 	public static BattelStart Instance
 	{
 		get
@@ -170,6 +169,11 @@ public class BattelStart : RootController
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
+		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
+		pr.DestroyChild("Player");
+		// ‰Šú‰»‚·‚é
+		cameraSupport.transform.position = battelPos;
+		cameraSupport.transform.Rotate (battelRot);
 		pr.ChangeMode(BattelMode.Instance);
 	}
 	override public void Excute(PlayerRoot pr = null)
@@ -185,25 +189,26 @@ public class BattelStart : RootController
 
 	#endregion
 }
+
 /// <summary>
 /// BattelMode Singleton
 /// </summary>
 public class BattelMode : RootController {
 	#region Property
 
-	// ã‚¿ãƒƒãƒã®ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒã‚¹ã‚¯
+	// ƒ^ƒbƒ`‚ÌƒŒƒCƒ„[ƒ}ƒXƒN
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
 	//
 	private bool isBtnShow = false;
 	#endregion
-	// ãƒãƒˆãƒ«ãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	// ƒoƒgƒ‹ƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
 	private static BattelMode instance;
 	/// <summary>
-	/// ãƒãƒˆãƒ«ãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—
+	/// ƒoƒgƒ‹ƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾
 	/// </summary>
-	/// <value>ãƒãƒˆãƒ«ãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</value>
+	/// <value>ƒoƒgƒ‹ƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</value>
 	public static BattelMode Instance{
 		get {
 			if(instance == null)
@@ -213,7 +218,7 @@ public class BattelMode : RootController {
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
-		//åˆæœŸåŒ–
+		//‰Šú‰»
 		pr.s_script = null;
 		pr.btn = null;
 		isBtnShow = false;
@@ -223,30 +228,32 @@ public class BattelMode : RootController {
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		#region ãƒã‚¦ã‚¹æ“ä½œ
+		#region ƒ}ƒEƒX‘€ì
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,d_layerMask)) {
 				switch(hit.collider.gameObject.layer){
 				case 8: //Player
-					if(!isBtnShow){	//ãƒœã‚¿ãƒ³ã¯ã¾ã ç”Ÿæˆã—ã¦ã„ãªã„
-						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-						if(pr.p_jb.CanTakeAction()){
-							pr.p_jb.ShowSkillBtn();
-							isBtnShow = true;
+					if(hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance){
+						if(!isBtnShow){	//ƒ{ƒ^ƒ“‚Í‚Ü‚¾¶¬‚µ‚Ä‚¢‚È‚¢
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							if(pr.p_jb.CanTakeAction()){
+								pr.p_jb.ShowSkillBtn();
+								isBtnShow = true;
+							}
 						}
-					}
-					// ã™ã§ã«ç”Ÿæˆã—ãŸã‚‰
-					else{
-						pr.p_jb.HideSkillBtn();
-						pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-						pr.p_jb.ShowSkillBtn();
+						// ‚·‚Å‚É¶¬‚µ‚½‚ç
+						else{
+							pr.p_jb.HideSkillBtn();
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							pr.p_jb.ShowSkillBtn();
+						}
 					}
 					break;
 				case 10: //Command
-					if(isBtnShow){	// ãƒœã‚¿ãƒ³ã‚’é¸æŠã—ãŸã‚‰
-						// é¸æŠã—ãŸãƒœã‚¿ãƒ³ã‚’ä¿ç®¡
+					if(isBtnShow){	// ƒ{ƒ^ƒ“‚ğ‘I‘ğ‚µ‚½‚ç
+						// ‘I‘ğ‚µ‚½ƒ{ƒ^ƒ“‚ğ•ÛŠÇ
 						pr.btn = hit.collider.gameObject;
 						pr.s_script = pr.btn.GetComponent<SkillScript>();
 						pr.ChangeMode(P_TargetMode.Instance);
@@ -255,6 +262,7 @@ public class BattelMode : RootController {
 				}
 			}
 			if (Input.GetMouseButtonDown (1)) {
+				Debug.Log("1");
 				pr.p_jb.HideSkillBtn();
 			}
 		}
@@ -267,15 +275,15 @@ public class BattelMode : RootController {
 }
 
 /// <summary>
-/// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’é¸æŠç”¨ Singleton
+/// ƒ^[ƒQƒbƒg‚ğ‘I‘ğ—p Singleton
 /// </summary>
 public class P_TargetMode : RootController {
-	// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	// ƒ^[ƒQƒbƒgƒ‚[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
 	private static P_TargetMode instance;
 	/// <summary>
-	/// TargetModeeã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—
+	/// TargetModee‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾
 	/// </summary>
-	/// <value>TargetModeã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</value>
+	/// <value>TargetMode‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</value>
 	public static P_TargetMode Instance{
 		get {
 			if(instance == null)
@@ -284,16 +292,16 @@ public class P_TargetMode : RootController {
 		}
 	}
 	#region Property
-	// ãƒœã‚¿ãƒ³ã®åˆæœŸä½ç½®
+	// ƒ{ƒ^ƒ“‚Ì‰ŠúˆÊ’u
 	private Vector3 btnTempPos;
-	// ã‚¿ãƒƒãƒã®ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒã‚¹ã‚¯
+	// ƒ^ƒbƒ`‚ÌƒŒƒCƒ„[ƒ}ƒXƒN
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
 	#endregion
 	override public void Enter(PlayerRoot pr = null)
 	{
-		//åˆæœŸåŒ–
+		//‰Šú‰»
 		if (pr.s_script.s_targetype == TargetType.PLAYER) {
 			u_layerMask = LayerMask.GetMask (new string[] { "Player", "Ground" });
 		} else {
@@ -301,15 +309,15 @@ public class P_TargetMode : RootController {
 		}
 		layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
 		d_layerMask = LayerMask.GetMask (new string[] { "Command" });
-		// ãƒœã‚¿ãƒ³ã®åˆæœŸä½ç½®ã‚’ä¿ç®¡ã™ã‚‹
+		// ƒ{ƒ^ƒ“‚Ì‰ŠúˆÊ’u‚ğ•ÛŠÇ‚·‚é
 		btnTempPos = pr.btn.transform.position;
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		// ãƒœã‚¿ãƒ³ãŒãªã‘ã‚Œã°
+		// ƒ{ƒ^ƒ“‚ª‚È‚¯‚ê‚Î
 		if (pr.btn == null)
 			pr.ChangeMode (BattelMode.Instance);
-		#region ãƒã‚¦ã‚¹æ“ä½œ
+		#region ƒ}ƒEƒX‘€ì
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
@@ -322,7 +330,7 @@ public class P_TargetMode : RootController {
 					pr.ChangeMode (BattelMode.Instance);
 					break;
 				case 10: //Command
-					// é¸æŠã—ãŸãƒœã‚¿ãƒ³ã‚’ä¿ç®¡
+					// ‘I‘ğ‚µ‚½ƒ{ƒ^ƒ“‚ğ•ÛŠÇ
 					pr.btn = hit.collider.gameObject;
 					pr.s_script = pr.btn.GetComponent<SkillScript>();
 					btnTempPos = pr.btn.transform.position;
@@ -336,7 +344,7 @@ public class P_TargetMode : RootController {
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
 				Debug.Log(hit.collider.gameObject.name);
 				if(pr.btn != null){
-					// ãƒœã‚¿ãƒ³ã‚’å‹•ã‹ã™
+					// ƒ{ƒ^ƒ“‚ğ“®‚©‚·
 					Vector3 pos = hit.point;
 					if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
 						pos.y += 0.2f;
@@ -350,37 +358,40 @@ public class P_TargetMode : RootController {
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
 				if(pr.btn != null){
 					if(pr.s_script.s_targetNum != TargetNum.SELF){
-						//ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåŒã˜ãªã‚‰
-						if (hit.collider.gameObject.layer ==
-						   pr.s_targetLayer [pr.s_script.s_targetype] [pr.s_script.s_targetNum]) {
+						//ƒŒƒCƒ„[‚ª“¯‚¶‚È‚ç
+                        if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+                        {
 							SkillUse (pr, hit.collider.gameObject, pr.btn , pr.s_script.s_recast, pr.s_script.s_effectTime);
 						}
 						else
-						//ãƒœã‚¿ãƒ³ã‚’åˆæœŸä½ç½®ã«æˆ»ã™
-						pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
-							pr.btn.transform.position, 1));
+						//ƒ{ƒ^ƒ“‚ğ‰ŠúˆÊ’u‚É–ß‚·
+						pr.StartCoroutine(pr.LerpMove(pr.btn, 
+								pr.btn.transform.position, btnTempPos, 1));
 					}
-					// SELFãªã‚‰ã€å³ç™ºå‹•
+					// SELF‚È‚çA‘¦”­“®
 					else{
                         SkillUse(pr, pr.p_jb.gameObject,pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
 					}
 				}
 			}
+			else//ƒ{ƒ^ƒ“‚ğ‰ŠúˆÊ’u‚É–ß‚·
+				pr.StartCoroutine(pr.LerpMove(pr.btn, 
+					pr.btn.transform.position, btnTempPos, 1));
 		}
 		if (Input.GetMouseButtonDown (1)) {
-				pr.ChangeMode (BattelMode.Instance);
+			pr.ChangeMode (BattelMode.Instance);
 		}
 		#endregion
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		//ãƒœã‚¿ãƒ³ã‚’åˆæœŸä½ç½®ã«æˆ»ã™
-		pr.StartCoroutine(pr.LerpMove(pr.btn, btnTempPos,
-		pr.btn.transform.position, 1));
+		//ƒ{ƒ^ƒ“‚ğ‰ŠúˆÊ’u‚É–ß‚·
+		pr.StartCoroutine(pr.LerpMove(pr.btn, 
+			pr.btn.transform.position, btnTempPos, 1));
 		pr.p_jb.HideSkillBtn();
 	}
 	/// <summary>
-	/// ã‚¹ã‚­ãƒ«ã‚’ä½¿ã†
+	/// ƒXƒLƒ‹‚ğg‚¤
 	/// </summary>
 	/// <param name="pr">PlayerRoot.</param>
 	/// <param name="target">Target.</param>
@@ -388,8 +399,9 @@ public class P_TargetMode : RootController {
 	/// <param name="recastTime">Recast time.</param>
 	/// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
-        pr.s_script.skillMethod(target, effectTime);
+        pr.s_script.skillMethod(pr.s_script, target, effectTime);
         pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
+		pr.p_jb.ChangeMode (SkillMode.Instance);
         pr.ChangeMode(BattelMode.Instance);
     }
 }

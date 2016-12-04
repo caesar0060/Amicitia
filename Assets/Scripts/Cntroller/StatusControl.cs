@@ -91,8 +91,21 @@ public class StatusControl : MonoBehaviour{
 	public bool CheckFlag(ConditionStatus newStatus){
 		return ((conditionStatus & newStatus) == newStatus);
 	}
+	/// <summary>
+	/// 行動できるかどうか
+	/// </summary>
+	/// <returns><c>true</c>行動できる<c>false</c>行動できない</returns>
 	public bool CanTakeAction(){
 		return !(CheckFlag (ConditionStatus.PALSY) || CheckFlag (ConditionStatus.SLEEP));
+	}
+	public float GetDamageRate(GameObject target){
+		switch (target.GetComponent<StatusControl> ().conditionStatus) {
+		case ConditionStatus.NO_DAMAGE:
+			return 0;
+		case ConditionStatus.ALL_DAMAGE_DOWN:
+			return 0.8f;
+		}
+		return 1;
 	}
 	#endregion
 }

@@ -6,19 +6,24 @@ using System.Collections.Generic;
 public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 {
     #region Properties
+
+    //シーンの転移の時、フェイドアウト・インの時間
+    public static float SCENE_FADE_TIME = 2f;
+    //ボタンが元の場所に戻るまでの時間
 	public static float BUTTON_RETURN_TIME = 0.5f;
-    //インスタンスを保存するコントローラ
+    //インスタンスを保存する
 	public RootController controller;
 	// JobBaseを保管する
 	public JobBase p_jb;
 	// 敵を保管する配列
-	[HideInInspector] public List<GameObject> enemyList = new List<GameObject> ();
+	//[HideInInspector] 
+	public List<GameObject> e_prefabList = new List<GameObject> ();
+	// プレイヤーのプレハブを保管する配列
+	public List<GameObject> p_prefabList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
-	public List<GameObject>partyList = new List<GameObject> ();
-	// ボタンの移動用タイマー
-	private float timer =0;
-	// ターゲットのレイヤー
-	public Dictionary<TargetType,Dictionary<TargetNum, int>> s_targetLayer;
+	[HideInInspector] public List<GameObject> partyList = new List<GameObject>();
+	// 敵を保管する配列
+	[HideInInspector] public List<GameObject> enemyList = new List<GameObject>();
 	// 
 	[HideInInspector] public GameObject btn = null;
 	//
@@ -32,20 +37,18 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 		controller = WalkMode.Instance;
 		controller.Enter (this);
 		//---------
-		CreateDictionary();
 	}
 	// ------------------------------------------------------------------------------------
 	//										Debug用
 	void OnGUI() {
         if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
         {
-            ChangeMode(BattelStart.Instance);
-			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2);
+			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
         }
 
         if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
         {
-            ChangeMode(WalkMode.Instance);
+            this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
         
         }
 
@@ -73,46 +76,30 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// </summary>
 	/// <param name="obj">対象.</param>
 	/// <param name="timeRate">Time rate.</param>
-	public IEnumerator LerpMove(GameObject obj,Vector3 startPos, Vector3 endPos, float time, float speed =1){
+	public IEnumerator LerpMove(GameObject obj,Vector3 startPos, Vector3 endPos, float speed =1){
+		// ボタンの移動用タイマー
+		float timer =0;
 		while (true) {
 			timer += Time.deltaTime * speed;
 			float moveRate = timer / BUTTON_RETURN_TIME;
 			if (moveRate  >= 1) {
 				moveRate = 1;
-				obj.transform.position = Vector3.Lerp (endPos, startPos, moveRate);
-				timer = 0;
+				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				yield break;
 			}
-			obj.transform.position = Vector3.Lerp (endPos, startPos, moveRate);
+			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 			yield return new WaitForEndOfFrame ();
 		}
 	}
 	/// <summary>
-	/// Creates the dictionary.
+    /// 子供を生成する
 	/// </summary>
-	public void CreateDictionary(){
-		Dictionary<TargetNum , int> playerList = new Dictionary<TargetNum, int> () {
-			{TargetNum.ONE, LayerMask.NameToLayer("Player")},
-			{TargetNum.MUTIPLE, LayerMask.NameToLayer("Player")}
-		};
-		Dictionary<TargetNum , int> enemyList = new Dictionary<TargetNum, int> () {
-			{TargetNum.ONE, LayerMask.NameToLayer("Enemy")},
-			{TargetNum.MUTIPLE, LayerMask.NameToLayer("Enemy")}
-		};
-		s_targetLayer = new Dictionary<TargetType, Dictionary<TargetNum, int>> () {
-			{ TargetType.PLAYER, playerList },
-			{ TargetType.ENEMY, enemyList }
-		};
-	}
-	/// <summary>
-	/// プレイヤーを生成する
-	/// </summary>
-	public void CreatePlayer(){
-		GameObject player = Instantiate (partyList [0], Vector3.zero, this.transform.rotation) as GameObject;
-		player.transform.parent = this.transform;
-		player.name = "Player";
-		player.transform.localPosition = Vector3.zero;
-		p_jb = player.GetComponent<JobBase> ();
+	public void CreateChild(string name, GameObject obj){
+		GameObject child = Instantiate (obj, Vector3.zero, this.transform.rotation) as GameObject;
+        child.transform.parent = this.transform;
+        child.name = name;
+        child.transform.localPosition = Vector3.zero;
+        p_jb = child.GetComponent<JobBase>();
 	}
 	/// <summary>
 	/// 子供を削除する
@@ -120,5 +107,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	public void DestroyChild(string name){
 		Destroy (this.transform.FindChild (name).gameObject);
 	}
+
 	#endregion
 }

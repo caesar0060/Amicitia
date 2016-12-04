@@ -14,14 +14,6 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     private float fadeAlpha = 0;
     /// <summary>フェード中かどうか</summary>
     public bool isFading = false;
-    public void start()
-    {
-        //ここで黒テクスチャ作る
-		//this.blackTexture = new Texture2D(32, 32, TextureFormat.RGB24, false);
-        //this.blackTexture.ReadPixels(new Rect(0, 0, 32, 32), 0, 0, false);
-        //this.blackTexture.SetPixel(0, 0, Color.white);
-        //this.blackTexture.Apply();
-    }
 
     public void OnGUI()
     {
@@ -36,11 +28,13 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     /// <summary>
     /// 画面遷移
     /// </summary>
+    /// </summary>
     /// <param name='scene'>シーン名</param>
     /// <param name='interval'>暗転にかかる時間(秒)</param>
-    public void LoadLevel(string scene, float interval)
+    /// <param name="rc">変更したいモード</param>
+    public void LoadLevel(string scene, float interval, RootController rc = null)
     {
-        StartCoroutine(TransScene(scene, interval));
+        StartCoroutine(TransScene(scene, interval, rc));
     }
 
 
@@ -49,7 +43,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     /// </summary>
     /// <param name='scene'>シーン名</param>
     /// <param name='interval'>暗転にかかる時間(秒)</param>
-    private IEnumerator TransScene(string scene, float interval)
+    private IEnumerator TransScene(string scene, float interval, RootController rc = null)
     {
         //だんだん暗く
         this.isFading = true;
@@ -63,6 +57,9 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 
         //シーン切替
 		SceneManager.LoadScene(scene);
+        // Rootのmodeを変更する
+        if(rc != null)
+            this.GetComponent<PlayerRoot>().ChangeMode(rc);
 
         //だんだん明るく
         time = 0;

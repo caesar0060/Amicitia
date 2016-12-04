@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 public class JobBase : StatusControl {
 	#region Properties
+	//
+	private static float PLAYER_MOVE_TIME = 1.0f;
+	//
 	private static float BUTTON_DISTANCE = 0.5f;
 	// HP
 	public int p_hp;
@@ -24,11 +27,14 @@ public class JobBase : StatusControl {
 	public Controller controller;
 	// Skillを保存用配列
 	public GameObject[] p_skillList;
-	public Delegate[] p_funcList;
+	public P_Delegate[] p_funcList;
+	//
+	[HideInInspector] public Vector3 startPos;
 	#endregion
 
 	// Use this for initialization
 	void Start () {
+
 	}
 
 	// Update is called once per frame
@@ -155,6 +161,9 @@ public class JobBase : StatusControl {
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
+	public void ReturnPos(){
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos));
+	}
 	#endregion
 	#region Co-routine
 	/// <summary>
@@ -209,6 +218,54 @@ public class JobBase : StatusControl {
 			}
 			img.fillAmount = rate;
 			yield return new WaitForEndOfFrame();
+		}
+	}
+	/// <summary>
+	/// 対象を等速で動かす.
+	/// </summary>
+	/// <param name="obj">対象.</param>
+	/// <param name="timeRate">Time rate.</param>
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null){
+		Debug.Log ("2");
+		float timer = 0;
+		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
+		while (true) {
+			Debug.Log ("3");
+			timer += Time.deltaTime * speed;
+			float moveRate = timer / PLAYER_MOVE_TIME;
+			if (moveRate  >= 1) {
+				moveRate = 1;
+				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
+				if (target != null && sc!=null) {
+					//obj.GetComponentInChildren<Animator> ().SetTrigger ("isAttack");
+					StartCoroutine( Damage (target, sc, 0.1f));
+				}
+				yield break;
+			}
+			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+			yield return new WaitForEndOfFrame ();
+		}
+	}
+	/// <summary>
+	/// Damage target
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="sc">Skill Script.</param>
+	private IEnumerator Damage(GameObject target, SkillScript sc, float time){
+		float timer = 0;
+		while (true) {
+			timer += Time.deltaTime;
+			float counter = timer / time;
+			if (counter >= 1) {
+				float s_power = 1;	//精霊の力
+				if (CheckFlag (ConditionStatus.POWER_UP))
+					s_power = 1.5f;
+				EnemyBase eb = target.GetComponent<EnemyBase> ();
+				eb.e_hp -= (int)((p_attack + sc.s_power) * s_power) - eb.e_defence;
+				yield break;
+			}
+			yield return new WaitForEndOfFrame ();
 		}
 	}
 	#endregion

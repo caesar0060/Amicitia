@@ -4,17 +4,17 @@ using System.Collections;
 /// <summary>
 /// WorldMode Singleton
 /// </summary>
-public class WorldMode : Controller {
+public class ReadyMode : Controller {
 	// バトルモードのインスタンス
-	private static WorldMode instance;
+	private static ReadyMode instance;
 	/// <summary>
 	/// WorldModeのインスタンスを取得
 	/// </summary>
 	/// <value>WorldModeのインスタンス</value>
-	public static WorldMode Instance{
+	public static ReadyMode Instance{
 		get {
 			if(instance == null)
-				instance = new WorldMode();
+				instance = new ReadyMode();
 			return instance;
 		}
 	}
@@ -24,7 +24,8 @@ public class WorldMode : Controller {
 	}
 	override public void Excute(JobBase jb)
 	{
-		Debug.Log("Excute");
+		if (!jb.CanTakeAction())
+			jb.ChangeMode (ConditionMode.Instance);
 	}
 	override public void Exit(JobBase jb)
 	{
@@ -55,28 +56,28 @@ public class SkillMode : Controller {
 	}
 	override public void Excute(JobBase jb)
 	{
-		Debug.Log("Excute");
+		if (!jb.CanTakeAction())
+			jb.ChangeMode (ConditionMode.Instance);
 	}
 	override public void Exit(JobBase jb)
 	{
 		Debug.Log("Exit");
 	}
 }
-
 /// <summary>
-/// RecastMode Singleton
+/// ConditionMode Singleton
 /// </summary>
-public class RecastMode : Controller {
+public class ConditionMode : Controller {
 	// バトルモードのインスタンス
-	private static RecastMode instance;
+	private static ConditionMode instance;
 	/// <summary>
 	/// WorldModeのインスタンスを取得
 	/// </summary>
 	/// <value>WorldModeのインスタンス</value>
-	public static RecastMode Instance{
+	public static ConditionMode Instance{
 		get {
 			if(instance == null)
-				instance = new RecastMode();
+				instance = new ConditionMode();
 			return instance;
 		}
 	}
@@ -86,7 +87,8 @@ public class RecastMode : Controller {
 	}
 	override public void Excute(JobBase jb)
 	{
-		Debug.Log("Excute");
+		if (jb.CanTakeAction())
+			jb.ChangeMode (ReadyMode.Instance);
 	}
 	override public void Exit(JobBase jb)
 	{
