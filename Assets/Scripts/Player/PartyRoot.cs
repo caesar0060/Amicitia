@@ -24,6 +24,7 @@ public class PartyRoot : MonoBehaviour {
 			player.transform.parent = this.transform;
 			player.transform.localPosition = Vector3.zero;
 			StartCoroutine ("BattelStartRecast", player);
+			player.GetComponentInChildren<Animator> ().SetTrigger ("Battel");
 		}
 	}
 	/// <summary>

@@ -51,6 +51,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
             this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
         
         }
+		GUI.Label (new Rect (10, 90, 200, 20), "Root: " + controller.ToString ());
 
 	}
 	//--------------------------------------------------------------------------------------
@@ -84,10 +85,10 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 			float moveRate = timer / BUTTON_RETURN_TIME;
 			if (moveRate  >= 1) {
 				moveRate = 1;
-				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+				obj.transform.localPosition = Vector3.Lerp (startPos, endPos, moveRate);
 				yield break;
 			}
-			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+			obj.transform.localPosition = Vector3.Lerp (startPos, endPos, moveRate);
 			yield return new WaitForEndOfFrame ();
 		}
 	}

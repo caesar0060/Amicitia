@@ -7,30 +7,30 @@ using System.Collections;
 /// </summary>
 public class WalkMode : RootController {
 	#region Property
-	//堏摦懍搙
+	//移動速度
 	private const float MOVE_SPEED = 10;
-	//夞揮懍搙
+	//回転速度
 	private const float ROTATE_SPEED = 100;
 	private const float CAMERA_ROTATE_SPEED = 50;
-	// 僇儊儔偺妏搙偺弶婜抣
+	// カメラの角度の初期値
 	private Quaternion c_defaultRot;
-	// cameraSupport偺妏搙偺弶婜抣
+	// cameraSupportの角度の初期値
 	private Quaternion s_defaultRot;
-	// GameObject傪庢摼
+	// GameObjectを取得
 	private GameObject cameraSupport;
-	// 僞僢僠偺埵抲
+	// タッチの位置
 	private Vector3 touchPoint;
-	// 僾儗僀儎乕偺Animator
+	// プレイヤーのAnimator
 	private Animator p_animator;
 	private Vector3 NormalPos = Vector3.zero;
 	private Vector3 NormalRot = Vector3.zero;
 	#endregion
-	// 堏摦儌乕僪偺僀儞僗僞儞僗
+	// 移動モードのインスタンス
 	private static WalkMode instance;
 	/// <summary>
-	/// 堏摦儌乕僪偺僀儞僗僞儞僗傪庢摼
+	/// 移動モードのインスタンスを取得
 	/// </summary>
-	/// <value>堏摦偺僀儞僗僞儞僗</value>
+	/// <value>移動のインスタンス</value>
 	public static WalkMode Instance{
 		get {
 			if(instance == null)
@@ -42,44 +42,44 @@ public class WalkMode : RootController {
 	{
 		pr.CreateChild("Player", pr.p_prefabList[0]);
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
-		// 弶婜壔偡傞
+		// 初期化する
 		cameraSupport.transform.localPosition = NormalPos;
 		cameraSupport.transform.localEulerAngles = NormalRot;
-		//丂弶婜抣傪曐懚偡傞
+		//　初期値を保存する
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		#region 僉儍儔僋僞乕偺僐儞僩儘乕儖
-		//堏摦梡vector3
+		#region キャラクターのコントロール
+		//移動用vector3
 		Vector3  move_vector = Vector3.zero;
-		//尰嵼埵抲傪曐娗偡傞
+		//現在位置を保管する
 		Vector3 p_pos = pr.transform.position;
-		//堏摦拞偐偳偆偐
+		//移動中かどうか
 		bool isMoved =false;
-		if(Input.GetKey(KeyCode.A)){	//嵍
+		if(Input.GetKey(KeyCode.A)){	//左
 			pr.transform.Rotate
 			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		if(Input.GetKey(KeyCode.D)){	//塃
+		if(Input.GetKey(KeyCode.D)){	//右
 			pr.transform.Rotate
 			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		if(Input.GetKey(KeyCode.W)){	//忋
+		if(Input.GetKey(KeyCode.W)){	//上
 			move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
 			isMoved = true;
 		}
-		if(Input.GetKey(KeyCode.S)){	//壓
+		if(Input.GetKey(KeyCode.S)){	//下
 			move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
 			isMoved = true;
 		}
-		//堏摦vector3傪惓婯壔偟偰,堏摦曽岦傪媮傔傞
+		//移動vector3を正規化して,移動方向を求める
 		pr.transform.Translate(move_vector,Space.Self);
-		//堏摦偟偨傜
+		//移動したら
 		if(move_vector.magnitude >0.01f){
-			//Player偺岦偒傪堏摦曽岦偵曄偊傞
+			//Playerの向きを移動方向に変える
 			ReturnDefault();
 		}
 		else {
@@ -88,7 +88,7 @@ public class WalkMode : RootController {
 		p_animator.SetBool("isMoved", isMoved);
 
 		#endregion
-		#region 僇儊儔偺僐儞僩儘乕儖
+		#region カメラのコントロール
 		if(Input.GetKey(KeyCode.UpArrow)){
 			Camera.main.transform.Rotate (Vector3.right * CAMERA_ROTATE_SPEED * Time.deltaTime);
 		}
@@ -103,7 +103,7 @@ public class WalkMode : RootController {
 			cameraSupport.transform.Rotate
 			(Vector3.down * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
 		}
-		//儅僂僗憖嶌
+		//マウス操作
 		if(Input.GetMouseButtonDown(1)){
 			touchPoint = Input.mousePosition;
 		}
@@ -115,7 +115,7 @@ public class WalkMode : RootController {
 			touchPoint = Input.mousePosition;
 		}
 		#endregion
-		#region 憖嶌
+		#region 操作
 		if(Input.GetKeyDown(KeyCode.Space)){
 			if (pr.p_jb._target != null)
 				Debug.Log (pr.p_jb._target.name);
@@ -131,7 +131,7 @@ public class WalkMode : RootController {
 	}
 	#region Function
 	/// <summary>
-	/// 弶婜抣偵栠傞
+	/// 初期値に戻る
 	/// </summary>
 	private void ReturnDefault(){
 		Camera.main.transform.localRotation = Quaternion.Slerp(Camera.main.transform.localRotation,
@@ -147,17 +147,17 @@ public class WalkMode : RootController {
 public class BattelStart : RootController
 {
 	#region Property
-	// GameObject傪庢摼
+	// GameObjectを取得
 	private GameObject cameraSupport;
 	private Vector3 battelPos = new Vector3 (17.7f, 0.6f, 8.4f);
 	private Vector3 battelRot = new Vector3 (0.5f, 3.3f, 2.2f);
 	#endregion
-	// 僀儞僗僞儞僗
+	// インスタンス
 	private static BattelStart instance;
 	/// <summary>
-	/// 僀儞僗僞儞僗傪庢摼
+	/// インスタンスを取得
 	/// </summary>
-	/// <value>僀儞僗僞儞僗</value>
+	/// <value>インスタンス</value>
 	public static BattelStart Instance
 	{
 		get
@@ -171,14 +171,14 @@ public class BattelStart : RootController
 	{
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		pr.DestroyChild("Player");
-		// 弶婜壔偡傞
+		// 初期化する
 		cameraSupport.transform.position = battelPos;
 		cameraSupport.transform.Rotate (battelRot);
 		pr.ChangeMode(BattelMode.Instance);
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		
+
 
 	}
 	override public void Exit(PlayerRoot pr = null)
@@ -196,19 +196,19 @@ public class BattelStart : RootController
 public class BattelMode : RootController {
 	#region Property
 
-	// 僞僢僠偺儗僀儎乕儅僗僋
+	// タッチのレイヤーマスク
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
 	//
 	private bool isBtnShow = false;
 	#endregion
-	// 僶僩儖儌乕僪偺僀儞僗僞儞僗
+	// バトルモードのインスタンス
 	private static BattelMode instance;
 	/// <summary>
-	/// 僶僩儖儌乕僪偺僀儞僗僞儞僗傪庢摼
+	/// バトルモードのインスタンスを取得
 	/// </summary>
-	/// <value>僶僩儖儌乕僪偺僀儞僗僞儞僗</value>
+	/// <value>バトルモードのインスタンス</value>
 	public static BattelMode Instance{
 		get {
 			if(instance == null)
@@ -218,7 +218,7 @@ public class BattelMode : RootController {
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
-		//弶婜壔
+		//初期化
 		pr.s_script = null;
 		pr.btn = null;
 		isBtnShow = false;
@@ -228,7 +228,7 @@ public class BattelMode : RootController {
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		#region 儅僂僗憖嶌
+		#region マウス操作
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
@@ -236,14 +236,14 @@ public class BattelMode : RootController {
 				switch(hit.collider.gameObject.layer){
 				case 8: //Player
 					if(hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance){
-						if(!isBtnShow){	//儃僞儞偼傑偩惗惉偟偰偄側偄
+						if(!isBtnShow){	//ボタンはまだ生成していない
 							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
 							if(pr.p_jb.CanTakeAction()){
 								pr.p_jb.ShowSkillBtn();
 								isBtnShow = true;
 							}
 						}
-						// 偡偱偵惗惉偟偨傜
+						// すでに生成したら
 						else{
 							pr.p_jb.HideSkillBtn();
 							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
@@ -252,8 +252,8 @@ public class BattelMode : RootController {
 					}
 					break;
 				case 10: //Command
-					if(isBtnShow){	// 儃僞儞傪慖戰偟偨傜
-						// 慖戰偟偨儃僞儞傪曐娗
+					if(isBtnShow){	// ボタンを選択したら
+						// 選択したボタンを保管
 						pr.btn = hit.collider.gameObject;
 						pr.s_script = pr.btn.GetComponent<SkillScript>();
 						pr.ChangeMode(P_TargetMode.Instance);
@@ -270,20 +270,20 @@ public class BattelMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		pr.p_jb = null;
+		
 	}
 }
 
 /// <summary>
-/// 僞乕僎僢僩傪慖戰梡 Singleton
+/// ターゲットを選択用 Singleton
 /// </summary>
 public class P_TargetMode : RootController {
-	// 僞乕僎僢僩儌乕僪偺僀儞僗僞儞僗
+	// ターゲットモードのインスタンス
 	private static P_TargetMode instance;
 	/// <summary>
-	/// TargetModee偺僀儞僗僞儞僗傪庢摼
+	/// TargetModeeのインスタンスを取得
 	/// </summary>
-	/// <value>TargetMode偺僀儞僗僞儞僗</value>
+	/// <value>TargetModeのインスタンス</value>
 	public static P_TargetMode Instance{
 		get {
 			if(instance == null)
@@ -292,16 +292,16 @@ public class P_TargetMode : RootController {
 		}
 	}
 	#region Property
-	// 儃僞儞偺弶婜埵抲
+	// ボタンの初期位置
 	private Vector3 btnTempPos;
-	// 僞僢僠偺儗僀儎乕儅僗僋
+	// タッチのレイヤーマスク
 	private int d_layerMask;
 	private int layerMask;
 	private int u_layerMask;
 	#endregion
 	override public void Enter(PlayerRoot pr = null)
 	{
-		//弶婜壔
+		//初期化
 		if (pr.s_script.s_targetype == TargetType.PLAYER) {
 			u_layerMask = LayerMask.GetMask (new string[] { "Player", "Ground" });
 		} else {
@@ -309,15 +309,15 @@ public class P_TargetMode : RootController {
 		}
 		layerMask = LayerMask.GetMask (new string[] { "Ground", "Player", "Enemy" });
 		d_layerMask = LayerMask.GetMask (new string[] { "Command" });
-		// 儃僞儞偺弶婜埵抲傪曐娗偡傞
-		btnTempPos = pr.btn.transform.position;
+		// ボタンの初期位置を保管する
+		btnTempPos = pr.btn.transform.localPosition;
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
-		// 儃僞儞偑側偗傟偽
+		// ボタンがなければ
 		if (pr.btn == null)
 			pr.ChangeMode (BattelMode.Instance);
-		#region 儅僂僗憖嶌
+		#region マウス操作
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit ();
@@ -330,10 +330,10 @@ public class P_TargetMode : RootController {
 					pr.ChangeMode (BattelMode.Instance);
 					break;
 				case 10: //Command
-					// 慖戰偟偨儃僞儞傪曐娗
+					// 選択したボタンを保管
 					pr.btn = hit.collider.gameObject;
 					pr.s_script = pr.btn.GetComponent<SkillScript>();
-					btnTempPos = pr.btn.transform.position;
+					btnTempPos = pr.btn.transform.localPosition;
 					break;
 				}
 			}
@@ -344,7 +344,7 @@ public class P_TargetMode : RootController {
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
 				Debug.Log(hit.collider.gameObject.name);
 				if(pr.btn != null){
-					// 儃僞儞傪摦偐偡
+					// ボタンを動かす
 					Vector3 pos = hit.point;
 					if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
 						pos.y += 0.2f;
@@ -358,23 +358,23 @@ public class P_TargetMode : RootController {
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, u_layerMask)) {
 				if(pr.btn != null){
 					if(pr.s_script.s_targetNum != TargetNum.SELF){
-						//儗僀儎乕偑摨偠側傜
-                        if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
-                        {
+						//レイヤーが同じなら
+						if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+						{
 							SkillUse (pr, hit.collider.gameObject, pr.btn , pr.s_script.s_recast, pr.s_script.s_effectTime);
 						}
 						else
-						//儃僞儞傪弶婜埵抲偵栠偡
-						pr.StartCoroutine(pr.LerpMove(pr.btn, 
+							//ボタンを初期位置に戻す
+							pr.StartCoroutine(pr.LerpMove(pr.btn, 
 								pr.btn.transform.position, btnTempPos, 1));
 					}
-					// SELF側傜丄懄敪摦
+					// SELFなら、即発動
 					else{
-                        SkillUse(pr, pr.p_jb.gameObject,pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
+						SkillUse(pr, pr.p_jb.gameObject,pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
 					}
 				}
 			}
-			else//儃僞儞傪弶婜埵抲偵栠偡
+			else//ボタンを初期位置に戻す
 				pr.StartCoroutine(pr.LerpMove(pr.btn, 
 					pr.btn.transform.position, btnTempPos, 1));
 		}
@@ -385,23 +385,22 @@ public class P_TargetMode : RootController {
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
-		//儃僞儞傪弶婜埵抲偵栠偡
+		//ボタンを初期位置に戻す
 		pr.StartCoroutine(pr.LerpMove(pr.btn, 
 			pr.btn.transform.position, btnTempPos, 1));
 		pr.p_jb.HideSkillBtn();
 	}
 	/// <summary>
-	/// 僗僉儖傪巊偆
+	/// スキルを使う
 	/// </summary>
 	/// <param name="pr">PlayerRoot.</param>
 	/// <param name="target">Target.</param>
 	/// <param name="btn">Skill Button.</param>
 	/// <param name="recastTime">Recast time.</param>
 	/// <param name="effectTime">Effect time.</param>
-    private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
-        pr.s_script.skillMethod(pr.s_script, target, effectTime);
-        pr.p_jb.StartCoroutine(pr.p_jb.SkillRecast(btn, recastTime));
+	private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0){
+		pr.s_script.skillMethod(pr.s_script, target, effectTime);
 		pr.p_jb.ChangeMode (SkillMode.Instance);
-        pr.ChangeMode(BattelMode.Instance);
-    }
+		pr.ChangeMode(BattelMode.Instance);
+	}
 }

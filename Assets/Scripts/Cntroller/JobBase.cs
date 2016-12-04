@@ -162,7 +162,8 @@ public class JobBase : StatusControl {
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
 	public void ReturnPos(){
-		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos));
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		ChangeMode (ReadyMode.Instance);
 	}
 	#endregion
 	#region Co-routine
@@ -221,16 +222,20 @@ public class JobBase : StatusControl {
 		}
 	}
 	/// <summary>
-	/// 対象を等速で動かす.
+	/// 対象を等速で動かす,ターゲットがあれば攻撃する
 	/// </summary>
+	/// <returns>The move.</returns>
 	/// <param name="obj">対象.</param>
-	/// <param name="timeRate">Time rate.</param>
-	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null){
-		Debug.Log ("2");
+	/// <param name="startPos">Start position.</param>
+	/// <param name="endPos">End position.</param>
+	/// <param name="speed">Speed.</param>
+	/// <param name="target">Target.</param>
+	/// <param name="sc">Skill Script.</param>
+	/// <param name="a_time">Animation time.</param>
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null, float a_time = 1){
 		float timer = 0;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
-			Debug.Log ("3");
 			timer += Time.deltaTime * speed;
 			float moveRate = timer / PLAYER_MOVE_TIME;
 			if (moveRate  >= 1) {
@@ -238,8 +243,8 @@ public class JobBase : StatusControl {
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
 				if (target != null && sc!=null) {
-					//obj.GetComponentInChildren<Animator> ().SetTrigger ("isAttack");
-					StartCoroutine( Damage (target, sc, 0.1f));
+					obj.GetComponentInChildren<Animator> ().SetTrigger ("Attack");
+					StartCoroutine( Damage (target, sc, a_time));
 				}
 				yield break;
 			}
@@ -263,6 +268,7 @@ public class JobBase : StatusControl {
 					s_power = 1.5f;
 				EnemyBase eb = target.GetComponent<EnemyBase> ();
 				eb.e_hp -= (int)((p_attack + sc.s_power) * s_power) - eb.e_defence;
+				StartCoroutine (SkillRecast (sc.gameObject, sc.s_recast));
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();
