@@ -2,6 +2,7 @@
 	"skills" : [
 		{
 			"s_name" : "ルーン",
+			"s_power" : 20,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
 			"s_recast" : 6,
@@ -10,6 +11,7 @@
 	    },
 		{
 			"s_name" : "エオロー",
+			"s_power" : 5,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
 			"s_recast" : 3,
@@ -18,6 +20,7 @@
 	    },
 		{
 			"s_name" : "ハーガル",
+			"s_power" : 10,
 			"s_effectTime" : 10,
 			"s_isRune" : false,
 			"s_recast" : 10,
@@ -26,6 +29,7 @@
 	    },
 		{
 			"s_name" : "Skill4",
+			"s_power" : 5,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
 			"s_recast" : 3,

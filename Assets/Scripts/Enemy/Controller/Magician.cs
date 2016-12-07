@@ -190,35 +190,42 @@ public class M_Normal : E_Controller
     }
     override public void Enter(EnemyBase eb = null)
     {
+		eb.BattelStartRecast ();
         Debug.Log("T_Normal_Enter");
     }
     override public void Excute(EnemyBase eb = null)
     {
-		if (eb.CanTakeAction())
-        {
-            foreach (var target in eb.e_pr.partyList)
-            {
-                JobBase jb = target.GetComponent<JobBase>();
-                if(jb.p_hp/jb.p_maxHP * 100 < 30){
-					eb.SkillUse (target, eb.skillList [0]);
-                }
-            }
-            foreach (var target in eb.e_pr.partyList)
-            {
-                JobBase jb = target.GetComponent<JobBase>();
-                if (jb.p_type == JobType.Attacker ||jb.p_type == JobType.Magician)
-                {
-                    if (jb.CheckFlag(ConditionStatus.SLOW))
-                    {
-						eb.SkillUse (target, eb.skillList [2]);
-                    }
-                }
-            }
-			eb.SkillUse(eb.e_pr.partyList[0], eb.skillList[0]);
-			Debug.Log("T_Normal_Excute");
-        }
-        else
-            Debug.Log("TODO: 状態異常のモードに移動");
+		if (eb.CanTakeAction ()) {
+			foreach (var target in eb.e_pr.partyList) {
+				JobBase jb = target.GetComponent<JobBase> ();
+				if (jb.p_hp / jb.p_maxHP * 100 < 30) {
+					if (!eb.skillList [1].isRecast) {
+						if (!eb.skillList [0].isRecast) {
+							eb.SkillUse (target, eb.skillList [0]);
+							return;
+						}
+					}
+				}
+			}
+			foreach (var target in eb.e_pr.partyList) {
+				JobBase jb = target.GetComponent<JobBase> ();
+				if (jb.p_type == JobType.Attacker || jb.p_type == JobType.Magician) {
+					if (!jb.CheckFlag (ConditionStatus.SLOW)) {
+						if (!eb.skillList [2].isRecast) {
+							eb.SkillUse (target, eb.skillList [2]);
+							return;
+						}
+					}
+				}
+			}
+			if (!eb.skillList [0].isRecast) {
+				eb.SkillUse (eb.e_pr.partyList [0], eb.skillList [0]);
+				return;
+			}
+		} else {
+			Debug.Log ("TODO: 状態異常のモードに移動");
+			return;
+		}
     }
     override public void Exit(EnemyBase eb = null)
     {

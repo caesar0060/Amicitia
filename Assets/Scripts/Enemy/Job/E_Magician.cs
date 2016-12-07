@@ -9,9 +9,10 @@ public class E_Magician : EnemyBase {
 	#endregion
 	// Use this for initialization
 	void Start () {
+		startPos = this.transform.position;
 		// Skillの配列に登録--------
 		skillArray = new E_Delegate[]{Skill1,Skill2,Skill3,Skill4};
-		string skillDate = GetSKillDate ("Tank_Skill.json");
+		string skillDate = GetSKillDate ("Magician_Skill.json");
 		CreateSkillList (skillArray, skillDate);
 		//---------------------------
 		Set_b_Status(BattelStatus.NORMAL);
@@ -40,6 +41,11 @@ public class E_Magician : EnemyBase {
 			break;
 		}
 	}
+	// ------------------------------------------------------------------------------------
+	//										Debug用
+	void OnGUI() {
+		GUI.Label(new Rect(300, 10, 100, 20), controller.ToString());
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -54,7 +60,8 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間</param>
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
-
+		StartCoroutine( LerpMove (this.gameObject, this.startPos, 
+			target.transform.position, 1, target, skillList [0]));
 	}
 	/// <summary>
     /// エオロー
@@ -64,7 +71,7 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間.</param>
     override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
-
+		Debug.Log ("Skill2");
 	}
 	/// <summary>
     /// ハーガル
@@ -74,8 +81,11 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間.</param>
     override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
-        target.GetComponent<EnemyBase>().Set_c_Status(ConditionStatus.SLOW);
-        target.GetComponent<EnemyBase>().StatusCounter(ConditionStatus.SLOW, effectTime);
+		JobBase jb = target.GetComponent<JobBase> ();
+		this.GetComponentInChildren<Animator> ().SetTrigger ("isBom");
+		StartCoroutine (Damage (target, skillList [2], 1));
+        jb.Set_c_Status(ConditionStatus.SLOW);
+		jb.StartCoroutine( jb.StatusCounter(ConditionStatus.SLOW, effectTime));
 	}
 	/// <summary>
     /// 範囲魔法攻撃
@@ -84,7 +94,7 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間.</param>
     override public void Skill4(GameObject target = null, float effectTime = 0)
 	{
-
+		Debug.Log ("Skill4");
 	}
 	#endregion
 }

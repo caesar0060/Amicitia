@@ -15,4 +15,7 @@ public class Animation_Function : MonoBehaviour {
 	public void Return(){
 		this.transform.parent.GetComponent<JobBase> ().ReturnPos ();
 	}
+	public void E_Return(){
+		this.transform.parent.GetComponent<EnemyBase> ().ReturnPos ();
+	}
 }

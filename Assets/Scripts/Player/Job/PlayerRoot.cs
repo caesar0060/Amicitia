@@ -21,9 +21,9 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// プレイヤーのプレハブを保管する配列
 	public List<GameObject> p_prefabList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
-	[HideInInspector] public List<GameObject> partyList = new List<GameObject>();
+	 public List<GameObject> partyList = new List<GameObject>();
 	// 敵を保管する配列
-	[HideInInspector] public List<GameObject> enemyList = new List<GameObject>();
+	 public List<GameObject> enemyList = new List<GameObject>();
 	// 
 	[HideInInspector] public GameObject btn = null;
 	//

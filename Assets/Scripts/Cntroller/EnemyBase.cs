@@ -30,6 +30,10 @@ public class SkillCollect{
 
 public class EnemyBase : StatusControl {
 	#region Properties
+	// バトルが始めて最初にすべてのスキルをリーキャストする時間
+	public static float BATTEL_START_RECAST_TIME = 5.0f;
+	// プレイヤー攻撃のときの移動の必要な時間
+	private static float Enemy_MOVE_TIME = 1.0f;
 	// HP
 	public int e_hp;
     // HP
@@ -42,6 +46,8 @@ public class EnemyBase : StatusControl {
     public JobType e_type;
 	//インスタンスを保存するコントローラ
 	public E_Controller controller = null;
+	//前のインスタンスを保存するコントローラ
+	public E_Controller preivousController = null;
 	//ターゲット
     [HideInInspector] public GameObject e_target;
     //PlayerRootを保存する
@@ -51,6 +57,8 @@ public class EnemyBase : StatusControl {
     // スキルを保管する
 	[HideInInspector] public E_Delegate[] skillArray;
 	[HideInInspector] public List<Skill> skillList;
+	// 位置の最初値
+	[HideInInspector] public Vector3 startPos;
 	#endregion
 
 	#region Function
@@ -61,6 +69,7 @@ public class EnemyBase : StatusControl {
 	public void ChangeMode(E_Controller newMode){
 		if (controller != newMode) {
 			controller.Exit (this);
+			preivousController = controller;
 			controller = newMode;
 			controller.Enter (this);
 		} else
@@ -108,8 +117,21 @@ public class EnemyBase : StatusControl {
 	/// <param name="skill">使うスキル.</param>
 	public void SkillUse(GameObject target, Skill skill){
 		skill.skillMethod (target, skill.s_effectTime);
-		StartCoroutine(SkillRecast(skill, skill.s_recast));
 		ChangeMode (E_SkillMode.Instance);
+	}
+	/// <summary>
+	/// 全てのスキルのリーキャストをスタートする
+	/// </summary>
+	public void BattelStartRecast(){
+		foreach (var skill in skillList) {
+			StartCoroutine( SkillRecast (skill, BATTEL_START_RECAST_TIME));
+		}
+	}
+	/// <summary>
+	/// 最初の位置に戻る
+	/// </summary>
+	public void ReturnPos(){
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
 	}
 	#endregion
     #region Skill
@@ -176,6 +198,65 @@ public class EnemyBase : StatusControl {
 				yield break;
 			}
 			yield return new WaitForSeconds(0.5f);
+		}
+	}
+	/// <summary>
+	/// 対象を等速で動かす,ターゲットがあれば攻撃する
+	/// </summary>
+	/// <returns>The move.</returns>
+	/// <param name="obj">対象.</param>
+	/// <param name="startPos">Start position.</param>
+	/// <param name="endPos">End position.</param>
+	/// <param name="speed">Speed.</param>
+	/// <param name="target">Target.</param>
+	/// <param name="sc">Skill Script.</param>
+	/// <param name="a_time">Animation time.</param>
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, Skill skill = null, float a_time = 1){
+		float timer = 0;
+		if(target != null)
+			endPos.z += target.GetComponent<CapsuleCollider> ().radius;
+		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
+		while (true) {
+			timer += Time.deltaTime * speed;
+			float moveRate = timer / Enemy_MOVE_TIME;
+			if (moveRate  >= 1) {
+				moveRate = 1;
+				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
+				if (target != null && skill!=null) {
+					obj.GetComponentInChildren<Animator> ().SetTrigger ("isBom");
+					StartCoroutine( Damage (target, skill, a_time));
+				}
+				yield break;
+			}
+			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+			yield return new WaitForEndOfFrame ();
+		}
+	}
+	/// <summary>
+	/// Damage the specified target
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="skill">Skill.</param>
+	/// <param name="time">攻撃のタイミング.</param>
+	public IEnumerator Damage(GameObject target, Skill skill, float time){
+		float timer = 0;
+		while (true) {
+			timer += Time.deltaTime;
+			float counter = timer / time;
+			if (counter >= 1) {
+				float s_power = 1;	//精霊の力
+				if (CheckFlag (ConditionStatus.POWER_UP))
+					s_power = 1.5f;
+				JobBase jb = target.GetComponent<JobBase> ();
+				int damage = Math.Max ((int)((e_attack + skill.s_power) * s_power) - jb.p_defence, 0);
+				jb.p_hp -= damage;
+				Debug.Log (skill.s_recast);
+				StartCoroutine (SkillRecast (skill, skill.s_recast));
+				ChangeMode (preivousController);
+				yield break;
+			}
+			yield return new WaitForEndOfFrame ();
 		}
 	}
 	#endregion

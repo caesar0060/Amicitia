@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 public class JobBase : StatusControl {
 	#region Properties
-	//
+	// プレイヤー攻撃のときの移動の必要な時間
 	private static float PLAYER_MOVE_TIME = 1.0f;
-	//
+	// ボタンの距離
 	private static float BUTTON_DISTANCE = 0.5f;
 	// HP
 	public int p_hp;
@@ -28,7 +28,7 @@ public class JobBase : StatusControl {
 	// Skillを保存用配列
 	public GameObject[] p_skillList;
 	public P_Delegate[] p_funcList;
-	//
+	// 位置の最初値
 	[HideInInspector] public Vector3 startPos;
 	#endregion
 
@@ -128,6 +128,7 @@ public class JobBase : StatusControl {
 			GameObject p_skillBtn = Instantiate (p_skillList [i],Vector3.zero,Camera.main.transform.rotation) as GameObject;
 			p_skillBtn.transform.SetParent (parent);
 			p_skillBtn.transform.localPosition = pos;
+			p_skillBtn.GetComponentInChildren<Text> ().text = p_skillBtn.GetComponentInChildren<SkillScript> ().s_name;
 			p_skillBtn.GetComponentInChildren<SkillScript> ().skillMethod = p_funcList [i];
 		}
 	}
@@ -161,6 +162,9 @@ public class JobBase : StatusControl {
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
+	/// <summary>
+	/// 最初の位置に戻る
+	/// </summary>
 	public void ReturnPos(){
 		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
 		ChangeMode (ReadyMode.Instance);
@@ -234,6 +238,8 @@ public class JobBase : StatusControl {
 	/// <param name="a_time">Animation time.</param>
 	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null, float a_time = 1){
 		float timer = 0;
+		if(target != null)
+			endPos.z -= target.GetComponent<CapsuleCollider> ().radius;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
 			timer += Time.deltaTime * speed;
@@ -267,7 +273,8 @@ public class JobBase : StatusControl {
 				if (CheckFlag (ConditionStatus.POWER_UP))
 					s_power = 1.5f;
 				EnemyBase eb = target.GetComponent<EnemyBase> ();
-				eb.e_hp -= (int)((p_attack + sc.s_power) * s_power) - eb.e_defence;
+				int damage = Math.Max ((int)((p_attack + sc.s_power) * s_power) - eb.e_defence, 0);
+				eb.e_hp -= damage;
 				StartCoroutine (SkillRecast (sc.gameObject, sc.s_recast));
 				yield break;
 			}

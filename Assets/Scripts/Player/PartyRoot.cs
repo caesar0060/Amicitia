@@ -26,6 +26,7 @@ public class PartyRoot : MonoBehaviour {
 	{
 		for (int i = 0; i < PlayerRoot.Instance.p_prefabList.Count; i++) {
 			GameObject player = Instantiate (PlayerRoot.Instance.p_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
+			PlayerRoot.Instance.partyList.Add (player);
 			player.transform.parent = this.transform;
 			player.transform.localPosition = posArray[i];
 			StartCoroutine ("BattelStartRecast", player);
@@ -33,9 +34,9 @@ public class PartyRoot : MonoBehaviour {
 		}
 		for (int i = 0; i < PlayerRoot.Instance.e_prefabList.Count; i++) {
 			GameObject enemy = Instantiate (PlayerRoot.Instance.e_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
+			PlayerRoot.Instance.enemyList.Add (enemy);
 			enemy.transform.parent = enemyRoot;
 			enemy.transform.localPosition = posArray[i];
-			//StartCoroutine (BattelStartRecast, player);
 		}
 	}
 	/// <summary>

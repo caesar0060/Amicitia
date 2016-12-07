@@ -11,6 +11,7 @@ public class AttackerScript : JobBase {
 	//										Debug用
 	void OnGUI() {
 		GUI.Label (new Rect (120, 10, 200, 20), "Attacker: " + controller.ToString ());
+		GUI.Label (new Rect (120, 50, 200, 20), "Attacker: " + conditionStatus.ToString());
 	}
 
 	// Use this for initialization
@@ -39,9 +40,8 @@ public class AttackerScript : JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
-		Vector3 pos = target.transform.position;
-		pos.z -= target.GetComponent<CapsuleCollider> ().radius;
-		StartCoroutine( LerpMove (this.gameObject, startPos, pos,  1, target, sc));
+		StartCoroutine( LerpMove (this.gameObject, startPos, target.transform.position,
+			1, target, sc));
 	}
 	/// <summary>
 	/// 物理強攻撃
