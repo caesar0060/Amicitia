@@ -6,7 +6,6 @@ using System.Collections;
 public enum BattelStatus
 {
 	NOT_IN_BATTEL = 0,
-	TARGET_CHOOSE,
 	NORMAL,			//通常
 	DEAD,			//死亡
 	PATROL,			//巡回
@@ -96,7 +95,7 @@ public class StatusControl : MonoBehaviour{
 	/// </summary>
 	/// <returns><c>true</c>行動できる<c>false</c>行動できない</returns>
 	public bool CanTakeAction(){
-		return !(CheckFlag (ConditionStatus.PALSY) || CheckFlag (ConditionStatus.SLEEP));
+		return !(CheckFlag (ConditionStatus.PALSY) || CheckFlag (ConditionStatus.SLEEP)|| battelStatus == BattelStatus.DEAD);
 	}
 	public float GetDamageRate(GameObject target){
 		switch (target.GetComponent<StatusControl> ().conditionStatus) {

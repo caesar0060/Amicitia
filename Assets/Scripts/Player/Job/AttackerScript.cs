@@ -8,11 +8,12 @@ public class AttackerScript : JobBase {
 	#endregion
 
 	// ------------------------------------------------------------------------------------
-	//										Debug用
+	/*										Debug用
 	void OnGUI() {
 		GUI.Label (new Rect (120, 10, 200, 20), "Attacker: " + controller.ToString ());
 		GUI.Label (new Rect (120, 50, 200, 20), "Attacker: " + conditionStatus.ToString());
 	}
+	*/
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +41,7 @@ public class AttackerScript : JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
-		StartCoroutine( LerpMove (this.gameObject, startPos, target.transform.position,
+		StartCoroutine( LerpMove (this.gameObject, this.transform.position, target.transform.position,
 			1, target, sc));
 	}
 	/// <summary>

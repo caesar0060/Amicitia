@@ -169,12 +169,13 @@ public class BattelStart : RootController
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
+		// 初期化する
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		pr.DestroyChild("Player");
-		// 初期化する
 		cameraSupport.transform.position = battelPos;
 		cameraSupport.transform.rotation = Quaternion.Euler (battelRot);
 		pr.ChangeMode(BattelMode.Instance);
+		pr.endBattel = false;
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -267,6 +268,8 @@ public class BattelMode : RootController {
 			}
 		}
 		#endregion
+		pr.CheckEndBattel ();
+		pr.CheckGameOver ();
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{
@@ -382,6 +385,8 @@ public class P_TargetMode : RootController {
 			pr.ChangeMode (BattelMode.Instance);
 		}
 		#endregion
+		pr.CheckEndBattel ();
+		pr.CheckGameOver ();
 	}
 	override public void Exit(PlayerRoot pr = null)
 	{

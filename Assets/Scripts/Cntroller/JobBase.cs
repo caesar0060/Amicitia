@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class JobBase : StatusControl {
 	#region Properties
 	// プレイヤー攻撃のときの移動の必要な時間
-	private static float PLAYER_MOVE_TIME = 1.0f;
+	private static float PLAYER_MOVE_SPEED = 5.0f;
 	// ボタンの距離
 	private static float BUTTON_DISTANCE = 0.5f;
 	// HP
@@ -166,8 +166,7 @@ public class JobBase : StatusControl {
 	/// 最初の位置に戻る
 	/// </summary>
 	public void ReturnPos(){
-		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
-		ChangeMode (ReadyMode.Instance);
+		//StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
 	}
 	#endregion
 	#region Co-routine
@@ -238,12 +237,18 @@ public class JobBase : StatusControl {
 	/// <param name="a_time">Animation time.</param>
 	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null, float a_time = 1){
 		float timer = 0;
-		if(target != null)
-			endPos.z -= target.GetComponent<CapsuleCollider> ().radius;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
+			float distance = Vector3.Distance (startPos, endPos);
+			float time = distance / PLAYER_MOVE_SPEED;
 			timer += Time.deltaTime * speed;
-			float moveRate = timer / PLAYER_MOVE_TIME;
+			float moveRate = timer / time;
+			Vector3 dir = Vector3.RotateTowards (this.transform.forward,
+				target.transform.position - this.transform.position, 1, 0);
+			this.transform.rotation = Quaternion.LookRotation (dir);
+			if (target != null) {
+				endPos = target.transform.position - Vector3.Normalize(dir) * target.GetComponent<CapsuleCollider> ().radius;
+			}
 			if (moveRate  >= 1) {
 				moveRate = 1;
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
@@ -275,7 +280,9 @@ public class JobBase : StatusControl {
 				EnemyBase eb = target.GetComponent<EnemyBase> ();
 				int damage = Math.Max ((int)((p_attack + sc.s_power) * s_power) - eb.e_defence, 0);
 				eb.e_hp -= damage;
+				target.GetComponentInChildren<Animator> ().SetTrigger ("isDamage");
 				StartCoroutine (SkillRecast (sc.gameObject, sc.s_recast));
+				ChangeMode (ReadyMode.Instance);
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();

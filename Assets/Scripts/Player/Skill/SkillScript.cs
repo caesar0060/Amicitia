@@ -50,6 +50,6 @@ public class SkillScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		this.transform.rotation = Camera.main.transform.rotation;
 	}
 }

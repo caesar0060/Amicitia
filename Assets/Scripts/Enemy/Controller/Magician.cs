@@ -190,7 +190,6 @@ public class M_Normal : E_Controller
     }
     override public void Enter(EnemyBase eb = null)
     {
-		eb.BattelStartRecast ();
         Debug.Log("T_Normal_Enter");
     }
     override public void Excute(EnemyBase eb = null)

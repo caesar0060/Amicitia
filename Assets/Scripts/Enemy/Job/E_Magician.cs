@@ -10,13 +10,15 @@ public class E_Magician : EnemyBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
+		startLocalPos = this.transform.localPosition;
 		// Skillの配列に登録--------
 		skillArray = new E_Delegate[]{Skill1,Skill2,Skill3,Skill4};
 		string skillDate = GetSKillDate ("Magician_Skill.json");
 		CreateSkillList (skillArray, skillDate);
 		//---------------------------
 		Set_b_Status(BattelStatus.NORMAL);
-		controller = M_Normal.Instance;
+		controller = E_BattelMode.Instance;
+		controller.Enter(this);
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
 		// チームによるモードを変更する
 		switch (GetModeNumber())
@@ -37,19 +39,23 @@ public class E_Magician : EnemyBase {
 			ChangeMode(M_D2M1.Instance);
 			break;
 		default:
-			controller.Enter (this);
+			ChangeMode(M_Normal.Instance);
 			break;
 		}
+		StartCoroutine ("Loading");
 	}
 	// ------------------------------------------------------------------------------------
-	//										Debug用
+	/*										Debug用
 	void OnGUI() {
 		GUI.Label(new Rect(300, 10, 100, 20), controller.ToString());
+		GUI.Label(new Rect(300, 50, 100, 20), "skill1"+skillList[0].isRecast.ToString());
+		GUI.Label(new Rect(300, 90, 100, 20), "skill3"+skillList[2].isRecast.ToString());
 	}
+	*/
 
 	// Update is called once per frame
 	void Update () {
-		controller.Excute (this);
+		CheckDead ();
 	}
 	#region Skill
 	/// <summary>
@@ -60,7 +66,7 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間</param>
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
-		StartCoroutine( LerpMove (this.gameObject, this.startPos, 
+		StartCoroutine( LerpMove (this.gameObject, this.transform.position, 
 			target.transform.position, 1, target, skillList [0]));
 	}
 	/// <summary>

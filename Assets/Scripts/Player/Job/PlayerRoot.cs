@@ -24,10 +24,11 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	 public List<GameObject> partyList = new List<GameObject>();
 	// 敵を保管する配列
 	 public List<GameObject> enemyList = new List<GameObject>();
-	// 
 	[HideInInspector] public GameObject btn = null;
-	//
 	[HideInInspector] public SkillScript s_script;
+	//戦闘が終わるかどうか
+	[HideInInspector] public bool endBattel = false;
+	[HideInInspector] public bool isGameOver = false;
     #endregion
 
 	// Use this for initialization
@@ -51,7 +52,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
             this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
         
         }
-		GUI.Label (new Rect (10, 90, 200, 20), "Root: " + controller.ToString ());
+		//GUI.Label (new Rect (10, 90, 200, 20), "Root: " + controller.ToString ());
 
 	}
 	//--------------------------------------------------------------------------------------
@@ -107,6 +108,35 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// </summary>
 	public void DestroyChild(string name){
 		Destroy (this.transform.FindChild (name).gameObject);
+	}
+	/// <summary>
+	/// 戦闘が終わるかどうかをチェックする
+	/// </summary>
+	public void CheckEndBattel(){
+		int count = 0;
+		foreach (var enemy in enemyList) {
+			if (enemy.GetComponent<EnemyBase> ().battelStatus == BattelStatus.DEAD)
+				count++;
+		}
+		if (count == enemyList.Count && !endBattel) {
+			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 2, WalkMode.Instance);
+			endBattel = true;
+		}
+	}
+	/// <summary>
+	/// Check game over.
+	/// </summary>
+	public void CheckGameOver()
+	{
+		int count = 0;
+		foreach (var player in partyList) {
+			if (player.GetComponent<JobBase> ().battelStatus == BattelStatus.DEAD)
+				count++;
+		}
+		if (count == partyList.Count && !isGameOver) {
+			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 2, WalkMode.Instance);
+			isGameOver = true;
+		}
 	}
 
 	#endregion

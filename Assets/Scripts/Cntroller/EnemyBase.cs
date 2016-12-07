@@ -33,7 +33,7 @@ public class EnemyBase : StatusControl {
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	public static float BATTEL_START_RECAST_TIME = 5.0f;
 	// プレイヤー攻撃のときの移動の必要な時間
-	private static float Enemy_MOVE_TIME = 1.0f;
+	private static float ENEMY_MOVE_SPEED = 5.0f;
 	// HP
 	public int e_hp;
     // HP
@@ -59,6 +59,8 @@ public class EnemyBase : StatusControl {
 	[HideInInspector] public List<Skill> skillList;
 	// 位置の最初値
 	[HideInInspector] public Vector3 startPos;
+	// Local位置の最初値
+	[HideInInspector] public Vector3 startLocalPos;
 	#endregion
 
 	#region Function
@@ -116,8 +118,9 @@ public class EnemyBase : StatusControl {
 	/// <param name="target">Target.</param>
 	/// <param name="skill">使うスキル.</param>
 	public void SkillUse(GameObject target, Skill skill){
-		skill.skillMethod (target, skill.s_effectTime);
 		ChangeMode (E_SkillMode.Instance);
+		skill.skillMethod (target, skill.s_effectTime);
+		skill.isRecast = true;
 	}
 	/// <summary>
 	/// 全てのスキルのリーキャストをスタートする
@@ -128,10 +131,21 @@ public class EnemyBase : StatusControl {
 		}
 	}
 	/// <summary>
+	/// 死亡しているかどうかをチェック
+	/// </summary>
+	public void CheckDead(){
+		if (e_hp <= 0) {
+			Set_b_Status (BattelStatus.DEAD);
+			this.GetComponent<CapsuleCollider> ().enabled = false;
+			e_pr.enemyList.Remove (this.gameObject);
+			Destroy (this.gameObject);
+		}
+	}
+	/// <summary>
 	/// 最初の位置に戻る
 	/// </summary>
 	public void ReturnPos(){
-		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		//StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
 	}
 	#endregion
     #region Skill
@@ -193,11 +207,12 @@ public class EnemyBase : StatusControl {
 		skill.isRecast = true;
 		float startTime = Time.time;
 		while(true){
+			Debug.Log (Time.time - startTime);
 			if(Time.time - startTime >= time ){
 				skill.isRecast = false;
 				yield break;
 			}
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(1.0f);
 		}
 	}
 	/// <summary>
@@ -213,12 +228,19 @@ public class EnemyBase : StatusControl {
 	/// <param name="a_time">Animation time.</param>
 	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, Skill skill = null, float a_time = 1){
 		float timer = 0;
-		if(target != null)
-			endPos.z += target.GetComponent<CapsuleCollider> ().radius;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
+			if (target != null) {
+				endPos = target.transform.position;
+				endPos -= Vector3.Normalize (startLocalPos) * this.GetComponent<CapsuleCollider> ().radius;
+			}
+			float distance = Vector3.Distance (startPos, endPos);
+			float time = distance / ENEMY_MOVE_SPEED;
 			timer += Time.deltaTime * speed;
-			float moveRate = timer / Enemy_MOVE_TIME;
+			float moveRate = timer / time;
+			Vector3 dir = Vector3.RotateTowards (this.transform.forward,
+				              target.transform.position - this.transform.position, 1, 0);
+			this.transform.rotation = Quaternion.LookRotation (dir);
 			if (moveRate  >= 1) {
 				moveRate = 1;
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
@@ -257,6 +279,15 @@ public class EnemyBase : StatusControl {
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();
+		}
+	}
+	/// <summary>
+	/// Loading this instance.
+	/// </summary>
+	public IEnumerator Loading(){
+		while (true) {
+			controller.Excute (this);
+			yield return new WaitForSeconds (1.0f);
 		}
 	}
 	#endregion

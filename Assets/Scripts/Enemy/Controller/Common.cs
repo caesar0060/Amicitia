@@ -68,3 +68,36 @@ public class E_StatusMode : E_Controller
 		Debug.Log("PExit");
 	}
 }
+/// <summary>
+/// E_BattelMode Singleton
+/// </summary>
+public class E_BattelMode : E_Controller
+{
+	// インスタンス
+	private static E_BattelMode instance;
+	/// <summary>
+	/// インスタンスを取得
+	/// </summary>
+	/// <value>インスタンス</value>
+	public static E_BattelMode Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new E_BattelMode();
+			return instance;
+		}
+	}
+	override public void Enter(EnemyBase eb = null)
+	{
+		eb.BattelStartRecast ();
+	}
+	override public void Excute(EnemyBase eb = null)
+	{
+		Debug.Log("PExcute");
+	}
+	override public void Exit(EnemyBase eb = null)
+	{
+		Debug.Log("PExit");
+	}
+}
