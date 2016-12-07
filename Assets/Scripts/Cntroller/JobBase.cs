@@ -162,11 +162,9 @@ public class JobBase : StatusControl {
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
-	/// <summary>
-	/// 最初の位置に戻る
-	/// </summary>
-	public void ReturnPos(){
-		//StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+	public void RotateToTarget(GameObject target){
+		Vector3 dir = target.transform.position - this.transform.position;
+		this.transform.rotation = Quaternion.LookRotation (dir);
 	}
 	#endregion
 	#region Co-routine
@@ -243,10 +241,9 @@ public class JobBase : StatusControl {
 			float time = distance / PLAYER_MOVE_SPEED;
 			timer += Time.deltaTime * speed;
 			float moveRate = timer / time;
-			Vector3 dir = Vector3.RotateTowards (this.transform.forward,
-				target.transform.position - this.transform.position, 1, 0);
-			this.transform.rotation = Quaternion.LookRotation (dir);
 			if (target != null) {
+				Vector3 dir = target.transform.position - this.transform.position;
+				RotateToTarget (target);
 				endPos = target.transform.position - Vector3.Normalize(dir) * target.GetComponent<CapsuleCollider> ().radius;
 			}
 			if (moveRate  >= 1) {
@@ -268,7 +265,7 @@ public class JobBase : StatusControl {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
-	private IEnumerator Damage(GameObject target, SkillScript sc, float time){
+	public IEnumerator Damage(GameObject target, SkillScript sc, float time){
 		float timer = 0;
 		while (true) {
 			timer += Time.deltaTime;

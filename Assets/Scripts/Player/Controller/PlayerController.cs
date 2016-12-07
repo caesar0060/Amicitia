@@ -40,7 +40,7 @@ public class WalkMode : RootController {
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
-		pr.CreateChild("Player", pr.p_prefabList[0]);
+		pr.CreateChild("Player", pr.p_prefabList[1]);
 		cameraSupport = GameObject.FindGameObjectWithTag ("Camera");
 		// 初期化する
 		cameraSupport.transform.localPosition = NormalPos;
@@ -49,6 +49,12 @@ public class WalkMode : RootController {
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
+		foreach (var p in pr.partyList) {
+			pr.partyList.Remove (p);
+		}
+		foreach (var e in pr.enemyList) {
+			pr.enemyList.Remove (e);
+		}
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -149,8 +155,8 @@ public class BattelStart : RootController
 	#region Property
 	// GameObjectを取得
 	private GameObject cameraSupport;
-	private Vector3 battelPos = new Vector3 (17.7f, 0.6f, 8.4f);
-	private Vector3 battelRot = new Vector3 (0.5f, 3.3f, 2.2f);
+	private Vector3 battelPos = new Vector3 (22.82f, 0.44f, 10.72f);
+	private Vector3 battelRot = new Vector3 (1.12f, 328.4f, 0.8f);
 	#endregion
 	// インスタンス
 	private static BattelStart instance;

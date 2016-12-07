@@ -218,7 +218,8 @@ public class M_Normal : E_Controller
 				}
 			}
 			if (!eb.skillList [0].isRecast) {
-				eb.SkillUse (eb.e_pr.partyList [0], eb.skillList [0]);
+				int i = Random.Range (0, eb.e_pr.partyList.Count - 1);
+				eb.SkillUse (eb.e_pr.partyList [i], eb.skillList [0]);
 				return;
 			}
 		} else {
