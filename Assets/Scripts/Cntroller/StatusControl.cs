@@ -97,6 +97,11 @@ public class StatusControl : MonoBehaviour{
 	public bool CanTakeAction(){
 		return !(CheckFlag (ConditionStatus.PALSY) || CheckFlag (ConditionStatus.SLEEP)|| battelStatus == BattelStatus.DEAD);
 	}
+    /// <summary>
+    /// スキルによるの防御を計算する
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
 	public float GetDamageRate(GameObject target){
 		switch (target.GetComponent<StatusControl> ().conditionStatus) {
 		case ConditionStatus.NO_DAMAGE:

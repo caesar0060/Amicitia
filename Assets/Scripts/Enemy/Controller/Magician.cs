@@ -218,7 +218,7 @@ public class M_Normal : E_Controller
 				}
 			}
 			if (!eb.skillList [0].isRecast) {
-				int i = Random.Range (0, eb.e_pr.partyList.Count - 1);
+				int i = Random.Range (0, eb.e_pr.partyList.Count);
 				eb.SkillUse (eb.e_pr.partyList [i], eb.skillList [0]);
 				return;
 			}
