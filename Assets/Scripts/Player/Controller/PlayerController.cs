@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// WalkMode Singleton
@@ -49,12 +50,8 @@ public class WalkMode : RootController {
 		c_defaultRot = Camera.main.transform.localRotation;
 		s_defaultRot = cameraSupport.transform.localRotation;
 		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator> ();
-		foreach (var p in pr.partyList) {
-			pr.partyList.Remove (p);
-		}
-		foreach (var e in pr.enemyList) {
-			pr.enemyList.Remove (e);
-		}
+		pr.partyList = new List<GameObject> ();
+		pr.enemyList = new List<GameObject> ();
 	}
 	override public void Excute(PlayerRoot pr = null)
 	{
@@ -268,10 +265,9 @@ public class BattelMode : RootController {
 					break;
 				}
 			}
-			if (Input.GetMouseButtonDown (1)) {
-				Debug.Log("1");
-				pr.p_jb.HideSkillBtn();
-			}
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			pr.p_jb.HideSkillBtn();
 		}
 		#endregion
 		pr.CheckEndBattel ();
@@ -375,7 +371,7 @@ public class P_TargetMode : RootController {
 						else
 							//ボタンを初期位置に戻す
 							pr.StartCoroutine(pr.LerpMove(pr.btn, 
-								pr.btn.transform.position, btnTempPos, 1));
+								pr.btn.transform.localPosition, btnTempPos, 1));
 					}
 					// SELFなら、即発動
 					else{
@@ -385,7 +381,7 @@ public class P_TargetMode : RootController {
 			}
 			else//ボタンを初期位置に戻す
 				pr.StartCoroutine(pr.LerpMove(pr.btn, 
-					pr.btn.transform.position, btnTempPos, 1));
+					pr.btn.transform.localPosition, btnTempPos, 1));
 		}
 		if (Input.GetMouseButtonDown (1)) {
 			pr.ChangeMode (BattelMode.Instance);
@@ -398,7 +394,7 @@ public class P_TargetMode : RootController {
 	{
 		//ボタンを初期位置に戻す
 		pr.StartCoroutine(pr.LerpMove(pr.btn, 
-			pr.btn.transform.position, btnTempPos, 1));
+			pr.btn.transform.localPosition, btnTempPos, 1));
 		pr.p_jb.HideSkillBtn();
 	}
 	/// <summary>

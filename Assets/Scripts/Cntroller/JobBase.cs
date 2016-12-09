@@ -211,14 +211,15 @@ public class JobBase : StatusControl {
 		btn.GetComponent<Collider> ().enabled = false;
 		float startTime = Time.time;
 		while(true){
-			float rate = 1 - (Time.time - startTime) / time;
-			if(rate <=0){
-				img.fillAmount = rate;
-				btn.GetComponent<Collider> ().enabled = true;
-				btn.GetComponent<SkillScript> ().isRecast = false;
-				yield break;
-			}
-			img.fillAmount = rate;
+            float rate = 1 - (Time.time - startTime) / time;
+            if (rate <= 0)
+            {
+                img.fillAmount = rate;
+                btn.GetComponent<Collider>().enabled = true;
+                btn.GetComponent<SkillScript>().isRecast = false;
+                yield break;
+            }
+            img.fillAmount = rate;
 			yield return new WaitForEndOfFrame();
 		}
 	}
@@ -242,17 +243,31 @@ public class JobBase : StatusControl {
 			timer += Time.deltaTime * speed;
 			float moveRate = timer / time;
 			if (target != null) {
-				Vector3 dir = target.transform.position - this.transform.position;
-				RotateToTarget (target);
-				endPos = target.transform.position - Vector3.Normalize(dir) * target.GetComponent<CapsuleCollider> ().radius;
+                try
+                {
+                    Vector3 dir = target.transform.position - this.transform.position;
+                    RotateToTarget(target);
+                    endPos = target.transform.position - Vector3.Normalize(dir) * target.GetComponent<CapsuleCollider>().radius;
+                }
+                catch (MissingReferenceException)
+                {
+                    ChangeMode(ReadyMode.Instance);
+                }
 			}
 			if (moveRate  >= 1) {
 				moveRate = 1;
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
 				if (target != null && sc!=null) {
-					obj.GetComponentInChildren<Animator> ().SetTrigger ("Attack");
-					StartCoroutine( Damage (target, sc, a_time));
+                    try
+                    {
+                        obj.GetComponentInChildren<Animator>().SetTrigger("Attack");
+                        StartCoroutine(Damage(target, sc, a_time));
+                    }
+                    catch (MissingReferenceException)
+                    {
+                        ChangeMode(ReadyMode.Instance);
+                    }
 				}
 				yield break;
 			}
@@ -271,15 +286,22 @@ public class JobBase : StatusControl {
 			timer += Time.deltaTime;
 			float counter = timer / time;
 			if (counter >= 1) {
-				float s_power = 1;	//精霊の力
-				if (CheckFlag (ConditionStatus.POWER_UP))
-					s_power = 1.5f;
-				EnemyBase eb = target.GetComponent<EnemyBase> ();
-				int damage = Math.Max ((int)((p_attack + sc.s_power) * s_power) - eb.e_defence, 0);
-				eb.e_hp -= damage;
-				target.GetComponentInChildren<Animator> ().SetTrigger ("isDamage");
-				StartCoroutine (SkillRecast (sc.gameObject, sc.s_recast));
-				ChangeMode (ReadyMode.Instance);
+                try
+                {
+                    float s_power = 1;	//精霊の力
+                    if (CheckFlag(ConditionStatus.POWER_UP))
+                        s_power = 1.5f;
+                    EnemyBase eb = target.GetComponent<EnemyBase>();
+                    int damage = Math.Max((int)((p_attack + sc.s_power) * s_power) - eb.e_defence, 0);
+                    eb.e_hp -= damage;
+                    target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                    StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+                    ChangeMode(ReadyMode.Instance);
+                }
+                catch (MissingReferenceException)
+                {
+                    ChangeMode(ReadyMode.Instance);
+                }
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();
