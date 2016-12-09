@@ -23,7 +23,7 @@ public class E_Magician : EnemyBase {
 		// チームによるモードを変更する
 		switch (GetModeNumber())
 		{
-		case 15:
+		/*case 15:
 			ChangeMode(M_M3.Instance);
 			break;
 		case 12:
@@ -37,12 +37,12 @@ public class E_Magician : EnemyBase {
 			break;
 		case 9:
 			ChangeMode(M_D2M1.Instance);
-			break;
+			break;  */
 		default:
 			ChangeMode(M_Normal.Instance);
 			break;
 		}
-		StartCoroutine ("Loading");
+		StartCoroutine (Loading(2.0f));
 	}
 	// ------------------------------------------------------------------------------------
 	/*										Debug用

@@ -284,10 +284,10 @@ public class EnemyBase : StatusControl {
 	/// <summary>
 	/// Loading this instance.
 	/// </summary>
-	public IEnumerator Loading(){
+	public IEnumerator Loading(float time){
 		while (true) {
 			controller.Excute (this);
-			yield return new WaitForSeconds (1.0f);
+			yield return new WaitForSeconds (time);
 		}
 	}
 	#endregion
