@@ -108,8 +108,9 @@ public class EnemyBase : StatusControl {
 	/// <returns>Json date.</returns>
 	/// <param name="fileName">File name.</param>
 	public string GetSKillDate(string fileName){
+		string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Enemy_Skill/" + fileName);
 		//json fileを読み込む
-		string JsonString = File.ReadAllText (Application.dataPath + "/Resources/Enemy_Skill/" + fileName);
+		string JsonString = File.ReadAllText (filePath);
 		return JsonString;
 	}
 	/// <summary>

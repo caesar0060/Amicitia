@@ -53,7 +53,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
         
         }
 		//GUI.Label (new Rect (10, 90, 200, 20), "Root: " + controller.ToString ());
-
 	}
 	//--------------------------------------------------------------------------------------
 	// Update is called once per frame

@@ -3,10 +3,15 @@ using System.Collections;
 
 public class E_Magician : EnemyBase {
 	#region Properties
-	private int hit_count;		//撃たれた回数
-	[HideInInspector]
-	public GameObject t_myTarget;
 	#endregion
+	// ------------------------------------------------------------------------------------
+	//*										Debug用
+	void OnGUI() {
+		GUI.Label(new Rect(300, 10, 100, 20), controller.ToString());
+		GUI.Label(new Rect(300, 50, 100, 20), "skill1"+skillList[0].isRecast.ToString());
+		GUI.Label(new Rect(300, 90, 100, 20), "skill3"+skillList[2].isRecast.ToString());
+	}
+	//*/
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
@@ -23,7 +28,7 @@ public class E_Magician : EnemyBase {
 		// チームによるモードを変更する
 		switch (GetModeNumber())
 		{
-		/*case 15:
+		case 15:
 			ChangeMode(M_M3.Instance);
 			break;
 		case 12:
@@ -37,22 +42,14 @@ public class E_Magician : EnemyBase {
 			break;
 		case 9:
 			ChangeMode(M_D2M1.Instance);
-			break;  */
+			break;  
 		default:
 			ChangeMode(M_Normal.Instance);
 			break;
 		}
+		ChangeMode(M_Normal.Instance);
 		StartCoroutine (Loading(2.0f));
 	}
-	// ------------------------------------------------------------------------------------
-	/*										Debug用
-	void OnGUI() {
-		GUI.Label(new Rect(300, 10, 100, 20), controller.ToString());
-		GUI.Label(new Rect(300, 50, 100, 20), "skill1"+skillList[0].isRecast.ToString());
-		GUI.Label(new Rect(300, 90, 100, 20), "skill3"+skillList[2].isRecast.ToString());
-	}
-	*/
-
 	// Update is called once per frame
 	void Update () {
 		CheckDead ();

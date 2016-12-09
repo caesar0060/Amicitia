@@ -8,208 +8,208 @@ using System.Collections.Generic;
 /// </summary>
 public class WalkMode : RootController
 {
-    #region Property
-    //堏摦懍搙
-    private const float MOVE_SPEED = 10;
-    //夞揮懍搙
-    private const float ROTATE_SPEED = 100;
-    private const float CAMERA_ROTATE_SPEED = 50;
-    // 僇儊儔偺妏搙偺弶婜抣
-    private Quaternion c_defaultRot;
-    // cameraSupport偺妏搙偺弶婜抣
-    private Quaternion s_defaultRot;
-    // GameObject傪庢摼
-    private GameObject cameraSupport;
-    // 僞僢僠偺埵抲
-    private Vector3 touchPoint;
-    // 僾儗僀儎乕偺Animator
-    private Animator p_animator;
-    private Vector3 NormalPos = Vector3.zero;
-    private Vector3 NormalRot = Vector3.zero;
-    #endregion
-    // 堏摦儌乕僪偺僀儞僗僞儞僗
-    private static WalkMode instance;
-    /// <summary>
-    /// 堏摦儌乕僪偺僀儞僗僞儞僗傪庢摼
-    /// </summary>
-    /// <value>堏摦偺僀儞僗僞儞僗</value>
-    public static WalkMode Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new WalkMode();
-            return instance;
-        }
-    }
-    override public void Enter(PlayerRoot pr = null)
-    {
-        pr.CreateChild("Player", pr.p_prefabList[1]);
-        cameraSupport = GameObject.FindGameObjectWithTag("Camera");
-        // 弶婜壔偡傞
-        cameraSupport.transform.localPosition = NormalPos;
-        cameraSupport.transform.localEulerAngles = NormalRot;
-        //丂弶婜抣傪曐懚偡傞
-        c_defaultRot = Camera.main.transform.localRotation;
-        s_defaultRot = cameraSupport.transform.localRotation;
-        p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator>();
-        pr.partyList = new List<GameObject>();
-        pr.enemyList = new List<GameObject>();
-    }
-    override public void Excute(PlayerRoot pr = null)
-    {
-        #region 僉儍儔僋僞乕偺僐儞僩儘乕儖
-        //堏摦梡vector3
-        Vector3 move_vector = Vector3.zero;
-        //尰嵼埵抲傪曐娗偡傞
-        Vector3 p_pos = pr.transform.position;
-        //堏摦拞偐偳偆偐
-        bool isMoved = false;
-        if (Input.GetKey(KeyCode.A))
-        {	//嵍
-            pr.transform.Rotate
-            (Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {	//塃
-            pr.transform.Rotate
-            (Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {	//忋
-            move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
-            isMoved = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {	//壓
-            move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
-            isMoved = true;
-        }
-        //堏摦vector3傪惓婯壔偟偰,堏摦曽岦傪媮傔傞
-        pr.transform.Translate(move_vector, Space.Self);
-        //堏摦偟偨傜
-        if (move_vector.magnitude > 0.01f)
-        {
-            //Player偺岦偒傪堏摦曽岦偵曄偊傞
-            ReturnDefault();
-        }
-        else
-        {
-            isMoved = false;
-        }
-        p_animator.SetBool("isMoved", isMoved);
+	#region Property
+	//移動速度
+	private const float MOVE_SPEED = 10;
+	//回転速度
+	private const float ROTATE_SPEED = 100;
+	private const float CAMERA_ROTATE_SPEED = 50;
+	// カメラの角度の初期値
+	private Quaternion c_defaultRot;
+	// cameraSupportの角度の初期値
+	private Quaternion s_defaultRot;
+	// GameObjectを取得
+	private GameObject cameraSupport;
+	// タッチの位置
+	private Vector3 touchPoint;
+	// プレイヤーのAnimator
+	private Animator p_animator;
+	private Vector3 NormalPos = Vector3.zero;
+	private Vector3 NormalRot = Vector3.zero;
+	#endregion
+	// 移動モードのインスタンス
+	private static WalkMode instance;
+	/// <summary>
+	/// 移動モードのインスタンスを取得
+	/// </summary>
+	/// <value>移動のインスタンス</value>
+	public static WalkMode Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new WalkMode();
+			return instance;
+		}
+	}
+	override public void Enter(PlayerRoot pr = null)
+	{
+		pr.CreateChild("Player", pr.p_prefabList[1]);
+		cameraSupport = GameObject.FindGameObjectWithTag("Camera");
+		// 初期化する
+		cameraSupport.transform.localPosition = NormalPos;
+		cameraSupport.transform.localEulerAngles = NormalRot;
+		//　初期値を保存する
+		c_defaultRot = Camera.main.transform.localRotation;
+		s_defaultRot = cameraSupport.transform.localRotation;
+		p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator>();
+		pr.partyList = new List<GameObject>();
+		pr.enemyList = new List<GameObject>();
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+		#region キャラクターのコントロール
+		//移動用vector3
+		Vector3 move_vector = Vector3.zero;
+		//現在位置を保管する
+		Vector3 p_pos = pr.transform.position;
+		//移動中かどうか
+		bool isMoved = false;
+		if (Input.GetKey(KeyCode.A))
+		{	//左
+			pr.transform.Rotate
+			(Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
+		}
+		if (Input.GetKey(KeyCode.D))
+		{	//右
+			pr.transform.Rotate
+			(Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
+		}
+		if (Input.GetKey(KeyCode.W))
+		{	//上
+			move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
+			isMoved = true;
+		}
+		if (Input.GetKey(KeyCode.S))
+		{	//下
+			move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
+			isMoved = true;
+		}
+		//移動vector3を正規化して,移動方向を求める
+		pr.transform.Translate(move_vector, Space.Self);
+		//移動したら
+		if (move_vector.magnitude > 0.01f)
+		{
+			//Playerの向きを移動方向に変える
+			ReturnDefault();
+		}
+		else
+		{
+			isMoved = false;
+		}
+		p_animator.SetBool("isMoved", isMoved);
 
-        #endregion
-        #region 僇儊儔偺僐儞僩儘乕儖
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Camera.main.transform.Rotate(Vector3.right * CAMERA_ROTATE_SPEED * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Camera.main.transform.Rotate(Vector3.left * CAMERA_ROTATE_SPEED * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            cameraSupport.transform.Rotate
-            (Vector3.up * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            cameraSupport.transform.Rotate
-            (Vector3.down * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        //儅僂僗憖嶌
-        if (Input.GetMouseButtonDown(1))
-        {
-            touchPoint = Input.mousePosition;
-        }
-        if (Input.GetMouseButton(1))
-        {
-            Vector3 tempPoint = Input.mousePosition - touchPoint;
-            cameraSupport.transform.Rotate
-            (new Vector3(0, -tempPoint.x, 0) * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
-            Camera.main.transform.Rotate(new Vector3(tempPoint.y, 0, 0) * CAMERA_ROTATE_SPEED * Time.deltaTime);
-            touchPoint = Input.mousePosition;
-        }
-        #endregion
-        #region 憖嶌
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (pr.p_jb._target != null)
-                Debug.Log(pr.p_jb._target.name);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Esc");
-        }
-        #endregion
-    }
-    override public void Exit(PlayerRoot pr = null)
-    {
+		#endregion
+		#region カメラのコントロール
+		if (Input.GetKey(KeyCode.UpArrow))
+		{
+			Camera.main.transform.Rotate(Vector3.right * CAMERA_ROTATE_SPEED * Time.deltaTime);
+		}
+		if (Input.GetKey(KeyCode.DownArrow))
+		{
+			Camera.main.transform.Rotate(Vector3.left * CAMERA_ROTATE_SPEED * Time.deltaTime);
+		}
+		if (Input.GetKey(KeyCode.LeftArrow))
+		{
+			cameraSupport.transform.Rotate
+			(Vector3.up * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
+		}
+		if (Input.GetKey(KeyCode.RightArrow))
+		{
+			cameraSupport.transform.Rotate
+			(Vector3.down * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
+		}
+		//マウス操作
+		if (Input.GetMouseButtonDown(1))
+		{
+			touchPoint = Input.mousePosition;
+		}
+		if (Input.GetMouseButton(1))
+		{
+			Vector3 tempPoint = Input.mousePosition - touchPoint;
+			cameraSupport.transform.Rotate
+			(new Vector3(0, -tempPoint.x, 0) * CAMERA_ROTATE_SPEED * Time.deltaTime, Space.Self);
+			Camera.main.transform.Rotate(new Vector3(tempPoint.y, 0, 0) * CAMERA_ROTATE_SPEED * Time.deltaTime);
+			touchPoint = Input.mousePosition;
+		}
+		#endregion
+		#region 操作
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (pr.p_jb._target != null)
+				Debug.Log(pr.p_jb._target.name);
+		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Debug.Log("Esc");
+		}
+		#endregion
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
 
-    }
-    #region Function
-    /// <summary>
-    /// 弶婜抣偵栠傞
-    /// </summary>
-    private void ReturnDefault()
-    {
-        Camera.main.transform.localRotation = Quaternion.Slerp(Camera.main.transform.localRotation,
-            c_defaultRot, Time.deltaTime * 5);
-        cameraSupport.transform.localRotation = Quaternion.Slerp(cameraSupport.transform.localRotation,
-            s_defaultRot, Time.deltaTime * 5);
-    }
-    #endregion
+	}
+	#region Function
+	/// <summary>
+	/// 初期値に戻る
+	/// </summary>
+	private void ReturnDefault()
+	{
+		Camera.main.transform.localRotation = Quaternion.Slerp(Camera.main.transform.localRotation,
+			c_defaultRot, Time.deltaTime * 5);
+		cameraSupport.transform.localRotation = Quaternion.Slerp(cameraSupport.transform.localRotation,
+			s_defaultRot, Time.deltaTime * 5);
+	}
+	#endregion
 }
 /// <summary>
 /// BattelStart Singleton
 /// </summary>
 public class BattelStart : RootController
 {
-    #region Property
-    // GameObject傪庢摼
-    private GameObject cameraSupport;
-    private Vector3 battelPos = new Vector3(22.82f, 0.44f, 10.72f);
-    private Vector3 battelRot = new Vector3(1.12f, 328.4f, 0.8f);
-    #endregion
-    // 僀儞僗僞儞僗
-    private static BattelStart instance;
-    /// <summary>
-    /// 僀儞僗僞儞僗傪庢摼
-    /// </summary>
-    /// <value>僀儞僗僞儞僗</value>
-    public static BattelStart Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new BattelStart();
-            return instance;
-        }
-    }
-    override public void Enter(PlayerRoot pr = null)
-    {
-        // 弶婜壔偡傞
-        cameraSupport = GameObject.FindGameObjectWithTag("Camera");
-        pr.DestroyChild("Player");
-        cameraSupport.transform.position = battelPos;
-        cameraSupport.transform.rotation = Quaternion.Euler(battelRot);
-        pr.ChangeMode(BattelMode.Instance);
-        pr.endBattel = false;
-    }
-    override public void Excute(PlayerRoot pr = null)
-    {
+	#region Property
+	// GameObjectを取得
+	private GameObject cameraSupport;
+	private Vector3 battelPos = new Vector3(22.82f, 0.44f, 10.72f);
+	private Vector3 battelRot = new Vector3(1.12f, 328.4f, 0.8f);
+	#endregion
+	// インスタンス
+	private static BattelStart instance;
+	/// <summary>
+	/// インスタンスを取得
+	/// </summary>
+	/// <value>インスタンス</value>
+	public static BattelStart Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new BattelStart();
+			return instance;
+		}
+	}
+	override public void Enter(PlayerRoot pr = null)
+	{
+		// 初期化する
+		cameraSupport = GameObject.FindGameObjectWithTag("Camera");
+		pr.DestroyChild("Player");
+		cameraSupport.transform.position = battelPos;
+		cameraSupport.transform.rotation = Quaternion.Euler(battelRot);
+		pr.ChangeMode(BattelMode.Instance);
+		pr.endBattel = false;
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
 
 
-    }
-    override public void Exit(PlayerRoot pr = null)
-    {
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
 
-    }
-    #region Function
+	}
+	#region Function
 
-    #endregion
+	#endregion
 }
 
 /// <summary>
@@ -217,246 +217,246 @@ public class BattelStart : RootController
 /// </summary>
 public class BattelMode : RootController
 {
-    #region Property
+	#region Property
 
-    // 僞僢僠偺儗僀儎乕儅僗僋
-    private int d_layerMask;
-    private int layerMask;
-    private int u_layerMask;
-    //
-    private bool isBtnShow = false;
-    #endregion
-    // 僶僩儖儌乕僪偺僀儞僗僞儞僗
-    private static BattelMode instance;
-    /// <summary>
-    /// 僶僩儖儌乕僪偺僀儞僗僞儞僗傪庢摼
-    /// </summary>
-    /// <value>僶僩儖儌乕僪偺僀儞僗僞儞僗</value>
-    public static BattelMode Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new BattelMode();
-            return instance;
-        }
-    }
-    override public void Enter(PlayerRoot pr = null)
-    {
-        //弶婜壔
-        pr.s_script = null;
-        pr.btn = null;
-        isBtnShow = false;
-        layerMask = LayerMask.GetMask(new string[] { "Player", "Enemy", "Ground" });
-        u_layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
-        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
-    }
-    override public void Excute(PlayerRoot pr = null)
-    {
-        #region 儅僂僗憖嶌
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
-            {
-                switch (hit.collider.gameObject.layer)
-                {
-                    case 8: //Player
-                        if (hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance)
-                        {
-                            if (!isBtnShow)
-                            {	//儃僞儞偼傑偩惗惉偟偰偄側偄
-                                pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-                                if (pr.p_jb.CanTakeAction())
-                                {
-                                    pr.p_jb.ShowSkillBtn();
-                                    isBtnShow = true;
-                                }
-                            }
-                            // 偡偱偵惗惉偟偨傜
-                            else
-                            {
-                                pr.p_jb.HideSkillBtn();
-                                pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-                                pr.p_jb.ShowSkillBtn();
-                            }
-                        }
-                        break;
-                    case 10: //Command
-                        if (isBtnShow)
-                        {	// 儃僞儞傪慖戰偟偨傜
-                            // 慖戰偟偨儃僞儞傪曐娗
-                            pr.btn = hit.collider.gameObject;
-                            pr.s_script = pr.btn.GetComponent<SkillScript>();
-                            pr.ChangeMode(P_TargetMode.Instance);
-                        }
-                        break;
-                }
-            }
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            pr.p_jb.HideSkillBtn();
-        }
-        #endregion
-        pr.CheckEndBattel();
-        pr.CheckGameOver();
-    }
-    override public void Exit(PlayerRoot pr = null)
-    {
+	// タッチのレイヤーマスク
+	private int d_layerMask;
+	private int layerMask;
+	private int u_layerMask;
+	//
+	private bool isBtnShow = false;
+	#endregion
+	// バトルモードのインスタンス
+	private static BattelMode instance;
+	/// <summary>
+	/// バトルモードのインスタンスを取得
+	/// </summary>
+	/// <value>バトルモードのインスタンス</value>
+	public static BattelMode Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new BattelMode();
+			return instance;
+		}
+	}
+	override public void Enter(PlayerRoot pr = null)
+	{
+		//初期化
+		pr.s_script = null;
+		pr.btn = null;
+		isBtnShow = false;
+		layerMask = LayerMask.GetMask(new string[] { "Player", "Enemy", "Ground" });
+		u_layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
+		d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+		#region マウス操作
+		if (Input.GetMouseButtonDown(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit = new RaycastHit();
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
+			{
+				switch (hit.collider.gameObject.layer)
+				{
+				case 8: //Player
+					if (hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance)
+					{
+						if (!isBtnShow)
+						{	//ボタンはまだ生成していない
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							if (pr.p_jb.CanTakeAction())
+							{
+								pr.p_jb.ShowSkillBtn();
+								isBtnShow = true;
+							}
+						}
+						// すでに生成したら
+						else
+						{
+							pr.p_jb.HideSkillBtn();
+							pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+							pr.p_jb.ShowSkillBtn();
+						}
+					}
+					break;
+				case 10: //Command
+					if (isBtnShow)
+					{	// ボタンを選択したら
+						// 選択したボタンを保管
+						pr.btn = hit.collider.gameObject;
+						pr.s_script = pr.btn.GetComponent<SkillScript>();
+						pr.ChangeMode(P_TargetMode.Instance);
+					}
+					break;
+				}
+			}
+		}
+		if (Input.GetMouseButtonDown(1))
+		{
+			pr.p_jb.HideSkillBtn();
+		}
+		#endregion
+		pr.CheckEndBattel();
+		pr.CheckGameOver();
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
 
-    }
+	}
 }
 
 /// <summary>
-/// 僞乕僎僢僩傪慖戰梡 Singleton
+/// ターゲットを選択用 Singleton
 /// </summary>
 public class P_TargetMode : RootController
 {
-    // 僞乕僎僢僩儌乕僪偺僀儞僗僞儞僗
-    private static P_TargetMode instance;
-    /// <summary>
-    /// TargetModee偺僀儞僗僞儞僗傪庢摼
-    /// </summary>
-    /// <value>TargetMode偺僀儞僗僞儞僗</value>
-    public static P_TargetMode Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new P_TargetMode();
-            return instance;
-        }
-    }
-    #region Property
-    // 儃僞儞偺弶婜埵抲
-    private Vector3 btnTempPos;
-    // 僞僢僠偺儗僀儎乕儅僗僋
-    private int d_layerMask;
-    private int layerMask;
-    private int u_layerMask;
-    #endregion
-    override public void Enter(PlayerRoot pr = null)
-    {
-        //弶婜壔
-        if (pr.s_script.s_targetype == TargetType.PLAYER)
-        {
-            u_layerMask = LayerMask.GetMask(new string[] { "Player", "Ground" });
-        }
-        else
-        {
-            u_layerMask = LayerMask.GetMask(new string[] { "Enemy", "Ground" });
-        }
-        layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
-        d_layerMask = LayerMask.GetMask(new string[] { "Command" });
-        // 儃僞儞偺弶婜埵抲傪曐娗偡傞
-        btnTempPos = pr.btn.transform.localPosition;
-    }
-    override public void Excute(PlayerRoot pr = null)
-    {
-        // 儃僞儞偑側偗傟偽
-        if (pr.btn == null)
-            pr.ChangeMode(BattelMode.Instance);
-        #region 儅僂僗憖嶌
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
-            {
-                switch (hit.collider.gameObject.layer)
-                {
-                    case 8: //Player
-                        pr.p_jb.HideSkillBtn();
-                        pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-                        pr.p_jb.ShowSkillBtn();
-                        pr.ChangeMode(BattelMode.Instance);
-                        break;
-                    case 10: //Command
-                        // 慖戰偟偨儃僞儞傪曐娗
-                        pr.btn = hit.collider.gameObject;
-                        pr.s_script = pr.btn.GetComponent<SkillScript>();
-                        btnTempPos = pr.btn.transform.localPosition;
-                        break;
-                }
-            }
-        }
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                Debug.Log(hit.collider.gameObject.name);
-                if (pr.btn != null)
-                {
-                    // 儃僞儞傪摦偐偡
-                    Vector3 pos = hit.point;
-                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-                        pos.y += 0.2f;
-                    pr.btn.transform.position = pos;
-                }
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, u_layerMask))
-            {
-                if (pr.btn != null)
-                {
-                    if (pr.s_script.s_targetNum != TargetNum.SELF)
-                    {
-                        //儗僀儎乕偑摨偠側傜
-                        if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
-                        {
-                            SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
-                        }
-                        else
-                            //儃僞儞傪弶婜埵抲偵栠偡
-                            pr.StartCoroutine(pr.LerpMove(pr.btn,
-                                pr.btn.transform.localPosition, btnTempPos, 1));
-                    }
-                    // SELF側傜丄懄敪摦
-                    else
-                    {
-                        SkillUse(pr, pr.p_jb.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
-                    }
-                }
-            }
-            else//儃僞儞傪弶婜埵抲偵栠偡
-                pr.StartCoroutine(pr.LerpMove(pr.btn,
-                    pr.btn.transform.localPosition, btnTempPos, 1));
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            pr.ChangeMode(BattelMode.Instance);
-        }
-        #endregion
-        pr.CheckEndBattel();
-        pr.CheckGameOver();
-    }
-    override public void Exit(PlayerRoot pr = null)
-    {
-        //儃僞儞傪弶婜埵抲偵栠偡
-        pr.StartCoroutine(pr.LerpMove(pr.btn,
-            pr.btn.transform.localPosition, btnTempPos, 1));
-        pr.p_jb.HideSkillBtn();
-    }
-    /// <summary>
-    /// 僗僉儖傪巊偆
-    /// </summary>
-    /// <param name="pr">PlayerRoot.</param>
-    /// <param name="target">Target.</param>
-    /// <param name="btn">Skill Button.</param>
-    /// <param name="recastTime">Recast time.</param>
-    /// <param name="effectTime">Effect time.</param>
-    private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0)
-    {
-        pr.s_script.skillMethod(pr.s_script, target, effectTime);
-        pr.p_jb.ChangeMode(SkillMode.Instance);
-        pr.ChangeMode(BattelMode.Instance);
-    }
+	// ターゲットモードのインスタンス
+	private static P_TargetMode instance;
+	/// <summary>
+	/// TargetModeeのインスタンスを取得
+	/// </summary>
+	/// <value>TargetModeのインスタンス</value>
+	public static P_TargetMode Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new P_TargetMode();
+			return instance;
+		}
+	}
+	#region Property
+	// ボタンの初期位置
+	private Vector3 btnTempPos;
+	// タッチのレイヤーマスク
+	private int d_layerMask;
+	private int layerMask;
+	private int u_layerMask;
+	#endregion
+	override public void Enter(PlayerRoot pr = null)
+	{
+		//初期化
+		if (pr.s_script.s_targetype == TargetType.PLAYER)
+		{
+			u_layerMask = LayerMask.GetMask(new string[] { "Player", "Ground" });
+		}
+		else
+		{
+			u_layerMask = LayerMask.GetMask(new string[] { "Enemy", "Ground" });
+		}
+		layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
+		d_layerMask = LayerMask.GetMask(new string[] { "Command" });
+		// ボタンの初期位置を保管する
+		btnTempPos = pr.btn.transform.localPosition;
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+		// ボタンがなければ
+		if (pr.btn == null)
+			pr.ChangeMode(BattelMode.Instance);
+		#region マウス操作
+		if (Input.GetMouseButtonDown(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit = new RaycastHit();
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
+			{
+				switch (hit.collider.gameObject.layer)
+				{
+				case 8: //Player
+					pr.p_jb.HideSkillBtn();
+					pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+					pr.p_jb.ShowSkillBtn();
+					pr.ChangeMode(BattelMode.Instance);
+					break;
+				case 10: //Command
+					// 選択したボタンを保管
+					pr.btn = hit.collider.gameObject;
+					pr.s_script = pr.btn.GetComponent<SkillScript>();
+					btnTempPos = pr.btn.transform.localPosition;
+					break;
+				}
+			}
+		}
+		if (Input.GetMouseButton(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit = new RaycastHit();
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+			{
+				Debug.Log(hit.collider.gameObject.name);
+				if (pr.btn != null)
+				{
+					// ボタンを動かす
+					Vector3 pos = hit.point;
+					if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+						pos.y += 0.2f;
+					pr.btn.transform.position = pos;
+				}
+			}
+		}
+		if (Input.GetMouseButtonUp(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit = new RaycastHit();
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, u_layerMask))
+			{
+				if (pr.btn != null)
+				{
+					if (pr.s_script.s_targetNum != TargetNum.SELF)
+					{
+						//レイヤーが同じなら
+						if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+						{
+							SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
+						}
+						else
+							//ボタンを初期位置に戻す
+							pr.StartCoroutine(pr.LerpMove(pr.btn,
+								pr.btn.transform.localPosition, btnTempPos, 1));
+					}
+					// SELFなら、即発動
+					else
+					{
+						SkillUse(pr, pr.p_jb.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
+					}
+				}
+			}
+			else//ボタンを初期位置に戻す
+				pr.StartCoroutine(pr.LerpMove(pr.btn,
+					pr.btn.transform.localPosition, btnTempPos, 1));
+		}
+		if (Input.GetMouseButtonDown(1))
+		{
+			pr.ChangeMode(BattelMode.Instance);
+		}
+		#endregion
+		pr.CheckEndBattel();
+		pr.CheckGameOver();
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
+		//ボタンを初期位置に戻す
+		pr.StartCoroutine(pr.LerpMove(pr.btn,
+			pr.btn.transform.localPosition, btnTempPos, 1));
+		pr.p_jb.HideSkillBtn();
+	}
+	/// <summary>
+	/// スキルを使う
+	/// </summary>
+	/// <param name="pr">PlayerRoot.</param>
+	/// <param name="target">Target.</param>
+	/// <param name="btn">Skill Button.</param>
+	/// <param name="recastTime">Recast time.</param>
+	/// <param name="effectTime">Effect time.</param>
+	private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0)
+	{
+		pr.s_script.skillMethod(pr.s_script, target, effectTime);
+		pr.p_jb.ChangeMode(SkillMode.Instance);
+		pr.ChangeMode(BattelMode.Instance);
+	}
 }
