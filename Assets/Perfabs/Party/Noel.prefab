@@ -133,7 +133,7 @@ GameObject:
   - 136: {fileID: 13668282}
   m_Layer: 8
   m_Name: Noel
-  m_TagString: Tank
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6911,6 +6911,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421266}
   - 95: {fileID: 9537516}
+  - 114: {fileID: 11474776}
   m_Layer: 0
   m_Name: noel_motion02
   m_TagString: Untagged
@@ -14829,7 +14830,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176418}
-  m_LocalRotation: {x: -0.33969656, y: -0.51544386, z: 0.5014406, w: 0.60620224}
+  m_LocalRotation: {x: -0.3396966, y: -0.5154439, z: 0.50144064, w: 0.6062023}
   m_LocalPosition: {x: 0.038970985, y: -0.117300525, z: -0.030498488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16512,7 +16513,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140082}
-  m_LocalRotation: {x: 0.6847904, y: 0.7060765, z: -0.1255448, w: -0.12944725}
+  m_LocalRotation: {x: 0.68479043, y: 0.70607656, z: -0.12554482, w: -0.12944727}
   m_LocalPosition: {x: 0.075810686, y: 0.57062256, z: -0.05854606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -18333,10 +18334,22 @@ MonoBehaviour:
   p_attack: 150
   p_defence: 50
   p_type: 5
-  _target: {fileID: 0}
+  p_target: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 0e75a1a225ee7f14a9d4856bdfbcb7ea, type: 2}
   startPos: {x: 0, y: 0, z: 0}
+  skillUsing: {fileID: 0}
+--- !u!114 &11474776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77e70dbea333f94cb6b2252b3819b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13668282
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -20402,6 +20415,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: p_type
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

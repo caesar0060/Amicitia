@@ -1428,6 +1428,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 498512}
   - 95: {fileID: 9513738}
+  - 114: {fileID: 11427058}
   m_Layer: 0
   m_Name: yuma
   m_TagString: Untagged
@@ -1675,8 +1676,8 @@ GameObject:
   - 54: {fileID: 5430578}
   - 136: {fileID: 13657424}
   m_Layer: 8
-  m_Name: P_Attacker
-  m_TagString: Tank
+  m_Name: Yuma
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3898,6 +3899,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11427058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77e70dbea333f94cb6b2252b3819b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11464422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3930,10 +3942,11 @@ MonoBehaviour:
   p_attack: 50
   p_defence: 50
   p_type: 1
-  _target: {fileID: 0}
+  p_target: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
   startPos: {x: 0, y: 0, z: 0}
+  skillUsing: {fileID: 0}
 --- !u!114 &11498350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5256,7 +5269,7 @@ Prefab:
       objectReference: {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Name
-      value: P_Attack
+      value: YumaP_Attacker
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: p_attack
@@ -5273,6 +5286,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

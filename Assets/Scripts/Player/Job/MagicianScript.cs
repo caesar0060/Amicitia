@@ -43,7 +43,6 @@ public class MagicianScript: JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger ("Attack");
-		RotateToTarget (target);
 		StartCoroutine (Damage (target, sc, 1.5f));
 	}
 	/// <summary>

@@ -42,7 +42,7 @@ public class AttackerScript : JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, target.transform.position,
-			1, target, sc));
+			1, target, sc, "Attack"));
 	}
 	/// <summary>
 	/// 物理強攻撃

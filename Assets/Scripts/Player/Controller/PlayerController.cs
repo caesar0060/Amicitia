@@ -136,8 +136,8 @@ public class WalkMode : RootController
 		#region 操作
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (pr.p_jb._target != null)
-				Debug.Log(pr.p_jb._target.name);
+			if (pr.p_jb.p_target != null)
+				Debug.Log(pr.p_jb.p_target.name);
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -170,8 +170,8 @@ public class BattelStart : RootController
 	#region Property
 	// GameObjectを取得
 	private GameObject cameraSupport;
-	private Vector3 battelPos = new Vector3(22.82f, 0.44f, 10.72f);
-	private Vector3 battelRot = new Vector3(1.12f, 328.4f, 0.8f);
+	private Vector3 battelPos = new Vector3(20.82f, -0.48f, 13.14f);
+	private Vector3 battelRot = new Vector3(7.86f, 342.47f, 2.78f);
 	#endregion
 	// インスタンス
 	private static BattelStart instance;
@@ -412,7 +412,7 @@ public class P_TargetMode : RootController
 						//レイヤーが同じなら
 						if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
 						{
-							SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
+							SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
 						}
 						else
 							//ボタンを初期位置に戻す
@@ -422,7 +422,7 @@ public class P_TargetMode : RootController
 					// SELFなら、即発動
 					else
 					{
-						SkillUse(pr, pr.p_jb.gameObject, pr.btn, pr.s_script.s_recast, pr.s_script.s_effectTime);
+						SkillUse(pr, pr.p_jb.gameObject, pr.btn, pr.s_script.s_effectTime);
 					}
 				}
 			}
@@ -451,12 +451,12 @@ public class P_TargetMode : RootController
 	/// <param name="pr">PlayerRoot.</param>
 	/// <param name="target">Target.</param>
 	/// <param name="btn">Skill Button.</param>
-	/// <param name="recastTime">Recast time.</param>
 	/// <param name="effectTime">Effect time.</param>
-	private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float recastTime, float effectTime = 0)
+	private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float effectTime = 0)
 	{
-		pr.s_script.skillMethod(pr.s_script, target, effectTime);
-		pr.p_jb.ChangeMode(SkillMode.Instance);
+		pr.p_jb.ChangeMode (SkillMode.Instance);
+		pr.p_jb.p_target = target; pr.p_jb.skillUsing = pr.s_script;
+		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().attackList.Add (pr.p_jb.gameObject);
 		pr.ChangeMode(BattelMode.Instance);
 	}
 }

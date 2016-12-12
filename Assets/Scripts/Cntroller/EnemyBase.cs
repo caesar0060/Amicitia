@@ -61,6 +61,8 @@ public class EnemyBase : StatusControl {
 	[HideInInspector] public Vector3 startPos;
 	// Local位置の最初値
 	[HideInInspector] public Vector3 startLocalPos;
+	//使うスキルを登録する
+	[HideInInspector] public Skill skillUsing;
 	#endregion
 
 	#region Function
@@ -120,7 +122,8 @@ public class EnemyBase : StatusControl {
 	/// <param name="skill">使うスキル.</param>
 	public void SkillUse(GameObject target, Skill skill){
 		ChangeMode (E_SkillMode.Instance);
-		skill.skillMethod (target, skill.s_effectTime);
+		e_target = target; skillUsing = skill;
+		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().attackList.Add (this.gameObject);
 		skill.isRecast = true;
 	}
 	/// <summary>
@@ -139,14 +142,25 @@ public class EnemyBase : StatusControl {
 			Set_b_Status (BattelStatus.DEAD);
 			this.GetComponent<CapsuleCollider> ().enabled = false;
 			e_pr.enemyList.Remove (this.gameObject);
-			Destroy (this.gameObject);
+			//Destroy (this.gameObject);
 		}
+	}
+	/// <summary>
+	/// Rotates to target.
+	/// </summary>
+	/// <param name="target">Target.</param>
+	public void RotateToTarget(GameObject target){
+		Vector3 dir = target.transform.position - this.transform.position;
+		this.transform.rotation = Quaternion.LookRotation (dir);
 	}
 	/// <summary>
 	/// 最初の位置に戻る
 	/// </summary>
 	public void ReturnPos(){
-		//StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		this.transform.rotation = Quaternion.Euler (Vector3.zero);
+		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().ReadyNextAttack();
+		ChangeMode (preivousController);
 	}
 	#endregion
     #region Skill
@@ -208,7 +222,6 @@ public class EnemyBase : StatusControl {
 		skill.isRecast = true;
 		float startTime = Time.time;
 		while(true){
-			Debug.Log (Time.time - startTime);
 			if(Time.time - startTime >= time ){
 				skill.isRecast = false;
 				yield break;
@@ -227,32 +240,36 @@ public class EnemyBase : StatusControl {
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
 	/// <param name="a_time">Animation time.</param>
-	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, Skill skill = null, float a_time = 1){
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed = 1, GameObject target =null, Skill skill = null, string a_name = "", float a_time = 1){
 		float timer = 0;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
-			if (target != null) {
-				endPos = target.transform.position;
-				endPos -= Vector3.Normalize (startLocalPos) * this.GetComponent<CapsuleCollider> ().radius;
-			}
-			float distance = Vector3.Distance (startPos, endPos);
-			float time = distance / ENEMY_MOVE_SPEED;
-			timer += Time.deltaTime * speed;
-			float moveRate = timer / time;
-			Vector3 dir = Vector3.RotateTowards (this.transform.forward,
-				              target.transform.position - this.transform.position, 1, 0);
-			this.transform.rotation = Quaternion.LookRotation (dir);
-			if (moveRate  >= 1) {
-				moveRate = 1;
-				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
-				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
-				if (target != null && skill!=null) {
-					obj.GetComponentInChildren<Animator> ().SetTrigger ("isBom");
-					StartCoroutine( Damage (target, skill, a_time));
+			try{
+				if (target != null) {
+					Vector3 dir = target.transform.position - this.transform.position;
+					RotateToTarget(target);
+					endPos = target.transform.position - Vector3.Normalize(dir) * this.GetComponent<CapsuleCollider>().radius;
 				}
+				float distance = Vector3.Distance (startPos, endPos);
+				float time = distance / (ENEMY_MOVE_SPEED * speed);
+				timer += Time.deltaTime;
+				float moveRate = timer / time;
+				if (moveRate  >= 1) {
+					moveRate = 1;
+					obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+					obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
+					if (target != null && skill!=null) {
+						obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
+						StartCoroutine( Damage (target, skill, a_time));
+					}
+					yield break;
+				}
+				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+			}
+			catch(MissingReferenceException){
+				ReturnPos ();
 				yield break;
 			}
-			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 			yield return new WaitForEndOfFrame ();
 		}
 	}
@@ -265,18 +282,22 @@ public class EnemyBase : StatusControl {
 	public IEnumerator Damage(GameObject target, Skill skill, float time){
 		float timer = 0;
 		while (true) {
-			timer += Time.deltaTime;
-			float counter = timer / time;
-			if (counter >= 1) {
-				float s_power = 1;	//精霊の力
-				if (CheckFlag (ConditionStatus.POWER_UP))
-					s_power = 1.5f;
-				JobBase jb = target.GetComponent<JobBase> ();
-				int damage = Math.Max ((int)((e_attack + skill.s_power) * s_power) - jb.p_defence, 0);
-				jb.p_hp -= damage;
-				Debug.Log (skill.s_recast);
-				StartCoroutine (SkillRecast (skill, skill.s_recast));
-				ChangeMode (preivousController);
+			try{
+				timer += Time.deltaTime;
+				float counter = timer / time;
+				if (counter >= 1) {
+					float s_power = 1;	//精霊の力
+					if (CheckFlag (ConditionStatus.POWER_UP))
+						s_power = 1.5f;
+					JobBase jb = target.GetComponent<JobBase> ();
+					int damage = Math.Max ((int)((e_attack + skill.s_power) * s_power) - jb.p_defence, 0);
+					jb.p_hp -= damage;
+					StartCoroutine (SkillRecast (skill, skill.s_recast));
+					yield break;
+				}
+			}
+			catch(MissingReferenceException){
+				ReturnPos ();
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();

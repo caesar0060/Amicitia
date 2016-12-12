@@ -47,8 +47,7 @@ public class E_Magician : EnemyBase {
 			ChangeMode(M_Normal.Instance);
 			break;
 		}
-		ChangeMode(M_Normal.Instance);
-		StartCoroutine (Loading(2.0f));
+		StartCoroutine (Loading(5.0f));
 	}
 	// Update is called once per frame
 	void Update () {
@@ -64,7 +63,7 @@ public class E_Magician : EnemyBase {
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, 
-			target.transform.position, 1, target, skillList [0]));
+			target.transform.position, 1, target, skillList [0], "isBom"));
 	}
 	/// <summary>
     /// エオロー

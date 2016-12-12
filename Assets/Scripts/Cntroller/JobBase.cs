@@ -22,7 +22,7 @@ public class JobBase : StatusControl {
     // Job
     public JobType p_type;
 	//ターゲット
-	[HideInInspector] public GameObject _target;
+	[HideInInspector] public GameObject p_target;
 	//インスタンスを保存するコントローラ
 	public Controller controller;
 	// Skillを保存用配列
@@ -30,6 +30,8 @@ public class JobBase : StatusControl {
 	public P_Delegate[] p_funcList;
 	// 位置の最初値
 	[HideInInspector] public Vector3 startPos;
+	//使うスキルを登録する
+	[HideInInspector] public SkillScript skillUsing;
 	#endregion
 
 	// Use this for initialization
@@ -46,12 +48,12 @@ public class JobBase : StatusControl {
 		case BattelStatus.NOT_IN_BATTEL:
 			GameObject other_go = other.gameObject;
 			if(other_go.layer == LayerMask.NameToLayer("NPC")){
-				if (_target == null) {
+				if (p_target == null) {
 					if (CheckIsFront (other_go))
-						_target = other_go;
-				} else if (_target == other_go) {
+						p_target = other_go;
+				} else if (p_target == other_go) {
 					if (!CheckIsFront (other_go))
-						_target = null;
+						p_target = null;
 				}
 			}
 			break;
@@ -61,8 +63,8 @@ public class JobBase : StatusControl {
 	public void OnTriggerExit(Collider other){
 		switch(battelStatus){
 		case BattelStatus.NOT_IN_BATTEL:
-			if (_target == other.gameObject)
-				_target = null;
+			if (p_target == other.gameObject)
+				p_target = null;
 			break;
 		}
 	}
@@ -162,9 +164,22 @@ public class JobBase : StatusControl {
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
+	/// <summary>
+	/// Rotates to target.
+	/// </summary>
+	/// <param name="target">Target.</param>
 	public void RotateToTarget(GameObject target){
 		Vector3 dir = target.transform.position - this.transform.position;
 		this.transform.rotation = Quaternion.LookRotation (dir);
+	}
+	/// <summary>
+	/// 最初の位置に戻る
+	/// </summary>
+	public void ReturnPos(){
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		this.transform.rotation = Quaternion.Euler (Vector3.zero);
+		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().ReadyNextAttack();
+		ChangeMode (ReadyMode.Instance);
 	}
 	#endregion
 	#region Co-routine
@@ -234,13 +249,13 @@ public class JobBase : StatusControl {
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
 	/// <param name="a_time">Animation time.</param>
-	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null, float a_time = 1){
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed =1, GameObject target =null, SkillScript sc = null, string a_name = "", float a_time = 1){
 		float timer = 0;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
 			float distance = Vector3.Distance (startPos, endPos);
-			float time = distance / PLAYER_MOVE_SPEED;
-			timer += Time.deltaTime * speed;
+			float time = distance / (PLAYER_MOVE_SPEED * speed);
+			timer += Time.deltaTime;
 			float moveRate = timer / time;
 			if (target != null) {
                 try
@@ -251,24 +266,24 @@ public class JobBase : StatusControl {
                 }
                 catch (MissingReferenceException)
                 {
-                    ChangeMode(ReadyMode.Instance);
+					ReturnPos ();
+					yield break;
                 }
 			}
 			if (moveRate  >= 1) {
 				moveRate = 1;
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
-				if (target != null && sc!=null) {
-                    try
-                    {
-                        obj.GetComponentInChildren<Animator>().SetTrigger("Attack");
-                        StartCoroutine(Damage(target, sc, a_time));
-                    }
-                    catch (MissingReferenceException)
-                    {
-                        ChangeMode(ReadyMode.Instance);
-                    }
-				}
+				if (target != null && sc != null) {
+					try {
+						obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
+						StartCoroutine (Damage (target, sc, a_time));
+					} catch (MissingReferenceException) {
+						ReturnPos ();
+						yield break;
+					}
+				} else
+					this.transform.rotation = Quaternion.Euler (Vector3.zero);
 				yield break;
 			}
 			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
@@ -296,11 +311,11 @@ public class JobBase : StatusControl {
                     eb.e_hp -= damage;
                     target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                     StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
-                    ChangeMode(ReadyMode.Instance);
                 }
                 catch (MissingReferenceException)
                 {
-                    ChangeMode(ReadyMode.Instance);
+					ReturnPos ();
+					yield break;
                 }
 				yield break;
 			}
