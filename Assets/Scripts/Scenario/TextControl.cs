@@ -1,13 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class TextControl : MonoBehaviour {
-
-
-	[SerializeField] 
-	private Text _uiText;		//UIテキストの参照を保つ
-
+	[SerializeField]private Text _uiText = null;		//UIテキストの参照を保つ
 	[SerializeField][Range(0.001f, 0.5f)]
 	public float intervalForCharacterDisplay = 0.05f;	//1文字の表示にかかる時間
 	private string currentText = string.Empty;	//現在の文字列
@@ -22,6 +19,13 @@ public class TextControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		try{
+			if(_uiText == null)
+				_uiText = GameObject.FindGameObjectWithTag ("TalkUI").GetComponentInChildren<Text>();
+		}
+		catch(NullReferenceException){
+			return;
+		}
 		//クリックから経過時間が想定表示時間の何％か確認し、表示文字数を出す
 		int displayCharacterCount = (int)(Mathf.Clamp01 ((Time.time - timeElapsed) / timeUntilDisplay) * currentText.Length);
 		//表示文字数が前回の表示文字数と異なるならテキストを更新

@@ -44,7 +44,8 @@ public class WalkMode : RootController
 	}
 	override public void Enter(PlayerRoot pr = null)
 	{
-		pr.CreateChild("Player", pr.p_prefabList[1]);
+		if(!GameObject.Find("Player"))
+			pr.CreateChild("Player", pr.p_prefabList[1]);
 		cameraSupport = GameObject.FindGameObjectWithTag("Camera");
 		// 初期化する
 		cameraSupport.transform.localPosition = NormalPos;
@@ -134,8 +135,10 @@ public class WalkMode : RootController
 		#region 操作
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (pr.p_jb.p_target != null)
+			if (pr.p_jb.p_target != null){
+				pr.StartCoroutine( pr.GetComponent<FadeManager>().ReadyTalkUI(0.5f, TalkMode.Instance));
 				pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb.p_target.GetComponent<ScenarioScript>().fileName);
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -158,6 +161,74 @@ public class WalkMode : RootController
 		cameraSupport.transform.localRotation = Quaternion.Slerp(cameraSupport.transform.localRotation,
 			s_defaultRot, Time.deltaTime * 5);
 	}
+	#endregion
+}
+/// <summary>
+/// TalkMode Singleton
+/// </summary>
+public class TalkMode : RootController
+{
+	#region Property
+	// GameObjectを取得
+	private GameObject cameraSupport;
+	private Vector3 battelPos = new Vector3(20.82f, -0.48f, 13.14f);
+	private Vector3 battelRot = new Vector3(7.86f, 342.47f, 2.78f);
+	#endregion
+	// インスタンス
+	private static TalkMode instance;
+	/// <summary>
+	/// インスタンスを取得
+	/// </summary>
+	/// <value>インスタンス</value>
+	public static TalkMode Instance
+	{
+		get
+		{
+			if (instance == null)
+				instance = new TalkMode();
+			return instance;
+		}
+	}
+	override public void Enter(PlayerRoot pr = null)
+	{
+		
+	}
+	override public void Excute(PlayerRoot pr = null)
+	{
+		ScenarioManager sm = pr.GetComponent<ScenarioManager> ();
+		//すべて表示したら
+		if (sm.m_textControl.IsCompleteDisplayText) {
+			//まだ次の行があったら
+			if (sm.m_currentLine < sm.m_scenarios.Count) {
+				//次の行を読む
+				if (!sm.m_isCallPreload) {
+					sm.m_isCallPreload = true;
+				}
+				if (Input.GetMouseButtonDown (0)) {
+					sm.RequestNextLine ();
+
+				}
+			} else {
+				//終わり
+				sm.isScenario = false;
+			}
+		} else {
+			//すべて表示していなかったら
+			if(Input.GetMouseButtonDown(0)){
+				sm.m_textControl.ForceCompleteDisplaytext();
+			}
+		}
+		if (Input.GetMouseButtonDown (0) && !sm.isScenario) {
+			sm.FinishScenario ();
+			pr.StartCoroutine (pr.GetComponent<FadeManager> ().CloseTalkUI (0.5f, WalkMode.Instance));
+		}
+	}
+	override public void Exit(PlayerRoot pr = null)
+	{
+
+	}
+	#region Function
+
 	#endregion
 }
 /// <summary>
