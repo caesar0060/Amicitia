@@ -2,69 +2,58 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class TextControl : MonoBehaviour
-{
+public class TextControl : MonoBehaviour {
 
 
-    [SerializeField]
-    private Text _uiText;		//UI僥僉僗僩偺嶲徠傪曐偮
+	[SerializeField] 
+	private Text _uiText;		//UIテキストの参照を保つ
 
-    [SerializeField]
-    [Range(0.001f, 0.5f)]
-    public float intervalForCharacterDisplay = 0.05f;	//1暥帤偺昞帵偵偐偐傞帪娫
-
-    public bool isScenario = false;	//僔僫儕僆拞偐偳偆偐傪敾抐
-
-    private string currentText = string.Empty;	//尰嵼偺暥帤楍
-    private float timeUntilDisplay = 0;			//昞帵偵偐偐傞帪娫
-    private float timeElapsed = 1;				//暥帤楍偺昞帵傪奐巒偟偨帪娫
-    private int lastUpdateCharacter = -1;		//昞帵拞偺暥帤悢
+	[SerializeField][Range(0.001f, 0.5f)]
+	public float intervalForCharacterDisplay = 0.05f;	//1文字の表示にかかる時間
+	private string currentText = string.Empty;	//現在の文字列
+	private float timeUntilDisplay = 0;			//表示にかかる時間
+	private float timeElapsed = 1;				//文字列の表示を開始した時間
+	private int lastUpdateCharacter = -1;		//表示中の文字数
 
 
-    // Use this for initialization
-    void Start()
-    {
-    }
+	// Use this for initialization
+	void Start () {
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        //僋儕僢僋偐傜宱夁帪娫偑憐掕昞帵帪娫偺壗亾偐妋擣偟丄昞帵暥帤悢傪弌偡
-        int displayCharacterCount = (int)(Mathf.Clamp01((Time.time - timeElapsed) / timeUntilDisplay) * currentText.Length);
-        //昞帵暥帤悢偑慜夞偺昞帵暥帤悢偲堎側傞側傜僥僉僗僩傪峏怴
-        if (displayCharacterCount != lastUpdateCharacter)
-        {
-            _uiText.text = currentText.Substring(0, displayCharacterCount);
-            lastUpdateCharacter = displayCharacterCount;
-        }
-    }
-    /// <summary>
-    /// 師偵昞帵偡傞暥帤楍傪僙僢僩偡傞
-    /// </summary>
-    public void SetNextLine(string text)
-    {
-        currentText = text;
+	// Update is called once per frame
+	void Update () {
+		//クリックから経過時間が想定表示時間の何％か確認し、表示文字数を出す
+		int displayCharacterCount = (int)(Mathf.Clamp01 ((Time.time - timeElapsed) / timeUntilDisplay) * currentText.Length);
+		//表示文字数が前回の表示文字数と異なるならテキストを更新
+		if (displayCharacterCount != lastUpdateCharacter) {
+			_uiText.text = currentText.Substring (0, displayCharacterCount);
+			lastUpdateCharacter = displayCharacterCount;
+		}
+	}
+	/// <summary>
+	/// 次に表示する文字列をセットする
+	/// </summary>
+	public void SetNextLine(string text){
+		currentText = text;
 
-        //憐掕昞帵帪娫偲尰嵼偺帪崗傪僉儍僢僔儏
-        timeUntilDisplay = currentText.Length * intervalForCharacterDisplay;
-        timeElapsed = Time.time;
-        //帪娫僇僂儞僩傪弶婜壔
-        lastUpdateCharacter = -1;
-    }
-    /// <summary>
-    /// 暥帤偺昞帵偑姰椆偟偰偄傞偐偳偆偐
-    /// </summary>
-    /// <value><c>true</c> if this instance is complete display text; otherwise, <c>false</c>.</value>
-    public bool IsCompleteDisplayText
-    {
-        get { return Time.time > timeElapsed + timeUntilDisplay; }
-    }
+		//想定表示時間と現在の時刻をキャッシュ
+		timeUntilDisplay = currentText.Length * intervalForCharacterDisplay;
+		timeElapsed = Time.time;
+		//時間カウントを初期化
+		lastUpdateCharacter = -1;
+	}
+	/// <summary>
+	/// 文字の表示が完了しているかどうか
+	/// </summary>
+	/// <value><c>true</c> if this instance is complete display text; otherwise, <c>false</c>.</value>
+	public bool IsCompleteDisplayText{
+		get { return Time.time > timeElapsed + timeUntilDisplay;}
+	}
 
-    /// <summary>
-    /// 嫮惂揑偵慡暥昞帵偡傞
-    /// </summary>
-    public void ForceCompleteDisplaytext()
-    {
-        timeUntilDisplay = 0;
-    }
+	/// <summary>
+	/// 強制的に全文表示する
+	/// </summary>
+	public void ForceCompleteDisplaytext(){
+		timeUntilDisplay = 0;
+	}
 }

@@ -33,6 +33,7 @@ public class PartyRoot : MonoBehaviour {
 			player.transform.localPosition = posArray[i] * DISTANCE;
 			StartCoroutine ("BattelStartRecast", player);
 			player.GetComponentInChildren<Animator> ().SetTrigger ("Battel");
+			player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NORMAL);
 		}
 		for (int i = 0; i < PlayerRoot.Instance.e_prefabList.Count; i++) {
 			GameObject enemy = Instantiate (PlayerRoot.Instance.e_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;

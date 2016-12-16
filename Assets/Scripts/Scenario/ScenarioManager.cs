@@ -1,76 +1,59 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine.UI;
 using System.Text;
 using System.Text.RegularExpressions;
 
 [RequireComponent(typeof(TextControl))]
-public class ScenarioManager : MonoBehaviour
+public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 {
-
-    public string LoadFileName;
-    public Sprite[] Images;
-
-    private string[] m_scenarios;	//僔僫儕僆傪奿擺偡傞
+	private bool isScenario = false;	//シナリオ中かどうかを判断
+	private List<string> m_scenarios = new List<string>();	//シナリオを格納する
     private int m_currentLine = 0;
     private bool m_isCallPreload = false;
-
-    public GameObject playerImage;
-    public GameObject hukidasi;
+	public Dictionary<string, GameObject> p_imageList = new Dictionary<string, GameObject> ();
+	[SerializeField] private GameObject hukidasi;
 
     private TextControl m_textControl;
-    private StageSelect stageSelect;
-    //private CommandController m_commandController;
+
     // Use this for initialization
     void Start()
     {
         m_textControl = this.GetComponent<TextControl>();
-        stageSelect = GameObject.Find("Main Camera").GetComponent<StageSelect>();
-
-        UpdateLines(LoadFileName);
-        StartScenario();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //偡傋偰昞帵偟偨傜
-        if (m_textControl.IsCompleteDisplayText)
-        {
-            //傑偩師偺峴偑偁偭偨傜
-            if (m_currentLine < m_scenarios.Length)
-            {
-                //師偺峴傪撉傓
-                if (!m_isCallPreload)
-                {
-                    m_isCallPreload = true;
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    RequestNextLine();
-                }
-            }
-            else
-            {
-                //廔傢傝
-                m_textControl.isScenario = false;
-                FinishScenario();
-            }
-        }
-        else
-        {
-            //偡傋偰昞帵偟偰偄側偐偭偨傜
-            if (Input.GetMouseButtonDown(0))
-            {
-                m_textControl.ForceCompleteDisplaytext();
-            }
-        }
-    }
-    //師偺峴傪撉傓
+	void Update () {
+		//すべて表示したら
+		if (m_textControl.IsCompleteDisplayText) {
+			//まだ次の行があったら
+			if (m_currentLine < m_scenarios.Count) {
+				//次の行を読む
+				if (!m_isCallPreload) {
+					m_isCallPreload = true;
+				}
+				if (Input.GetMouseButtonDown (0)) {
+					RequestNextLine ();
+				}
+			} else {
+				//終わり
+				isScenario = false;
+			}
+		} else {
+			//すべて表示していなかったら
+			if(Input.GetMouseButtonDown(0)){
+				m_textControl.ForceCompleteDisplaytext();
+			}
+		}
+	}
+    /// <summary>
+	/// 次の行を読む
+    /// </summary>
     void RequestNextLine()
     {
-        if (m_textControl.isScenario == true)
+        if (isScenario == true)
         {
             var currentText = m_scenarios[m_currentLine];
 
@@ -80,10 +63,15 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
-    //怴偟偄儔僀儞傪庢摼偡傞
-    public void UpdateLines(string fileName)
+    /// <summary>
+	/// 新しいラインを取得する
+    /// </summary>
+    /// <param name="fileName">fileName</param>
+	public void UpdateLines(string fileName)
     {
-        var scenarioText = Resources.Load<TextAsset>("Scenario/" + fileName);
+		string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + fileName + ".txt");
+		string scenarioText = File.ReadAllText (filePath);
+
 
         if (scenarioText == null)
         {
@@ -92,12 +80,18 @@ public class ScenarioManager : MonoBehaviour
             enabled = false;
             return;
         }
-        m_scenarios = scenarioText.text.Split(new string[] { "@br" }, System.StringSplitOptions.None);
+		int num = 0;
+        string[] scenarios = scenarioText.Split(new string[] { "\n"}, System.StringSplitOptions.None);
+		m_scenarios = getNowScenario (scenarios, num);
         m_currentLine = 0;
-
-        Resources.UnloadAsset(scenarioText);
+		isScenario = true;
+		RequestNextLine ();
     }
-    //Line偵傛傝丄僾儘僙僗傪幏峴偡傞
+   /// <summary>
+	/// Lineにより、プロセスを執行する
+   /// </summary>
+   /// <param name="line">line</param>
+   /// <returns>text</returns>
     private string CommandProcess(string line)
     {
         var lineReader = new StringReader(line);
@@ -115,17 +109,29 @@ public class ScenarioManager : MonoBehaviour
             {
                 if (text[0] == '@')
                 {
-                    int imageNum = int.Parse(GetImageNum(text));
-                    stageSelect.playerImage.sprite = Images[imageNum];
-                    m_currentLine++;
-                    var currentText = m_scenarios[m_currentLine];
-                    text = CommandProcess(currentText);
+                   
                 }
                 lineBulider.AppendLine(text);
             }
         }
         return lineBulider.ToString();
     }
+	private List<string> getNowScenario(string[] scenarios, int num){
+		List<string> nowScenario = new List<string>();
+		for (int i = 0; i < scenarios.Length; i++) {
+			if (scenarios [i] == "@" + num) {
+				int j = i + 1;
+				while (true) {
+					if (scenarios [j] != "@end")
+						nowScenario.Add(scenarios [j]);
+					else
+						return nowScenario;
+				}
+			}
+		}
+		nowScenario.Add("Read Scenario error, haven't this event number");
+		return nowScenario;
+	}
     /// <summary>
     /// Get the image number.
     /// </summary>
@@ -136,6 +142,7 @@ public class ScenarioManager : MonoBehaviour
         var tag = Regex.Match(line, "@(\\S+)");
         return tag.Groups[1].ToString();
     }
+    /*
     /// <summary>
     /// Starts the scenario.
     /// </summary>
@@ -168,4 +175,5 @@ public class ScenarioManager : MonoBehaviour
             "time", 1
         ));
     }
+    */
 }
