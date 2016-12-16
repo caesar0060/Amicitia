@@ -54,15 +54,10 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     void RequestNextLine()
 	{
 		if (isScenario == true) {
-			var currentText = m_scenarios [m_currentLine];
-			if (scenarioText == null) {
-				Debug.LogError ("Scenario file not found");
-				Debug.LogError ("ScenarioManger not active");
-				enabled = false;
-				return;
-			}
-			m_scenarios = scenarioText.text.Split (new string[] { "@br" }, System.StringSplitOptions.None);
-			m_currentLine = 0;
+			var currentText = m_scenarios[m_currentLine];	
+			m_textControl.SetNextLine(CommandProcess(currentText));		
+			m_currentLine++;		
+			m_isCallPreload = false;
 		}
 	}
     /// <summary>
@@ -82,7 +77,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
             enabled = false;
             return;
         }
-		int num = 0;
+		string num = "0";
         string[] scenarios = scenarioText.Split(new string[] { "\n"}, System.StringSplitOptions.None);
 		m_scenarios = getNowScenario (scenarios, num);
         m_currentLine = 0;
@@ -118,16 +113,19 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
         return lineBulider.ToString();
     }
-	private List<string> getNowScenario(string[] scenarios, int num){
+	private List<string> getNowScenario(string[] scenarios, string num){
 		List<string> nowScenario = new List<string>();
 		for (int i = 0; i < scenarios.Length; i++) {
-			if (scenarios [i] == "@" + num) {
+			string[] lines = scenarios [i].Split ();
+			if (lines [0] == "@" + num) {
 				int j = i + 1;
 				while (true) {
-					if (scenarios [j] != "@end")
-						nowScenario.Add(scenarios [j]);
+					lines = scenarios [j].Split ();
+					if (lines [0] != "@end")
+						nowScenario.Add(lines [0]);
 					else
 						return nowScenario;
+					j++;
 				}
 			}
 		}
@@ -178,5 +176,4 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         ));
     }
     */
->>>>>>> feature/1056
 }

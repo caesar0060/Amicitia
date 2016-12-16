@@ -134,8 +134,8 @@ public class WalkMode : RootController
 		#region ²Ù×÷
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (pr.p_jb._target != null)
-				pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb._target.GetComponent<ScenarioScript>().fileName);
+			if (pr.p_jb.p_target != null)
+				pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb.p_target.GetComponent<ScenarioScript>().fileName);
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
