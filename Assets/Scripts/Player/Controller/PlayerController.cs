@@ -61,8 +61,6 @@ public class WalkMode : RootController
 		#region キャラクターのコントロール
 		//移動用vector3
 		Vector3 move_vector = Vector3.zero;
-		//現在位置を保管する
-		Vector3 p_pos = pr.transform.position;
 		//移動中かどうか
 		bool isMoved = false;
 		if (Input.GetKey(KeyCode.A))
@@ -136,8 +134,8 @@ public class WalkMode : RootController
 		#region 操作
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (pr.p_jb.p_target != null)
-				Debug.Log(pr.p_jb.p_target.name);
+			if (pr.p_jb._target != null)
+				pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb._target.GetComponent<ScenarioScript>().fileName);
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -221,9 +219,7 @@ public class BattelMode : RootController
 
 	// タッチのレイヤーマスク
 	private int d_layerMask;
-	private int layerMask;
-	private int u_layerMask;
-	//
+	// ボタンが表示しているかどうか
 	private bool isBtnShow = false;
 	#endregion
 	// バトルモードのインスタンス
@@ -247,8 +243,6 @@ public class BattelMode : RootController
 		pr.s_script = null;
 		pr.btn = null;
 		isBtnShow = false;
-		layerMask = LayerMask.GetMask(new string[] { "Player", "Enemy", "Ground" });
-		u_layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
 		d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
 	}
 	override public void Excute(PlayerRoot pr = null)

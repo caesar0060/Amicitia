@@ -100,6 +100,12 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
         child.transform.parent = this.transform;
         child.name = name;
         child.transform.localPosition = Vector3.zero;
+		child.AddComponent<SphereCollider> ();
+		SphereCollider sc = child.GetComponent<SphereCollider> ();
+		sc.center = new Vector3 (0, 0.5f, 0);
+		sc.radius = 0.8f;
+		sc.isTrigger = true;
+		child.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NOT_IN_BATTEL);
         p_jb = child.GetComponent<JobBase>();
 	}
 	/// <summary>

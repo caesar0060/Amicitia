@@ -19,7 +19,6 @@ public class AttackerScript : JobBase {
 	void Start () {
 		startPos = this.transform.position;
 		p_funcList = new P_Delegate[]{ Skill1};
-		Set_b_Status (BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
 		controller.Enter (this);
 		skillBtnGenerate ();
