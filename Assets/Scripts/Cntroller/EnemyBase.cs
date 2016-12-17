@@ -4,13 +4,6 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum JobType{
-	NONE = 0,
-	Attacker = 1,
-	Defender = 2,
-	Magician = 5,
-	Leader,
-}
 [Serializable]
 public class Skill{
 	public string s_name;		//名前
@@ -34,16 +27,6 @@ public class EnemyBase : StatusControl {
 	public static float BATTEL_START_RECAST_TIME = 5.0f;
 	// プレイヤー攻撃のときの移動の必要な時間
 	private static float ENEMY_MOVE_SPEED = 5.0f;
-	// HP
-	public int e_hp;
-    // HP
-    public int e_maxHP;
-	// 攻撃力
-	public int e_attack;
-	//防御力
-	public int e_defence;
-    //エネミーのタイプ
-    public JobType e_type;
 	//インスタンスを保存するコントローラ
 	public E_Controller controller = null;
 	//前のインスタンスを保存するコントローラ
@@ -290,8 +273,8 @@ public class EnemyBase : StatusControl {
 					if (CheckFlag (ConditionStatus.POWER_UP))
 						s_power = 1.5f;
 					JobBase jb = target.GetComponent<JobBase> ();
-					int damage = Math.Max ((int)((e_attack + skill.s_power) * s_power) - jb.p_defence, 0);
-					jb.p_hp -= damage;
+					int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+                    jb.Set_HP(damage);
 					StartCoroutine (SkillRecast (skill, skill.s_recast));
 					yield break;
 				}

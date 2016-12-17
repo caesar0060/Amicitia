@@ -2,6 +2,14 @@
 using System;
 using System.Collections;
 
+public enum JobType
+{
+    NONE = 0,
+    Attacker = 1,
+    Defender = 2,
+    Magician = 5,
+    Leader,
+}
 // 戦闘用ステータス
 public enum BattelStatus
 {
@@ -35,6 +43,16 @@ public enum ConditionStatus
 public class StatusControl : MonoBehaviour{
 	#region Static_Properties
 	public static float COROUTINE_WAIT_TIME = 1.0f;
+    // HP
+    public int _hp;
+    // HP
+    public int _maxHP;
+    // 攻撃力
+    public int _attack;
+    //防御力
+    public int _defence;
+    //エネミーのタイプ
+    public JobType _type;
 	#endregion
 	// 戦闘用ステータス
 	private BattelStatus b_status;
@@ -58,6 +76,15 @@ public class StatusControl : MonoBehaviour{
 	
 	}
 	#region fuction
+    /// <summary>
+    /// HPを変更する
+    /// </summary>
+    /// <param name="point">変化値</param>
+    public void Set_HP(int point)
+    {
+        _hp += point;
+        // slider
+    }
 	/// <summary>
 	/// バトル状態を設定する
 	/// </summary>

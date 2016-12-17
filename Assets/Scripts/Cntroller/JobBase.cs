@@ -11,16 +11,6 @@ public class JobBase : StatusControl {
 	private static float PLAYER_MOVE_SPEED = 5.0f;
 	// ボタンの距離
 	private static float BUTTON_DISTANCE = 0.5f;
-	// HP
-	public int p_hp;
-    // MAX HP
-    public int p_maxHP;
-	// 攻撃力
-	public int p_attack;
-	// 防御力
-	public int p_defence;
-    // Job
-    public JobType p_type;
 	//ターゲット
 	[HideInInspector] public GameObject p_target;
 	//インスタンスを保存するコントローラ
@@ -307,8 +297,8 @@ public class JobBase : StatusControl {
                     if (CheckFlag(ConditionStatus.POWER_UP))
                         s_power = 1.5f;
                     EnemyBase eb = target.GetComponent<EnemyBase>();
-                    int damage = Math.Max((int)((p_attack + sc.s_power) * s_power) - eb.e_defence, 0);
-                    eb.e_hp -= damage;
+                    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                    eb.Set_HP(damage);
                     target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                     StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
                 }
