@@ -227,7 +227,7 @@ public class TalkMode : RootController
         }
         if (Input.GetMouseButtonDown(0) && !sm.isScenario)
         {
-            sm.ItweenMoveBy(hukidasi, new Vector3(0, 300, 0), 0.5f, "easeInOutBack");
+			sm.ItweenMoveTo(sm.hukidasi, new Vector3(0, -600, 0), 0.5f, "easeInOutBack");
             pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, WalkMode.Instance));
         }
     }

@@ -20,8 +20,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     public bool m_isCallPreload = false;
     [HideInInspector]
     public Dictionary<string, GameObject> p_imageList = new Dictionary<string, GameObject>();
-    [SerializeField]
-    private GameObject hukidasi = null;
+	[HideInInspector] public GameObject hukidasi = null;
     [HideInInspector]
     public TextControl m_textControl;
 
@@ -79,7 +78,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         m_scenarios = getNowScenario(scenarios, num);
         m_currentLine = 0;
         isScenario = true;
-        ItweenMoveBy(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
+        ItweenMoveTo(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
     }
     /// <summary>
     /// Lineにより、プロセスを執行する
@@ -146,15 +145,16 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// <summary>
     /// Starts the scenario.
     /// </summary>
-    public void ItweenMoveBy(GameObject target, Vector3 pos, float time, string easeType, string Method = "", GameObject obj = null)
+    public void ItweenMoveBy(GameObject target, Vector3 pos, float time, string easeType, string method = "", GameObject obj = null)
     {
         var moveHash = new Hashtable();
+        moveHash.Add("islocal", true);
         moveHash.Add("position", pos);
         moveHash.Add("time", time);
         moveHash.Add("easeType", easeType);
         if (method != "")
         {
-            moveHash.Add("oncomplete", Method);
+            moveHash.Add("oncomplete", method);
             moveHash.Add("oncompletetarget", obj);
         }
         iTween.MoveBy(target, moveHash);
@@ -162,15 +162,16 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// <summary>
     /// Starts the scenario.
     /// </summary>
-    public void ItweenMoveTo(GameObject target, Vector3 pos, float time, string easeType, string Method = "", GameObject obj = null)
+    public void ItweenMoveTo(GameObject target, Vector3 pos, float time, string easeType, string method = "", GameObject obj = null)
     {
         var moveHash = new Hashtable();
+        moveHash.Add("islocal", true);
         moveHash.Add("position", pos);
         moveHash.Add("time", time);
         moveHash.Add("easeType", easeType);
         if (method != "")
         {
-            moveHash.Add("oncomplete", Method);
+            moveHash.Add("oncomplete", method);
             moveHash.Add("oncompletetarget", obj);
         }
         iTween.MoveTo(target, moveHash);

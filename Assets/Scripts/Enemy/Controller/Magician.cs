@@ -197,7 +197,7 @@ public class M_Normal : E_Controller
 		if (eb.CanTakeAction ()) {
 			foreach (var target in eb.e_pr.partyList) {
 				JobBase jb = target.GetComponent<JobBase> ();
-				if (jb.p_hp / jb.p_maxHP * 100 < 30) {
+				if (jb._hp / jb._maxHP * 100 < 30) {
 					if (!eb.skillList [1].isRecast) {
 						if (!eb.skillList [0].isRecast) {
 							eb.SkillUse (target, eb.skillList [0]);
@@ -208,7 +208,7 @@ public class M_Normal : E_Controller
 			}
 			foreach (var target in eb.e_pr.partyList) {
 				JobBase jb = target.GetComponent<JobBase> ();
-				if (jb.p_type == JobType.Attacker || jb.p_type == JobType.Magician) {
+				if (jb._type == JobType.Attacker || jb._type == JobType.Magician) {
 					if (!jb.CheckFlag (ConditionStatus.SLOW)) {
 						if (!eb.skillList [2].isRecast) {
 							eb.SkillUse (target, eb.skillList [2]);

@@ -71,7 +71,7 @@ public class EnemyBase : StatusControl {
         int result = 0;
         foreach (var enemy in e_pr.enemyList)
         {
-			result += (int)enemy.GetComponent<EnemyBase>().e_type;
+			result += (int)enemy.GetComponent<EnemyBase>()._type;
         }
         return result;
     }
@@ -121,7 +121,7 @@ public class EnemyBase : StatusControl {
 	/// 死亡しているかどうかをチェック
 	/// </summary>
 	public void CheckDead(){
-		if (e_hp <= 0) {
+		if (_hp <= 0) {
 			Set_b_Status (BattelStatus.DEAD);
 			this.GetComponent<CapsuleCollider> ().enabled = false;
 			e_pr.enemyList.Remove (this.gameObject);

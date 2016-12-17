@@ -199,7 +199,7 @@ public class A_Normal : E_Controller
 			foreach (var target in eb.e_pr.partyList)
 			{
 				JobBase jb = target.GetComponent<JobBase>();
-				if(jb.p_hp/jb.p_maxHP * 100 < 50 && jb.p_type == JobType.Leader){
+				if(jb._hp/jb._maxHP * 100 < 50 && jb._type == JobType.Leader){
 					eb.SkillUse (target, eb.skillList [0]);
 				}
 			}
@@ -208,7 +208,7 @@ public class A_Normal : E_Controller
 			{
 				JobBase jb = target.GetComponent<JobBase>();
 				//TODO: リーダーを攻撃するものを攻撃
-				if(jb.p_type == JobType.Attacker || jb.p_type == JobType.Magician){
+				if(jb._type == JobType.Attacker || jb._type == JobType.Magician){
 					eb.SkillUse (target, eb.skillList [0]);
 				}
 			}

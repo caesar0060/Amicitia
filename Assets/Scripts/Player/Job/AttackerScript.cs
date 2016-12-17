@@ -54,7 +54,7 @@ public class AttackerScript : JobBase {
 		EnemyBase eb = target.GetComponent<EnemyBase>();
 		if (CheckFlag (ConditionStatus.POWER_UP))
 			s_power = 1.5f;
-		eb.e_hp -= (int)((p_attack + sc.s_power) * s_power) - eb.e_defence;
+		eb._hp -= (int)((_attack + sc.s_power) * s_power) - eb._defence;
 		//----
 		//Animation
 		//----
@@ -79,7 +79,7 @@ public class AttackerScript : JobBase {
 		EnemyBase eb = target.GetComponent<EnemyBase>();
 		if (CheckFlag (ConditionStatus.POWER_UP))
 			s_power = 1.5f;
-		eb.e_hp -= (int)((p_attack + sc.s_power) * s_power) - eb.e_defence;
+		eb._hp -= (int)((_attack + sc.s_power) * s_power) - eb._defence;
 		//----
 		//Animation
 		//----
