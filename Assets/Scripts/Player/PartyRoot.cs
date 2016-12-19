@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,19 +7,22 @@ public class PartyRoot : MonoBehaviour {
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	public static float BATTEL_START_RECAST_TIME = 5.0f;
 	// メンバーとの距離
-	public static float DISTANCE = 1.2f;
+	public static float DISTANCE = 1.5f;
 	// 配置の最初値
 	public static Vector3[]  posArray= new Vector3[] {new Vector3(0,0,-1),
-		new Vector3(0,0,1), new Vector3(1,0,0), new Vector3(-1,0,0)
+		new Vector3(0,0,0), new Vector3(1,0,0), new Vector3(-1,0,0)
 	};
 	//　敵の配置ポイント
 	public Transform enemyRoot;
 	//　攻撃の順番
 	[HideInInspector] public List<GameObject> attackList = new List<GameObject> ();
-	//
+	//	攻撃可能かどうか
 	[HideInInspector] public bool canAttack = true;
+	//	敵のプレハブリスト
+	private List<GameObject> EnemyPrefabList = new List<GameObject>();
 	// Use this for initialization
 	void Start () {
+		string enemyData = GetEnemyData("Enemy_Set.json");
 		ReadyBattel();
 	}
 	
@@ -68,12 +72,62 @@ public class PartyRoot : MonoBehaviour {
 			player.GetComponentInChildren<Animator> ().SetTrigger ("Battel");
 			player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NORMAL);
 		}
+
 		for (int i = 0; i < PlayerRoot.Instance.e_prefabList.Count; i++) {
 			GameObject enemy = Instantiate (PlayerRoot.Instance.e_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
 			PlayerRoot.Instance.enemyList.Add (enemy);
 			enemy.transform.parent = enemyRoot;
 			enemy.transform.localPosition = posArray[i] * DISTANCE;
-			enemy.transform.rotation = Quaternion.Euler (0, 180, 0);
+		}
+		enemyRoot.rotation = Quaternion.Euler(0, 180, 0);
+	}
+
+	/// <summary>
+	/// スキルのデータを読み込む
+	/// </summary>
+	/// <returns>Json date.</returns>
+	/// <param name="fileName">File name.</param>
+	public string GetEnemyData(string fileName){
+		string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
+		//json fileを読み込む
+		string JsonString = File.ReadAllText (filePath);
+		return JsonString;
+	}
+	public void GetEnemyPerfabs(string ed)
+	{
+		PlayerRoot pr = this.GetComponent<PlayerRoot>();
+		SetCollect sc = JsonUtility.FromJson<SetCollect>(ed);
+		float p = 0;
+		foreach (var set in sc.sets)
+		{
+			p += set.probability;
+		}
+		float setNum = Random.Range(0,p);
+		p = 0;
+		foreach (var set in sc.sets)
+		{
+			p += set.probability;
+			if (setNum <= p)
+			{
+				foreach (var name in set.set)
+				{
+					switch (name)
+					{
+						case "A":
+							EnemyPrefabList.Add(pr.e_prefabList[1]);
+							break;
+						case "D":
+							EnemyPrefabList.Add(pr.e_prefabList[2]);
+							break;
+						case "M":
+							EnemyPrefabList.Add(pr.e_prefabList[3]);
+							break;
+						case "S":
+							EnemyPrefabList.Add(pr.e_prefabList[0]);
+							break;
+					}
+				}
+			}
 		}
 	}
 	/// <summary>

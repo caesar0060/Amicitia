@@ -12,6 +12,8 @@ TagManager:
   - PartyRoot
   - EnemyRoot
   - TalkUI
+  - Scenario
+  - Battel
   layers:
   - Default
   - TransparentFX

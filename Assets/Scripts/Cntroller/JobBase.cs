@@ -168,8 +168,6 @@ public class JobBase : StatusControl {
 	public void ReturnPos(){
 		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
 		this.transform.rotation = Quaternion.Euler (Vector3.zero);
-		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().ReadyNextAttack();
-		ChangeMode (ReadyMode.Instance);
 	}
 	#endregion
 	#region Co-routine
@@ -272,8 +270,12 @@ public class JobBase : StatusControl {
 						ReturnPos ();
 						yield break;
 					}
-				} else
+				}
+				else { 
 					this.transform.rotation = Quaternion.Euler (Vector3.zero);
+					GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().ReadyNextAttack();
+					ChangeMode(ReadyMode.Instance);
+					}
 				yield break;
 			}
 			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);

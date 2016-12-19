@@ -5,6 +5,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 [Serializable]
+public class Set
+{
+	public float probability;	//確率
+	public string[] set;		//配置
+}
+[Serializable]
+public class SetCollect
+{
+	public Set[] sets;		
+}
+[Serializable]
 public class Skill{
 	public string s_name;		//名前
     public float s_power;       //効果量
@@ -46,6 +57,8 @@ public class EnemyBase : StatusControl {
 	[HideInInspector] public Vector3 startLocalPos;
 	//使うスキルを登録する
 	[HideInInspector] public Skill skillUsing;
+	//エンカウントすると出現する敵の構成、nullするとランダムになる
+	public GameObject[] enemylist;
 	#endregion
 
 	#region Function
@@ -80,7 +93,7 @@ public class EnemyBase : StatusControl {
 	/// </summary>
 	/// <param name="sa">Skill Array.</param>
 	/// <param name="sd">Skill Date.</param>
-	public void CreateSkillList(E_Delegate[] sa,string sd){
+	public void CreateSkillList(E_Delegate[] sa, string sd){
 		SkillCollect sc = JsonUtility.FromJson<SkillCollect> (sd);
 		for (int i = 0; i < sa.Length; i++) {
 			sc.skills[i].skillMethod = sa [i];
@@ -141,9 +154,6 @@ public class EnemyBase : StatusControl {
 	/// </summary>
 	public void ReturnPos(){
 		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
-		this.transform.rotation = Quaternion.Euler (Vector3.zero);
-		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().ReadyNextAttack();
-		ChangeMode (preivousController);
 	}
 	#endregion
     #region Skill
@@ -244,6 +254,12 @@ public class EnemyBase : StatusControl {
 					if (target != null && skill!=null) {
 						obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
 						StartCoroutine( Damage (target, skill, a_time));
+					}
+					else
+					{
+						this.transform.rotation = Quaternion.Euler(Vector3.zero);
+						GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().ReadyNextAttack();
+						ChangeMode(preivousController);
 					}
 					yield break;
 				}

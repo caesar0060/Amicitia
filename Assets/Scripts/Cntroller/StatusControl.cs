@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.UI;
 
 public enum JobType
 {
@@ -82,8 +83,10 @@ public class StatusControl : MonoBehaviour{
     /// <param name="point">変化値</param>
     public void Set_HP(int point)
     {
-        _hp += point;
+        _hp -= point;
+		
         // slider
+		//this.GetComponentInChildren<Slider>().value = -_hp;
     }
 	/// <summary>
 	/// バトル状態を設定する

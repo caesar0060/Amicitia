@@ -21,33 +21,36 @@ public class E_Magician : EnemyBase {
 		string skillDate = GetSKillDate ("Magician_Skill.json");
 		CreateSkillList (skillArray, skillDate);
 		//---------------------------
-		Set_b_Status(BattelStatus.NORMAL);
-		controller = E_BattelMode.Instance;
+		Set_b_Status(BattelStatus.NOT_IN_BATTEL);
+		controller = E_FieldMode.Instance;
 		controller.Enter(this);
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
-		// チームによるモードを変更する
-		switch (GetModeNumber())
-		{
-		case 15:
-			ChangeMode(M_M3.Instance);
-			break;
-		case 12:
-			ChangeMode(M_M2D1.Instance);
-			break;
-		case 11:
-			ChangeMode(M_M2A1.Instance);
-			break;
-		case 7:
-			ChangeMode(M_A2M1.Instance);
-			break;
-		case 9:
-			ChangeMode(M_D2M1.Instance);
-			break;  
-		default:
-			ChangeMode(M_Normal.Instance);
-			break;
-		}
 		StartCoroutine (Loading(5.0f));
+		if (GameObject.FindGameObjectWithTag("PartyRoot"))
+		{
+			// チームによるモードを変更する
+			switch (GetModeNumber())
+			{
+				case 15:
+					ChangeMode(M_M3.Instance);
+					break;
+				case 12:
+					ChangeMode(M_M2D1.Instance);
+					break;
+				case 11:
+					ChangeMode(M_M2A1.Instance);
+					break;
+				case 7:
+					ChangeMode(M_A2M1.Instance);
+					break;
+				case 9:
+					ChangeMode(M_D2M1.Instance);
+					break;
+				default:
+					ChangeMode(M_Normal.Instance);
+					break;
+			}
+		}
 	}
 	// Update is called once per frame
 	void Update () {

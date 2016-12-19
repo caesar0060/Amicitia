@@ -69,28 +69,28 @@ public class E_StatusMode : E_Controller
 	}
 }
 /// <summary>
-/// E_BattelMode Singleton
+/// E_FieldMode Singleton
 /// </summary>
-public class E_BattelMode : E_Controller
+public class E_FieldMode : E_Controller
 {
 	// インスタンス
-	private static E_BattelMode instance;
+	private static E_FieldMode instance;
 	/// <summary>
 	/// インスタンスを取得
 	/// </summary>
 	/// <value>インスタンス</value>
-	public static E_BattelMode Instance
+	public static E_FieldMode Instance
 	{
 		get
 		{
 			if (instance == null)
-				instance = new E_BattelMode();
+				instance = new E_FieldMode();
 			return instance;
 		}
 	}
 	override public void Enter(EnemyBase eb = null)
 	{
-		eb.BattelStartRecast ();
+		eb.BattelStartRecast();
 	}
 	override public void Excute(EnemyBase eb = null)
 	{

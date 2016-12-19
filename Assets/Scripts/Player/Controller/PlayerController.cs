@@ -9,6 +9,9 @@ using System.Collections.Generic;
 public class WalkMode : RootController
 {
     #region Property
+	//　カメラの最初位置
+	private static Vector3 NormalPos = new Vector3(0f, 3f, -5f);
+	private static Vector3 NormalRot = new Vector3(15f, 0f, 0f);
     //移動速度
     private const float MOVE_SPEED = 10;
     //回転速度
@@ -24,8 +27,6 @@ public class WalkMode : RootController
     private Vector3 touchPoint;
     // プレイヤーのAnimator
     private Animator p_animator;
-    private Vector3 NormalPos = Vector3.zero;
-    private Vector3 NormalRot = Vector3.zero;
     #endregion
     // 移動モードのインスタンス
     private static WalkMode instance;
@@ -245,10 +246,11 @@ public class TalkMode : RootController
 public class BattelStart : RootController
 {
     #region Property
+	//　カメラの最初位置
+	private static Vector3 battelPos = new Vector3(25.7f, 2.91f, 14.97f);
+	private static Vector3 battelRot = new Vector3(28.2461f, 270f, 1.94f);
     // GameObjectを取得
     private GameObject cameraSupport;
-    private Vector3 battelPos = new Vector3(20.82f, -0.48f, 13.14f);
-    private Vector3 battelRot = new Vector3(7.86f, 342.47f, 2.78f);
     #endregion
     // インスタンス
     private static BattelStart instance;

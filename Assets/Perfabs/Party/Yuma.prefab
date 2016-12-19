@@ -3937,11 +3937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627191f5cd48dd40997647e58f47e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_hp: 500
-  p_maxHP: 500
-  p_attack: 50
-  p_defence: 50
-  p_type: 1
+  _hp: 500
+  _maxHP: 500
+  _attack: 150
+  _defence: 150
+  _type: 1
   p_target: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
@@ -5290,6 +5290,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hp
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxHP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _attack
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _defence
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

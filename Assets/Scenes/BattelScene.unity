@@ -283,3 +283,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRoot: {fileID: 354224400}
+  attackList: []
+  canAttack: 1

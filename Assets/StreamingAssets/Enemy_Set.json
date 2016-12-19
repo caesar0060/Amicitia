@@ -1,0 +1,94 @@
+{
+	"sets": [
+		{
+			"probability": "6",
+			"set": [
+				"S",
+				"A",
+				"A",
+				"A"
+			]
+		},
+		{
+			"probability": "6",
+			"set": [
+				"S",
+				"D",
+				"D",
+				"D"
+			]
+		},
+		{
+			"probability": "6",
+			"set": [
+				"S",
+				"M",
+				"M",
+				"M"
+			]
+		},
+		{
+			"probability": "9",
+			"set": [
+				"S",
+				"D",
+				"A",
+				"A"
+			]
+		},
+		{
+			"probability": "9",
+			"set": [
+				"S",
+				"A",
+				"M",
+				"A"
+			]
+		},
+		{
+			"probability": "9",
+			"set": [
+				"S",
+				"D",
+				"D",
+				"A"
+			]
+		},
+		{
+			"probability": "9",
+			"set": [
+				"S",
+				"M",
+				"M",
+				"A"
+			]
+		},
+		{
+			"probability": "13",
+			"set": [
+				"S",
+				"D",
+				"M",
+				"D"
+			]
+		},
+		{
+			"probability": "13",
+			"set": [
+				"S",
+				"D",
+				"M",
+				"M"
+			]
+		},
+		{
+			"probability": "20",
+			"set": [
+				"S",
+				"D",
+				"M",
+				"A"
+			]
+		}
+	]
+}
