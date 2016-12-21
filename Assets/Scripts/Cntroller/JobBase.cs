@@ -287,6 +287,8 @@ public class JobBase : StatusControl {
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
+	/// <param name="time">Damageを与える時間</param>
+	/// <returns></returns>
 	public IEnumerator Damage(GameObject target, SkillScript sc, float time){
 		float timer = 0;
 		while (true) {
@@ -314,5 +316,33 @@ public class JobBase : StatusControl {
 			yield return new WaitForEndOfFrame ();
 		}
 	}
+    public IEnumerator MagicDamage(GameObject target, SkillScript sc, float a_time, string effect, float e_time)
+    {
+        float timer = 0;
+        bool useMagic = false;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= a_time && !useMagic)
+            {
+                GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
+                effectObj.transform.parent = this.transform;
+                useMagic = true;
+            }
+            if (timer >= e_time)
+            {
+                float s_power = 1;	//精霊の力
+                if (CheckFlag(ConditionStatus.POWER_UP))
+                    s_power = 1.5f;
+                EnemyBase eb = target.GetComponent<EnemyBase>();
+                int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                eb.Set_HP(damage);
+                target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+                yield break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
 	#endregion
 }
