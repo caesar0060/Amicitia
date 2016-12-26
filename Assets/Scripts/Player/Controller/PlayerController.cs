@@ -4,6 +4,43 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
+/// SceneChange Singleton
+/// </summary>
+public class SceneChange : RootController
+{
+    #region Property
+   
+    #endregion
+    // インスタンス
+    private static SceneChange instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static SceneChange Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new SceneChange();
+            return instance;
+        }
+    }
+    override public void Enter(PlayerRoot pr = null)
+    {
+
+    }
+    override public void Excute(PlayerRoot pr = null)
+    {
+       
+    }
+    override public void Exit(PlayerRoot pr = null)
+    {
+        if (pr.p_jb.p_target.layer == LayerMask.NameToLayer("Enemy") && pr.p_jb.p_target != null)
+            pr.DestroyObj(pr.p_jb.p_target);
+    }
+}
+/// <summary>
 /// WalkMode Singleton
 /// </summary>
 public class WalkMode : RootController

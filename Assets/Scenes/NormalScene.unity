@@ -826,6 +826,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiText: {fileID: 0}
   intervalForCharacterDisplay: 0.05
+--- !u!1001 &1579496769
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11499216, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: prefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 28.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 26.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441208, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499216, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+      propertyPath: prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 146568, guid: 7632404dd0025a04bb012e357892d314, type: 2}
+    m_RemovedComponents:
+    - {fileID: 6506388, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 6b816c80321ed774ab4f6355c1007034, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1981585759
 GameObject:
   m_ObjectHideFlags: 0

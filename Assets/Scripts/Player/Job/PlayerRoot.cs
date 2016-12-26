@@ -16,8 +16,9 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// JobBaseを保管する
 	public JobBase p_jb;
 	// 敵を保管する配列
-	//[HideInInspector] 
 	public List<GameObject> e_prefabList = new List<GameObject> ();
+    //バトルにでるenemy、入れていないとランダムで決める
+    public List<GameObject> battelEnemyList = new List<GameObject>();
 	// プレイヤーのプレハブを保管する配列
 	public List<GameObject> p_prefabList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
@@ -114,6 +115,13 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	public void DestroyChild(string name){
 		Destroy (this.transform.FindChild (name).gameObject);
 	}
+    /// <summary>
+    /// GameObjectを削除する
+    /// </summary>
+    public void DestroyObj(GameObject obj)
+    {
+        Destroy(obj);
+    }
 	/// <summary>
 	/// 戦闘が終わるかどうかをチェックする
 	/// </summary>

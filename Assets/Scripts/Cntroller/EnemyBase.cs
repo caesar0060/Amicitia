@@ -257,7 +257,7 @@ public class EnemyBase : StatusControl {
 					}
 					else
 					{
-						this.transform.rotation = Quaternion.Euler(Vector3.zero);
+						this.transform.localRotation = Quaternion.Euler(Vector3.zero);
 						GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().ReadyNextAttack();
 						ChangeMode(preivousController);
 					}

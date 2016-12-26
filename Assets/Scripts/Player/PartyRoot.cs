@@ -72,13 +72,24 @@ public class PartyRoot : MonoBehaviour {
 			player.GetComponentInChildren<Animator> ().SetTrigger ("Battel");
 			player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NORMAL);
 		}
+        if (PlayerRoot.Instance.battelEnemyList.Count == 0)
+        //if (PlayerRoot.Instance.battelEnemyList.Count > 0)
+        {
+            EnemyPrefabList = PlayerRoot.Instance.e_prefabList;
 
-		for (int i = 0; i < PlayerRoot.Instance.e_prefabList.Count; i++) {
-			GameObject enemy = Instantiate (PlayerRoot.Instance.e_prefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
-			PlayerRoot.Instance.enemyList.Add (enemy);
-			enemy.transform.parent = enemyRoot;
-			enemy.transform.localPosition = posArray[i] * DISTANCE;
-		}
+        }
+        else
+        {
+            string ed = GetEnemyData("Enemy_Set.json");
+            GetEnemyPerfabs(ed);
+        }
+        for (int i = 0; i < EnemyPrefabList.Count; i++)
+        {
+            GameObject enemy = Instantiate(EnemyPrefabList[i], Vector3.zero, this.transform.rotation) as GameObject;
+            PlayerRoot.Instance.enemyList.Add(enemy);
+            enemy.transform.parent = enemyRoot;
+            enemy.transform.localPosition = posArray[i] * DISTANCE;
+        }
 		enemyRoot.rotation = Quaternion.Euler(0, 180, 0);
 	}
 
