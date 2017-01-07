@@ -275,6 +275,7 @@ public class JobBase : StatusControl {
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 				obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
 				if (target != null && sc != null) {
+                    // switch() 単体？複数？
 					try {
 						obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
 						StartCoroutine (Damage (target, sc, a_time));
@@ -307,6 +308,7 @@ public class JobBase : StatusControl {
 			timer += Time.deltaTime;
 			float counter = timer / time;
 			if (counter >= 1) {
+                // switch() 味方？敵？
                 try
                 {
                     float s_power = 1;	//精霊の力
