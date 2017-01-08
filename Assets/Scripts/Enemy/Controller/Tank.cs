@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// T_D3 Singleton
@@ -27,7 +28,24 @@ public class T_D3 : E_Controller
     }
     override public void Excute(EnemyBase eb = null)
     {
-        Debug.Log("PExcute");
+        if (eb.CanTakeAction())
+        {
+            foreach (var target in eb.e_pr.enemyList)
+            {
+                EnemyBase t_eb = target.GetComponent<EnemyBase>();
+                if (t_eb._type == JobType.Leader && t_eb.battelStatus != BattelStatus.DEAD)
+                {
+                    // Edit skill later
+                    eb.SkillUse(target, eb.skillList[0]);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("TODO: 状態異常のモードに移動");
+            return;
+        }
     }
     override public void Exit(EnemyBase eb = null)
     {
@@ -198,10 +216,49 @@ public class T_Normal : E_Controller
         {
 			if (!eb.CheckFlag (ConditionStatus.ALL_DAMAGE_DOWN)) {
 				if (!eb.skillList [1].isRecast) {
-					eb.skillList [1].skillMethod ();
-					eb.SkillRecast (eb.skillList [1], eb.skillList [1].s_recast);
+                    // Edit skill later
+                    eb.SkillUse(eb.gameObject, eb.skillList[1]);
+                    return;
 				}
 			}
+
+            List<GameObject> targetCount = new List<GameObject>();
+            foreach (var target in eb.e_pr.enemyList)
+            {
+                EnemyBase t_eb = target.GetComponent<EnemyBase>();
+                if ((t_eb._hp / t_eb._maxHP * 100 < 50) && t_eb.battelStatus != BattelStatus.DEAD)
+                {
+                    if (t_eb._type == JobType.Leader)
+                    {
+                        // Edit skill later
+                        eb.SkillUse(target, eb.skillList[0]);
+                        return;
+                    }
+                    targetCount.Add(target);
+                }
+            }
+            if (targetCount.Count > 0)
+            {
+                int ran = Random.Range(0, targetCount.Count);
+                if (!eb.skillList[0].isRecast)
+                {
+                    // Edit skill later
+                    eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                    return;
+                }
+            }
+
+            foreach (var target in eb.e_pr.partyList)
+            {
+                int ran = Random.Range(0, eb.e_pr.partyList.Count);
+                JobBase jb = eb.e_pr.partyList[ran].GetComponent<JobBase>();
+                if (jb.p_target.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    // Edit skill later
+                    eb.SkillUse(jb.p_target, eb.skillList[0]);
+                    return;
+                }
+            }
         }
         else
             Debug.Log("TODO: 状態異常のモードに移動");

@@ -43,7 +43,7 @@ public class MagicianScript: JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger ("Attack");
-		StartCoroutine (MagicDamage (target, sc, 1f,"Prefabs/Magic/Explosion",3f));
+		StartCoroutine (MagicDamage (p_target, sc, 1f,"Prefabs/Magic/Explosion",3f));
 	}
 	/// <summary>
 	/// Skill2 the specified sc, target and effectTime.

@@ -51,15 +51,18 @@ public class JobBase : StatusControl {
 	}
 
     public void OnTriggerEnter(Collider other) {
-        GameObject other_go = other.gameObject;
-        if(other_go.layer == LayerMask.NameToLayer("Enemy"))
+        if (this.battelStatus == BattelStatus.NOT_IN_BATTEL)
         {
-            PlayerRoot pr = PlayerRoot.Instance;
-            pr.p_jb.p_target = other_go;
-            if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
-                pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
-            pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
-        } 
+            GameObject other_go = other.gameObject;
+            if (other_go.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                PlayerRoot pr = PlayerRoot.Instance;
+                pr.p_jb.p_target = other_go;
+                if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
+                    pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
+                pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
+            }
+        }
     }
 
 	public void OnTriggerExit(Collider other){

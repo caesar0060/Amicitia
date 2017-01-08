@@ -5,13 +5,13 @@ public class E_Magician : EnemyBase {
 	#region Properties
 	#endregion
 	// ------------------------------------------------------------------------------------
-	//*										Debug用
+	/*										Debug用
 	void OnGUI() {
 		GUI.Label(new Rect(300, 10, 100, 20), controller.ToString());
 		GUI.Label(new Rect(300, 50, 100, 20), "skill1"+skillList[0].isRecast.ToString());
 		GUI.Label(new Rect(300, 90, 100, 20), "skill3"+skillList[2].isRecast.ToString());
 	}
-	//*/
+	*/
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
