@@ -65,7 +65,8 @@ public class MagicianScript: JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
-		Debug.Log ("Tank Skill1");
+        this.GetComponentInChildren<Animator>().SetTrigger("Attack");
+        // Create attack Effect with script
 	}
 	/// <summary>
 	/// Skill4 the specified sc, target and effectTime.
@@ -75,9 +76,8 @@ public class MagicianScript: JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
-		//----
-		//Animation
-		//----
+        this.GetComponentInChildren<Animator>().SetTrigger("Attack");
+        // Create attack Effect with script
 	}
 	#endregion
 }

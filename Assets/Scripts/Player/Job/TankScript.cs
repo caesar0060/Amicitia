@@ -41,9 +41,7 @@ public class TankScript : JobBase {
 	/// <param name="time">効果時間.</param>
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
-		Set_c_Status(ConditionStatus.PULL);
-        StatusCounter(ConditionStatus.PULL, effectTime);
-		Debug.Log ("Tank");
+        /// 敵配列からすべての敵のターゲットを自分に変える　持続的？
 	}
 	/// <summary>
 	/// イース
