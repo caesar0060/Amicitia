@@ -295,6 +295,9 @@ public class JobBase : StatusControl {
 				yield break;
 			}
 			obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+            Vector3 moveRot = endPos - this.transform.position;
+            Quaternion q = Quaternion.LookRotation(moveRot.normalized, Vector3.up);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, q, 0.5f);
 			yield return new WaitForEndOfFrame ();
 		}
 	}

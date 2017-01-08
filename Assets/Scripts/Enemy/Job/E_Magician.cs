@@ -25,7 +25,6 @@ public class E_Magician : EnemyBase {
 		controller = E_FieldMode.Instance;
 		controller.Enter(this);
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
-		StartCoroutine (Loading(5.0f));
 		if (GameObject.FindGameObjectWithTag("PartyRoot"))
 		{
 			// チームによるモードを変更する
@@ -51,6 +50,7 @@ public class E_Magician : EnemyBase {
 					break;
 			}
 		}
+        StartCoroutine(Loading(5.0f));
 	}
 	// Update is called once per frame
 	void Update () {
@@ -66,7 +66,7 @@ public class E_Magician : EnemyBase {
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, 
-			target.transform.position, 1, target, skillList [0], "isBom"));
+			target.transform.position, 1,"attack", target, skillList [0], "isBom"));
 	}
 	/// <summary>
     /// エオロー

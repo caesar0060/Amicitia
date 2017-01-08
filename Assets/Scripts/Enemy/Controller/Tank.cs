@@ -36,7 +36,7 @@ public class T_D3 : E_Controller
                 if (t_eb._type == JobType.Leader && t_eb.battelStatus != BattelStatus.DEAD)
                 {
                     // Edit skill later
-                    eb.SkillUse(target, eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                     return;
                 }
             }
@@ -217,7 +217,7 @@ public class T_Normal : E_Controller
 			if (!eb.CheckFlag (ConditionStatus.ALL_DAMAGE_DOWN)) {
 				if (!eb.skillList [1].isRecast) {
                     // Edit skill later
-                    eb.SkillUse(eb.gameObject, eb.skillList[1]);
+                    eb.StartCoroutine(eb.SkillUse(eb.gameObject, eb.skillList[1]));
                     return;
 				}
 			}
@@ -231,7 +231,7 @@ public class T_Normal : E_Controller
                     if (t_eb._type == JobType.Leader)
                     {
                         // Edit skill later
-                        eb.SkillUse(target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                         return;
                     }
                     targetCount.Add(target);
@@ -243,7 +243,7 @@ public class T_Normal : E_Controller
                 if (!eb.skillList[0].isRecast)
                 {
                     // Edit skill later
-                    eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                     return;
                 }
             }
@@ -255,7 +255,7 @@ public class T_Normal : E_Controller
                 if (jb.p_target.layer == LayerMask.NameToLayer("Enemy"))
                 {
                     // Edit skill later
-                    eb.SkillUse(jb.p_target, eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(jb.p_target, eb.skillList[0]));
                     return;
                 }
             }

@@ -90,14 +90,26 @@ public class E_FieldMode : E_Controller
 	}
 	override public void Enter(EnemyBase eb = null)
 	{
+        eb.isMove = false;
 		eb.BattelStartRecast();
 	}
 	override public void Excute(EnemyBase eb = null)
 	{
-		Debug.Log("PExcute");
+        if (!eb.isMove)
+            move(eb);
 	}
 	override public void Exit(EnemyBase eb = null)
 	{
 		Debug.Log("PExit");
 	}
+    private void move(EnemyBase eb)
+    {
+        eb.isMove = true;
+        float range = 2;
+        float x = Random.Range(range * -1, range + 1);
+        float z = Random.Range(range * -1, range + 1);
+        Vector3 pos = new Vector3(x, 0, z);
+        pos += eb.transform.parent.position;
+        eb.StartCoroutine(eb.LerpMove(eb.gameObject, eb.transform.position, pos));
+    }
 }

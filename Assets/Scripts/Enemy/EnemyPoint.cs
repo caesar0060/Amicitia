@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemyPoint : SingletonMonoBehaviour<EnemyPoint> {
-    //
+    // 死んだモンスター、また生成する時間
     private static float ENEMY_GENERATE_TIME = 30;
+    //
+    public static float MOVE_DISTANCE = 2.0f;
     public bool isEnemyDead = false;
     public bool isLoading = false;
     private GameObject enemy = null;
@@ -41,6 +43,9 @@ public class EnemyPoint : SingletonMonoBehaviour<EnemyPoint> {
                     enemy = Instantiate(prefabs[0]) as GameObject;
                     enemy.transform.parent = this.transform;
                     enemy.transform.localPosition = Vector3.zero;
+                    SphereCollider sc = enemy.AddComponent<SphereCollider>();
+                    sc.isTrigger = true;
+                    sc.radius = 2;
                     isLoading = false;
                     isEnemyDead = false;
                     yield break;

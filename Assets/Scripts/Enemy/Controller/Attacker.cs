@@ -37,7 +37,7 @@ public class A_A3 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -59,7 +59,7 @@ public class A_A3 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                         return;
                     }
                 }
@@ -120,7 +120,7 @@ public class A_A2D1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(atk_eb.e_target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(atk_eb.e_target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -141,7 +141,7 @@ public class A_A2D1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                         return;
                     }
                 }
@@ -194,7 +194,7 @@ public class A_D2A1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -209,7 +209,7 @@ public class A_D2A1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(leader_eb.e_target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -229,7 +229,7 @@ public class A_D2A1 : E_Controller
                 int ran = Random.Range(0, targetCount.Count);
                 if (!eb.skillList[0].isRecast)
                 {
-                    eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                     return;
                 }
             }
@@ -250,7 +250,7 @@ public class A_D2A1 : E_Controller
                     {
                         if (!eb.skillList[0].isRecast)
                         {
-                            eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                            eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                             return;
                         }
                     }
@@ -304,7 +304,7 @@ public class A_M2A1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -319,7 +319,7 @@ public class A_M2A1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(leader_eb.e_target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -339,7 +339,7 @@ public class A_M2A1 : E_Controller
                 int ran = Random.Range(0, targetCount.Count);
                 if (!eb.skillList[0].isRecast)
                 {
-                    eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                     return;
                 }
             }
@@ -360,7 +360,7 @@ public class A_M2A1 : E_Controller
                     {
                         if (!eb.skillList[0].isRecast)
                         {
-                            eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                            eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                             return;
                         }
                     }
@@ -423,7 +423,7 @@ public class A_A2M1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(atk_eb.e_target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(atk_eb.e_target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -444,7 +444,7 @@ public class A_A2M1 : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                         return;
                     }
                 }
@@ -498,7 +498,7 @@ public class A_Normal : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0]));
                         return;
                     }
 				}
@@ -513,7 +513,7 @@ public class A_Normal : E_Controller
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.SkillUse(leader_eb.e_target, eb.skillList[0]);
+                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -533,7 +533,7 @@ public class A_Normal : E_Controller
                 int ran = Random.Range(0, targetCount.Count);
                 if (!eb.skillList[0].isRecast)
                 {
-                    eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                    eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                     return;
                 }
             }
@@ -554,7 +554,7 @@ public class A_Normal : E_Controller
                     {
                         if (!eb.skillList[0].isRecast)
                         {
-                            eb.SkillUse(targetCount[ran], eb.skillList[0]);
+                            eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
                             return;
                         }
                     }

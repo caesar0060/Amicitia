@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Collections;
@@ -36,8 +37,10 @@ public class EnemyBase : StatusControl {
 	#region Properties
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	public static float BATTEL_START_RECAST_TIME = 5.0f;
-	// プレイヤー攻撃のときの移動の必要な時間
-	private static float ENEMY_MOVE_SPEED = 5.0f;
+    // 使うスキルのアイコンを表示する時間
+    private static float SHOW_ICON_TIME = 2.0f;
+    // 移動のスピード
+    public float ENEMY_MOVE_SPEED = 5.0f;
 	//インスタンスを保存するコントローラ
 	public E_Controller controller = null;
 	//前のインスタンスを保存するコントローラ
@@ -59,6 +62,10 @@ public class EnemyBase : StatusControl {
 	[HideInInspector] public Skill skillUsing;
 	//エンカウントすると出現する敵の構成、nullするとランダムになる
 	public GameObject[] enemylist;
+    // スキルを表示するアイコン
+    public GameObject skillIcon;
+    // 移動しているかどうか
+    public bool isMove = false;
 	#endregion
 
 	#region Function
@@ -112,17 +119,6 @@ public class EnemyBase : StatusControl {
 		return JsonString;
 	}
 	/// <summary>
-	/// スキルを使う.
-	/// </summary>
-	/// <param name="target">Target.</param>
-	/// <param name="skill">使うスキル.</param>
-	public void SkillUse(GameObject target, Skill skill){
-		ChangeMode (E_SkillMode.Instance);
-		e_target = target; skillUsing = skill;
-		GameObject.FindGameObjectWithTag ("PartyRoot").GetComponent<PartyRoot> ().attackList.Add (this.gameObject);
-		skill.isRecast = true;
-	}
-	/// <summary>
 	/// 全てのスキルのリーキャストをスタートする
 	/// </summary>
 	public void BattelStartRecast(){
@@ -153,7 +149,7 @@ public class EnemyBase : StatusControl {
 	/// 最初の位置に戻る
 	/// </summary>
 	public void ReturnPos(){
-		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
+		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2, "return"));
 	}
 	#endregion
     #region Skill
@@ -233,7 +229,7 @@ public class EnemyBase : StatusControl {
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
 	/// <param name="a_time">Animation time.</param>
-	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed = 1, GameObject target =null, Skill skill = null, string a_name = "", float a_time = 1){
+	public IEnumerator LerpMove(GameObject obj, Vector3 startPos, Vector3 endPos, float speed = 1, string method = "move", GameObject target =null, Skill skill = null, string a_name = "", float a_time = 1){
 		float timer = 0;
 		obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", true);
 		while (true) {
@@ -251,19 +247,31 @@ public class EnemyBase : StatusControl {
 					moveRate = 1;
 					obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
 					obj.GetComponentInChildren<Animator> ().SetBool ("isMoved", false);
-					if (target != null && skill!=null) {
-						obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
-						StartCoroutine( Damage (target, skill, a_time));
-					}
-					else
-					{
-						this.transform.localRotation = Quaternion.Euler(Vector3.zero);
-						GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().ReadyNextAttack();
-						ChangeMode(preivousController);
-					}
+                    switch (method)
+                    {
+                        case "move":
+                            Debug.Log(isMove);
+                            isMove = false;
+                            break;
+                        case "attack":
+                            if (target != null && skill!=null) {
+						        obj.GetComponentInChildren<Animator> ().SetTrigger (a_name);
+						        StartCoroutine( Damage (target, skill, a_time));
+					        }
+                            break;
+                        case "return":
+                            this.transform.localRotation = Quaternion.Euler(Vector3.zero);
+						    GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().ReadyNextAttack();
+						    ChangeMode(preivousController);
+                            break;
+                    }
 					yield break;
 				}
 				obj.transform.position = Vector3.Lerp (startPos, endPos, moveRate);
+                Vector3 moveRot = endPos - this.transform.position;
+                Quaternion q = Quaternion.LookRotation(moveRot.normalized, Vector3.up);
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, q, 0.5f);
+                
 			}
 			catch(MissingReferenceException){
 				ReturnPos ();
@@ -311,5 +319,32 @@ public class EnemyBase : StatusControl {
 			yield return new WaitForSeconds (time);
 		}
 	}
+    /// <summary>
+	/// スキルを使う.
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="skill">使うスキル.</param>
+    public IEnumerator SkillUse(GameObject target, Skill skill)
+    {
+        float startTime = Time.time;
+        GameObject icon = Instantiate(skillIcon) as GameObject;
+        icon.transform.SetParent(this.transform.GetChild(0));
+        icon.transform.localPosition = new Vector3(0, 1, 0);
+        icon.GetComponentInChildren<Text>().text = skill.s_name;
+        while (true)
+        {
+            float time = Time.time - startTime;
+            if (time / SHOW_ICON_TIME >= 1)
+            {
+                Destroy(icon);
+                ChangeMode(E_SkillMode.Instance);
+                e_target = target; skillUsing = skill;
+                GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(this.gameObject);
+                skill.isRecast = true;
+                yield break;
+            }
+            yield return new WaitForSeconds(SHOW_ICON_TIME);
+        }
+    }
 	#endregion
 }
