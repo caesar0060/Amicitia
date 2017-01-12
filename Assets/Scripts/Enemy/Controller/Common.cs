@@ -95,21 +95,35 @@ public class E_FieldMode : E_Controller
 	}
 	override public void Excute(EnemyBase eb = null)
 	{
-        if (!eb.isMove)
+        if (eb._target != null) {
+            move(eb, eb._target);
+        }
+        else if (!eb.isMove)
             move(eb);
 	}
 	override public void Exit(EnemyBase eb = null)
 	{
 		Debug.Log("PExit");
 	}
-    private void move(EnemyBase eb)
+    /// <summary>
+    /// 移動
+    /// </summary>
+    /// <param name="eb">Enemy Base</param>
+    /// <param name="target">Target</param>
+    private void move(EnemyBase eb, GameObject target = null)
     {
         eb.isMove = true;
-        float range = 2;
-        float x = Random.Range(range * -1, range + 1);
-        float z = Random.Range(range * -1, range + 1);
-        Vector3 pos = new Vector3(x, 0, z);
-        pos += eb.transform.parent.position;
-        eb.StartCoroutine(eb.LerpMove(eb.gameObject, eb.transform.position, pos));
+        Vector3 pos;
+        if (target == null)
+        {
+            float range = 2;
+            float x = Random.Range(range * -1, range + 1);
+            float z = Random.Range(range * -1, range + 1);
+            pos = new Vector3(x, 0, z);
+            pos += eb.transform.parent.position;
+        }
+        else
+            pos = target.transform.position;
+        eb.StartCoroutine(eb.LerpMove(eb.gameObject, eb.transform.position, pos, 1, "move", target));
     }
 }

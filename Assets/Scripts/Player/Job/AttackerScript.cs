@@ -18,7 +18,7 @@ public class AttackerScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-		p_funcList = new P_Delegate[]{ Skill1};
+        p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
 		controller = ReadyMode.Instance;
 		controller.Enter (this);
 		skillBtnGenerate ();
@@ -42,7 +42,7 @@ public class AttackerScript : JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, target.transform.position,
-			1, p_target, sc, "Attack"));
+			1, _target, sc, "Attack"));
 	}
 	/// <summary>
 	/// 物理強攻撃
@@ -53,7 +53,7 @@ public class AttackerScript : JobBase {
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
         StartCoroutine(LerpMove(this.gameObject, this.transform.position, target.transform.position,
-            1, target, sc, "Attack"));
+            1, _target, sc, "Attack"));
 	}
 	/// <summary>
 	/// 
@@ -63,7 +63,8 @@ public class AttackerScript : JobBase {
     /// <param name="effectTime">Effect time.</param>
 	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
-		Debug.Log ("Tank Skill1");
+        StartCoroutine(LerpMove(this.gameObject, this.transform.position, target.transform.position,
+           1, _target, sc, "Attack"));
 	}
 	/// <summary>
 	/// 回転切り
@@ -74,7 +75,7 @@ public class AttackerScript : JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
         StartCoroutine(LerpMove(this.gameObject, this.transform.position, target.transform.position,
-            1, target, sc, "Attack"));
+            1, _target, sc, "Attack"));
 	}
 	#endregion
 }

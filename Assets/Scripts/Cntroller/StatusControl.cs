@@ -52,6 +52,9 @@ public class StatusControl : MonoBehaviour{
     public int _attack;
     //防御力
     public int _defence;
+    //ターゲット
+    [HideInInspector]
+    public GameObject _target;
     //エネミーのタイプ
     public JobType _type;
 	#endregion
@@ -67,15 +70,34 @@ public class StatusControl : MonoBehaviour{
 		get{ return c_status;}
 		private set{ c_status = value; }
 	}
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    /// <summary>
+    /// Objectは前にいるかどうかをチェックする
+    /// </summary>
+    /// <returns><c>true</c>, 前にいるなら, <c>false</c> 違う場合.</returns>
+    /// <param name="other">Object.</param>
+    public bool CheckIsFront(GameObject other)
+    {
+        bool isFront = false;
+        // プレイヤーが現在向いている方向を保管
+        Vector3 heading = this.transform.TransformDirection(Vector3.forward);
+        // プレイヤーから見たObjectの方向を保管
+        Vector3 to_other = other.transform.position - this.transform.position;
+        heading.y = 0;
+        to_other.y = 0;
+        //正規化する
+        heading.Normalize();
+        to_other.Normalize();
+        //内積を求める
+        float dp = Vector3.Dot(heading, to_other);
+        //内積が45度のコサイン値未満なら、falseを返す
+        if (dp < Mathf.Cos(45))
+        {
+            return isFront;
+        }
+        //内積が45度のコサイン以上なら、trueを返す
+        isFront = true;
+        return isFront;
+    }
 	#region fuction
     /// <summary>
     /// HPを変更する
@@ -141,5 +163,21 @@ public class StatusControl : MonoBehaviour{
 		}
 		return 1;
 	}
+    /// <summary>
+    /// 範囲内の敵を測るcolliderを生成
+    /// </summary>
+    public void CreateRange()
+    {
+        GameObject obj = Instantiate(PlayerRoot.Instance.skillRange);
+        obj.transform.SetParent(this.transform);
+        obj.transform.position = _target.transform.position;
+    }
+    /// <summary>
+    /// 範囲内の敵を測るcolliderを削除
+    /// </summary>
+    public void DeleteRange()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Range"));
+    }
 	#endregion
 }

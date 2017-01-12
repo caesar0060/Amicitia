@@ -112,15 +112,15 @@ public class A_A2D1 : E_Controller
 	{
         if (eb.CanTakeAction())
         {
-            if (atk_eb.e_target != null)
+            if (atk_eb._target != null)
             {
-                JobBase jb = atk_eb.e_target.GetComponent<JobBase>();
-                if (atk_eb.e_target.layer == LayerMask.NameToLayer("Player") &&
+                JobBase jb = atk_eb._target.GetComponent<JobBase>();
+                if (atk_eb._target.layer == LayerMask.NameToLayer("Player") &&
                         jb.battelStatus != BattelStatus.DEAD)
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.StartCoroutine(eb.SkillUse(atk_eb.e_target, eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(atk_eb._target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -201,15 +201,15 @@ public class A_D2A1 : E_Controller
             }
 
             EnemyBase leader_eb = eb.e_pr.enemyList[0].GetComponent<EnemyBase>();
-            if (leader_eb.e_target != null)
+            if (leader_eb._target != null)
             {
-                JobBase jb = leader_eb.e_target.GetComponent<JobBase>();
-                if (leader_eb.e_target.layer == LayerMask.NameToLayer("Player") &&
+                JobBase jb = leader_eb._target.GetComponent<JobBase>();
+                if (leader_eb._target.layer == LayerMask.NameToLayer("Player") &&
                     jb.battelStatus != BattelStatus.DEAD)
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(leader_eb._target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -311,15 +311,15 @@ public class A_M2A1 : E_Controller
             }
 
             EnemyBase leader_eb = eb.e_pr.enemyList[0].GetComponent<EnemyBase>();
-            if (leader_eb.e_target != null)
+            if (leader_eb._target != null)
             {
-                JobBase jb = leader_eb.e_target.GetComponent<JobBase>();
-                if (leader_eb.e_target.layer == LayerMask.NameToLayer("Player") &&
+                JobBase jb = leader_eb._target.GetComponent<JobBase>();
+                if (leader_eb._target.layer == LayerMask.NameToLayer("Player") &&
                     jb.battelStatus != BattelStatus.DEAD)
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(leader_eb._target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -415,15 +415,15 @@ public class A_A2M1 : E_Controller
     {
         if (eb.CanTakeAction())
         {
-            if (atk_eb.e_target != null)
+            if (atk_eb._target != null)
             {
-                JobBase jb = atk_eb.e_target.GetComponent<JobBase>();
-                if (atk_eb.e_target.layer == LayerMask.NameToLayer("Player") &&
+                JobBase jb = atk_eb._target.GetComponent<JobBase>();
+                if (atk_eb._target.layer == LayerMask.NameToLayer("Player") &&
                         jb.battelStatus != BattelStatus.DEAD)
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.StartCoroutine(eb.SkillUse(atk_eb.e_target, eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(atk_eb._target, eb.skillList[0]));
                         return;
                     }
                 }
@@ -505,15 +505,15 @@ public class A_Normal : E_Controller
 			}
 
             EnemyBase leader_eb = eb.e_pr.enemyList[0].GetComponent<EnemyBase>();
-            if(leader_eb.e_target != null)
+            if(leader_eb._target != null)
             {
-                JobBase jb = leader_eb.e_target.GetComponent<JobBase>();
-                if(leader_eb.e_target.layer == LayerMask.NameToLayer("Player") &&
+                JobBase jb = leader_eb._target.GetComponent<JobBase>();
+                if(leader_eb._target.layer == LayerMask.NameToLayer("Player") &&
                     jb.battelStatus != BattelStatus.DEAD)
                 {
                     if (!eb.skillList[0].isRecast)
                     {
-                        eb.StartCoroutine(eb.SkillUse(leader_eb.e_target, eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(leader_eb._target, eb.skillList[0]));
                         return;
                     }
                 }

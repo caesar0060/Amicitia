@@ -10,9 +10,7 @@ public class JobBase : StatusControl {
 	// プレイヤー攻撃のときの移動の必要な時間
 	private static float PLAYER_MOVE_SPEED = 5.0f;
 	// ボタンの距離
-	private static float BUTTON_DISTANCE = 0.5f;
-	//ターゲット
-	[HideInInspector] public GameObject p_target;
+	private static float BUTTON_DISTANCE = 0.7f;
 	//インスタンスを保存するコントローラ
 	public Controller controller;
 	// Skillを保存用配列
@@ -38,28 +36,30 @@ public class JobBase : StatusControl {
 		case BattelStatus.NOT_IN_BATTEL:
 			GameObject other_go = other.gameObject;
 			if(other_go.layer == LayerMask.NameToLayer("NPC")){
-				if (p_target == null) {
+				if (_target == null) {
 					if (CheckIsFront (other_go))
-						p_target = other_go;
-				} else if (p_target == other_go) {
+						_target = other_go;
+				} else if (_target == other_go) {
 					if (!CheckIsFront (other_go))
-						p_target = null;
+						_target = null;
 				}
 			}   
 			break;
 		}
 	}
 
-    public void OnTriggerEnter(Collider other) {
+    void OnCollisionEnter(Collision other)
+    {
         if (this.battelStatus == BattelStatus.NOT_IN_BATTEL)
         {
             GameObject other_go = other.gameObject;
             if (other_go.layer == LayerMask.NameToLayer("Enemy"))
             {
                 PlayerRoot pr = PlayerRoot.Instance;
-                pr.p_jb.p_target = other_go;
+                pr.p_jb._target = other_go;
                 if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
                     pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
+                Destroy(other_go);
                 pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
             }
         }
@@ -68,8 +68,8 @@ public class JobBase : StatusControl {
 	public void OnTriggerExit(Collider other){
 		switch(battelStatus){
 		case BattelStatus.NOT_IN_BATTEL:
-			if (p_target == other.gameObject)
-				p_target = null;
+			if (_target == other.gameObject)
+				_target = null;
 			break;
 		}
 	}
@@ -85,32 +85,6 @@ public class JobBase : StatusControl {
 			controller.Enter (this);
 		} else
 			Debug.LogError ("same");
-	}
-	/// <summary>
-	/// Objectは前にいるかどうかをチェックする
-	/// </summary>
-	/// <returns><c>true</c>, 前にいるなら, <c>false</c> 違う場合.</returns>
-	/// <param name="other">Object.</param>
-	public bool CheckIsFront(GameObject other){
-		bool isFront = false;
-		// プレイヤーが現在向いている方向を保管
-		Vector3 heading = this.transform.TransformDirection (Vector3.forward);
-		// プレイヤーから見たObjectの方向を保管
-		Vector3 to_other = other.transform.position - this.transform.position;
-		heading.y = 0;
-		to_other.y = 0;
-		//正規化する
-		heading.Normalize ();
-		to_other.Normalize ();
-		//内積を求める
-		float dp = Vector3.Dot (heading, to_other);
-		//内積が45度のコサイン値未満なら、falseを返す
-		if (dp < Mathf.Cos (45)) {
-			return isFront;
-		}
-		//内積が45度のコサイン以上なら、trueを返す
-		isFront = true;	
-		return isFront;
 	}
 
 	/// <summary>
@@ -309,21 +283,43 @@ public class JobBase : StatusControl {
 	/// <param name="time">Damageを与える時間</param>
 	/// <returns></returns>
 	public IEnumerator Damage(GameObject target, SkillScript sc, float time){
+        if (sc.s_targetNum == TargetNum.MUTIPLE)
+        {
+            CreateRange();
+            GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
+        }
 		float timer = 0;
 		while (true) {
 			timer += Time.deltaTime;
 			float counter = timer / time;
 			if (counter >= 1) {
-                // switch() 味方？敵？
                 try
                 {
                     float s_power = 1;	//精霊の力
                     if (CheckFlag(ConditionStatus.POWER_UP))
                         s_power = 1.5f;
-                    EnemyBase eb = target.GetComponent<EnemyBase>();
-                    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-                    eb.Set_HP(damage);
-                    target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                    if (sc.s_targetNum == TargetNum.MUTIPLE)
+                    {
+                        foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+                        {
+                            if (r_target.layer != LayerMask.NameToLayer("Enemy"))
+                                continue;
+                            EnemyBase eb = r_target.GetComponent<EnemyBase>();
+                            int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                            eb.Set_HP(damage);
+                            r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+
+                        }
+                    }
+                    else
+                    {
+                        EnemyBase eb = target.GetComponent<EnemyBase>();
+                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                        eb.Set_HP(damage);
+                        target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                    }
+                    if (GameObject.FindGameObjectWithTag("Range"))
+                        DeleteRange();
                     StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
                 }
                 catch (MissingReferenceException)
@@ -338,6 +334,11 @@ public class JobBase : StatusControl {
 	}
     public IEnumerator MagicDamage(GameObject target, SkillScript sc, float a_time, string effect, float e_time)
     {
+        if (sc.s_targetNum == TargetNum.MUTIPLE)
+        {
+            CreateRange();
+            GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
+        }
         float timer = 0;
         bool useMagic = false;
         while (true)
@@ -351,13 +352,31 @@ public class JobBase : StatusControl {
             }
             if (timer >= e_time)
             {
+                // switch() 味方？敵？
                 float s_power = 1;	//精霊の力
-                if (CheckFlag(ConditionStatus.POWER_UP))
+                if (CheckFlag(ConditionStatus.MAGIC_UP))
                     s_power = 1.5f;
-                EnemyBase eb = target.GetComponent<EnemyBase>();
-                int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-                eb.Set_HP(damage);
-                target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                if (sc.s_targetNum == TargetNum.MUTIPLE)
+                {
+                    foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+                    {
+                        if (r_target.layer != LayerMask.NameToLayer("Enemy"))
+                            continue;
+                        EnemyBase eb = r_target.GetComponent<EnemyBase>();
+                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                        eb.Set_HP(damage);
+                        r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                    }
+                }
+                else
+                {
+                    EnemyBase eb = target.GetComponent<EnemyBase>();
+                    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                    eb.Set_HP(damage);
+                    target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                }
+                if (GameObject.FindGameObjectWithTag("Range"))
+                    DeleteRange();
                 StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
                 yield break;
             }

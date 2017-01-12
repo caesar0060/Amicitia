@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -36,8 +37,17 @@ public class SceneChange : RootController
     }
     override public void Exit(PlayerRoot pr = null)
     {
-        if (pr.p_jb.p_target.layer == LayerMask.NameToLayer("Enemy") && pr.p_jb.p_target != null)
-            pr.DestroyObj(pr.p_jb.p_target);
+        try
+        {
+            if (pr.p_jb._target != null)
+            {
+                if (pr.p_jb._target.layer == LayerMask.NameToLayer("Enemy"))
+                    pr.DestroyObj(pr.p_jb._target);
+            }
+        }
+        catch (NullReferenceException){
+
+        }
     }
 }
 /// <summary>
@@ -173,10 +183,10 @@ public class WalkMode : RootController
         #region 操作
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (pr.p_jb.p_target != null)
+            if (pr.p_jb._target != null)
             {
                 pr.StartCoroutine(pr.GetComponent<FadeManager>().ReadyTalkUI(0.5f, TalkMode.Instance));
-                pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb.p_target.GetComponent<ScenarioScript>().fileName);
+                pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb._target.GetComponent<ScenarioScript>().fileName);
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -401,7 +411,7 @@ public class BattelMode : RootController
                             // 選択したボタンを保管
                             pr.btn = hit.collider.gameObject;
                             pr.s_script = pr.btn.GetComponent<SkillScript>();
-                            pr.ChangeMode(P_TargetMode.Instance);
+                            pr.ChangeMode(_targetMode.Instance);
                         }
                         break;
                 }
@@ -424,20 +434,20 @@ public class BattelMode : RootController
 /// <summary>
 /// ターゲットを選択用 Singleton
 /// </summary>
-public class P_TargetMode : RootController
+public class _targetMode : RootController
 {
     // ターゲットモードのインスタンス
-    private static P_TargetMode instance;
+    private static _targetMode instance;
     /// <summary>
     /// TargetModeeのインスタンスを取得
     /// </summary>
     /// <value>TargetModeのインスタンス</value>
-    public static P_TargetMode Instance
+    public static _targetMode Instance
     {
         get
         {
             if (instance == null)
-                instance = new P_TargetMode();
+                instance = new _targetMode();
             return instance;
         }
     }
@@ -452,13 +462,17 @@ public class P_TargetMode : RootController
     override public void Enter(PlayerRoot pr = null)
     {
         //初期化
-        if (pr.s_script.s_targetype == TargetType.PLAYER)
+        switch (pr.s_script.s_targetype)
         {
-            u_layerMask = LayerMask.GetMask(new string[] { "Player", "Ground" });
-        }
-        else
-        {
-            u_layerMask = LayerMask.GetMask(new string[] { "Enemy", "Ground" });
+            case TargetType.PLAYER:
+                u_layerMask = LayerMask.GetMask(new string[] { "Player", "Ground" });
+                break;
+            case TargetType.ENEMY:
+                u_layerMask = LayerMask.GetMask(new string[] { "Enemy", "Ground" });
+                break;
+            case TargetType.BOTH:
+                u_layerMask = LayerMask.GetMask(new string[] { "Player", "Enemy", "Ground" });
+                break;
         }
         layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
         d_layerMask = LayerMask.GetMask(new string[] { "Command" });
@@ -470,7 +484,7 @@ public class P_TargetMode : RootController
         // ボタンがなければ
         if (pr.btn == null)
             pr.ChangeMode(BattelMode.Instance);
-        #region 穴它旦紱釬
+        #region Function
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -567,7 +581,7 @@ public class P_TargetMode : RootController
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float effectTime = 0)
     {
         pr.p_jb.ChangeMode(SkillMode.Instance);
-        pr.p_jb.p_target = target; pr.p_jb.skillUsing = pr.s_script;
+        pr.p_jb._target = target; pr.p_jb.skillUsing = pr.s_script;
         GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
         pr.ChangeMode(BattelMode.Instance);
     }

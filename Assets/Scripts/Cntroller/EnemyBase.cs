@@ -45,8 +45,7 @@ public class EnemyBase : StatusControl {
 	public E_Controller controller = null;
 	//前のインスタンスを保存するコントローラ
 	public E_Controller preivousController = null;
-	//ターゲット
-    [HideInInspector] public GameObject e_target;
+
     //PlayerRootを保存する
 	[HideInInspector] public PlayerRoot e_pr;
     // プレイヤーのリーダーを保管する
@@ -67,6 +66,39 @@ public class EnemyBase : StatusControl {
     // 移動しているかどうか
     public bool isMove = false;
 	#endregion
+
+    public void OnTriggerStay(Collider other)
+    {
+        switch (battelStatus)
+        {
+            case BattelStatus.NOT_IN_BATTEL:
+                GameObject other_go = other.gameObject;
+                if (other_go.layer == LayerMask.NameToLayer("Player"))
+                {
+                    if (_target == null)
+                    {
+                        if (CheckIsFront(other_go))
+                            _target = other_go;
+                    }
+                    else if (_target == other_go)
+                    {
+                        if (!CheckIsFront(other_go))
+                            _target = null;
+                    }
+                }
+                break;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        switch (battelStatus)
+        {
+            case BattelStatus.NOT_IN_BATTEL:
+                if (_target == other.gameObject)
+                    _target = null;
+                break;
+        }
+    }
 
 	#region Function
 	/// <summary>
@@ -237,7 +269,13 @@ public class EnemyBase : StatusControl {
 				if (target != null) {
 					Vector3 dir = target.transform.position - this.transform.position;
 					RotateToTarget(target);
-					endPos = target.transform.position - Vector3.Normalize(dir) * this.GetComponent<CapsuleCollider>().radius;
+                    endPos = target.transform.position - Vector3.Normalize(dir) * this.GetComponent<CapsuleCollider>().radius;
+                    if (method == "move")
+                    {
+                        float dis = Vector3.Distance(Vector3.zero, this.transform.localPosition);
+                        if (dis >= 5)
+                            endPos = this.transform.position;
+                    }
 				}
 				float distance = Vector3.Distance (startPos, endPos);
 				float time = distance / (ENEMY_MOVE_SPEED * speed);
@@ -338,7 +376,7 @@ public class EnemyBase : StatusControl {
             {
                 Destroy(icon);
                 ChangeMode(E_SkillMode.Instance);
-                e_target = target; skillUsing = skill;
+                _target = target; skillUsing = skill;
                 GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(this.gameObject);
                 skill.isRecast = true;
                 yield break;

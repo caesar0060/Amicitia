@@ -18,6 +18,7 @@ public enum TargetNum{
 public enum TargetType{
 	PLAYER = 0,
 	ENEMY,
+    BOTH,
 }
 
 public class SkillScript : MonoBehaviour {

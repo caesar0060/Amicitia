@@ -252,10 +252,10 @@ public class T_Normal : E_Controller
             {
                 int ran = Random.Range(0, eb.e_pr.partyList.Count);
                 JobBase jb = eb.e_pr.partyList[ran].GetComponent<JobBase>();
-                if (jb.p_target.layer == LayerMask.NameToLayer("Enemy"))
+                if (jb._target.layer == LayerMask.NameToLayer("Enemy"))
                 {
                     // Edit skill later
-                    eb.StartCoroutine(eb.SkillUse(jb.p_target, eb.skillList[0]));
+                    eb.StartCoroutine(eb.SkillUse(jb._target, eb.skillList[0]));
                     return;
                 }
             }

@@ -27,6 +27,8 @@ public class E_Magician : EnemyBase {
 		e_pr = GameObject.Find("GameRoot").GetComponent<PlayerRoot>();
 		if (GameObject.FindGameObjectWithTag("PartyRoot"))
 		{
+            Set_b_Status(BattelStatus.NORMAL);
+            this.GetComponent<SphereCollider>().enabled = false;
 			// チームによるモードを変更する
 			switch (GetModeNumber())
 			{
@@ -49,8 +51,10 @@ public class E_Magician : EnemyBase {
 					ChangeMode(M_Normal.Instance);
 					break;
 			}
+            StartCoroutine(Loading(5.0f));
 		}
-        StartCoroutine(Loading(5.0f));
+        else
+            StartCoroutine(Loading(1.0f));
 	}
 	// Update is called once per frame
 	void Update () {
@@ -66,7 +70,7 @@ public class E_Magician : EnemyBase {
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, 
-			target.transform.position, 1,"attack", target, skillList [0], "isBom"));
+			_target.transform.position, 1,"attack", target, skillList [0], "isBom"));
 	}
 	/// <summary>
     /// エオロー
@@ -86,7 +90,7 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間.</param>
     override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
-		JobBase jb = target.GetComponent<JobBase> ();
+		JobBase jb = _target.GetComponent<JobBase> ();
 		this.GetComponentInChildren<Animator> ().SetTrigger ("isBom");
 		StartCoroutine (Damage (target, skillList [2], 1));
         jb.Set_c_Status(ConditionStatus.SLOW);

@@ -25,6 +25,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	 public List<GameObject> partyList = new List<GameObject>();
 	// 敵を保管する配列
 	 public List<GameObject> enemyList = new List<GameObject>();
+    // 範囲攻撃用
+     public GameObject skillRange;
 	[HideInInspector] public GameObject btn = null;
 	[HideInInspector] public SkillScript s_script;
 	//戦闘が終わるかどうか
