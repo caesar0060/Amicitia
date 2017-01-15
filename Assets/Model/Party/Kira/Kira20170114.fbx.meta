@@ -1,0 +1,986 @@
+fileFormatVersion: 2
+guid: 8eb6683894dddc248b9ba54d17669eb2
+timeCreated: 1484467112
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Center
+    100002: Head
+    100004: Joint1
+    100006: joint1
+    100008: joint2
+    100010: joint2 1
+    100012: joint3
+    100014: joint3 1
+    100016: joint4
+    100018: joint4 1
+    100020: joint5
+    100022: //RootNode
+    100024: Kira_Mesh
+    100026: L_Ball
+    100028: L_Clavicle
+    100030: L_Elbow
+    100032: L_Finky01
+    100034: L_Finky02
+    100036: L_Finky03
+    100038: L_Finky04
+    100040: L_Index01
+    100042: L_Index02
+    100044: L_Index03
+    100046: L_Index04
+    100048: L_Knee
+    100050: L_Middle01
+    100052: L_Middle02
+    100054: L_Middle03
+    100056: L_Middle04
+    100058: L_Palm
+    100060: L_Ring01
+    100062: L_Ring02
+    100064: L_Ring03
+    100066: L_Ring04
+    100068: L_Shouder
+    100070: L_Teo
+    100072: L_Thumb01
+    100074: L_Thumb02
+    100076: L_Thumb03
+    100078: L_Tight
+    100080: L_Twist
+    100082: L_Whill
+    100084: Neck
+    100086: pCube68
+    100088: pCylinder2
+    100090: polySurface19
+    100092: polySurface22
+    100094: polySurface23
+    100096: polySurface24
+    100098: polySurface25
+    100100: polySurface26
+    100102: polySurface27
+    100104: polySurface32
+    100106: polySurface33
+    100108: polySurface34
+    100110: polySurface35
+    100112: polySurface36
+    100114: pSphere1
+    100116: pSphere2
+    100118: pSphere3
+    100120: pSphere4
+    100122: pSphere5
+    100124: pSphere6
+    100126: R_Ball
+    100128: R_Clavicle
+    100130: R_Elbow
+    100132: R_Finky01
+    100134: R_Finky02
+    100136: R_Finky03
+    100138: R_Finky04
+    100140: R_Index01
+    100142: R_Index02
+    100144: R_Index03
+    100146: R_Index04
+    100148: R_Knee
+    100150: R_Middle01
+    100152: R_Middle02
+    100154: R_Middle03
+    100156: R_Middle04
+    100158: R_Palm
+    100160: R_Ring01
+    100162: R_Ring02
+    100164: R_Ring03
+    100166: R_Ring04
+    100168: R_Shouder
+    100170: R_Teo
+    100172: R_Thumb01
+    100174: R_Thumb02
+    100176: R_Thumb03
+    100178: R_Tight
+    100180: R_Twist
+    100182: R_Whill
+    100184: Spine01
+    100186: Spine02
+    100188: Spine03
+    100190: Spine04
+    100192: Stappe
+    100194: Top
+    400000: Center
+    400002: Head
+    400004: Joint1
+    400006: joint1
+    400008: joint2
+    400010: joint2 1
+    400012: joint3
+    400014: joint3 1
+    400016: joint4
+    400018: joint4 1
+    400020: joint5
+    400022: //RootNode
+    400024: Kira_Mesh
+    400026: L_Ball
+    400028: L_Clavicle
+    400030: L_Elbow
+    400032: L_Finky01
+    400034: L_Finky02
+    400036: L_Finky03
+    400038: L_Finky04
+    400040: L_Index01
+    400042: L_Index02
+    400044: L_Index03
+    400046: L_Index04
+    400048: L_Knee
+    400050: L_Middle01
+    400052: L_Middle02
+    400054: L_Middle03
+    400056: L_Middle04
+    400058: L_Palm
+    400060: L_Ring01
+    400062: L_Ring02
+    400064: L_Ring03
+    400066: L_Ring04
+    400068: L_Shouder
+    400070: L_Teo
+    400072: L_Thumb01
+    400074: L_Thumb02
+    400076: L_Thumb03
+    400078: L_Tight
+    400080: L_Twist
+    400082: L_Whill
+    400084: Neck
+    400086: pCube68
+    400088: pCylinder2
+    400090: polySurface19
+    400092: polySurface22
+    400094: polySurface23
+    400096: polySurface24
+    400098: polySurface25
+    400100: polySurface26
+    400102: polySurface27
+    400104: polySurface32
+    400106: polySurface33
+    400108: polySurface34
+    400110: polySurface35
+    400112: polySurface36
+    400114: pSphere1
+    400116: pSphere2
+    400118: pSphere3
+    400120: pSphere4
+    400122: pSphere5
+    400124: pSphere6
+    400126: R_Ball
+    400128: R_Clavicle
+    400130: R_Elbow
+    400132: R_Finky01
+    400134: R_Finky02
+    400136: R_Finky03
+    400138: R_Finky04
+    400140: R_Index01
+    400142: R_Index02
+    400144: R_Index03
+    400146: R_Index04
+    400148: R_Knee
+    400150: R_Middle01
+    400152: R_Middle02
+    400154: R_Middle03
+    400156: R_Middle04
+    400158: R_Palm
+    400160: R_Ring01
+    400162: R_Ring02
+    400164: R_Ring03
+    400166: R_Ring04
+    400168: R_Shouder
+    400170: R_Teo
+    400172: R_Thumb01
+    400174: R_Thumb02
+    400176: R_Thumb03
+    400178: R_Tight
+    400180: R_Twist
+    400182: R_Whill
+    400184: Spine01
+    400186: Spine02
+    400188: Spine03
+    400190: Spine04
+    400192: Stappe
+    400194: Top
+    2300000: Stappe
+    3300000: Stappe
+    4300000: polySurface22
+    4300002: polySurface23
+    4300004: polySurface24
+    4300006: polySurface25
+    4300008: polySurface26
+    4300010: polySurface27
+    4300012: pCube68
+    4300014: polySurface19
+    4300016: pSphere1
+    4300018: pSphere2
+    4300020: pSphere3
+    4300022: pSphere4
+    4300024: pCylinder2
+    4300026: polySurface32
+    4300028: pSphere5
+    4300030: polySurface33
+    4300032: polySurface34
+    4300034: pSphere6
+    4300036: polySurface35
+    4300038: polySurface36
+    4300040: Stappe
+    7400000: kira_idel
+    7400002: kira_attack1
+    7400004: kira_attack2
+    9500000: //RootNode
+    13700000: pCube68
+    13700002: pCylinder2
+    13700004: polySurface19
+    13700006: polySurface22
+    13700008: polySurface23
+    13700010: polySurface24
+    13700012: polySurface25
+    13700014: polySurface26
+    13700016: polySurface27
+    13700018: polySurface32
+    13700020: polySurface33
+    13700022: polySurface34
+    13700024: polySurface35
+    13700026: polySurface36
+    13700028: pSphere1
+    13700030: pSphere2
+    13700032: pSphere3
+    13700034: pSphere4
+    13700036: pSphere5
+    13700038: pSphere6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: kira_idel
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Joint1
+        weight: 1
+      - path: Joint1/Center
+        weight: 1
+      - path: Joint1/Center/joint1
+        weight: 1
+      - path: Joint1/Center/joint1/joint2
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3/joint4
+        weight: 1
+      - path: Joint1/Center/joint5
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1/joint4 1
+        weight: 1
+      - path: Joint1/Center/L_Tight
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball/L_Teo
+        weight: 1
+      - path: Joint1/Center/R_Tight
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball/R_Teo
+        weight: 1
+      - path: Joint1/Center/Spine01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03/L_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03/L_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03/L_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03/L_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head/Top
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03/R_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03/R_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03/R_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03/R_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/Stappe
+        weight: 1
+      - path: Kira_Mesh
+        weight: 1
+      - path: Kira_Mesh/pCube68
+        weight: 1
+      - path: Kira_Mesh/pCylinder2
+        weight: 1
+      - path: Kira_Mesh/polySurface19
+        weight: 1
+      - path: Kira_Mesh/polySurface22
+        weight: 1
+      - path: Kira_Mesh/polySurface23
+        weight: 1
+      - path: Kira_Mesh/polySurface24
+        weight: 1
+      - path: Kira_Mesh/polySurface25
+        weight: 1
+      - path: Kira_Mesh/polySurface26
+        weight: 1
+      - path: Kira_Mesh/polySurface27
+        weight: 1
+      - path: Kira_Mesh/polySurface32
+        weight: 1
+      - path: Kira_Mesh/polySurface33
+        weight: 1
+      - path: Kira_Mesh/polySurface34
+        weight: 1
+      - path: Kira_Mesh/polySurface35
+        weight: 1
+      - path: Kira_Mesh/polySurface36
+        weight: 1
+      - path: Kira_Mesh/pSphere1
+        weight: 1
+      - path: Kira_Mesh/pSphere2
+        weight: 1
+      - path: Kira_Mesh/pSphere3
+        weight: 1
+      - path: Kira_Mesh/pSphere4
+        weight: 1
+      - path: Kira_Mesh/pSphere5
+        weight: 1
+      - path: Kira_Mesh/pSphere6
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: kira_attack1
+      takeName: Take 001
+      firstFrame: 101
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Joint1
+        weight: 1
+      - path: Joint1/Center
+        weight: 1
+      - path: Joint1/Center/joint1
+        weight: 1
+      - path: Joint1/Center/joint1/joint2
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3/joint4
+        weight: 1
+      - path: Joint1/Center/joint5
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1/joint4 1
+        weight: 1
+      - path: Joint1/Center/L_Tight
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball/L_Teo
+        weight: 1
+      - path: Joint1/Center/R_Tight
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball/R_Teo
+        weight: 1
+      - path: Joint1/Center/Spine01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03/L_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03/L_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03/L_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03/L_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head/Top
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03/R_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03/R_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03/R_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03/R_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/Stappe
+        weight: 1
+      - path: Kira_Mesh
+        weight: 1
+      - path: Kira_Mesh/pCube68
+        weight: 1
+      - path: Kira_Mesh/pCylinder2
+        weight: 1
+      - path: Kira_Mesh/polySurface19
+        weight: 1
+      - path: Kira_Mesh/polySurface22
+        weight: 1
+      - path: Kira_Mesh/polySurface23
+        weight: 1
+      - path: Kira_Mesh/polySurface24
+        weight: 1
+      - path: Kira_Mesh/polySurface25
+        weight: 1
+      - path: Kira_Mesh/polySurface26
+        weight: 1
+      - path: Kira_Mesh/polySurface27
+        weight: 1
+      - path: Kira_Mesh/polySurface32
+        weight: 1
+      - path: Kira_Mesh/polySurface33
+        weight: 1
+      - path: Kira_Mesh/polySurface34
+        weight: 1
+      - path: Kira_Mesh/polySurface35
+        weight: 1
+      - path: Kira_Mesh/polySurface36
+        weight: 1
+      - path: Kira_Mesh/pSphere1
+        weight: 1
+      - path: Kira_Mesh/pSphere2
+        weight: 1
+      - path: Kira_Mesh/pSphere3
+        weight: 1
+      - path: Kira_Mesh/pSphere4
+        weight: 1
+      - path: Kira_Mesh/pSphere5
+        weight: 1
+      - path: Kira_Mesh/pSphere6
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: kira_attack2
+      takeName: Take 001
+      firstFrame: 141
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Joint1
+        weight: 1
+      - path: Joint1/Center
+        weight: 1
+      - path: Joint1/Center/joint1
+        weight: 1
+      - path: Joint1/Center/joint1/joint2
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3
+        weight: 1
+      - path: Joint1/Center/joint1/joint2/joint3/joint4
+        weight: 1
+      - path: Joint1/Center/joint5
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1
+        weight: 1
+      - path: Joint1/Center/joint5/joint2 1/joint3 1/joint4 1
+        weight: 1
+      - path: Joint1/Center/L_Tight
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball
+        weight: 1
+      - path: Joint1/Center/L_Tight/L_Knee/L_Whill/L_Ball/L_Teo
+        weight: 1
+      - path: Joint1/Center/R_Tight
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball
+        weight: 1
+      - path: Joint1/Center/R_Tight/R_Knee/R_Whill/R_Ball/R_Teo
+        weight: 1
+      - path: Joint1/Center/Spine01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Finky01/L_Finky02/L_Finky03/L_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Index01/L_Index02/L_Index03/L_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Middle01/L_Middle02/L_Middle03/L_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Ring01/L_Ring02/L_Ring03/L_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Shouder/L_Elbow/L_Twist/L_Palm/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/Neck/Head/Top
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Finky01/R_Finky02/R_Finky03/R_Finky04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Index01/R_Index02/R_Index03/R_Index04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Middle01/R_Middle02/R_Middle03/R_Middle04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Ring01/R_Ring02/R_Ring03/R_Ring04
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Joint1/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Shouder/R_Elbow/R_Twist/R_Palm/Stappe
+        weight: 1
+      - path: Kira_Mesh
+        weight: 1
+      - path: Kira_Mesh/pCube68
+        weight: 1
+      - path: Kira_Mesh/pCylinder2
+        weight: 1
+      - path: Kira_Mesh/polySurface19
+        weight: 1
+      - path: Kira_Mesh/polySurface22
+        weight: 1
+      - path: Kira_Mesh/polySurface23
+        weight: 1
+      - path: Kira_Mesh/polySurface24
+        weight: 1
+      - path: Kira_Mesh/polySurface25
+        weight: 1
+      - path: Kira_Mesh/polySurface26
+        weight: 1
+      - path: Kira_Mesh/polySurface27
+        weight: 1
+      - path: Kira_Mesh/polySurface32
+        weight: 1
+      - path: Kira_Mesh/polySurface33
+        weight: 1
+      - path: Kira_Mesh/polySurface34
+        weight: 1
+      - path: Kira_Mesh/polySurface35
+        weight: 1
+      - path: Kira_Mesh/polySurface36
+        weight: 1
+      - path: Kira_Mesh/pSphere1
+        weight: 1
+      - path: Kira_Mesh/pSphere2
+        weight: 1
+      - path: Kira_Mesh/pSphere3
+        weight: 1
+      - path: Kira_Mesh/pSphere4
+        weight: 1
+      - path: Kira_Mesh/pSphere5
+        weight: 1
+      - path: Kira_Mesh/pSphere6
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
