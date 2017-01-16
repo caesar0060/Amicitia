@@ -10,6 +10,25 @@ using System.Text.RegularExpressions;
 [RequireComponent(typeof(TextControl))]
 public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 {
+	private static Vector3[] pos1 = new Vector3[]{
+	   new Vector3(0,0,0),		// insert
+	   new Vector3(0,0,0)		// remove
+	   };
+	private static Vector3[] pos2 = new Vector3[]{
+	   new Vector3(0,0,0),		// insert
+	   new Vector3(0,0,0)		// remove
+	   };
+	private static Vector3[] pos3 = new Vector3[]{
+	   new Vector3(0,0,0),		// insert
+	   new Vector3(0,0,0)		// remove
+	   };
+	private static Vector3[] pos4 = new Vector3[]{
+	   new Vector3(0,0,0),		// insert
+	   new Vector3(0,0,0)		// remove
+	   };
+	private static Vector3[][] pos_list = new Vector3[][]{
+	   pos1, pos2, pos3, pos4
+	   };
     [HideInInspector]
     public bool isScenario = false;	//シナリオ中かどうかを判断
     [HideInInspector]
@@ -21,8 +40,8 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     [HideInInspector]
     public Dictionary<string, GameObject> p_imageList = new Dictionary<string, GameObject>();
 	[HideInInspector] public GameObject hukidasi = null;
-    [HideInInspector]
-    public TextControl m_textControl;
+    [HideInInspector] public TextControl m_textControl;
+	public Image[] img_list;	// 会話用の絵
 
     // Use this for initialization
     void Start()
@@ -100,7 +119,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 
             if (!string.IsNullOrEmpty(text))
             {
-                if (text[0] == '@')
+                if (text[0] == '#')
                 {
 
                 }
@@ -162,7 +181,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// <summary>
     /// Starts the scenario.
     /// </summary>
-    public void ItweenMoveTo(GameObject target, Vector3 pos, float time, string easeType, string method = "", GameObject obj = null)
+	public void ItweenMoveTo(GameObject target, Vector3 pos, float time, string easeType = "linear", string method = "", GameObject obj = null)
     {
         var moveHash = new Hashtable();
         moveHash.Add("islocal", true);
@@ -176,4 +195,29 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
         iTween.MoveTo(target, moveHash);
     }
+	public void ChangeImage(int num, string img_name)
+	{
+		string path = "Talk_Image/" + img_name + ".png";
+		img_list[num-1].sprite = Resources.Load<Sprite>(path);
+	}
+	public void RemoveImage(int num)
+	{
+		ItweenMoveTo(img_list[num-1].gameObject,pos_list[num-1][1],1);
+	}
+	public void InsertImage(int num, string img_name)
+	{
+		ItweenMoveTo(img_list[num - 1].gameObject, pos_list[num - 1][0], 1);
+	}
+	public IEnumerator SwayImage(int num)
+	{
+		float time = Time.time;
+		while (true) { 
+			if(time /Time.time >= 1)
+				yield break;
+			float x = UnityEngine.Random.Range(0, 10);
+			float y = UnityEngine.Random.Range(0, 10);
+			Vector3 move_pos = pos_list[num-1][0];
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 }
