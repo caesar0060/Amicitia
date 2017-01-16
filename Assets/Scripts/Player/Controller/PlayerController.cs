@@ -70,6 +70,7 @@ public class WalkMode : RootController
     private Quaternion s_defaultRot;
     // GameObjectを取得
     private GameObject cameraSupport;
+	private GameObject player;
     // タッチの位置
     private Vector3 touchPoint;
     // プレイヤーのAnimator
@@ -93,9 +94,10 @@ public class WalkMode : RootController
     override public void Enter(PlayerRoot pr = null)
     {
         if (!GameObject.Find("Player"))
-            pr.CreateChild("Player", pr.p_prefabList[1]);
+            player = pr.CreateObject("Player", pr.p_prefabList[1]);
         cameraSupport = GameObject.FindGameObjectWithTag("Camera");
         // 初期化する
+		cameraSupport.transform.SetParent(player.transform);
         cameraSupport.transform.localPosition = NormalPos;
         cameraSupport.transform.localEulerAngles = NormalRot;
         //　初期値を保存する
@@ -114,12 +116,12 @@ public class WalkMode : RootController
         bool isMoved = false;
         if (Input.GetKey(KeyCode.A))
         {	//左
-            pr.transform.Rotate
+            pr.p_jb.transform.Rotate
             (Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
         }
         if (Input.GetKey(KeyCode.D))
         {	//右
-            pr.transform.Rotate
+			pr.p_jb.transform.Rotate
             (Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
         }
         if (Input.GetKey(KeyCode.W))
@@ -133,7 +135,7 @@ public class WalkMode : RootController
             isMoved = true;
         }
         //移動vector3を正規化して,移動方向を求める
-        pr.transform.Translate(move_vector, Space.Self);
+		pr.p_jb.transform.Translate(move_vector, Space.Self);
         //移動したら
         if (move_vector.magnitude > 0.01f)
         {
@@ -293,9 +295,6 @@ public class TalkMode : RootController
 public class BattelStart : RootController
 {
     #region Property
-	//　カメラの最初位置
-	private static Vector3 battelPos = new Vector3(25.7f, 2.91f, 14.97f);
-	private static Vector3 battelRot = new Vector3(28.2461f, 270f, 1.94f);
     // GameObjectを取得
     private GameObject cameraSupport;
     #endregion
@@ -317,12 +316,8 @@ public class BattelStart : RootController
     override public void Enter(PlayerRoot pr = null)
     {
         // 初期化する
-        cameraSupport = GameObject.FindGameObjectWithTag("Camera");
-        pr.DestroyChild("Player");
-        cameraSupport.transform.position = battelPos;
-        cameraSupport.transform.rotation = Quaternion.Euler(battelRot);
+		pr.endBattel = false;
         pr.ChangeMode(BattelMode.Instance);
-        pr.endBattel = false;
     }
     override public void Excute(PlayerRoot pr = null)
     {

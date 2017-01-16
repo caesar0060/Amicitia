@@ -59,8 +59,9 @@ public class JobBase : StatusControl {
                 pr.p_jb._target = other_go;
                 if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
                     pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
-                Destroy(other_go);
                 pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
+				pr.transform.position = this.transform.position;
+				Destroy(other_go);
             }
         }
     }

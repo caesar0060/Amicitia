@@ -98,24 +98,24 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// <summary>
     /// 子供を生成する
 	/// </summary>
-	public void CreateChild(string name, GameObject obj){
-		GameObject child = Instantiate (obj, Vector3.zero, this.transform.rotation) as GameObject;
-        child.transform.parent = this.transform;
-        child.name = name;
-        child.transform.localPosition = Vector3.zero;
-		child.AddComponent<SphereCollider> ();
-		SphereCollider sc = child.GetComponent<SphereCollider> ();
+	public GameObject CreateObject(string name, GameObject obj){
+		GameObject player = Instantiate (obj, Vector3.zero, this.transform.rotation) as GameObject;
+        player.name = name;
+        player.transform.position = this.transform.position;
+		player.AddComponent<SphereCollider> ();
+		SphereCollider sc = player.GetComponent<SphereCollider> ();
 		sc.center = new Vector3 (0, 0.5f, 0);
-		sc.radius = 0.8f;
+		sc.radius = 1.5f;
 		sc.isTrigger = true;
-		child.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NOT_IN_BATTEL);
-        p_jb = child.GetComponent<JobBase>();
+		player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NOT_IN_BATTEL);
+        p_jb = player.GetComponent<JobBase>();
+		return player;
 	}
 	/// <summary>
 	/// 子供を削除する
 	/// </summary>
-	public void DestroyChild(string name){
-		Destroy (this.transform.FindChild (name).gameObject);
+	public void DestroyObject(string name){
+		Destroy (GameObject.Find (name));
 	}
     /// <summary>
     /// GameObjectを削除する

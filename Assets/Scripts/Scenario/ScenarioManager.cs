@@ -11,20 +11,20 @@ using System.Text.RegularExpressions;
 public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 {
 	private static Vector3[] pos1 = new Vector3[]{
-	   new Vector3(0,0,0),		// insert
-	   new Vector3(0,0,0)		// remove
+	   new Vector3(-475,0,0),		// insert
+	   new Vector3(-1075,0,0)		// remove
 	   };
 	private static Vector3[] pos2 = new Vector3[]{
-	   new Vector3(0,0,0),		// insert
-	   new Vector3(0,0,0)		// remove
+	   new Vector3(-200,0,0),		// insert
+	   new Vector3(-800,0,0)		// remove
 	   };
 	private static Vector3[] pos3 = new Vector3[]{
-	   new Vector3(0,0,0),		// insert
-	   new Vector3(0,0,0)		// remove
+	   new Vector3(200,0,0),		// insert
+	   new Vector3(800,0,0)		// remove
 	   };
 	private static Vector3[] pos4 = new Vector3[]{
-	   new Vector3(0,0,0),		// insert
-	   new Vector3(0,0,0)		// remove
+	   new Vector3(475,0,0),		// insert
+	   new Vector3(1075,0,0)		// remove
 	   };
 	private static Vector3[][] pos_list = new Vector3[][]{
 	   pos1, pos2, pos3, pos4
@@ -188,6 +188,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         moveHash.Add("position", pos);
         moveHash.Add("time", time);
         moveHash.Add("easeType", easeType);
+		moveHash.Add("ignoretimescale", true);
         if (method != "")
         {
             moveHash.Add("oncomplete", method);
@@ -195,28 +196,52 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
         iTween.MoveTo(target, moveHash);
     }
+	/// <summary>
+	/// ‰æ‘œ‚ğ•ÏX‚·‚é
+	/// </summary>
+	/// <param name="num"></param>
+	/// <param name="img_name"></param>
 	public void ChangeImage(int num, string img_name)
 	{
 		string path = "Talk_Image/" + img_name + ".png";
 		img_list[num-1].sprite = Resources.Load<Sprite>(path);
 	}
+	/// <summary>
+	/// ‰æ‘œ‚ğíœ‚·‚é
+	/// </summary>
+	/// <param name="num"></param>
 	public void RemoveImage(int num)
 	{
-		ItweenMoveTo(img_list[num-1].gameObject,pos_list[num-1][1],1);
+		ItweenMoveTo(img_list[num-1].gameObject, pos_list[num-1][1], 1);
 	}
+	/// <summary>
+	/// ‰æ‘œ‚ğ’Ç‰Á‚·‚é
+	/// </summary>
+	/// <param name="num"></param>
+	/// <param name="img_name"></param>
 	public void InsertImage(int num, string img_name)
 	{
 		ItweenMoveTo(img_list[num - 1].gameObject, pos_list[num - 1][0], 1);
 	}
+	/// <summary>
+	/// ‰æ‘œ‚ğ—h‚ê‚é
+	/// </summary>
+	/// <param name="num"></param>
+	/// <returns></returns>
 	public IEnumerator SwayImage(int num)
 	{
-		float time = Time.time;
-		while (true) { 
-			if(time /Time.time >= 1)
+		float time = Time.unscaledTime;
+		while (true) {
+			if (time / Time.unscaledTime >= 1)
+			{
+				ItweenMoveTo(img_list[num - 1].gameObject, pos_list[num - 1][0], 0);
 				yield break;
-			float x = UnityEngine.Random.Range(0, 10);
-			float y = UnityEngine.Random.Range(0, 10);
-			Vector3 move_pos = pos_list[num-1][0];
+			}
+			float x = UnityEngine.Random.Range(10, 11);
+			float y = UnityEngine.Random.Range(10, 11);
+			Vector3 pos = new Vector3(x,y,0);
+			Vector3 move_pos = pos_list[num-1][0] + pos;
+			ItweenMoveTo(img_list[num - 1].gameObject, move_pos, 0);
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
