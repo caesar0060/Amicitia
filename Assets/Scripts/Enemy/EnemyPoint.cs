@@ -26,10 +26,6 @@ public class EnemyPoint : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemy == null && !isEnemyDead)
-        {
-            isEnemyDead = true;
-        }
 	}
     IEnumerator GenerateEnemy()
     {
@@ -40,9 +36,7 @@ public class EnemyPoint : MonoBehaviour
             {
                 if ((Time.time - time) / ENEMY_GENERATE_TIME >= 1)
                 {
-                    enemy = Instantiate(prefabs[0]) as GameObject;
-                    enemy.transform.parent = this.transform;
-                    enemy.transform.localPosition = Vector3.zero;
+                    CreateEnemy();
                     isLoading = false;
                     isEnemyDead = false;
                     yield break;
@@ -62,11 +56,19 @@ public class EnemyPoint : MonoBehaviour
             }
             else
             {
-                if (this.transform.childCount > 0)
-                    this.transform.GetChild(0).gameObject.SetActive(true);
+                if (this.transform.childCount == 0)
+                {
+                    CreateEnemy();
+                }
             }
         }
         else if (this.transform.childCount >= 1)
-            this.transform.GetChild(0).gameObject.SetActive(false);
+            Destroy(this.transform.GetChild(0).gameObject);
+    }
+    public void CreateEnemy()
+    {
+        enemy = Instantiate(prefabs[0]) as GameObject;
+        enemy.transform.parent = this.transform;
+        enemy.transform.localPosition = Vector3.zero;
     }
 }

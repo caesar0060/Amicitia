@@ -15,6 +15,7 @@ TagManager:
   - Scenario
   - Battel
   - Range
+  - ScenarioCanvas
   layers:
   - Default
   - TransparentFX

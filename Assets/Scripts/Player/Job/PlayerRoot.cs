@@ -84,14 +84,22 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 		// ボタンの移動用タイマー
 		float timer =0;
 		while (true) {
-			timer += Time.deltaTime * speed;
-			float moveRate = timer / BUTTON_RETURN_TIME;
-			if (moveRate  >= 1) {
-				moveRate = 1;
-				obj.transform.localPosition = Vector3.Lerp (startPos, endPos, moveRate);
-				yield break;
-			}
-			obj.transform.localPosition = Vector3.Lerp (startPos, endPos, moveRate);
+            try
+            {
+                timer += Time.deltaTime * speed;
+                float moveRate = timer / BUTTON_RETURN_TIME;
+                if (moveRate >= 1)
+                {
+                    moveRate = 1;
+                    obj.transform.localPosition = Vector3.Lerp(startPos, endPos, moveRate);
+                    yield break;
+                }
+                obj.transform.localPosition = Vector3.Lerp(startPos, endPos, moveRate);
+            }
+            catch (MissingReferenceException)
+            {
+                yield break;
+            }
 			yield return new WaitForEndOfFrame ();
 		}
 	}
@@ -114,7 +122,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	/// <summary>
 	/// 子供を削除する
 	/// </summary>
-	public void DestroyObject(string name){
+    public void DestroyObj(string name)
+    {
 		Destroy (GameObject.Find (name));
 	}
     /// <summary>

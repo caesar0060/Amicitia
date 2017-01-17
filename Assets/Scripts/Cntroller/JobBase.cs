@@ -61,6 +61,7 @@ public class JobBase : StatusControl {
                     pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
                 pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
 				pr.transform.position = this.transform.position;
+                other_go.transform.GetComponentInParent<EnemyPoint>().isEnemyDead = true;
 				Destroy(other_go);
             }
         }
@@ -208,7 +209,6 @@ public class JobBase : StatusControl {
             if (rate <= 0)
             {
                 img.fillAmount = rate;
-                btn.GetComponent<Collider>().enabled = true;
                 btn.GetComponent<SkillScript>().isRecast = false;
                 yield break;
             }

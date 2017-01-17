@@ -58,8 +58,8 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	private IEnumerator TransScene(string scene, float interval, RootController rc = null )
     {
         // Rootのmodeを変更する
-        if (rc != null)
-            this.GetComponent<PlayerRoot>().ChangeMode(SceneChange.Instance);
+        //if (rc != null)
+            //this.GetComponent<PlayerRoot>().ChangeMode(SceneChange.Instance);
         //だんだん暗く
         this.isFading = true;
         float time = 0;

@@ -1,0 +1,13 @@
+﻿{
+	"events" : [
+		{
+			"e_id" : 1,
+			"e_name" : "最初",
+			"target_type" : "enemy",
+			"target_name" : "ゴブリン",
+			"target_num" : 1,
+			"e_present" : 1,
+			"is_finish" :  false
+	    	}
+	]
+}

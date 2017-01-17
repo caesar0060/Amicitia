@@ -93,22 +93,22 @@ public class WalkMode : RootController
     }
     override public void Enter(PlayerRoot pr = null)
     {
-        if (!GameObject.Find("Player"))
-            player = pr.CreateObject("Player", pr.p_prefabList[1]);
-        cameraSupport = GameObject.FindGameObjectWithTag("Camera");
-        // 初期化する
-		cameraSupport.transform.SetParent(player.transform);
-        cameraSupport.transform.localPosition = NormalPos;
-        cameraSupport.transform.localEulerAngles = NormalRot;
-        //　初期値を保存する
-        c_defaultRot = Camera.main.transform.localRotation;
-        s_defaultRot = cameraSupport.transform.localRotation;
-        p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator>();
         pr.partyList = new List<GameObject>();
         pr.enemyList = new List<GameObject>();
     }
     override public void Excute(PlayerRoot pr = null)
     {
+        if (!GameObject.Find("Player"))
+        {
+            player = pr.CreateObject("Player", pr.p_prefabList[1]);
+            cameraSupport = GameObject.FindGameObjectWithTag("Camera");
+            cameraSupport.transform.SetParent(player.transform);
+            cameraSupport.transform.localPosition = NormalPos;
+            cameraSupport.transform.localEulerAngles = NormalRot;
+            c_defaultRot = Camera.main.transform.localRotation;
+            s_defaultRot = cameraSupport.transform.localRotation;
+            p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator>();
+        }
         #region キャラクターのコントロール
         //移動用vector3
         Vector3 move_vector = Vector3.zero;
