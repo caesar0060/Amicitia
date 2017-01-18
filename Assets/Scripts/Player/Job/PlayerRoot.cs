@@ -62,6 +62,11 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	void Update () {
 			controller.Excute(this);
 	}
+    public void OnLevelWasLoaded(int level)
+    {
+        GameObject.FindGameObjectWithTag("ScenarioCanvas").GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
 	#region Function
 	/// <summary>
 	/// モードを変更する

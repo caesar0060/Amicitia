@@ -57,6 +57,11 @@ public class StatusControl : MonoBehaviour{
     public GameObject _target;
     //エネミーのタイプ
     public JobType _type;
+    // HPゲージのプレハブ
+    public GameObject UI_hp_prefab;
+    // HPゲージを保存する
+    [HideInInspector]
+    public Slider UI_hp;
 	#endregion
 	// 戦闘用ステータス
 	private BattelStatus b_status;
@@ -106,9 +111,7 @@ public class StatusControl : MonoBehaviour{
     public void Set_HP(int point)
     {
         _hp -= point;
-		
-        // slider
-		//this.GetComponentInChildren<Slider>().value = -_hp;
+		UI_hp.value = _hp;
     }
 	/// <summary>
 	/// バトル状態を設定する
