@@ -119,7 +119,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 		SphereCollider sc = player.GetComponent<SphereCollider> ();
 		sc.center = new Vector3 (0, 0.5f, 0);
 		sc.radius = 1.5f;
-		sc.isTrigger = true;
+		sc.isTrigger = true; 
+		player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 		player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NOT_IN_BATTEL);
         p_jb = player.GetComponent<JobBase>();
 		return player;

@@ -1,0 +1,944 @@
+fileFormatVersion: 2
+guid: 4fb1c420948c63c4799156bc1e412c88
+timeCreated: 1484873656
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back_Skirt01
+    100002: Back_Skirt02
+    100004: Center
+    100006: CLoth
+    100008: Front_Cloth01
+    100010: Front_Cloth02
+    100012: Front_Cloth03
+    100014: Front_Skirt01
+    100016: Front_Skirt02
+    100018: Front_Skirt02 1
+    100020: Front_Skirt05
+    100022: hada
+    100024: Head
+    100026: //RootNode
+    100028: Kiren_Joint
+    100030: Kiren_mesh
+    100032: L_Arm01
+    100034: L_Arm02
+    100036: L_Arm03
+    100038: L_Arm04
+    100040: L_Clavicle
+    100042: L_Ear01
+    100044: L_Ear02
+    100046: L_Ear03
+    100048: L_Ear04
+    100050: L_Ear05
+    100052: L_Leg01
+    100054: L_Leg02
+    100056: L_Leg03
+    100058: L_Leg04
+    100060: L_Sice_Skirt02
+    100062: L_Side_Skirt01
+    100064: L_Sode01
+    100066: L_Sode02
+    100068: pCube13
+    100070: pCube17
+    100072: pCube2
+    100074: pCube29
+    100076: pCube37
+    100078: pCube39
+    100080: pCube41
+    100082: pCube45
+    100084: pCube48
+    100086: pCube49
+    100088: pCube50
+    100090: pCube8
+    100092: pCube9
+    100094: R_Arm01
+    100096: R_Arm02
+    100098: R_Arm03
+    100100: R_Arm04
+    100102: R_Clavicle
+    100104: R_Ear01
+    100106: R_Ear02
+    100108: R_Ear03
+    100110: R_Ear04
+    100112: R_Ear05
+    100114: R_Leg01
+    100116: R_Leg02
+    100118: R_Leg03
+    100120: R_Leg04
+    100122: R_Sice_Skirt02
+    100124: R_Side_Skirt01
+    100126: R_Sode01
+    100128: R_Sode02
+    100130: Spine01
+    100132: Spine02
+    100134: Spine03
+    100136: Spine04
+    100138: Stappe
+    100140: Tail01
+    100142: Tail02
+    400000: Back_Skirt01
+    400002: Back_Skirt02
+    400004: Center
+    400006: CLoth
+    400008: Front_Cloth01
+    400010: Front_Cloth02
+    400012: Front_Cloth03
+    400014: Front_Skirt01
+    400016: Front_Skirt02
+    400018: Front_Skirt02 1
+    400020: Front_Skirt05
+    400022: hada
+    400024: Head
+    400026: //RootNode
+    400028: Kiren_Joint
+    400030: Kiren_mesh
+    400032: L_Arm01
+    400034: L_Arm02
+    400036: L_Arm03
+    400038: L_Arm04
+    400040: L_Clavicle
+    400042: L_Ear01
+    400044: L_Ear02
+    400046: L_Ear03
+    400048: L_Ear04
+    400050: L_Ear05
+    400052: L_Leg01
+    400054: L_Leg02
+    400056: L_Leg03
+    400058: L_Leg04
+    400060: L_Sice_Skirt02
+    400062: L_Side_Skirt01
+    400064: L_Sode01
+    400066: L_Sode02
+    400068: pCube13
+    400070: pCube17
+    400072: pCube2
+    400074: pCube29
+    400076: pCube37
+    400078: pCube39
+    400080: pCube41
+    400082: pCube45
+    400084: pCube48
+    400086: pCube49
+    400088: pCube50
+    400090: pCube8
+    400092: pCube9
+    400094: R_Arm01
+    400096: R_Arm02
+    400098: R_Arm03
+    400100: R_Arm04
+    400102: R_Clavicle
+    400104: R_Ear01
+    400106: R_Ear02
+    400108: R_Ear03
+    400110: R_Ear04
+    400112: R_Ear05
+    400114: R_Leg01
+    400116: R_Leg02
+    400118: R_Leg03
+    400120: R_Leg04
+    400122: R_Sice_Skirt02
+    400124: R_Side_Skirt01
+    400126: R_Sode01
+    400128: R_Sode02
+    400130: Spine01
+    400132: Spine02
+    400134: Spine03
+    400136: Spine04
+    400138: Stappe
+    400140: Tail01
+    400142: Tail02
+    2300000: Stappe
+    3300000: Stappe
+    4300000: pCube9
+    4300002: pCube41
+    4300004: pCube8
+    4300006: pCube29
+    4300008: pCube45
+    4300010: pCube39
+    4300012: pCube37
+    4300014: pCube17
+    4300016: pCube13
+    4300018: pCube2
+    4300020: pCube48
+    4300022: pCube49
+    4300024: pCube50
+    4300026: Stappe
+    7400000: Kiren_Battel
+    7400002: Kiren_Skill1
+    7400004: Kiren_Damage
+    7400006: Kiren_Dead
+    9500000: //RootNode
+    13700000: pCube13
+    13700002: pCube17
+    13700004: pCube2
+    13700006: pCube29
+    13700008: pCube37
+    13700010: pCube39
+    13700012: pCube41
+    13700014: pCube45
+    13700016: pCube48
+    13700018: pCube49
+    13700020: pCube50
+    13700022: pCube8
+    13700024: pCube9
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Kiren_Battel
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Kiren_Joint
+        weight: 1
+      - path: Kiren_Joint/Center
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01/Back_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01/Front_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05/Front_Skirt02 1
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03/L_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01/L_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03/R_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01/R_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02/Front_Cloth03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04/L_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04/R_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03/L_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01/L_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/R_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/Stappe
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01/R_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01/Tail02
+        weight: 1
+      - path: Kiren_mesh
+        weight: 1
+      - path: Kiren_mesh/CLoth
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube8
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube9
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube29
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube41
+        weight: 1
+      - path: Kiren_mesh/hada
+        weight: 1
+      - path: Kiren_mesh/hada/pCube2
+        weight: 1
+      - path: Kiren_mesh/hada/pCube13
+        weight: 1
+      - path: Kiren_mesh/hada/pCube17
+        weight: 1
+      - path: Kiren_mesh/hada/pCube37
+        weight: 1
+      - path: Kiren_mesh/hada/pCube39
+        weight: 1
+      - path: Kiren_mesh/hada/pCube45
+        weight: 1
+      - path: Kiren_mesh/hada/pCube48
+        weight: 1
+      - path: Kiren_mesh/hada/pCube49
+        weight: 1
+      - path: Kiren_mesh/hada/pCube50
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Kiren_Skill1
+      takeName: Take 001
+      firstFrame: 101
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: Return
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Kiren_Joint
+        weight: 1
+      - path: Kiren_Joint/Center
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01/Back_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01/Front_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05/Front_Skirt02 1
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03/L_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01/L_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03/R_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01/R_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02/Front_Cloth03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04/L_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04/R_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03/L_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01/L_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/R_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/Stappe
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01/R_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01/Tail02
+        weight: 1
+      - path: Kiren_mesh
+        weight: 1
+      - path: Kiren_mesh/CLoth
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube8
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube9
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube29
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube41
+        weight: 1
+      - path: Kiren_mesh/hada
+        weight: 1
+      - path: Kiren_mesh/hada/pCube2
+        weight: 1
+      - path: Kiren_mesh/hada/pCube13
+        weight: 1
+      - path: Kiren_mesh/hada/pCube17
+        weight: 1
+      - path: Kiren_mesh/hada/pCube37
+        weight: 1
+      - path: Kiren_mesh/hada/pCube39
+        weight: 1
+      - path: Kiren_mesh/hada/pCube45
+        weight: 1
+      - path: Kiren_mesh/hada/pCube48
+        weight: 1
+      - path: Kiren_mesh/hada/pCube49
+        weight: 1
+      - path: Kiren_mesh/hada/pCube50
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Kiren_Damage
+      takeName: Take 001
+      firstFrame: 141
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Kiren_Joint
+        weight: 1
+      - path: Kiren_Joint/Center
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01/Back_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01/Front_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05/Front_Skirt02 1
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03/L_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01/L_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03/R_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01/R_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02/Front_Cloth03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04/L_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04/R_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03/L_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01/L_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/R_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/Stappe
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01/R_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01/Tail02
+        weight: 1
+      - path: Kiren_mesh
+        weight: 1
+      - path: Kiren_mesh/CLoth
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube8
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube9
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube29
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube41
+        weight: 1
+      - path: Kiren_mesh/hada
+        weight: 1
+      - path: Kiren_mesh/hada/pCube2
+        weight: 1
+      - path: Kiren_mesh/hada/pCube13
+        weight: 1
+      - path: Kiren_mesh/hada/pCube17
+        weight: 1
+      - path: Kiren_mesh/hada/pCube37
+        weight: 1
+      - path: Kiren_mesh/hada/pCube39
+        weight: 1
+      - path: Kiren_mesh/hada/pCube45
+        weight: 1
+      - path: Kiren_mesh/hada/pCube48
+        weight: 1
+      - path: Kiren_mesh/hada/pCube49
+        weight: 1
+      - path: Kiren_mesh/hada/pCube50
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Kiren_Dead
+      takeName: Take 001
+      firstFrame: 171
+      lastFrame: 230
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Kiren_Joint
+        weight: 1
+      - path: Kiren_Joint/Center
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Back_Skirt01/Back_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt01/Front_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05
+        weight: 1
+      - path: Kiren_Joint/Center/Front_Skirt05/Front_Skirt02 1
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/L_Leg01/L_Leg02/L_Leg03/L_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/L_Side_Skirt01/L_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03
+        weight: 1
+      - path: Kiren_Joint/Center/R_Leg01/R_Leg02/R_Leg03/R_Leg04
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01
+        weight: 1
+      - path: Kiren_Joint/Center/R_Side_Skirt01/R_Sice_Skirt02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Front_Cloth01/Front_Cloth02/Front_Cloth03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/L_Ear01/L_Ear02/L_Ear03/L_Ear04/L_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/Head/R_Ear01/R_Ear02/R_Ear03/R_Ear04/R_Ear05
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Arm03/L_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/L_Clavicle/L_Arm01/L_Arm02/L_Sode01/L_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/R_Arm04
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Arm03/Stappe
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01
+        weight: 1
+      - path: Kiren_Joint/Center/Spine01/Spine02/Spine03/Spine04/R_Clavicle/R_Arm01/R_Arm02/R_Sode01/R_Sode02
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01
+        weight: 1
+      - path: Kiren_Joint/Center/Tail01/Tail02
+        weight: 1
+      - path: Kiren_mesh
+        weight: 1
+      - path: Kiren_mesh/CLoth
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube8
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube9
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube29
+        weight: 1
+      - path: Kiren_mesh/CLoth/pCube41
+        weight: 1
+      - path: Kiren_mesh/hada
+        weight: 1
+      - path: Kiren_mesh/hada/pCube2
+        weight: 1
+      - path: Kiren_mesh/hada/pCube13
+        weight: 1
+      - path: Kiren_mesh/hada/pCube17
+        weight: 1
+      - path: Kiren_mesh/hada/pCube37
+        weight: 1
+      - path: Kiren_mesh/hada/pCube39
+        weight: 1
+      - path: Kiren_mesh/hada/pCube45
+        weight: 1
+      - path: Kiren_mesh/hada/pCube48
+        weight: 1
+      - path: Kiren_mesh/hada/pCube49
+        weight: 1
+      - path: Kiren_mesh/hada/pCube50
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
