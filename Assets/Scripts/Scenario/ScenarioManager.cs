@@ -108,7 +108,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     {
         var lineReader = new StringReader(line);
         var lineBulider = new StringBuilder();
-        var text = string.Empty;
+        string text = string.Empty;
         while ((text = lineReader.ReadLine()) != null)
         {
             var commentCharacterCount = text.IndexOf("/");
@@ -121,7 +121,22 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
             {
                 if (text[0] == '#')
                 {
-
+				string[] words = text.Split ();
+				switch(words[1])
+				{
+					case "ChangeImage":
+					ChangeImage(int.Parse(words[2]), words[3]);
+					break;
+					case "RemoveImage":
+					RemoveImage(int.Parse(words[2]));
+					break;
+					case "InsertImage":
+					InsertImage(int.Parse(words[2]), words[3]);
+					break;
+					case "SwayImage":
+					StartCoroutine(SwayImage(int.Parse(words[2])));
+					break;
+				}
                 }
                 lineBulider.AppendLine(text);
             }
@@ -150,16 +165,6 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
         nowScenario.Add("Read Scenario error, haven't this event number");
         return nowScenario;
-    }
-    /// <summary>
-    /// Get the image number.
-    /// </summary>
-    /// <returns>The image number.</returns>
-    /// <param name="line">Line.</param>
-    private string GetImageNum(string line)
-    {
-        var tag = Regex.Match(line, "@(\\S+)");
-        return tag.Groups[1].ToString();
     }
     /// <summary>
     /// Starts the scenario.
