@@ -78,8 +78,11 @@ public class PartyRoot : MonoBehaviour {
 			GameObject hp_ui = Instantiate(jb.UI_hp_prefab) as GameObject;
 			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
 			hp_ui.transform.SetAsFirstSibling();
-			hp_ui.transform.localPosition = new Vector3(UI_POS[i], -300,0);
-			jb.UI_hp = hp_ui.GetComponent<Slider>();
+			hp_ui.transform.localPosition = new Vector3(UI_POS[i], -300, 0);
+			hp_ui.transform.localScale = new Vector3(3, 0.5f, 0);
+			jb.UI_hp = hp_ui.GetComponentInChildren<Slider>();
+			jb.UI_hp.maxValue = jb._maxHP;
+			jb.UI_hp.value = jb._hp;
 		}
         if (PlayerRoot.Instance.battelEnemyList.Count == 0)
         //if (PlayerRoot.Instance.battelEnemyList.Count > 0)
@@ -103,7 +106,10 @@ public class PartyRoot : MonoBehaviour {
 			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
 			hp_ui.transform.SetAsFirstSibling();
 			hp_ui.transform.localPosition = new Vector3(UI_POS[i], 300, 0);
-			eb.UI_hp = hp_ui.GetComponent<Slider>();
+			hp_ui.transform.localScale = new Vector3(3, 0.5f, 0);
+			eb.UI_hp = hp_ui.GetComponentInChildren<Slider>();
+			eb.UI_hp.maxValue = eb._maxHP;
+			eb.UI_hp.value = eb._hp;
         }
 		enemyRoot.rotation = Quaternion.Euler(0, 180, 0);
 	}
