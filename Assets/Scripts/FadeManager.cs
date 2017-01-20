@@ -95,13 +95,14 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	/// <param name="rc">変更したいRootController.</param>
 	public IEnumerator ReadyTalkUI(float interval, RootController rc)
 	{
+		Time.timeScale = 0;
 		this.GetComponent<PlayerRoot>().ChangeMode(rc);
 		float time = 0;
 		while (time <= interval)
 		{
 			color.a = Mathf.Lerp(0f, 0.6f, (time / interval));
 			blackImage.color = color;
-			time += Time.deltaTime;
+			time += Time.unscaledDeltaTime;
 			yield return 0;
 		}
 		yield break;
@@ -118,10 +119,11 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 		{
 			color.a = Mathf.Lerp(0.6f, 0f, (time / interval));
 			blackImage.color = color;
-			time += Time.deltaTime;
+			time += Time.unscaledDeltaTime;
 			yield return 0;
 		}
 		this.GetComponent<PlayerRoot>().ChangeMode(rc);
+		Time.timeScale = 1;
 		yield break;
 	}
 }
