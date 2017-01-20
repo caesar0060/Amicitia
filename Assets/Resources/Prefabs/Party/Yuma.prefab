@@ -3890,7 +3890,7 @@ Animator:
   m_GameObject: {fileID: 161198}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0923c2d22bbe18e4297f67f1247c549d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c75199fffc404604db65bd170e890c1f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3931,7 +3931,7 @@ MonoBehaviour:
   _defence: 100
   _target: {fileID: 0}
   _type: 1
-  UI_hp_prefab: {fileID: 0}
+  UI_hp_prefab: {fileID: 172168, guid: 5b988f2142ed7f747b1dc14111cff92f, type: 2}
   UI_hp: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
@@ -5352,6 +5352,14 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c75199fffc404604db65bd170e890c1f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: UI_hp_prefab
+      value: 
+      objectReference: {fileID: 172168, guid: 5b988f2142ed7f747b1dc14111cff92f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182342}
