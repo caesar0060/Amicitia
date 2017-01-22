@@ -2,7 +2,7 @@
 	"sets": [
 		{
 			"probability": "6",
-			"set": [
+			"enemy_set": [
 				"S",
 				"A",
 				"A",
@@ -11,7 +11,7 @@
 		},
 		{
 			"probability": "6",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"D",
@@ -20,7 +20,7 @@
 		},
 		{
 			"probability": "6",
-			"set": [
+			"enemy_set": [
 				"S",
 				"M",
 				"M",
@@ -29,7 +29,7 @@
 		},
 		{
 			"probability": "9",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"A",
@@ -38,7 +38,7 @@
 		},
 		{
 			"probability": "9",
-			"set": [
+			"enemy_set": [
 				"S",
 				"A",
 				"M",
@@ -47,7 +47,7 @@
 		},
 		{
 			"probability": "9",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"D",
@@ -56,7 +56,7 @@
 		},
 		{
 			"probability": "9",
-			"set": [
+			"enemy_set": [
 				"S",
 				"M",
 				"M",
@@ -65,7 +65,7 @@
 		},
 		{
 			"probability": "13",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"M",
@@ -74,7 +74,7 @@
 		},
 		{
 			"probability": "13",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"M",
@@ -83,7 +83,7 @@
 		},
 		{
 			"probability": "20",
-			"set": [
+			"enemy_set": [
 				"S",
 				"D",
 				"M",

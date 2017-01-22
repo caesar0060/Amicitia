@@ -10,7 +10,8 @@ using System.Text.RegularExpressions;
 [RequireComponent(typeof(TextControl))]
 public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 {
-	private static Vector3[] pos1 = new Vector3[]{
+    #region Property
+    private static Vector3[] pos1 = new Vector3[]{
 	   new Vector3(-475,0,0),		// insert
 	   new Vector3(-1075,0,0)		// remove
 	   };
@@ -42,7 +43,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	[HideInInspector] public GameObject hukidasi = null;
     [HideInInspector] public TextControl m_textControl;
 	public Image[] img_list;	// 会話用の絵
-
+    #endregion
     // Use this for initialization
     void Start()
     {
@@ -81,23 +82,44 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// テキストファイルを読み込む
     /// </summary>
     /// <param name="fileName">fileName</param>
-    public void UpdateLines(string fileName)
+    public void UpdateLines(ScenarioScript ss)
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + fileName + ".txt");
-        string scenarioText = File.ReadAllText(filePath);
-        if (scenarioText == null)
-        {
-            Debug.LogError("Scenario file not found");
-            Debug.LogError("ScenarioManger not active");
-            enabled = false;
-            return;
+        if( ss.fileName != null){
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + ss.fileName + ".txt");
+            string scenarioText = File.ReadAllText(filePath);
+            if (scenarioText == null)
+            {
+                Debug.LogError("Scenario file not found");
+                Debug.LogError("ScenarioManger not active");
+                enabled = false;
+                return;
+            }
+            string key = "0";
+            if (ss.event_file != null)
+            {
+                string js = EventManager.Instance.ReadFile(ss.event_file);
+                EventJson ej = EventManager.Instance.GetEvent(js);
+                key = ej.e_id.ToString();
+                // check complete
+                List<EventJson> e_list = PlayerRoot.Instance.evnet_list;
+                foreach (var e in e_list)
+                {
+                    if (e.all_event_id == ej.all_event_id)
+                    {
+                        if (e.count == e.target_num)
+                        {
+                            key = "complete" + e.e_id.ToString();
+                            break;
+                        }
+                    }
+                }
+            }
+            string[] scenarios = scenarioText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+            m_scenarios = getNowScenario(scenarios, key);
+            m_currentLine = 0;
+            isScenario = true;
+            ItweenMoveTo(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
         }
-        string num = "0";
-        string[] scenarios = scenarioText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
-        m_scenarios = getNowScenario(scenarios, num);
-        m_currentLine = 0;
-        isScenario = true;
-        ItweenMoveTo(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
     }
     /// <summary>
     /// Lineにより、プロセスを執行する
@@ -143,13 +165,13 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
         return lineBulider.ToString();
     }
-    private List<string> getNowScenario(string[] scenarios, string num)
+    private List<string> getNowScenario(string[] scenarios, string key)
     {
         List<string> nowScenario = new List<string>();
         for (int i = 0; i < scenarios.Length; i++)
         {
             string[] lines = scenarios[i].Split();
-            if (lines[0] == "@" + num)
+            if (lines[0] == "@" + key)
             {
                 int j = i + 1;
                 while (true)
@@ -250,4 +272,10 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+    public void ReceiveEvent(string file_name, int id = 0)
+    {
+        string js = EventManager.Instance.ReadFile(file_name);
+        EventJson ej = EventManager.Instance.GetEvent(js, id);
+        PlayerRoot.Instance.evnet_list.Add(ej);
+    }
 }

@@ -187,8 +187,8 @@ public class WalkMode : RootController
         {
             if (pr.p_jb._target != null)
             {
-                pr.StartCoroutine(pr.GetComponent<FadeManager>().ReadyTalkUI(0.5f, TalkMode.Instance));
-                pr.GetComponent<ScenarioManager>().UpdateLines(pr.p_jb._target.GetComponent<ScenarioScript>().fileName);
+                pr.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
+                ScenarioManager.Instance.UpdateLines(pr.p_jb._target.GetComponent<ScenarioScript>());
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -243,7 +243,7 @@ public class TalkMode : RootController
     }
     override public void Excute(PlayerRoot pr = null)
     {
-        ScenarioManager sm = pr.GetComponent<ScenarioManager>();
+        ScenarioManager sm = ScenarioManager.Instance;
         //すべて表示したら
         if (sm.m_textControl.IsCompleteDisplayText)
         {

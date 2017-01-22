@@ -125,6 +125,10 @@ public class PartyRoot : MonoBehaviour {
 		string JsonString = File.ReadAllText (filePath);
 		return JsonString;
 	}
+    /// <summary>
+    /// Ge tEnemy Perfab list
+    /// </summary>
+    /// <param name="ed">Enemy Date</param>
 	public void GetEnemyPerfabs(string ed)
 	{
 		PlayerRoot pr = this.GetComponent<PlayerRoot>();
@@ -141,7 +145,7 @@ public class PartyRoot : MonoBehaviour {
 			p += set.probability;
 			if (setNum <= p)
 			{
-				foreach (var name in set.set)
+				foreach (var name in set.enemy_set)
 				{
 					switch (name)
 					{

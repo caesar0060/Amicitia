@@ -32,6 +32,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	//戦闘が終わるかどうか
 	[HideInInspector] public bool endBattel = false;
 	[HideInInspector] public bool isGameOver = false;
+    [HideInInspector]
+    public List<EventJson> evnet_list = new List<EventJson>();
     #endregion
 
 	// Use this for initialization

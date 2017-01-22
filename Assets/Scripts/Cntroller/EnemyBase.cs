@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class Set
 {
 	public float probability;	//確率
-	public string[] set;		//配置
+	public string[] enemy_set;		//配置
 }
 [Serializable]
 public class SetCollect
