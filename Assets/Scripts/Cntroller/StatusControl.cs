@@ -61,7 +61,7 @@ public class StatusControl : MonoBehaviour{
     public GameObject UI_hp_prefab;
     // HPゲージを保存する
     [HideInInspector]
-    public Slider UI_hp;
+    public Slider UI_hp = null;
 	#endregion
 	// 戦闘用ステータス
 	private BattelStatus b_status;
@@ -74,6 +74,12 @@ public class StatusControl : MonoBehaviour{
 	public ConditionStatus conditionStatus{
 		get{ return c_status;}
 		private set{ c_status = value; }
+	}
+
+	public void OnDestroy()
+	{
+		if(UI_hp !=null)
+			Destroy(UI_hp.transform.parent.gameObject);
 	}
     /// <summary>
     /// Objectは前にいるかどうかをチェックする

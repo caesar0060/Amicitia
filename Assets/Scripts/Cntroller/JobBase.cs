@@ -335,54 +335,62 @@ public class JobBase : StatusControl {
 	}
     public IEnumerator MagicDamage(GameObject target, SkillScript sc, float a_time, string effect, float e_time)
     {
-        if (sc.s_targetNum == TargetNum.MUTIPLE)
-        {
-            CreateRange();
-            GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
-        }
-        float timer = 0;
-        bool useMagic = false;
-        while (true)
-        {
-            timer += Time.deltaTime;
-            if (timer >= a_time && !useMagic)
-            {
-                GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
-                effectObj.transform.parent = this.transform;
-                useMagic = true;
-            }
-            if (timer >= e_time)
-            {
-                // switch() 味方？敵？
-                float s_power = 1;	//精霊の力
-                if (CheckFlag(ConditionStatus.MAGIC_UP))
-                    s_power = 1.5f;
-                if (sc.s_targetNum == TargetNum.MUTIPLE)
-                {
-                    foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
-                    {
-                        if (r_target.layer != LayerMask.NameToLayer("Enemy"))
-                            continue;
-                        EnemyBase eb = r_target.GetComponent<EnemyBase>();
-                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-                        eb.Set_HP(damage);
-                        r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                    }
-                }
-                else
-                {
-                    EnemyBase eb = target.GetComponent<EnemyBase>();
-                    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-                    eb.Set_HP(damage);
-                    target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                }
-                if (GameObject.FindGameObjectWithTag("Range"))
-                    DeleteRange();
-                StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
-                yield break;
-            }
-            yield return new WaitForEndOfFrame();
-        }
+		
+		if (sc.s_targetNum == TargetNum.MUTIPLE)
+		{
+			CreateRange();
+			GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
+		}
+		float timer = 0;
+		bool useMagic = false;
+		while (true)
+		{
+			timer += Time.deltaTime;
+			if (timer >= a_time && !useMagic)
+			{
+				GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
+				effectObj.transform.parent = this.transform;
+				useMagic = true;
+			}
+			if (timer >= e_time)
+			{
+				try
+				{ 
+				// switch() 味方？敵？
+				float s_power = 1;	//精霊の力
+				if (CheckFlag(ConditionStatus.MAGIC_UP))
+					s_power = 1.5f;
+				if (sc.s_targetNum == TargetNum.MUTIPLE)
+				{
+					foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+					{
+						if (r_target.layer != LayerMask.NameToLayer("Enemy"))
+							continue;
+						EnemyBase eb = r_target.GetComponent<EnemyBase>();
+						int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+						eb.Set_HP(damage);
+						r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+					}
+				}
+				else
+				{
+					EnemyBase eb = target.GetComponent<EnemyBase>();
+					int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+					eb.Set_HP(damage);
+					target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+				}
+				if (GameObject.FindGameObjectWithTag("Range"))
+					DeleteRange();
+				StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+				yield break;
+						}
+				catch(MissingReferenceException)
+				{
+					yield break;
+				}
+			}
+			yield return new WaitForEndOfFrame();
+		}
     }
 	#endregion
 }

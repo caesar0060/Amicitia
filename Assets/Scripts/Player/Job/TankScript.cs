@@ -10,12 +10,13 @@ public class TankScript : JobBase {
 
 	// Use this for initialization
 	void Start () {
-		p_funcList = new P_Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
-		skillBtnGenerate ();
-		Set_b_Status (BattelStatus.NORMAL);
-		//-----test
+		startPos = this.transform.position;
+		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
+		Set_b_Status(BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
-		controller.Enter (this);
+		controller.Enter(this);
+		skillBtnGenerate();
+		HideSkillBtn();
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
@@ -41,7 +42,17 @@ public class TankScript : JobBase {
 	/// <param name="time">効果時間.</param>
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
+		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
         /// 敵配列からすべての敵のターゲットを自分に変える　持続的？
+		List<GameObject> enemyList = PlayerRoot.Instance.enemyList;
+		foreach (GameObject enemy in enemyList)
+		{
+			EnemyBase eb = enemy.GetComponent<EnemyBase>();
+			if(eb._target.layer == LayerMask.NameToLayer("Player"))
+			{
+				eb._target = this.gameObject;
+			}
+		}
 	}
 	/// <summary>
 	/// イース
@@ -51,8 +62,9 @@ public class TankScript : JobBase {
 	/// <param name="time">効果時間.</param>
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
+		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
-		StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
+		StartCoroutine( StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime));
 	}
 	/// <summary>
     /// 対象の攻撃を肩代わりする
@@ -61,6 +73,7 @@ public class TankScript : JobBase {
 	/// <param name="time">効果時間.</param>
 	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
+		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 	}
 	/// <summary>
 	/// 魔法、物理攻撃１０％カット
@@ -69,9 +82,10 @@ public class TankScript : JobBase {
 	/// <param name="time">効果時間.</param>
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
+		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		JobBase jb = target.GetComponent<JobBase> ();
 		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);
-        StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime);
+        jb.StartCoroutine( jb.StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime));
 	}
 	#endregion
 }

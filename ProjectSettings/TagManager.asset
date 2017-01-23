@@ -16,6 +16,7 @@ TagManager:
   - Battel
   - Range
   - ScenarioCanvas
+  - HP_UI
   layers:
   - Default
   - TransparentFX

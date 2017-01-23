@@ -3,18 +3,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LaderScript : JobBase {
+public class LeaderScript : JobBase {
 	#region Properties
 	#endregion
 
 	// Use this for initialization
 	void Start () {
-		p_funcList = new P_Delegate[]{ Skill1, Skill2, Skill3, Skill4 };
-		skillBtnGenerate ();
-		Set_b_Status (BattelStatus.NORMAL);
-		//-----test
+		startPos = this.transform.position;
+		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
+		Set_b_Status(BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
-		controller.Enter (this);
+		controller.Enter(this);
+		skillBtnGenerate();
+		HideSkillBtn();
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
@@ -79,7 +80,10 @@ public class LaderScript : JobBase {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		switch (target.layer)
 		{
-			
+			case 8:		//player
+			break;
+			case 12:	//enemy
+			break;
 		}
 	}
 	#endregion

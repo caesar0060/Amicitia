@@ -76,8 +76,8 @@ public class PartyRoot : MonoBehaviour {
 			JobBase jb = player.GetComponent<JobBase> ();
 			jb.Set_b_Status (BattelStatus.NORMAL);
 			GameObject hp_ui = Instantiate(jb.UI_hp_prefab) as GameObject;
-			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
-			hp_ui.transform.SetAsFirstSibling();
+			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("HP_UI").transform);
+			hp_ui.transform.localRotation = Quaternion.Euler(Vector3.zero);
 			hp_ui.transform.localPosition = new Vector3(UI_POS[i], -300, 0);
 			hp_ui.transform.localScale = new Vector3(3, 0.5f, 0);
 			jb.UI_hp = hp_ui.GetComponentInChildren<Slider>();
@@ -103,8 +103,8 @@ public class PartyRoot : MonoBehaviour {
             enemy.transform.localPosition = posArray[i] * DISTANCE;
 			EnemyBase eb = enemy.GetComponent<EnemyBase>();
 			GameObject hp_ui = Instantiate(eb.UI_hp_prefab) as GameObject;
-			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
-			hp_ui.transform.SetAsFirstSibling();
+			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("HP_UI").transform);
+			hp_ui.transform.localRotation = Quaternion.Euler(Vector3.zero);
 			hp_ui.transform.localPosition = new Vector3(UI_POS[i], 300, 0);
 			hp_ui.transform.localScale = new Vector3(3, 0.5f, 0);
 			eb.UI_hp = hp_ui.GetComponentInChildren<Slider>();

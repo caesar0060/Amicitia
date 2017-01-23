@@ -100,7 +100,7 @@ public class WalkMode : RootController
     {
         if (!GameObject.Find("Player"))
         {
-            player = pr.CreateObject("Player", pr.p_prefabList[1]);
+            player = pr.CreateObject("Player", pr.p_prefabList[3]);
             cameraSupport = GameObject.FindGameObjectWithTag("Camera");
             cameraSupport.transform.SetParent(player.transform);
             cameraSupport.transform.localPosition = NormalPos;

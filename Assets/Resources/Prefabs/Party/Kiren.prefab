@@ -540,6 +540,7 @@ GameObject:
   - 4: {fileID: 460686}
   - 136: {fileID: 13603942}
   - 54: {fileID: 5490230}
+  - 114: {fileID: 11434474}
   m_Layer: 8
   m_Name: Kiren
   m_TagString: Player
@@ -2146,6 +2147,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11434474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74ccf2f54031514883cb9c4b589b602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 500
+  _maxHP: 500
+  _attack: 100
+  _defence: 100
+  _target: {fileID: 0}
+  _type: 6
+  UI_hp_prefab: {fileID: 158328, guid: 644ede2da5c1436479a6b4de7ac1c0cb, type: 2}
+  UI_hp: {fileID: 0}
+  p_skillList:
+  - {fileID: 142622, guid: 7e1010a9f6130cb42b2f1b4315d66e71, type: 2}
+  - {fileID: 142622, guid: 2db5b46c98e822041a0c5eda0e4622ae, type: 2}
+  - {fileID: 142622, guid: e08f01a9971f3e84d928d945d2d72dfa, type: 2}
+  - {fileID: 142622, guid: 976663a089e000e4fb47b077119fbf1d, type: 2}
+  startPos: {x: 0, y: 0, z: 0}
+  skillUsing: {fileID: 0}
 --- !u!114 &11437926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2797,9 +2824,53 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: p_skillList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ecf5119eb31ea3745ab7feb321179251, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _hp
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxHP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _attack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _defence
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: UI_hp_prefab
+      value: 
+      objectReference: {fileID: 158328, guid: 644ede2da5c1436479a6b4de7ac1c0cb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[0]
+      value: 
+      objectReference: {fileID: 142622, guid: 7e1010a9f6130cb42b2f1b4315d66e71, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[1]
+      value: 
+      objectReference: {fileID: 142622, guid: 2db5b46c98e822041a0c5eda0e4622ae, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[2]
+      value: 
+      objectReference: {fileID: 142622, guid: e08f01a9971f3e84d928d945d2d72dfa, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[3]
+      value: 
+      objectReference: {fileID: 142622, guid: 976663a089e000e4fb47b077119fbf1d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157342}

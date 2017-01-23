@@ -1379,6 +1379,7 @@ GameObject:
   - 4: {fileID: 432736}
   - 136: {fileID: 13627640}
   - 54: {fileID: 5460596}
+  - 114: {fileID: 11415232}
   m_Layer: 8
   m_Name: Kira
   m_TagString: Player
@@ -1457,6 +1458,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 492868}
   - 95: {fileID: 9567052}
+  - 114: {fileID: 11495716}
   m_Layer: 0
   m_Name: Kira20170117
   m_TagString: Untagged
@@ -2880,6 +2882,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f96656cb8af6d145af9dc170d1d03fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 500
+  _maxHP: 500
+  _attack: 100
+  _defence: 100
+  _target: {fileID: 0}
+  _type: 2
+  UI_hp_prefab: {fileID: 139622, guid: 6b924b2abc6f88c4e8fa7d5a7270d7d3, type: 2}
+  UI_hp: {fileID: 0}
+  p_skillList:
+  - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
+  - {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
+  - {fileID: 142622, guid: e53b242d0bcc93941a003029c65dcd13, type: 2}
+  - {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
+  startPos: {x: 0, y: 0, z: 0}
+  skillUsing: {fileID: 0}
 --- !u!114 &11449440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2917,6 +2945,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11495716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77e70dbea333f94cb6b2252b3819b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13627640
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3817,9 +3856,53 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: p_skillList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 733cffa6521c00644a37b15f84a12db5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _hp
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxHP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _attack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _defence
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: UI_hp_prefab
+      value: 
+      objectReference: {fileID: 139622, guid: 6b924b2abc6f88c4e8fa7d5a7270d7d3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[0]
+      value: 
+      objectReference: {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[1]
+      value: 
+      objectReference: {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[2]
+      value: 
+      objectReference: {fileID: 142622, guid: e53b242d0bcc93941a003029c65dcd13, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[3]
+      value: 
+      objectReference: {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191608}
