@@ -20,7 +20,6 @@ public class SetCollect
 public class Skill{
 	public string s_name;		//名前
     public float s_power;       //効果量
-    public float s_pIncrease;   //強化後
 	public float s_effectTime;	//効果時間
 	public bool s_isRune;		//ルーンかどうか
 	public float s_recast;		//リーキャストタイム
@@ -325,6 +324,11 @@ public class EnemyBase : StatusControl {
 	/// <param name="skill">Skill.</param>
 	/// <param name="time">攻撃のタイミング.</param>
 	public IEnumerator Damage(GameObject target, Skill skill, float time){
+		if (skill.s_range > 0)
+		{
+			CreateRange();
+			GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = skill.s_range;
+		}
 		float timer = 0;
 		while (true) {
 			try{
@@ -334,18 +338,98 @@ public class EnemyBase : StatusControl {
 					float s_power = 1;	//精霊の力
 					if (CheckFlag (ConditionStatus.POWER_UP))
 						s_power = 1.5f;
-					JobBase jb = target.GetComponent<JobBase> ();
-					int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
-                    jb.Set_HP(damage);
+					if (skill.s_range > 0)
+                    {
+                        foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+                        {
+                            if (r_target.layer != LayerMask.NameToLayer("Player"))
+                                continue;
+                            JobBase jb = target.GetComponent<JobBase> ();
+							int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+							jb.Set_HP(damage);
+                            r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+
+                        }
+                    }
+                    else
+                    {
+						JobBase jb = target.GetComponent<JobBase> ();
+						int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+						jb.Set_HP(damage);
+					}
+					if (GameObject.FindGameObjectWithTag("Range"))
+						DeleteRange();
 					StartCoroutine (SkillRecast (skill, skill.s_recast));
 					yield break;
 				}
 			}
 			catch(MissingReferenceException){
-				ReturnPos ();
 				yield break;
 			}
 			yield return new WaitForEndOfFrame ();
+		}
+	}
+	/// <summary>
+	/// Magic Damage the specified target
+	/// </summary>
+	/// <param name="target">Target.</param>
+	/// <param name="skill">Skill.</param>
+	/// <param name="time">攻撃のタイミング.</param>
+	public IEnumerator MagicDamage(GameObject target, Skill skill, float a_time, string effect, float e_time)
+	{
+		if (skill.s_range > 0)
+		{
+			CreateRange();
+			GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = skill.s_range;
+		}
+		float timer = 0;
+		bool useMagic = false;
+		while (true)
+		{
+			try
+			{
+				timer += Time.deltaTime;
+				if (timer >= a_time && !useMagic)
+				{
+					GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
+					effectObj.transform.parent = this.transform;
+					useMagic = true;
+				}
+				if (timer >= e_time)
+				{
+					float s_power = 1;	//精霊の力
+					if (CheckFlag(ConditionStatus.MAGIC_UP))
+						s_power = 1.5f;
+					if (skill.s_range > 0)
+					{
+						foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+						{
+							if (r_target.layer != LayerMask.NameToLayer("Player"))
+								continue;
+							JobBase jb = target.GetComponent<JobBase>();
+							int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+							jb.Set_HP(damage);
+							r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+
+						}
+					}
+					else
+					{
+						JobBase jb = target.GetComponent<JobBase>();
+						int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+						jb.Set_HP(damage);
+					}
+					if (GameObject.FindGameObjectWithTag("Range"))
+						DeleteRange();
+					StartCoroutine(SkillRecast(skill, skill.s_recast));
+					yield break;
+				}
+			}
+			catch (MissingReferenceException)
+			{
+				yield break;
+			}
+			yield return new WaitForEndOfFrame();
 		}
 	}
 	/// <summary>

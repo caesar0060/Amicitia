@@ -322,13 +322,12 @@ public class JobBase : StatusControl {
                     if (GameObject.FindGameObjectWithTag("Range"))
                         DeleteRange();
                     StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+					yield break;
                 }
                 catch (MissingReferenceException)
                 {
-					ReturnPos ();
 					yield break;
                 }
-				yield break;
 			}
 			yield return new WaitForEndOfFrame ();
 		}
