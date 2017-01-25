@@ -98,21 +98,8 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
             if (ss.event_file != null)
             {
                 string js = EventManager.Instance.ReadFile(ss.event_file);
-                EventJson ej = EventManager.Instance.GetEvent(js);
-                key = ej.e_id.ToString();
-                // check complete
-                List<EventJson> e_list = PlayerRoot.Instance.evnet_list;
-                foreach (var e in e_list)
-                {
-                    if (e.all_event_id == ej.all_event_id)
-                    {
-                        if (e.count == e.target_num)
-                        {
-                            key = "complete" + e.e_id.ToString();
-                            break;
-                        }
-                    }
-                }
+                EventCollect ec = EventManager.Instance.GetAllEvent(js);
+                key = EventManager.Instance.GetEventKey(ec);
             }
             string[] scenarios = scenarioText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
             m_scenarios = getNowScenario(scenarios, key);
@@ -272,10 +259,32 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+    /// <summary>
+    /// Receive Event
+    /// </summary>
+    /// <param name="file_name">json file name</param>
+    /// <param name="id">all event id</param>
     public void ReceiveEvent(string file_name, int id = 0)
     {
         string js = EventManager.Instance.ReadFile(file_name);
         EventJson ej = EventManager.Instance.GetEvent(js, id);
         PlayerRoot.Instance.evnet_list.Add(ej);
+    }
+    /// <summary>
+    /// Complete Event
+    /// </summary>
+    /// <param name="file_name">json file name</param>
+    /// <param name="id">all event id</param>
+    public void CompleteEvent(string file_name, int id)
+    {
+        string js = EventManager.Instance.ReadFile(file_name);
+        List<EventJson> event_list = PlayerRoot.Instance.evnet_list;
+        foreach (var p_event in event_list)
+        {
+            if (p_event.all_event_id == id)
+            {
+                p_event.is_finish = true;
+            }
+        }
     }
 }
