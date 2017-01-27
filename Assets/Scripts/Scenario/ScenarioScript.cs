@@ -22,11 +22,14 @@ public class ScenarioScript : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        GameObject other_go = other.gameObject;
-        if (other_go.layer == LayerMask.NameToLayer("Player"))
+        if (this.gameObject.layer != LayerMask.NameToLayer("NPC"))
         {
-            PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-            ScenarioManager.Instance.UpdateLines(this);
+            GameObject other_go = other.gameObject;
+            if (other_go.layer == LayerMask.NameToLayer("Player"))
+            {
+                PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
+                ScenarioManager.Instance.UpdateLines(this);
+            }
         }
     }
 }

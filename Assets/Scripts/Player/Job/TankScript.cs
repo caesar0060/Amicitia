@@ -48,10 +48,16 @@ public class TankScript : JobBase {
 		foreach (GameObject enemy in enemyList)
 		{
 			EnemyBase eb = enemy.GetComponent<EnemyBase>();
-			if(eb._target.layer == LayerMask.NameToLayer("Player"))
-			{
-				eb._target = this.gameObject;
-			}
+            try{
+			    if(eb._target.layer == LayerMask.NameToLayer("Player"))
+			    {
+				    eb._target = this.gameObject;
+			    }
+            }
+            catch (UnassignedReferenceException)
+            {
+
+            }
 		}
 	}
 	/// <summary>

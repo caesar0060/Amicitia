@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -282,7 +283,10 @@ public class TalkMode : RootController
         if (Input.GetMouseButtonDown(0) && !sm.isScenario)
         {
 			sm.ItweenMoveTo(sm.hukidasi, new Vector3(0, -600, 0), 0.5f, "easeInOutBack");
-            pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, WalkMode.Instance));
+            if(SceneManager.GetActiveScene().name == "NormalScene")
+                pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, WalkMode.Instance));
+            else
+                pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, BattelMode.Instance));
         }
     }
     override public void Exit(PlayerRoot pr = null)

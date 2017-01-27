@@ -19,6 +19,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	// 会話用
 	[SerializeField]private Image blackImage = null;
 	private Color color = Color.black;
+    public bool onTalk = false;     // 会話中
 
     public void OnGUI()
     {
@@ -96,6 +97,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	/// <param name="rc">変更したいRootController.</param>
 	public IEnumerator ReadyTalkUI(float interval, RootController rc)
 	{
+        onTalk = true;
 		Time.timeScale = 0;
 		this.GetComponent<PlayerRoot>().ChangeMode(rc);
 		float time = 0;
@@ -138,6 +140,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         }
         else
             this.GetComponent<PlayerRoot>().ChangeMode(rc);
+        onTalk = false;
 		yield break;
 	}
 }

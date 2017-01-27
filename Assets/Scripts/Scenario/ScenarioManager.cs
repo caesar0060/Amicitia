@@ -114,6 +114,31 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         }
     }
     /// <summary>
+    /// テキストファイルを読み込む
+    /// </summary>
+    /// <param name="ss">Scenario Script</param>
+    public void UpdateLines(string fileName)
+    {
+        if (fileName != "")
+        {
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + fileName + ".txt");
+            string scenarioText = File.ReadAllText(filePath);
+            if (scenarioText == null)
+            {
+                Debug.LogError("Scenario file not found");
+                Debug.LogError("ScenarioManger not active");
+                enabled = false;
+                return;
+            }
+            string key = "0";
+            string[] scenarios = scenarioText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+            m_scenarios = getNowScenario(scenarios, key);
+            m_currentLine = 0;
+            isScenario = true;
+            ItweenMoveTo(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
+        }
+    }
+    /// <summary>
     /// Lineにより、プロセスを執行する
     /// </summary>
     /// <param name="line">line</param>
