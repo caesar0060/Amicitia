@@ -120,7 +120,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         string text = string.Empty;
         while ((text = lineReader.ReadLine()) != null)
         {
-            var commentCharacterCount = text.IndexOf("/");
+            var commentCharacterCount = text.IndexOf("%");
             if (commentCharacterCount != -1)
             {
                 text = text.Substring(0, commentCharacterCount);
@@ -128,26 +128,30 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 
             if (!string.IsNullOrEmpty(text))
             {
-                if (text[0] == '#')
+                string[] words =text.Split();
+                if (words[0] == "#")
                 {
-				string[] words = text.Split ();
-				switch(words[1])
-				{
-					case "ChangeImage":
-					ChangeImage(int.Parse(words[2]), words[3]);
-					break;
-					case "RemoveImage":
-					RemoveImage(int.Parse(words[2]));
-					break;
-					case "InsertImage":
-					InsertImage(int.Parse(words[2]), words[3]);
-					break;
-					case "SwayImage":
-					StartCoroutine(SwayImage(int.Parse(words[2])));
-					break;
-				}
+                    Debug.Log(text);
+				    switch(words[1])
+				    {
+					    case "ChangeImage":
+					    ChangeImage(int.Parse(words[2]) - 1, words[3]);
+					    break;
+					    case "RemoveImage":
+					    RemoveImage(int.Parse(words[2]) - 1);
+					    break;
+					    case "InsertImage":
+					    InsertImage(int.Parse(words[2]) - 1, words[3]);
+					    break;
+					    case "SwayImage":
+					    StartCoroutine(SwayImage(int.Parse(words[2])));
+					    break;
+				    }
+                    m_currentLine++;
+                    lineBulider.AppendLine(CommandProcess(m_scenarios[m_currentLine]));
                 }
-                lineBulider.AppendLine(text);
+                else
+                    lineBulider.AppendLine(text);
             }
         }
         return lineBulider.ToString();
@@ -165,7 +169,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 {
                     lines = scenarios[j].Split();
                     if (lines[0] != "@end")
-                        nowScenario.Add(lines[0]);
+                        nowScenario.Add(scenarios[j].Trim());
                     else
                         return nowScenario;
                     j++;
@@ -217,8 +221,8 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	/// <param name="img_name"></param>
 	public void ChangeImage(int num, string img_name)
 	{
-		string path = "Talk_Image/" + img_name + ".png";
-		img_list[num-1].sprite = Resources.Load<Sprite>(path);
+		string path = "Talk_Image/" + img_name;
+		img_list[num].sprite = Resources.Load<Sprite>(path);
 	}
 	/// <summary>
 	/// âÊëúÇçÌèúÇ∑ÇÈ
@@ -226,7 +230,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	/// <param name="num"></param>
 	public void RemoveImage(int num)
 	{
-		ItweenMoveTo(img_list[num-1].gameObject, pos_list[num-1][1], 1);
+		ItweenMoveTo(img_list[num].gameObject, pos_list[num][1], 1);
 	}
 	/// <summary>
 	/// âÊëúÇí«â¡Ç∑ÇÈ
@@ -235,7 +239,10 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	/// <param name="img_name"></param>
 	public void InsertImage(int num, string img_name)
 	{
-		ItweenMoveTo(img_list[num - 1].gameObject, pos_list[num - 1][0], 1);
+        Debug.Log(num);
+        string path = "Talk_Image/" + img_name;
+        img_list[num].sprite = Resources.Load<Sprite>(path);
+        ItweenMoveTo(img_list[num].gameObject, pos_list[num][0], 1);
 	}
 	/// <summary>
 	/// âÊëúÇóhÇÍÇÈ
@@ -248,14 +255,14 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 		while (true) {
 			if (time / Time.unscaledTime >= 1)
 			{
-				ItweenMoveTo(img_list[num - 1].gameObject, pos_list[num - 1][0], 0);
+				ItweenMoveTo(img_list[num].gameObject, pos_list[num][0], 0);
 				yield break;
 			}
 			float x = UnityEngine.Random.Range(10, 11);
 			float y = UnityEngine.Random.Range(10, 11);
 			Vector3 pos = new Vector3(x,y,0);
-			Vector3 move_pos = pos_list[num-1][0] + pos;
-			ItweenMoveTo(img_list[num - 1].gameObject, move_pos, 0);
+			Vector3 move_pos = pos_list[num][0] + pos;
+			ItweenMoveTo(img_list[num].gameObject, move_pos, 0);
 			yield return new WaitForSeconds(0.1f);
 		}
 	}

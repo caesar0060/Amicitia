@@ -1,0 +1,32 @@
+﻿@0
+#	InsertImage	1	kiren/angry
+#	InsertImage	2	noel/normal
+#	InsertImage	3	kira/right_angry
+#	InsertImage	4	kira/right_angry
+キレン	「みんな、どう戦うかは覚えてる！？」%
+ノエル	「ええ！　キレンが私たちに指示を出すのよね。%
+#	ChangeImage	2	noel/angry
+ノエル	　そうしたら、私は攻撃魔法を撃つわ」%
+ユウマ	「俺は剣で斬ればいいんだろ？」\
+キラ	「魔物の攻撃は僕が魔法で防ぐからね！」%
+キレン	「よし！　それじゃあまずはユウマ！」%
+キレン	「まずは、あのキノコの魔物に/
+キレン	　攻撃をお願い！」/
+#	RemoveImage	1
+#	RemoveImage	2
+#	RemoveImage	3
+#	RemoveImage	4
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1168,6 +1168,7 @@ MonoBehaviour:
   - {fileID: 182342, guid: 8bc8ce07fbfea6c4e9f0661795a318a6, type: 2}
   partyList: []
   enemyList: []
+  fieldChara: {fileID: 192148, guid: fcf0fc05a86a93a49a7419b44db09ac4, type: 2}
   skillRange: {fileID: 115036, guid: 6f32f9c7feba0d34ba0fef4cc2e286e8, type: 2}
   btn: {fileID: 0}
   s_script: {fileID: 0}
@@ -1372,69 +1373,53 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 19.1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalPosition.z
       value: 13.8
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalRotation.w
       value: -0.00000016292068
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+    - target: {fileID: 431626, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
       propertyPath: m_LocalScale.z
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
+  m_ParentPrefab: {fileID: 100100000, guid: 4fbd6e8b3f578ee45bcbd814b13729f2, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1904845714 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100230, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
-  m_PrefabInternal: {fileID: 1746166798}
---- !u!64 &1904845718
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1904845714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300206, guid: 3a60e8a3f205bd84ca26a90f9a1052e5, type: 3}
 --- !u!1001 &1907564989
 Prefab:
   m_ObjectHideFlags: 0
@@ -1520,7 +1505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5bed91181767b429998d9fde348743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: test
+  fileName: battle_1
   _image: {fileID: 0}
   event_file: Main_Event
 --- !u!54 &1981585761
@@ -1530,7 +1515,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981585759}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
