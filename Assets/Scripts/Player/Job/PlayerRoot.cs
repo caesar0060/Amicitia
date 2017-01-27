@@ -22,9 +22,11 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// プレイヤーのプレハブを保管する配列
 	public List<GameObject> p_prefabList = new List<GameObject> ();
 	// パーティーメンバーを保管する配列
-	 public List<GameObject> partyList = new List<GameObject>();
+	public List<GameObject> partyList = new List<GameObject>();
 	// 敵を保管する配列
-	 public List<GameObject> enemyList = new List<GameObject>();
+	public List<GameObject> enemyList = new List<GameObject>();
+    // フィールド用キャラ
+    public GameObject fieldChara;
     // 範囲攻撃用
      public GameObject skillRange;
 	[HideInInspector] public GameObject btn = null;
@@ -114,15 +116,13 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
     /// 子供を生成する
 	/// </summary>
 	public GameObject CreateObject(string name, GameObject obj){
-		GameObject player = Instantiate (obj, Vector3.zero, this.transform.rotation) as GameObject;
+        GameObject player = Instantiate(obj, this.transform.position, this.transform.rotation) as GameObject;
         player.name = name;
-        player.transform.position = this.transform.position;
 		player.AddComponent<SphereCollider> ();
 		SphereCollider sc = player.GetComponent<SphereCollider> ();
 		sc.center = new Vector3 (0, 0.5f, 0);
 		sc.radius = 1.5f;
 		sc.isTrigger = true; 
-		player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 		player.GetComponent<JobBase> ().Set_b_Status (BattelStatus.NOT_IN_BATTEL);
         p_jb = player.GetComponent<JobBase>();
 		return player;

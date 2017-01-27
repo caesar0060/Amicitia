@@ -100,7 +100,7 @@ public class WalkMode : RootController
     {
         if (!GameObject.Find("Player"))
         {
-            player = pr.CreateObject("Player", pr.p_prefabList[3]);
+            player = pr.CreateObject("Player", pr.fieldChara);
             cameraSupport = GameObject.FindGameObjectWithTag("Camera");
             cameraSupport.transform.SetParent(player.transform);
             cameraSupport.transform.localPosition = NormalPos;
@@ -126,16 +126,19 @@ public class WalkMode : RootController
         }
         if (Input.GetKey(KeyCode.W))
         {	//上
-            move_vector += Vector3.forward * MOVE_SPEED * Time.deltaTime;
+            move_vector += pr.p_jb.transform.forward * Time.deltaTime;
             isMoved = true;
         }
         if (Input.GetKey(KeyCode.S))
         {	//下
-            move_vector += Vector3.back * MOVE_SPEED / 1.5f * Time.deltaTime;
+            move_vector -= pr.p_jb.transform.forward * Time.deltaTime;
             isMoved = true;
         }
         //移動vector3を正規化して,移動方向を求める
-		pr.p_jb.transform.Translate(move_vector, Space.Self);
+		//pr.p_jb.transform.Translate(move_vector, Space.Self);
+        move_vector = Vector3.Normalize(move_vector);
+        move_vector.y -= 1;
+        pr.p_jb.GetComponent<CharacterController>().Move(move_vector * MOVE_SPEED * Time.deltaTime);
         //移動したら
         if (move_vector.magnitude > 0.01f)
         {
