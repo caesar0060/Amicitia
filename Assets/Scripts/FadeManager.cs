@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -115,6 +116,11 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	public IEnumerator CloseTalkUI(float interval, RootController rc)
 	{
 		float time = 0;
+        int count = ScenarioManager.Instance.img_list.Length;
+        for (int i = 0; i < count; i++)
+        {
+            ScenarioManager.Instance.RemoveImage(i);
+        }
 		while (time <= interval)
 		{
 			color.a = Mathf.Lerp(0.6f, 0f, (time / interval));
@@ -122,8 +128,16 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 			time += Time.unscaledDeltaTime;
 			yield return 0;
 		}
-		this.GetComponent<PlayerRoot>().ChangeMode(rc);
 		Time.timeScale = 1;
+        if (ScenarioManager.Instance.battelEnemyList.Count > 0)
+        {
+            PlayerRoot.Instance.battelEnemyList = ScenarioManager.Instance.battelEnemyList;
+            ScenarioManager.Instance.battelEnemyList = new List<GameObject>();
+            FadeManager.Instance.LoadLevel("BattelScene", 2, BattelStart.Instance);
+            PlayerRoot.Instance.transform.position = this.transform.position;
+        }
+        else
+            this.GetComponent<PlayerRoot>().ChangeMode(rc);
 		yield break;
 	}
 }

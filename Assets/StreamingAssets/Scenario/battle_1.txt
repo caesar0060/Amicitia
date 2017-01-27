@@ -1,19 +1,22 @@
-#	InsertImage	1	kiren/left_angry
-#	InsertImage	2	noel/left_normal
+﻿@0
+#	InsertImage	1	kiren/angry
+#	InsertImage	2	noel/normal
 #	InsertImage	3	kira/right_angry
-# 	InsertImage	4	yuma/right_surprise
-
-�L����	�u�݂�ȁA�ǂ��키���͊o���Ă�I�H�v/
-�m�G��	�u�����I�@�L�������������Ɏw�����o���̂�ˁB/
-
-#	ChangeImage	2	noel/left_angry
-�m�G��	�@����������A���͍U�����@������v/
-
-���E�}	�u���͌��Ŏa��΂����񂾂�H�v/
-�L��	�u�����̍U���͖l�����@�Ŗh������ˁI�v/
-�L����	�u�悵�I�@���ꂶ�Ⴀ�܂��̓��E�}�I�v/
-�L����	�u�܂��́A���̃L�m�R�̖�����/
-�L����	�@�U�������肢�I�v/
+#	InsertImage	4	kira/right_angry
+キレン	「みんな、どう戦うかは覚えてる！？」%
+ノエル	「ええ！　キレンが私たちに指示を出すのよね。%
+#	ChangeImage	2	noel/angry
+ノエル	　そうしたら、私は攻撃魔法を撃つわ」%
+ユウマ	「俺は剣で斬ればいいんだろ？」\
+キラ	「魔物の攻撃は僕が魔法で防ぐからね！」%
+キレン	「よし！　それじゃあまずはユウマ！」%
+キレン	「まずは、あのキノコの魔物に/
+キレン	　攻撃をお願い！」/
+#	RemoveImage	1
+#	RemoveImage	2
+#	RemoveImage	3
+#	RemoveImage	4
+@end
 
 
 

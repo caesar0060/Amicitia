@@ -42,6 +42,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     public Dictionary<string, GameObject> p_imageList = new Dictionary<string, GameObject>();
 	[HideInInspector] public GameObject hukidasi = null;
     [HideInInspector] public TextControl m_textControl;
+    public List<GameObject> battelEnemyList = new List<GameObject>();
 	public Image[] img_list;	// 会話用の絵
     #endregion
     // Use this for initialization
@@ -81,10 +82,12 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// <summary>
     /// テキストファイルを読み込む
     /// </summary>
-    /// <param name="fileName">fileName</param>
+    /// <param name="ss">Scenario Script</param>
     public void UpdateLines(ScenarioScript ss)
     {
-        if( ss.fileName != null){
+        if (ss.enemy_list.Count > 0)
+            battelEnemyList = ss.enemy_list;
+        if( ss.fileName != ""){
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + ss.fileName + ".txt");
             string scenarioText = File.ReadAllText(filePath);
             if (scenarioText == null)
@@ -95,7 +98,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 return;
             }
             string key = "0";
-            if (ss.event_file != null)
+            if (ss.event_file != "")
             {
                 string js = EventManager.Instance.ReadFile(ss.event_file);
                 EventCollect ec = EventManager.Instance.GetAllEvent(js);
@@ -105,6 +108,8 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
             m_scenarios = getNowScenario(scenarios, key);
             m_currentLine = 0;
             isScenario = true;
+            if (ss.autoDestory)
+                Destroy(ss.gameObject);
             ItweenMoveTo(hukidasi, new Vector3(0, -300, 0), 0.5f, "easeInOutBack", "RequestNextLine", this.gameObject);
         }
     }
@@ -230,7 +235,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	/// <param name="num"></param>
 	public void RemoveImage(int num)
 	{
-		ItweenMoveTo(img_list[num].gameObject, pos_list[num][1], 1);
+		ItweenMoveTo(img_list[num].gameObject, pos_list[num][1], 0);
 	}
 	/// <summary>
 	/// 画像を追加する
@@ -242,7 +247,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
         Debug.Log(num);
         string path = "Talk_Image/" + img_name;
         img_list[num].sprite = Resources.Load<Sprite>(path);
-        ItweenMoveTo(img_list[num].gameObject, pos_list[num][0], 1);
+        ItweenMoveTo(img_list[num].gameObject, pos_list[num][0], 0);
 	}
 	/// <summary>
 	/// 画像を揺れる

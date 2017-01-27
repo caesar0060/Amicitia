@@ -95,6 +95,7 @@ public class WalkMode : RootController
     {
         pr.partyList = new List<GameObject>();
         pr.enemyList = new List<GameObject>();
+        //pr.battelEnemyList = new List<GameObject>();
     }
     override public void Excute(PlayerRoot pr = null)
     {

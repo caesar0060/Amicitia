@@ -25,7 +25,6 @@ public class PartyRoot : MonoBehaviour {
 	private List<GameObject> EnemyPrefabList = new List<GameObject>();
 	// Use this for initialization
 	void Start () {
-		string enemyData = GetEnemyData("Enemy_Set.json");
 		ReadyBattel();
 	}
 	
@@ -84,8 +83,8 @@ public class PartyRoot : MonoBehaviour {
 			jb.UI_hp.maxValue = jb._maxHP;
 			jb.UI_hp.value = jb._hp;
 		}
-        if (PlayerRoot.Instance.battelEnemyList.Count == 0)
-        //if (PlayerRoot.Instance.battelEnemyList.Count > 0)
+        //if (PlayerRoot.Instance.battelEnemyList.Count == 0)
+        if (PlayerRoot.Instance.battelEnemyList.Count > 0)
         {
             EnemyPrefabList = PlayerRoot.Instance.e_prefabList;
 

@@ -48,7 +48,7 @@ public class JobBase : StatusControl {
 		}
 	}
 
-    void OnCollisionEnter(Collision other)
+    void OnControllerColliderHit(ControllerColliderHit other)
     {
         if (this.battelStatus == BattelStatus.NOT_IN_BATTEL)
         {

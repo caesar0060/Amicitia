@@ -1,60 +1,35 @@
-@0
-# 	InsertImage	4	yuma/right_surprise
+ï»¿@0
+#	InsertImage	4	yuma/right_surprise
 #	InsertImage	2	noel/left_normal
 #	InsertImage	3	kira/right_normal
 #	InsertImage	1	kiren/left_normal
-ƒ†ƒEƒ}	u‚±‚±‚ªcƒAƒ‹ƒu‚ÌŠXcHv/
-ƒmƒGƒ‹	uc‚»‚¤‚æv/
-ƒLƒ‰	uŠX•À‚İ‚ÍãY—í‚È‚Ì‚ÉA—„‚ñ‚¾‹ó‹C‚ÌA×‹C‚Ì‚¹‚¢‚Å‹C•ª‚ªˆ«‚­‚È‚Á‚Ä‚­‚é‚Ëccv/
-ƒLƒŒƒ“	u‚»‚ê‚ğ‚È‚ñ‚Æ‚©‚·‚é‚½‚ß‚ÉAƒ{ƒN’B‚Í‚±‚±‚É‚¢‚é‚ñ‚¾B‚Ü‚¸‚Ís’·‚É‰ï‚¢‚És‚±‚¤v/
-ƒmƒGƒ‹	u‚»‚¤‚ËA‚Ü‚¸‚Ís’·‚©‚ç‚±‚ÌŠX‚ÌÚ‚µ‚¢˜b‚µ‚ğ\\v/
-
-# 	ChangeImage	4	yuma/left_Angry
-ƒ†ƒEƒ}	uŠë‚È‚¢Iv/
-
-# 	RemoveImage	2	yuma/left_angry	
-# 	RemoveImage	3	kira/right_normal
-# 	RemoveImage	2	kiren/left_normal
-
+ãƒ¦ã‚¦ãƒ	ã€Œã“ã“ãŒâ€¦ã‚¢ãƒ«ãƒ–ã®è¡—â€¦ï¼Ÿã€/
+ãƒã‚¨ãƒ«	ã€Œâ€¦ãã†ã‚ˆã€/
+ã‚­ãƒ©	ã€Œè¡—ä¸¦ã¿ã¯ç¶ºéº—ãªã®ã«ã€æ·€ã‚“ã ç©ºæ°—ã®ã€é‚ªæ°—ã®ã›ã„ã§æ°—åˆ†ãŒæ‚ªããªã£ã¦ãã‚‹ã­â€¦â€¦ã€/
+ã‚­ãƒ¬ãƒ³	ã€Œãã‚Œã‚’ãªã‚“ã¨ã‹ã™ã‚‹ãŸã‚ã«ã€ãƒœã‚¯é”ã¯ã“ã“ã«ã„ã‚‹ã‚“ã ã€‚ã¾ãšã¯å¸‚é•·ã«ä¼šã„ã«è¡Œã“ã†ã€/
+ãƒã‚¨ãƒ«	ã€Œãã†ã­ã€ã¾ãšã¯å¸‚é•·ã‹ã‚‰ã“ã®è¡—ã®è©³ã—ã„è©±ã—ã‚’â€•â€•ã€/
+#	ChangeImage	4	yuma/left_Angry
+ãƒ¦ã‚¦ãƒ	ã€Œå±ãªã„ï¼ã€/
+#	RemoveImage	2	yuma/left_angry	
+#	RemoveImage	3	kira/right_normal
+#	RemoveImage	4	yuma/left_Angry
 #	InsertImage	2	kira/left_angry
-ƒLƒ‰	uƒV[ƒ‹ƒhIIv/
-
+ã‚­ãƒ©	ã€Œã‚·ãƒ¼ãƒ«ãƒ‰ï¼ï¼ã€/
 #	ChangeImage	1	noel/left_surprise
-ƒmƒGƒ‹	u‚«‚á‚ ‚ÁIv/
-
-# 	RemoveImage	2	kira/left_angry
-
+ãƒã‚¨ãƒ«	ã€Œãã‚ƒã‚ã£ï¼ã€/
+#	RemoveImage	2	kira/left_angry
 #	InsertImage	2	kiren/left_surprise
-ƒLƒŒƒ“	u‚¢A‚¢‚Á‚½‚¢‰½‚ªcIHv/
-
-#	InsertImage	3	patoron/patoron_normal	
-ƒpƒgƒƒ“	uccccccv/
-
+ã‚­ãƒ¬ãƒ³	ã€Œã„ã€ã„ã£ãŸã„ä½•ãŒâ€¦ï¼ï¼Ÿã€/
+#	InsertImage	3	bkiren/normal
+ãƒ‘ãƒˆãƒ­ãƒ³	ã€Œâ€¦â€¦â€¦â€¦â€¦â€¦ã€/
 #	RemoveImage	2	kiren/left_surprise
-
 #	InsertImage	2	yuma/left_angry
-ƒ†ƒEƒ}	u‚¨A‚¨‚¢B‚È‚ñ‚©—lq‚ª•Ï‚¶‚á‚È‚¢‚©Hv/
-
+ãƒ¦ã‚¦ãƒ	ã€ŒãŠã€ãŠã„ã€‚ãªã‚“ã‹æ§˜å­ãŒå¤‰ã˜ã‚ƒãªã„ã‹ï¼Ÿã€/
 #	InsertImage	1	noel/left_surprise
-ƒmƒGƒ‹	u‚ÜA‚Ü‚³‚©×‹C‚ÉN‚³‚ê‚ÄcIHv/
-
+ãƒã‚¨ãƒ«	ã€Œã¾ã€ã¾ã•ã‹é‚ªæ°—ã«ä¾µã•ã‚Œã¦â€¦ï¼ï¼Ÿã€/
 #	RemoveImage	2	yuma/left_angry
-
 #	InsertImage	2	kira/left_angry
-ƒLƒŒƒ“	uƒ†ƒEƒ}I@ƒLƒ‰I@—Í‚ğ‘İ‚µ‚ÄI@×‹C‚ğò‰»‚µ‚ÄA•‚¯‚È‚«‚áIv/
-
-
-
-//name	
-//#	ChangeImage	1	yuma/happay
-//‘‘¬‚Å‚·‚ªA‚ ‚Á‚¿‚Ìƒ‚ƒ“ƒXƒ^[‚ğ“|‚µ‚Ä‚­‚¾‚³‚¢
+ã‚­ãƒ¬ãƒ³	ã€Œãƒ¦ã‚¦ãƒï¼ã€€ã‚­ãƒ©ï¼ã€€åŠ›ã‚’è²¸ã—ã¦ï¼ã€€é‚ªæ°—ã‚’æµ„åŒ–ã—ã¦ã€åŠ©ã‘ãªãã‚ƒï¼ã€/
 @end
-@1
-Hi, Test/
-test1/
-@end
-@2
-Hi, Test/
-test1/
-@end
+
 
