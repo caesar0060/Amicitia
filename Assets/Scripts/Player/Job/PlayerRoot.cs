@@ -13,6 +13,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	public static float BUTTON_RETURN_TIME = 0.5f;
     //インスタンスを保存する
 	public RootController controller;
+    //インスタンスを保存する
+    public RootController previous_controller;
 	// JobBaseを保管する
 	public JobBase p_jb;
 	// 敵を保管する配列
@@ -79,6 +81,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	public void ChangeMode(RootController newMode){
 		if (controller != newMode) {
 			controller.Exit (this);
+            previous_controller = controller;
 			controller = newMode;
 			controller.Enter (this);
 		} else
