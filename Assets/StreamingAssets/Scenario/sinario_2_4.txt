@@ -1,0 +1,149 @@
+#	InsertImage	1	noel/left_normal
+#	InsertImage	2	kiren/left_normal
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_normal
+			
+キラ	「これでよし、っと！　/		
+			
+#	ChangeImage	3	kira/right_laugh
+#	ChangeImage	1	noel/left_surprise
+			
+キラ	うん、根っこも傷付いてないと思うよ」/		
+ノエル	「へぇー…。キラって植物を扱うのが上手いのね」/		
+			
+#	ChangeImage	4	yuma/right_laugh
+			
+ユウマ	「キラは庭で薬草を育ててるんだ。キラの育てた薬草は一味違うぞ」/		
+			
+キラ	「えへへ…」/		
+			
+#	ChangeImage	2	kiren/left_dissatisfied
+			
+キレン	「薬草に一味も二味もないと思うんだけどな……」/		
+			
+？？？	「あーあ。せっかく襲わせたのに、そんな丁寧に扱ったら台無しじゃないか」		
+			
+#	ChangeImage	1	noel/left_surprise
+#	ChangeImage	2	kiren/left_surprise
+#	ChangeImage	3	kira/left_surprise
+#	ChangeImage	4	yuma/left_surprise
+			
+	『！？』		
+			
+？？？	「まったく。苗木が見つかったっていうから指示を出したのに。嫌な予感がするから来てみればこれだよ」		
+			
+#	RemoveImage	1	noel/left_surprise
+#	RemoveImage	2	kiren/left_surprise
+#	RemoveImage	3	kira/left_surprise
+#	RemoveImage	4	yuma/left_surprise
+			
+#	InsertImage	1	kira/left_surprise
+#	InsertImage	2	yuma/left_surprise
+#	InsertImage	4	kurokiren/right_normal
+			
+？？？	「やっぱり邪気の遠隔操作じゃ細かい命令は与えられないなー」/		
+
+
+#	RemoveImage	2	yuma/left_surprise
+#	InsertImage	2	kiren/left_angry
+
+キレン	「邪気の操作って…！？」/	
+キラ	「じゃ、じゃあこいつは！」/
+
+
+#	ChangeImage	4	kurokiren/right_laugh
+？？？	「そうだよ、オレサマが世界樹を邪気で染めたんだ。/	
+
+#	ChangeImage	4	kurokiren/right_normal	
+	精霊使い共が抵抗してるけど、直に全員邪気に侵されるだろうけどね」/		
+
+#	RemoveImage	2	kiren/left_angry
+#	InsertImage	2	noel/left_angry
+			
+ノエル	「…随分とお喋りなのね」/
+
+#	ChangeImage	4	kurokiren/right_laugh		
+？？？	「あっはっは！　だってキミ達に何を言ったって無駄だろう？/		
+	この街の邪気ですら浄化するのに手こずってるんだからさ！」/		
+	「世界樹も、何を思ってこんなヒヨッコを逃したんだろうね」/
+
+#	RemoveImage	2	noel/left_angry
+
+#	InsertImage	2	yuma/left_angry	
+ユウマ	「何が目的なんだ！」/
+
+#	ChangeImage	4	kurokiren/right_normal		
+？？？	「目的？　うーん、そうだなぁ…」/
+#	ChangeImage	4	kurokiren/right_laugh		
+	「オレサマと遊んでくれたら教えてあげようかなー♪」/				
+キラ	「えっ！？」/
+
+#	RemoveImage	2	yuma/left_angry
+#	InsertImage	2	noel/left_angry	
+ノエル	「それじゃあ今ココで捕まえてあげるわ！　キレン！」/
+
+		
+？？？	「あははっ！　もっと広い場所で遊ぼうよ！　この奥にある広場で待ってるからさ！」/	
+
+#	RemoveImage	1	kira/left_surprise
+#	InsertImage	1	yuma/left_angry
+ユウマ	「ま、待て！　逃げる気か！？」/
+		
+？？？	「オレサマは逃げも隠れもしないよ。待ってるからねー！」/		
+#	RemoveImage	4	kurokiren/right_laugh
+#	RemoveImage	2	noel/left_angry
+#	InsertImage	2	kiren/left_angry			
+キレン	「……あいつ」/
+
+#	ChangeImage	1	yuma/left_dissatisfied
+		
+ユウマ	「？」/	
+
+#	RemoveImage	1	yuma/left_dissatisfied
+#	RemoveImage	2	kiren/left_angry
+
+
+#	InsertImage	1	noel/left_normal
+#	InsertImage	2	kiren/left_sad
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_normal
+
+	
+キレン	「あいつ、ボクと同じ守護の一族だった……」/
+
+#	ChangeImage	3	kira/right_surprise		
+キラ	「似てるかも、って思ったけど、やっぱり同じ種族だったの？」/	
+	
+キレン	「うん…」/	
+
+#	ChangeImage	1	noel/left_sad	
+ノエル	世界樹を守護するのが役目のはずなのに、どうして邪気なんかを操って……/	
+	
+ユウマ	「…ま、全部あいつをとっ捕まえて聞けばいいだろ。早く行こうぜ」/
+		
+キラ	「そうだね。/
+#	ChangeImage	4	yuma/right_laugh
+		
+	待っててくれるみたいだし、早く捕まえよう！　ユウマもたまには良いこと言うね！」/	
+
+#	ChangeImage	4	yuma/right_dissatisfied	
+ユウマ	「たまにはってなんだよ！？」/	
+
+#	ChangeImage	1	noel/left_normal
+ノエル	「……仲が良いわね」/
+
+
+#	ChangeImage	2	kiren/left_laugh
+キレン	「あはは…。/
+#	ChangeImage	2	kiren/left_sad		
+	うん、でもそうだね。/
+#	ChangeImage	2	kiren/left_normal
+	会って、話がしたいよ」/	
+	
+ノエル	「ええ。行きましょう！」/		
+
+
+
+
+
+

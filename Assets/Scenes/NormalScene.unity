@@ -1207,6 +1207,7 @@ MonoBehaviour:
   blackTexture: {fileID: 2800000, guid: 0db19c609eba0a34eab77d236040bb17, type: 3}
   isFading: 0
   blackImage: {fileID: 915458905}
+  onTalk: 0
 --- !u!114 &1528108656
 MonoBehaviour:
   m_ObjectHideFlags: 0

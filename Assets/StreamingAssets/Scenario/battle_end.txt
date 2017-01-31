@@ -1,9 +1,10 @@
 #	InsertImage	1	kiren/left_laugh
 #	InsertImage	2	noel/left_laugh
 #	InsertImage	3	kira/right_laugh
-# 	InsertImage	4	yuma/right_laugh
+# 	InsertImage	4	yuma/right_dissatisfied
 
-
+#	ChangeImage	3	kira/right_normal
+# 	ChangeImage	4	yuma/right_normal
 キラ	「す…すごい！　すごい、すごいよ！　体の底から力が溢れてくるみたいだった！」/
 ユウマ	「ああ！　確かに不思議な感じだったな」/
 ノエル	「…うん。大丈夫みたい。気を失ってるだけよ。しばらくすれば目を覚ますと思うわ」/
