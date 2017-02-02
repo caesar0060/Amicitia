@@ -90,7 +90,7 @@ GameObject:
   - 4: {fileID: 438054}
   - 114: {fileID: 11459288}
   m_Layer: 0
-  m_Name: Hit Effect
+  m_Name: Hit_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
