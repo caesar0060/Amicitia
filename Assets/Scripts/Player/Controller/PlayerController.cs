@@ -204,7 +204,7 @@ public class WalkMode : RootController
     }
     override public void Exit(PlayerRoot pr = null)
     {
-
+        pr.transform.position = player.transform.position;
     }
     #region Function
     /// <summary>

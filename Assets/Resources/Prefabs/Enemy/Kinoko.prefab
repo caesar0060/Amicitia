@@ -912,7 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c1683275fe3c04191daf2d473e36a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 500
+  _hp: 10
   _maxHP: 500
   _attack: 50
   _defence: 50
@@ -921,6 +921,7 @@ MonoBehaviour:
   UI_hp_prefab: {fileID: 117992, guid: 8a3dd5495d82e3b43b3130d3dd28612c, type: 2}
   UI_hp: {fileID: 0}
   ENEMY_MOVE_SPEED: 5
+  e_name: "\u30AD\u30CE\u30B3"
   e_pr: {fileID: 0}
   p_leader: {fileID: 0}
   skillList: []
@@ -929,7 +930,6 @@ MonoBehaviour:
   skillUsing:
     s_name: 
     s_power: 0
-    s_pIncrease: 0
     s_effectTime: 0
     s_isRune: 0
     s_recast: 0
@@ -1134,7 +1134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _hp
-      value: 500
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _maxHP
@@ -1156,6 +1156,10 @@ Prefab:
       propertyPath: UI_hp_prefab
       value: 
       objectReference: {fileID: 117992, guid: 8a3dd5495d82e3b43b3130d3dd28612c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: e_name
+      value: "\u30AD\u30CE\u30B3"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146568}

@@ -332,7 +332,9 @@ public class JobBase : StatusControl {
                             int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
                             eb.Set_HP(damage);
                             r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
                         }
                     }
                     else
@@ -341,6 +343,9 @@ public class JobBase : StatusControl {
                         int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
                         eb.Set_HP(damage);
                         target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                        Vector3 pos = target.transform.position;
+                        pos.y += target.GetComponent<CapsuleCollider>().height;
+                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
                     }
                     if (GameObject.FindGameObjectWithTag("Range"))
                         DeleteRange();
@@ -378,34 +383,49 @@ public class JobBase : StatusControl {
 			{
 				try
 				{ 
-				// switch() 味方？敵？
-				float s_power = 1;	//精霊の力
-				if (CheckFlag(ConditionStatus.MAGIC_UP))
-					s_power = 1.5f;
-				if (sc.s_targetNum == TargetNum.MUTIPLE)
-				{
-					foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
-					{
-						if (r_target.layer != LayerMask.NameToLayer("Enemy"))
-							continue;
-						EnemyBase eb = r_target.GetComponent<EnemyBase>();
-						int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-						eb.Set_HP(damage);
-						r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-					}
+				    // switch() 味方？敵？
+				    float s_power = 1;	//精霊の力
+				    if (CheckFlag(ConditionStatus.MAGIC_UP))
+					    s_power = 1.5f;
+				    if (sc.s_targetNum == TargetNum.MUTIPLE)
+				    {
+					    foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+					    {
+						    if (r_target.layer != LayerMask.NameToLayer("Enemy"))
+							    continue;
+						    EnemyBase eb = r_target.GetComponent<EnemyBase>();
+						    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+						    eb.Set_HP(damage);
+						    r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+					    }
+				    }
+				    else
+				    {
+                        StatusControl status = target.GetComponent<StatusControl>();
+                        int damage = 0;
+                        if (target.layer == LayerMask.NameToLayer("Player"))
+                        {
+                            damage = (int)((_attack + sc.s_power) * s_power * -1);
+                        }
+                        else
+                        {
+                            damage = Math.Max((int)((_attack + sc.s_power) * s_power) - status._defence, 0);
+                            target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+
+                        }
+                        status.Set_HP(damage);
+				    }
+				    if (GameObject.FindGameObjectWithTag("Range"))
+					    DeleteRange();
+				    StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+				    yield break;
 				}
-				else
-				{
-					EnemyBase eb = target.GetComponent<EnemyBase>();
-					int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
-					eb.Set_HP(damage);
-					target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-				}
-				if (GameObject.FindGameObjectWithTag("Range"))
-					DeleteRange();
-				StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
-				yield break;
-						}
 				catch(MissingReferenceException)
 				{
 					yield break;

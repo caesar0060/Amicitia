@@ -117,6 +117,10 @@ public class StatusControl : MonoBehaviour{
     public void Set_HP(int point)
     {
         _hp -= point;
+        if (_hp > _maxHP)
+            _hp = _maxHP;
+        if (_hp < 0)
+            _hp = 0;
 		UI_hp.value = _hp;
     }
 	/// <summary>

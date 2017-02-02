@@ -44,7 +44,8 @@ public class EnemyBase : StatusControl {
 	public E_Controller controller = null;
 	//前のインスタンスを保存するコントローラ
 	public E_Controller preivousController = null;
-
+    // monsterの名前
+    public string e_name;
     //PlayerRootを保存する
 	[HideInInspector] public PlayerRoot e_pr;
     // プレイヤーのリーダーを保管する
@@ -165,6 +166,15 @@ public class EnemyBase : StatusControl {
 			Set_b_Status (BattelStatus.DEAD);
 			this.GetComponent<CapsuleCollider> ().enabled = false;
 			e_pr.enemyList.Remove (this.gameObject);
+            foreach (var e in PlayerRoot.Instance.evnet_list)
+            {
+                if (e.target_name == this.e_name)
+                {
+                    e.target_count++;
+                    if (e.target_count > e.target_num)
+                        e.target_count = e.target_num;
+                }
+            }
 			//Destroy (this.gameObject);
 		}
 	}
@@ -348,7 +358,9 @@ public class EnemyBase : StatusControl {
 							int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
 							jb.Set_HP(damage);
                             r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
                         }
                     }
                     else
@@ -356,6 +368,10 @@ public class EnemyBase : StatusControl {
 						JobBase jb = target.GetComponent<JobBase> ();
 						int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
 						jb.Set_HP(damage);
+                        target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+                        Vector3 pos = target.transform.position;
+                        pos.y += target.GetComponent<CapsuleCollider>().height;
+                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();
@@ -410,14 +426,28 @@ public class EnemyBase : StatusControl {
 							int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
 							jb.Set_HP(damage);
 							r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
 						}
 					}
 					else
 					{
-						JobBase jb = target.GetComponent<JobBase>();
-						int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
-						jb.Set_HP(damage);
+                        StatusControl status = target.GetComponent<StatusControl>();
+                        int damage = 0;
+                        if (target.layer == LayerMask.NameToLayer("Player"))
+                        {
+                            damage = (int)((_attack + skill.s_power) * s_power * -1);
+                        }
+                        else
+                        {
+                            damage = Math.Max((int)((_attack + skill.s_power) * s_power) - status._defence, 0);
+                        }
+						status.Set_HP(damage);
+                        target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+                        Vector3 pos = target.transform.position;
+                        pos.y += target.GetComponent<CapsuleCollider>().height;
+                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();

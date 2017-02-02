@@ -29,6 +29,7 @@
 ノエル	「ま、まさか邪気に侵されて…！？」%
 #	RemoveImage	2	yuma/left_angry
 #	InsertImage	2	kira/left_angry
+#	ReceiveEvent	Tutorial	1
 キレン	「ユウマ！　キラ！　力を貸して！　邪気を浄化して、助けなきゃ！」%
 @end
 

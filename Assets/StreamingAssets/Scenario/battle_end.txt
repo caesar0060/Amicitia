@@ -1,4 +1,5 @@
 ﻿@0
+#	CompleteEvent	1
 #	InsertImage	1	kiren/left_laugh
 #	InsertImage	2	noel/left_laugh
 #	InsertImage	3	kira/right_laugh
