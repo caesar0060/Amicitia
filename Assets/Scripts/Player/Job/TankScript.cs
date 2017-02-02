@@ -43,6 +43,7 @@ public class TankScript : JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
+        StartCoroutine(MagicDamage(this.gameObject, sc, 1f, "Prefabs/Magic/Counter", 2f));
         /// 敵配列からすべての敵のターゲットを自分に変える　持続的？
 		List<GameObject> enemyList = PlayerRoot.Instance.enemyList;
 		foreach (GameObject enemy in enemyList)
@@ -69,6 +70,7 @@ public class TankScript : JobBase {
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
+        StartCoroutine(MagicDamage(this.gameObject, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
 		StartCoroutine( StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime));
 	}
@@ -89,6 +91,7 @@ public class TankScript : JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
 		JobBase jb = target.GetComponent<JobBase> ();
 		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);
         jb.StartCoroutine( jb.StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime));

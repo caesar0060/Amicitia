@@ -41,6 +41,7 @@ public class LeaderScript : JobBase {
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		JobBase jb = target.GetComponent<JobBase>();
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Power_up", 2f));
 		jb.Set_c_Status(ConditionStatus.POWER_UP);
 		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.POWER_UP, effectTime));
 	}
@@ -53,6 +54,7 @@ public class LeaderScript : JobBase {
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		JobBase jb = target.GetComponent<JobBase>();
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Magic_up", 2f));
 		jb.Set_c_Status(ConditionStatus.MAGIC_UP);
 		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.MAGIC_UP, effectTime));
 	}
@@ -65,6 +67,7 @@ public class LeaderScript : JobBase {
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
 		JobBase jb = target.GetComponent<JobBase>();
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
 		jb.Set_c_Status(ConditionStatus.M_DEF_UP);
 		jb.Set_c_Status(ConditionStatus.P_DEF_UP);
 		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.M_DEF_UP, effectTime));
@@ -78,13 +81,7 @@ public class LeaderScript : JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-		switch (target.layer)
-		{
-			case 8:		//player
-			break;
-			case 12:	//enemy
-			break;
-		}
+		StartCoroutine (MagicDamage (_target, sc, 1f,"Prefabs/Magic/Recorvery",2f));
 	}
 	#endregion
 }

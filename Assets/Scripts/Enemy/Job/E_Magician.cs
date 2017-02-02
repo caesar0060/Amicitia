@@ -51,10 +51,10 @@ public class E_Magician : EnemyBase {
 					ChangeMode(M_Normal.Instance);
 					break;
 			}
-            StartCoroutine(Loading(5.0f));
+            coroutine = StartCoroutine(Loading(5.0f));
 		}
         else
-            StartCoroutine(Loading(1.0f));
+            coroutine = StartCoroutine(Loading(1.0f));
 	}
 	// Update is called once per frame
 	void Update () {

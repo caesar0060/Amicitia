@@ -65,6 +65,7 @@ public class EnemyBase : StatusControl {
     public GameObject skillIcon;
     // 移動しているかどうか
     public bool isMove = false;
+    public Coroutine coroutine;
 	#endregion
 
     public void OnTriggerStay(Collider other)
@@ -442,12 +443,12 @@ public class EnemyBase : StatusControl {
                         else
                         {
                             damage = Math.Max((int)((_attack + skill.s_power) * s_power) - status._defence, 0);
+                            target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+                            Vector3 pos = target.transform.position;
+                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
                         }
 						status.Set_HP(damage);
-                        target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                        Vector3 pos = target.transform.position;
-                        pos.y += target.GetComponent<CapsuleCollider>().height;
-                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();

@@ -526,7 +526,7 @@ public class t_targetMode : RootController
                             {
                                 SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
                             }
-                            if (pr.previous_controller == KirenControl.Instance && hit.collider.gameObject.GetComponent<StatusControl>()._type == JobType.Magician)
+                            if (pr.previous_controller == Kiren2Control.Instance && hit.collider.gameObject.GetComponent<StatusControl>()._type == JobType.Magician)
                             {
                                 SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
                             }
@@ -578,5 +578,34 @@ public class t_targetMode : RootController
         pr.p_jb._target = target; pr.p_jb.skillUsing = pr.s_script;
         GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
         pr.ChangeMode(BattelMode.Instance);
+    }
+}
+public class T_Wait : RootController
+{
+    #region Property
+    #endregion
+    // インスタンス
+    private static T_Wait instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static T_Wait Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new T_Wait();
+            return instance;
+        }
+    }
+    override public void Enter(PlayerRoot pr = null)
+    {
+    }
+    override public void Excute(PlayerRoot pr = null)
+    {
+    }
+    override public void Exit(PlayerRoot pr = null)
+    {
     }
 }

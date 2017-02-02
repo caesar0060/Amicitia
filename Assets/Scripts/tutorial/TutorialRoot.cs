@@ -11,12 +11,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
         /* 
         TODO: stop monster AI
         */
-        foreach(var enemy in PlayerRoot.Instance.enemyList)
-        {
-            EnemyBase eb = enemy.GetComponent<EnemyBase>();
-            IEnumerator coroutine = eb.Loading(5.0f);
-            eb.StopCoroutine(coroutine);
-        }
+
 	}
     void OnGUI()
     {
@@ -33,6 +28,11 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
             switch (counter)
             {
                 case 1: //作戦闘開始
+                    foreach (var enemy in PlayerRoot.Instance.enemyList)
+                    {
+                        EnemyBase eb = enemy.GetComponent<EnemyBase>();
+                        eb.StopCoroutine(eb.coroutine);
+                    }
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
                     this.GetComponent<ScenarioScript>().fileName = "T1";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
@@ -80,6 +80,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                     if (onLesson)
                     {
                         onLesson = false;
+                        PlayerRoot.Instance.ChangeMode(T_Wait.Instance);
                         EnemyBase eb = PlayerRoot.Instance.enemyList[0].GetComponent<EnemyBase>();
                         eb.controller = M_Tutorial.Instance;
                         eb.controller.Excute(eb);
@@ -92,6 +93,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                     counter++;
                     break;
                 case 9:
+                    if (!onLesson)
                     {
                         onLesson = true;
                         PlayerRoot.Instance.ChangeMode(Kiren2Control.Instance);
