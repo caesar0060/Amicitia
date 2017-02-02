@@ -95,3 +95,37 @@ public class ConditionMode : Controller {
 		Debug.Log("Exit");
 	}
 }
+/// <summary>
+/// SkillMode Singleton
+/// </summary>
+public class t_SkillMode : Controller
+{
+    // バトルモードのインスタンス
+    private static t_SkillMode instance;
+    /// <summary>
+    /// WorldModeのインスタンスを取得
+    /// </summary>
+    /// <value>WorldModeのインスタンス</value>
+    public static t_SkillMode Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new t_SkillMode();
+            return instance;
+        }
+    }
+    override public void Enter(JobBase jb)
+    {
+        Debug.Log("Enter");
+    }
+    override public void Excute(JobBase jb)
+    {
+        if (!jb.CanTakeAction())
+            jb.ChangeMode(ConditionMode.Instance);
+    }
+    override public void Exit(JobBase jb)
+    {
+        TutorialRoot.Instance.counter++;
+    }
+}

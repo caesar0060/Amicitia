@@ -565,3 +565,55 @@ public class M_Normal : E_Controller
         Debug.Log("T_Normal_Exit");
     }
 }
+/// <summary>
+/// M_Normal Singleton
+/// </summary>
+public class M_Tutorial : E_Controller
+{
+    // インスタンス
+    private static M_Tutorial instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static M_Tutorial Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new M_Tutorial();
+            return instance;
+        }
+    }
+    override public void Enter(EnemyBase eb = null)
+    {
+        Debug.Log("T_Normal_Enter");
+    }
+    override public void Excute(EnemyBase eb = null)
+    {
+        if (eb.CanTakeAction())
+        {
+            foreach (var target in eb.e_pr.partyList)
+            {
+                JobBase jb = target.GetComponent<JobBase>();
+                if (jb._type == JobType.Magician)
+                {
+                    if (!eb.skillList[0].isRecast)
+                    {
+                        eb.StartCoroutine(eb.SkillUse(target, eb.skillList[0], E_Tutorial.Instance));
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("TODO: 状態異常のモードに移動");
+            return;
+        }
+    }
+    override public void Exit(EnemyBase eb = null)
+    {
+        Debug.Log("T_Normal_Exit");
+    }
+}

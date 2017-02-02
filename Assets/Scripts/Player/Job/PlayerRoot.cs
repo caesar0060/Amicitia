@@ -51,7 +51,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// ------------------------------------------------------------------------------------
 	//										Debug用
 	void OnGUI() {
-        if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
+       /* if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
         {
 			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
         }
@@ -60,8 +60,8 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
         {
             this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
         
-        }
-		//GUI.Label (new Rect (10, 90, 200, 20), "Root: " + controller.ToString ());
+        }*/
+		GUI.Label (new Rect (10, 50, 200, 20), "Root: " + controller.ToString ());
 	}
 	//--------------------------------------------------------------------------------------
 	// Update is called once per frame
@@ -130,6 +130,11 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
         p_jb.Set_b_Status(BattelStatus.NOT_IN_BATTEL);
 		return player;
 	}
+    public GameObject CreateObject(GameObject prefab)
+    {
+        GameObject obj = Instantiate(prefab) as GameObject;
+        return obj;
+    }
 	/// <summary>
 	/// 子供を削除する
 	/// </summary>

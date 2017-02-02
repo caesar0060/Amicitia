@@ -135,11 +135,13 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         {
             PlayerRoot.Instance.battelEnemyList = ScenarioManager.Instance.battelEnemyList;
             ScenarioManager.Instance.battelEnemyList = new List<GameObject>();
-            FadeManager.Instance.LoadLevel("BattelScene", 2, BattelStart.Instance);
+            FadeManager.Instance.LoadLevel("TutorialScene", 2, BattelStart.Instance);
             PlayerRoot.Instance.transform.position = this.transform.position;
         }
         else
-            this.GetComponent<PlayerRoot>().ChangeMode(rc);
+        {
+            //this.GetComponent<PlayerRoot>().ChangeMode(rc);
+        }
         onTalk = false;
 		yield break;
 	}

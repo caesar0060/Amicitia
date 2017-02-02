@@ -8,7 +8,7 @@ public class AttackerScript : JobBase {
 	#endregion
 
 	// ------------------------------------------------------------------------------------
-	//*										Debug用
+	/*										Debug用
 	void OnGUI() {
 		GUI.Label (new Rect (120, 10, 200, 20), "Attacker: " + controller.ToString ());
 		GUI.Label (new Rect (120, 50, 200, 20), "Attacker: " + conditionStatus.ToString());

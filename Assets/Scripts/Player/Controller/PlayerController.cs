@@ -487,7 +487,7 @@ public class _targetMode : RootController
         // ボタンがなければ
         if (pr.btn == null)
             pr.ChangeMode(BattelMode.Instance);
-        #region Function
+        #region マウス操作
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

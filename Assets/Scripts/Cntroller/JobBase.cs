@@ -121,7 +121,14 @@ public class JobBase : StatusControl {
 	public void HideSkillBtn(){
 		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < parent.childCount; i++) {
-			parent.GetChild (i).GetComponent<Collider> ().enabled = false;
+            try
+            {
+                parent.GetChild(i).GetComponent<Collider>().enabled = false;
+            }
+            catch (MissingComponentException)
+            {
+                continue;
+            }
 		}
 		parent.GetComponent<Canvas> ().enabled = false;
 	}
@@ -131,7 +138,14 @@ public class JobBase : StatusControl {
 	public void RemoveSkillBtn(){
 		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < parent.childCount; i++) {
+            try
+            {
 			Destroy (parent.GetChild (i).gameObject);
+            }
+            catch (NullReferenceException)
+            {
+                continue;
+            }
 		}
 	}
 	/// <summary>
@@ -140,8 +154,15 @@ public class JobBase : StatusControl {
 	public void ShowSkillBtn(){
 		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < parent.childCount; i++) {
-			if(parent.GetChild (i).GetComponent <SkillScript>().isRecast == false)
-				parent.GetChild (i).GetComponent<Collider> ().enabled = true;
+            try
+            {
+                if (parent.GetChild(i).GetComponent<SkillScript>().isRecast == false)
+                    parent.GetChild(i).GetComponent<Collider>().enabled = true;
+            }
+            catch(NullReferenceException)
+            {
+                continue;
+            }
 		}
 		parent.GetComponent<Canvas> ().enabled = true;
 	}
@@ -210,6 +231,8 @@ public class JobBase : StatusControl {
             {
                 img.fillAmount = rate;
                 btn.GetComponent<SkillScript>().isRecast = false;
+                if (btn.GetComponentInParent<Canvas>().isActiveAndEnabled)
+                    btn.GetComponent<Collider>().enabled = true;
                 yield break;
             }
             img.fillAmount = rate;

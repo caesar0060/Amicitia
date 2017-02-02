@@ -468,5 +468,32 @@ public class EnemyBase : StatusControl {
             yield return new WaitForSeconds(SHOW_ICON_TIME);
         }
     }
+    /// <summary>
+    /// スキルを使う.
+    /// </summary>
+    /// <param name="target">Target.</param>
+    /// <param name="skill">使うスキル.</param>
+    public IEnumerator SkillUse(GameObject target, Skill skill, E_Controller controller)
+    {
+        float startTime = Time.time;
+        GameObject icon = Instantiate(skillIcon) as GameObject;
+        icon.transform.SetParent(this.transform.GetChild(0));
+        icon.transform.localPosition = new Vector3(0, 1, 0);
+        icon.GetComponentInChildren<Text>().text = skill.s_name;
+        while (true)
+        {
+            float time = Time.time - startTime;
+            if (time / SHOW_ICON_TIME >= 1)
+            {
+                Destroy(icon);
+                ChangeMode(controller);
+                _target = target; skillUsing = skill;
+                GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(this.gameObject);
+                skill.isRecast = true;
+                yield break;
+            }
+            yield return new WaitForSeconds(SHOW_ICON_TIME);
+        }
+    }
 	#endregion
 }

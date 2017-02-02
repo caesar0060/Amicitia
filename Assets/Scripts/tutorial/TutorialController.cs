@@ -8,6 +8,7 @@ public class YumaControl : RootController
     private int d_layerMask;
     // ボタンが表示しているかどうか
     private bool isBtnShow = false;
+    GameObject yajirusi;
     #endregion
     // インスタンス
     private static YumaControl instance;
@@ -32,6 +33,13 @@ public class YumaControl : RootController
         isBtnShow = false;
         d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
         TutorialRoot.Instance.msg = "「まずはユウマをクリックして、";
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        foreach(var player in PlayerRoot.Instance.partyList)
+        {
+            if (player.GetComponent<JobBase>()._type == JobType.Attacker)
+                yajirusi.transform.SetParent(player.transform);
+        }
+        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -54,16 +62,10 @@ public class YumaControl : RootController
                                     pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
                                     if (pr.p_jb.CanTakeAction())
                                     {
+                                        TutorialRoot.Instance.msg = "スラッシュを魔物までドラッグ！」";
                                         pr.p_jb.ShowSkillBtn();
                                         isBtnShow = true;
                                     }
-                                }
-                                // すでに生成したら
-                                else
-                                {
-                                    pr.p_jb.HideSkillBtn();
-                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-                                    pr.p_jb.ShowSkillBtn();
                                 }
                             }
                         }
@@ -72,7 +74,99 @@ public class YumaControl : RootController
                         if (isBtnShow)
                         {	// ボタンを選択したら
                             // 選択したボタンを保管
-                            if (hit.collider.gameObject.GetComponent<SkillScript>().name == "スラッシュ")
+                            Debug.Log(hit.collider.gameObject.GetComponent<SkillScript>().s_name);
+                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "スラッシュ")
+                            {
+                                pr.btn = hit.collider.gameObject;
+                                pr.s_script = pr.btn.GetComponent<SkillScript>();
+                                pr.ChangeMode(t_targetMode.Instance);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        #endregion
+    }
+    override public void Exit(PlayerRoot pr = null)
+    {
+        PlayerRoot.Instance.DestroyObj(yajirusi);
+    }
+}
+public class KiraControl : RootController
+{
+    #region Property
+    // タッチのレイヤーマスク
+    private int d_layerMask;
+    // ボタンが表示しているかどうか
+    private bool isBtnShow = false;
+    GameObject yajirusi;
+    #endregion
+    // インスタンス
+    private static KiraControl instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static KiraControl Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new KiraControl();
+            return instance;
+        }
+    }
+    override public void Enter(PlayerRoot pr = null)
+    {
+        //初期化
+        pr.s_script = null;
+        pr.btn = null;
+        isBtnShow = false;
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
+        TutorialRoot.Instance.msg = "「さっきと同じようにキラをクリックして、";
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        foreach (var player in PlayerRoot.Instance.partyList)
+        {
+            if (player.GetComponent<JobBase>()._type == JobType.Defender)
+                yajirusi.transform.SetParent(player.transform);
+        }
+        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+    }
+    override public void Excute(PlayerRoot pr = null)
+    {
+        #region マウス操作
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
+            {
+                switch (hit.collider.gameObject.layer)
+                {
+                    case 8: //Player
+                        if (hit.collider.gameObject.GetComponent<JobBase>()._type == JobType.Defender)
+                        {
+                            if (hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance)
+                            {
+                                if (!isBtnShow)
+                                {	//ボタンはまだ生成していない
+                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+                                    if (pr.p_jb.CanTakeAction())
+                                    {
+                                        TutorialRoot.Instance.msg = "シールドをユウマにドラッグ！」";
+                                        pr.p_jb.ShowSkillBtn();
+                                        isBtnShow = true;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case 10: //Command
+                        if (isBtnShow)
+                        {	// ボタンを選択したら
+                            // 選択したボタンを保管
+                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "シールド")
                             {
                                 pr.btn = hit.collider.gameObject;
                                 pr.s_script = pr.btn.GetComponent<SkillScript>();
@@ -91,6 +185,211 @@ public class YumaControl : RootController
     }
     override public void Exit(PlayerRoot pr = null)
     {
+        PlayerRoot.Instance.DestroyObj(yajirusi);
+    }
+}
+public class KirenControl : RootController
+{
+    #region Property
+    // タッチのレイヤーマスク
+    private int d_layerMask;
+    // ボタンが表示しているかどうか
+    private bool isBtnShow = false;
+    GameObject yajirusi;
+    #endregion
+    // インスタンス
+    private static KirenControl instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static KirenControl Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new KirenControl();
+            return instance;
+        }
+    }
+    override public void Enter(PlayerRoot pr = null)
+    {
+        //初期化
+        pr.s_script = null;
+        pr.btn = null;
+        isBtnShow = false;
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
+        TutorialRoot.Instance.msg = "「ボクの周りに浮遊する精霊クリック。";
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        foreach (var player in PlayerRoot.Instance.partyList)
+        {
+            if (player.GetComponent<JobBase>()._type == JobType.Leader)
+                yajirusi.transform.SetParent(player.transform);
+        }
+        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+    }
+    override public void Excute(PlayerRoot pr = null)
+    {
+        #region マウス操作
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
+            {
+                switch (hit.collider.gameObject.layer)
+                {
+                    case 8: //Player
+                        if (hit.collider.gameObject.GetComponent<JobBase>()._type == JobType.Leader)
+                        {
+                            if (hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance)
+                            {
+                                if (!isBtnShow)
+                                {	//ボタンはまだ生成していない
+                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+                                    if (pr.p_jb.CanTakeAction())
+                                    {
+                                        TutorialRoot.Instance.msg = "精霊をノエルまでドラッグ！」";
+                                        pr.p_jb.ShowSkillBtn();
+                                        isBtnShow = true;
+                                    }
+                                }
+                                // すでに生成したら
+                                else
+                                {
+                                    pr.p_jb.HideSkillBtn();
+                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+                                    pr.p_jb.ShowSkillBtn();
+                                }
+                            }
+                        }
+                        break;
+                    case 10: //Command
+                        if (isBtnShow)
+                        {	// ボタンを選択したら
+                            // 選択したボタンを保管
+                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "魔力の精霊")
+                            {
+                                pr.btn = hit.collider.gameObject;
+                                pr.s_script = pr.btn.GetComponent<SkillScript>();
+                                pr.ChangeMode(t_targetMode.Instance);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            pr.p_jb.HideSkillBtn();
+        }
+        #endregion
+    }
+    override public void Exit(PlayerRoot pr = null)
+    {
+        PlayerRoot.Instance.DestroyObj(yajirusi);
+    }
+}
+public class Kiren2Control : RootController
+{
+    #region Property
+    // タッチのレイヤーマスク
+    private int d_layerMask;
+    // ボタンが表示しているかどうか
+    private bool isBtnShow = false;
+    GameObject yajirusi;
+    #endregion
+    // インスタンス
+    private static Kiren2Control instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static Kiren2Control Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new Kiren2Control();
+            return instance;
+        }
+    }
+    override public void Enter(PlayerRoot pr = null)
+    {
+        //初期化
+        pr.s_script = null;
+        pr.btn = null;
+        isBtnShow = false;
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
+        TutorialRoot.Instance.msg = "「また精霊をクリックする。";
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        foreach (var player in PlayerRoot.Instance.partyList)
+        {
+            if (player.GetComponent<JobBase>()._type == JobType.Leader)
+                yajirusi.transform.SetParent(player.transform);
+        }
+        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+    }
+    override public void Excute(PlayerRoot pr = null)
+    {
+        #region マウス操作
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
+            {
+                switch (hit.collider.gameObject.layer)
+                {
+                    case 8: //Player
+                        if (hit.collider.gameObject.GetComponent<JobBase>()._type == JobType.Leader)
+                        {
+                            if (hit.collider.gameObject.GetComponent<JobBase>().controller == ReadyMode.Instance)
+                            {
+                                if (!isBtnShow)
+                                {	//ボタンはまだ生成していない
+                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+                                    if (pr.p_jb.CanTakeAction())
+                                    {
+                                        TutorialRoot.Instance.msg = "次は緑色の精霊をノエルにドラッグ！」";
+                                        pr.p_jb.ShowSkillBtn();
+                                        isBtnShow = true;
+                                    }
+                                }
+                                // すでに生成したら
+                                else
+                                {
+                                    pr.p_jb.HideSkillBtn();
+                                    pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
+                                    pr.p_jb.ShowSkillBtn();
+                                }
+                            }
+                        }
+                        break;
+                    case 10: //Command
+                        if (isBtnShow)
+                        {	// ボタンを選択したら
+                            // 選択したボタンを保管
+                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "癒しの精霊")
+                            {
+                                pr.btn = hit.collider.gameObject;
+                                pr.s_script = pr.btn.GetComponent<SkillScript>();
+                                pr.ChangeMode(t_targetMode.Instance);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            pr.p_jb.HideSkillBtn();
+        }
+        #endregion
+    }
+    override public void Exit(PlayerRoot pr = null)
+    {
+        PlayerRoot.Instance.DestroyObj(yajirusi);
     }
 }
 
@@ -121,9 +420,47 @@ public class t_targetMode : RootController
     private int d_layerMask;
     private int layerMask;
     private int u_layerMask;
+    GameObject yajirusi;
     #endregion
     override public void Enter(PlayerRoot pr = null)
     {
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        if (pr.previous_controller == YumaControl.Instance)
+        {
+            TutorialRoot.Instance.msg = "スラッシュを魔物までドラッグ！」";
+            yajirusi.transform.SetParent(PlayerRoot.Instance.enemyList[1].transform);
+            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        }
+        if (pr.previous_controller == KiraControl.Instance)
+        {
+            TutorialRoot.Instance.msg = "シールドをユウマにドラッグ！」";
+            foreach (var player in PlayerRoot.Instance.partyList)
+            {
+                if (player.GetComponent<JobBase>()._type == JobType.Attacker)
+                    yajirusi.transform.SetParent(player.transform);
+            }
+            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        }
+        if (pr.previous_controller == KirenControl.Instance)
+        {
+            TutorialRoot.Instance.msg = "精霊をノエルまでドラッグ！」";
+            foreach (var player in PlayerRoot.Instance.partyList)
+            {
+                if (player.GetComponent<JobBase>()._type == JobType.Magician)
+                    yajirusi.transform.SetParent(player.transform);
+            }
+            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        }
+        if (pr.previous_controller == Kiren2Control.Instance)
+        {
+            TutorialRoot.Instance.msg = "次は緑色の精霊をノエルにドラッグ！」";
+            foreach (var player in PlayerRoot.Instance.partyList)
+            {
+                if (player.GetComponent<JobBase>()._type == JobType.Magician)
+                    yajirusi.transform.SetParent(player.transform);
+            }
+            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        }
         //初期化
         switch (pr.s_script.s_targetype)
         {
@@ -146,38 +483,15 @@ public class t_targetMode : RootController
     {
         // ボタンがなければ
         if (pr.btn == null)
-            pr.ChangeMode(pr.previous_controller);
-        #region Function
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, d_layerMask))
-            {
-                switch (hit.collider.gameObject.layer)
-                {
-                    case 8: //Player
-                        pr.p_jb.HideSkillBtn();
-                        pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
-                        pr.p_jb.ShowSkillBtn();
-                        pr.ChangeMode(pr.previous_controller);
-                        break;
-                    case 10: //Command
-                        // 選択したボタンを保管
-                        pr.btn = hit.collider.gameObject;
-                        pr.s_script = pr.btn.GetComponent<SkillScript>();
-                        btnTempPos = pr.btn.transform.localPosition;
-                        break;
-                }
-            }
-        }
+            pr.ChangeMode(BattelMode.Instance);
+        #region マウス操作
         if (Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                if (pr.btn == hit.collider.gameObject)
+                if (pr.btn != null)
                 {
                     // ボタンを動かす
                     Vector3 pos = hit.point;
@@ -193,14 +507,29 @@ public class t_targetMode : RootController
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, u_layerMask))
             {
-                if (pr.btn == hit.collider.gameObject)
+                if (pr.btn != null)
                 {
                     if (pr.s_script.s_targetNum != TargetNum.SELF)
                     {
                         //レイヤーが同じなら
                         if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
                         {
-                            SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
+                            if (pr.previous_controller == KiraControl.Instance && hit.collider.gameObject.GetComponent<JobBase>()._type == JobType.Attacker)
+                            {
+                                SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
+                            }
+                            if (pr.previous_controller == KirenControl.Instance && hit.collider.gameObject.GetComponent<JobBase>()._type == JobType.Magician)
+                            {
+                                SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
+                            }
+                            if (pr.previous_controller == YumaControl.Instance)
+                            {
+                                SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
+                            }
+                            if (pr.previous_controller == KirenControl.Instance && hit.collider.gameObject.GetComponent<StatusControl>()._type == JobType.Magician)
+                            {
+                                SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
+                            }
                         }
                         else
                             //ボタンを初期位置に戻す
@@ -218,16 +547,19 @@ public class t_targetMode : RootController
                 pr.StartCoroutine(pr.LerpMove(pr.btn,
                     pr.btn.transform.localPosition, btnTempPos, 1));
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            pr.ChangeMode(pr.previous_controller);
-        }
         #endregion
         pr.CheckEndBattel();
         pr.CheckGameOver();
     }
     override public void Exit(PlayerRoot pr = null)
     {
+        if (pr.previous_controller == KirenControl.Instance)
+        {
+            TutorialRoot.Instance.msg = "「そのままノエルの魔法で魔物に攻撃だ！」";
+        }
+        else
+            TutorialRoot.Instance.msg = "";
+        PlayerRoot.Instance.DestroyObj(yajirusi);
         //ボタンを初期位置に戻す
         pr.StartCoroutine(pr.LerpMove(pr.btn,
             pr.btn.transform.localPosition, btnTempPos, 1));
@@ -242,10 +574,9 @@ public class t_targetMode : RootController
     /// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float effectTime = 0)
     {
-        pr.p_jb.ChangeMode(SkillMode.Instance);
+        pr.p_jb.ChangeMode(t_SkillMode.Instance);
         pr.p_jb._target = target; pr.p_jb.skillUsing = pr.s_script;
         GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
-        TutorialRoot.Instance.counter++;
-        pr.ChangeMode(pr.previous_controller);
+        pr.ChangeMode(BattelMode.Instance);
     }
 }

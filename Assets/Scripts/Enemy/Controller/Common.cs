@@ -127,3 +127,36 @@ public class E_FieldMode : E_Controller
         eb.StartCoroutine(eb.LerpMove(eb.gameObject, eb.transform.position, pos, 1, "move", target));
     }
 }
+/// <summary>
+/// E_SkillMode Singleton
+/// </summary>
+public class E_Tutorial : E_Controller
+{
+    // インスタンス
+    private static E_Tutorial instance;
+    /// <summary>
+    /// インスタンスを取得
+    /// </summary>
+    /// <value>インスタンス</value>
+    public static E_Tutorial Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new E_Tutorial();
+            return instance;
+        }
+    }
+    override public void Enter(EnemyBase eb = null)
+    {
+        Debug.Log("PEnter");
+    }
+    override public void Excute(EnemyBase eb = null)
+    {
+        Debug.Log("PExcute");
+    }
+    override public void Exit(EnemyBase eb = null)
+    {
+        TutorialRoot.Instance.counter++;
+    }
+}
