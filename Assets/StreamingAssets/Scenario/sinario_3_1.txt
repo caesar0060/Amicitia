@@ -1,0 +1,44 @@
+﻿#	InsertImage	1	noel/left_angry
+#	InsertImage	2	kira/left_angry
+#	InsertImage	4	kurokiren/right_normal
+
+
+ノエル	「追いついたわよ！　観念しなさい！」/
+
+#	ChangeImage	4	kurokiren/right_laugh
+？？？	「あははっ。観念もなにも、オレサマは逃げないって言ったじゃないか」/
+キラ	「ね、ねえ。戦わないっていう選択肢はないのかな…？」/
+？？？	「ん？　ここまで来て怖気づいたのかい？」/
+
+#	RemoveImage	2	kira/left_angry
+#	InsertImage	2	yuma/rleft_normal
+ユウマ	「キラは優しいからな。四対一だと気が引けるんだろ」/
+？？？	「四対一、ねぇ…？」/
+	「じゃあまずは、その認識を改めてもらおうか、な！」/
+
+
+#	InsertImage	3	enemy
+#	InsertImage	4	enemy
+
+
+#	RemoveImage	2	yuma/rleft_norma
+#	InsertImage	2	kiren/left_surprise
+キレン	「ほ、本当に邪気を操って…！？」/
+
+？？？	「あっはっは！　察しが悪いなあ。キミ、本当にオレサマと同じ守護の一族かい？」/
+
+#	ChangeImage	1	noel/left_surprise
+ノエル	「！　/
+#	ChangeImage	1	noel/left_angry
+	やっぱりアナタもキレンと同じ守護の一族なのね！？　どうしてこんなことを！！」/
+
+
+？？？	「だからそれは、オレサマと遊んでくれたら教えてあげるって言っただろ？」/
+	「それじゃあ早速、遊ぼうよ！」/
+
+#	RemoveImage	1	noel/left_angry
+#	InsertImage	1	yuma/rleft_norma
+ユウマ	「ッ！　みんな、来るぞ！！」/
+
+
+

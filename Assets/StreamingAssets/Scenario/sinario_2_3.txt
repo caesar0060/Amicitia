@@ -1,0 +1,11 @@
+﻿#	InsertImage	1	kiren/left_laugh
+#	InsertImage	2	noel/left_laugh
+#	InsertImage	3	kira/right_normal
+# 	InsertImage	4	yuma/right_sad
+			
+キレン	「あった！　鉢植えだ！」		
+ノエル	「早速持って帰りましょう」		
+キラ	「それじゃあ…ユウマ！」		
+ユウマ	「…知ってたよ。持ってけばいいんだろ？」		
+			
+# 	RemoveImage	4	yuma/right_sad
