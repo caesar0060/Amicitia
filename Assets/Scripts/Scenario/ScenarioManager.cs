@@ -161,7 +161,6 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 string[] words =text.Split();
                 if (words[0] == "#")
                 {
-                    Debug.Log(text);
 				    switch(words[1])
 				    {
 					    case "ChangeImage":
@@ -176,6 +175,12 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 					    case "SwayImage":
 					    StartCoroutine(SwayImage(int.Parse(words[2])));
 					    break;
+                        case "ReceiveEvent":
+                        ReceiveEvent(words[2], int.Parse(words[3]));
+                        break;
+                        case "CompleteEvent":
+                        CompleteEvent(int.Parse(words[2]));
+                        break;
 				    }
                     m_currentLine++;
                     lineBulider.AppendLine(CommandProcess(m_scenarios[m_currentLine]));
@@ -312,9 +317,8 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     /// </summary>
     /// <param name="file_name">json file name</param>
     /// <param name="id">all event id</param>
-    public void CompleteEvent(string file_name, int id)
+    public void CompleteEvent(int id)
     {
-        string js = EventManager.Instance.ReadFile(file_name);
         List<EventJson> event_list = PlayerRoot.Instance.evnet_list;
         foreach (var p_event in event_list)
         {

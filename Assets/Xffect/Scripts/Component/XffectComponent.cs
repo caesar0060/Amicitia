@@ -562,7 +562,8 @@ namespace Xft
 
             if (AutoDestroy)
 			{
-                this.GetComponentInParent<JobBase>().ReturnPos();
+                if(this.transform.parent)
+                    this.GetComponentInParent<JobBase>().ReturnPos();
 				Destroy (this.gameObject);
             }
         }
