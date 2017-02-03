@@ -12,20 +12,20 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 {
     #region Property
     private static Vector3[] pos1 = new Vector3[]{
-	   new Vector3(-475,0,0),		// insert
-	   new Vector3(-1075,0,0)		// remove
+	   new Vector3(-475,-60,0),		// insert
+	   new Vector3(-1275,0,0)		// remove
 	   };
 	private static Vector3[] pos2 = new Vector3[]{
-	   new Vector3(-200,0,0),		// insert
-	   new Vector3(-800,0,0)		// remove
+	   new Vector3(-200,-60,0),		// insert
+	   new Vector3(-1000,0,0)		// remove
 	   };
 	private static Vector3[] pos3 = new Vector3[]{
-	   new Vector3(200,0,0),		// insert
-	   new Vector3(800,0,0)		// remove
+	   new Vector3(200,-60,0),		// insert
+	   new Vector3(1000,0,0)		// remove
 	   };
 	private static Vector3[] pos4 = new Vector3[]{
-	   new Vector3(475,0,0),		// insert
-	   new Vector3(1075,0,0)		// remove
+	   new Vector3(475,-60,0),		// insert
+	   new Vector3(1275,0,0)		// remove
 	   };
 	private static Vector3[][] pos_list = new Vector3[][]{
 	   pos1, pos2, pos3, pos4

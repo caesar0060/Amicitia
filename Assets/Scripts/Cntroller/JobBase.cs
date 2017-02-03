@@ -56,6 +56,7 @@ public class JobBase : StatusControl {
             if (other_go.layer == LayerMask.NameToLayer("Enemy"))
             {
                 PlayerRoot pr = PlayerRoot.Instance;
+                pr.ChangeMode(T_Wait.Instance);
                 pr.p_jb._target = other_go;
                 if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
                     pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;

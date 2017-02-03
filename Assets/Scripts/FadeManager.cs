@@ -115,7 +115,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	/// </summary>
 	/// <param name="interval">必要時間.</param>
 	/// <param name="rc">変更したいRootController.</param>
-	public IEnumerator CloseTalkUI(float interval, RootController rc)
+	public IEnumerator CloseTalkUI(float interval, RootController rc = null)
 	{
 		float time = 0;
         int count = ScenarioManager.Instance.img_list.Length;
@@ -138,9 +138,9 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
             FadeManager.Instance.LoadLevel("TutorialScene", 2, BattelStart.Instance);
             PlayerRoot.Instance.transform.position = this.transform.position;
         }
-        else
+        else if( rc != null)
         {
-            //this.GetComponent<PlayerRoot>().ChangeMode(rc);
+            this.GetComponent<PlayerRoot>().ChangeMode(rc);
         }
         onTalk = false;
 		yield break;

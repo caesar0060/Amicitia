@@ -111,6 +111,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                     if (!onLesson)
                     {
                         onLesson = true;
+                        PlayerRoot.Instance.ChangeMode(BattelMode.Instance);
                         EnemyBase eb = PlayerRoot.Instance.enemyList[0].GetComponent<EnemyBase>();
                         eb.controller = M_Normal.Instance;
                         foreach (var enemy in PlayerRoot.Instance.enemyList)

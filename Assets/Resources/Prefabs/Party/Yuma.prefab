@@ -3943,7 +3943,7 @@ MonoBehaviour:
   _defence: 100
   _target: {fileID: 0}
   _type: 1
-  UI_hp_prefab: {fileID: 172168, guid: 5b988f2142ed7f747b1dc14111cff92f, type: 2}
+  UI_hp_prefab: {fileID: 111558, guid: 63650a77a4227244a84ae8c76d005d0d, type: 2}
   UI_hp: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
@@ -5371,7 +5371,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: UI_hp_prefab
       value: 
-      objectReference: {fileID: 172168, guid: 5b988f2142ed7f747b1dc14111cff92f, type: 2}
+      objectReference: {fileID: 111558, guid: 63650a77a4227244a84ae8c76d005d0d, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 0.2

@@ -282,11 +282,10 @@ public class TalkMode : RootController
         }
         if (Input.GetMouseButtonDown(0) && !sm.isScenario)
         {
+            sm.hukidasi.GetComponentInChildren<Text>().text = "";
 			sm.ItweenMoveTo(sm.hukidasi, new Vector3(0, -600, 0), 0.5f, "easeInOutBack");
             if(SceneManager.GetActiveScene().name == "NormalScene")
                 pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, WalkMode.Instance));
-            else
-                pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, BattelMode.Instance));
         }
     }
     override public void Exit(PlayerRoot pr = null)

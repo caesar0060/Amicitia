@@ -2899,7 +2899,7 @@ MonoBehaviour:
   _defence: 100
   _target: {fileID: 0}
   _type: 2
-  UI_hp_prefab: {fileID: 139622, guid: 6b924b2abc6f88c4e8fa7d5a7270d7d3, type: 2}
+  UI_hp_prefab: {fileID: 125502, guid: 32178c1f48f02f64892f25d73ae9e3c0, type: 2}
   UI_hp: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
@@ -3886,7 +3886,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: UI_hp_prefab
       value: 
-      objectReference: {fileID: 139622, guid: 6b924b2abc6f88c4e8fa7d5a7270d7d3, type: 2}
+      objectReference: {fileID: 125502, guid: 32178c1f48f02f64892f25d73ae9e3c0, type: 2}
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[0]
       value: 

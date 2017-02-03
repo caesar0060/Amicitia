@@ -918,7 +918,7 @@ MonoBehaviour:
   _defence: 50
   _target: {fileID: 0}
   _type: 5
-  UI_hp_prefab: {fileID: 117992, guid: 8a3dd5495d82e3b43b3130d3dd28612c, type: 2}
+  UI_hp_prefab: {fileID: 180950, guid: 6da444636f5277643b186482a9138539, type: 2}
   UI_hp: {fileID: 0}
   ENEMY_MOVE_SPEED: 5
   e_name: "\u30AD\u30CE\u30B3"
@@ -1155,7 +1155,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: UI_hp_prefab
       value: 
-      objectReference: {fileID: 117992, guid: 8a3dd5495d82e3b43b3130d3dd28612c, type: 2}
+      objectReference: {fileID: 180950, guid: 6da444636f5277643b186482a9138539, type: 2}
     - target: {fileID: 0}
       propertyPath: e_name
       value: "\u30AD\u30CE\u30B3"
