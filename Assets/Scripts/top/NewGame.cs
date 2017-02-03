@@ -14,6 +14,7 @@ public class NewGame : MonoBehaviour {
 	}
 
     public void LoadGame() {
+        this.GetComponent<AudioSource>().Play();
         FadeManager.Instance.LoadLevel("NormalScene", 2);
     }
 }

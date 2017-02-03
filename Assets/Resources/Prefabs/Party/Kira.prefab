@@ -2903,8 +2903,6 @@ MonoBehaviour:
   UI_hp: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
-  - {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
-  - {fileID: 142622, guid: e53b242d0bcc93941a003029c65dcd13, type: 2}
   - {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   skillUsing: {fileID: 0}
@@ -3857,7 +3855,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
@@ -3894,7 +3892,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[1]
       value: 
-      objectReference: {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
+      objectReference: {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[2]
       value: 

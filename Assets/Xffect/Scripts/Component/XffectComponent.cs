@@ -562,8 +562,18 @@ namespace Xft
 
             if (AutoDestroy)
 			{
-                if(this.transform.parent)
-                    this.GetComponentInParent<JobBase>().ReturnPos();
+                if (this.transform.parent)
+                {
+                    switch (this.transform.parent.tag) 
+                    { 
+                        case "meteo":
+                            Destroy(this.transform.parent.gameObject);
+                            break;
+                        default:
+                        this.GetComponentInParent<JobBase>().ReturnPos();
+                        break;
+                    }
+                }
 				Destroy (this.gameObject);
             }
         }

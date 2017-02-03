@@ -121,7 +121,6 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                 default :
                     if (!onLesson)
                     {
-                        Destroy(hukidasi);
                         onLesson = true;
                         PlayerRoot.Instance.ChangeMode(BattelMode.Instance);
                         EnemyBase eb = PlayerRoot.Instance.enemyList[0].GetComponent<EnemyBase>();

@@ -18,7 +18,7 @@ public class MagicianScript: JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-		p_funcList = new P_Delegate[]{ Skill1, Skill2, Skill3, Skill4};
+		p_funcList = new P_Delegate[]{ Skill1, Skill4};
 		Set_b_Status (BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
 		controller.Enter (this);
@@ -78,7 +78,7 @@ public class MagicianScript: JobBase {
 	{
         this.GetComponentInChildren<Animator>().SetTrigger("Attack");
         // Create attack Effect with script
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Explosion", 3f));
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/meteo", 3f));
 	}
 	#endregion
 }

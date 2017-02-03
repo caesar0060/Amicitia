@@ -11,7 +11,7 @@ public class TankScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
+		p_funcList = new P_Delegate[] { Skill1, Skill4 };
 		Set_b_Status(BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
 		controller.Enter(this);
@@ -70,7 +70,7 @@ public class TankScript : JobBase {
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-        StartCoroutine(MagicDamage(this.gameObject, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
+        StartCoroutine(MagicDamage(this.gameObject, sc, 1f, "Prefabs/Magic/SingleSheild", 2f));
 		Set_c_Status(ConditionStatus.ALL_DAMAGE_DOWN);
 		StartCoroutine( StatusCounter (ConditionStatus.ALL_DAMAGE_DOWN, effectTime));
 	}
@@ -91,7 +91,7 @@ public class TankScript : JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/SingleSheild", 2f));
 		JobBase jb = target.GetComponent<JobBase> ();
 		jb.Set_c_Status (ConditionStatus.ALL_DAMAGE_DOWN);
         jb.StartCoroutine( jb.StatusCounter(ConditionStatus.ALL_DAMAGE_DOWN, effectTime));

@@ -51,7 +51,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// ------------------------------------------------------------------------------------
 	//										Debug用
 	void OnGUI() {
-       /* if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
+        if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
         {
 			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
         }
@@ -60,7 +60,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
         {
             this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
         
-        }*/
+        }
 		GUI.Label (new Rect (10, 50, 200, 20), "Root: " + controller.ToString ());
 	}
 	//--------------------------------------------------------------------------------------

@@ -144,6 +144,7 @@ public class WalkMode : RootController
             move_vector.y -= 1;
             pr.p_jb.GetComponent<CharacterController>().Move(move_vector * MOVE_SPEED * Time.deltaTime);
             //移動したら
+            move_vector.y += 1;
             if (move_vector.magnitude > 0.01f)
             {
                 //Playerの向きを移動方向に変える

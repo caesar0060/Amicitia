@@ -18,7 +18,7 @@ public class AttackerScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-        p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
+        p_funcList = new P_Delegate[] { Skill1, Skill4 };
 		controller = ReadyMode.Instance;
 		controller.Enter (this);
 		skillBtnGenerate ();

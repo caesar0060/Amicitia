@@ -19,6 +19,7 @@ TagManager:
   - HP_UI
   - Text
   - Name
+  - meteo
   layers:
   - Default
   - TransparentFX

@@ -14830,7 +14830,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176418}
-  m_LocalRotation: {x: -0.3396966, y: -0.5154439, z: 0.50144064, w: 0.6062023}
+  m_LocalRotation: {x: -0.33969656, y: -0.51544386, z: 0.5014406, w: 0.60620224}
   m_LocalPosition: {x: 0.038970985, y: -0.117300525, z: -0.030498488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16513,7 +16513,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140082}
-  m_LocalRotation: {x: 0.68479043, y: 0.70607656, z: -0.12554482, w: -0.12944727}
+  m_LocalRotation: {x: 0.6847904, y: 0.7060765, z: -0.1255448, w: -0.12944725}
   m_LocalPosition: {x: 0.075810686, y: 0.57062256, z: -0.05854606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -18339,8 +18339,6 @@ MonoBehaviour:
   UI_hp: {fileID: 0}
   p_skillList:
   - {fileID: 142622, guid: 0e75a1a225ee7f14a9d4856bdfbcb7ea, type: 2}
-  - {fileID: 142622, guid: 6e7ad6d23923f494b8a3cb284370b0a5, type: 2}
-  - {fileID: 142622, guid: 00c15107b806ea74b9a2eda7146a5534, type: 2}
   - {fileID: 142622, guid: 0442920bfdc03d048bab4dd07096e409, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   skillUsing: {fileID: 0}
@@ -20414,6 +20412,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: p_skillList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8a44a1d6e18289141a4cb73407e02ca8, type: 2}
@@ -20469,6 +20471,18 @@ Prefab:
       propertyPath: m_Mass
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[2]
+      value: 
+      objectReference: {fileID: 142622, guid: 00c15107b806ea74b9a2eda7146a5534, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[3]
+      value: 
+      objectReference: {fileID: 142622, guid: 0442920bfdc03d048bab4dd07096e409, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[1]
+      value: 
+      objectReference: {fileID: 142622, guid: 0442920bfdc03d048bab4dd07096e409, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101142}

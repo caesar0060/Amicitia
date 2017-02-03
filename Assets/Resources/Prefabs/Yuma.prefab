@@ -2467,7 +2467,7 @@ Transform:
   m_GameObject: {fileID: 192148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 22447752}
   - {fileID: 482914}
@@ -3926,8 +3926,6 @@ MonoBehaviour:
   p_skillList:
   - {fileID: 142622, guid: 62cec3e4a30aea548af63f6b60c84ed9, type: 2}
   - {fileID: 142622, guid: 8fa27cb3b97fce445a83b51fbbd9e64c, type: 2}
-  - {fileID: 142622, guid: a4dc25b93bffb0b4d8d52296f1c39a92, type: 2}
-  - {fileID: 142622, guid: f92c3036f7a28d6469f394c312756fa5, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   skillUsing: {fileID: 0}
 --- !u!114 &11426814
@@ -5205,6 +5203,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: p_skillList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Center.y
       value: 0.6
       objectReference: {fileID: 0}
@@ -5219,6 +5221,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[2]
+      value: 
+      objectReference: {fileID: 142622, guid: a4dc25b93bffb0b4d8d52296f1c39a92, type: 2}
+    - target: {fileID: 0}
+      propertyPath: p_skillList.Array.data[3]
+      value: 
+      objectReference: {fileID: 142622, guid: f92c3036f7a28d6469f394c312756fa5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
