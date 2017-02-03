@@ -33,17 +33,24 @@ public class PartyRoot : MonoBehaviour {
 	void Update () {
 		if (attackList.Count > 0 && canAttack) {
 			try{
-				switch (attackList[0].layer) {
-				case 8:
-					JobBase jb = attackList [0].GetComponent<JobBase> ();
-					jb.skillUsing.skillMethod (jb.skillUsing, jb._target, jb.skillUsing.s_effectTime);
-					break;
-				case 12:
-					EnemyBase eb = attackList[0].GetComponent<EnemyBase> ();
-					eb.skillUsing.skillMethod (eb._target, eb.skillUsing.s_effectTime);
-					break;
-				}
-				canAttack = false;
+                StatusControl sc = attackList[0].GetComponent<StatusControl>();
+                if (sc.battelStatus != BattelStatus.DEAD)
+                {
+                    switch (attackList[0].layer)
+                    {
+                        case 8:
+                            JobBase jb = attackList[0].GetComponent<JobBase>();
+                            jb.skillUsing.skillMethod(jb.skillUsing, jb._target, jb.skillUsing.s_effectTime);
+                            break;
+                        case 12:
+                            EnemyBase eb = attackList[0].GetComponent<EnemyBase>();
+                            eb.skillUsing.skillMethod(eb._target, eb.skillUsing.s_effectTime);
+                            break;
+                    }
+                    canAttack = false;
+                }
+                else
+                    ReadyNextAttack();
 			}
 			catch(MissingReferenceException){
 				return;

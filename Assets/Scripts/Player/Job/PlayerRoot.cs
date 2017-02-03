@@ -159,7 +159,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 				count++;
 		}
 		if (count == enemyList.Count && !endBattel) {
-			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 2, WalkMode.Instance);
+			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 4, WalkMode.Instance);
 			endBattel = true;
 		}
 	}

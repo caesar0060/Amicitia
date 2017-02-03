@@ -17,6 +17,8 @@ TagManager:
   - Range
   - ScenarioCanvas
   - HP_UI
+  - Text
+  - Name
   layers:
   - Default
   - TransparentFX

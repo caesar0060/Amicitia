@@ -1,116 +1,79 @@
 ﻿#	InsertImage	1	noel/left_angry
 #	InsertImage	2	kira/left_angry
-#	InsertImage	4	kurokiren/right_normal
-
-？？？「ぐあっ！」/
-
-
-キラ「な、なんとか勝てたね…」/
-ノエル「さあ、もう十分でしょう？　アナタの目的を教えなさい！」/
-？？？「いやぁ、やっぱり『遠隔操作』じゃあ上手くいかないね」/
-キラ「え？　それってどういう…」/
-
-#	RemoveImage	4	kurokiren/right_normal
-#	RemoveImage	2	kira/left_angry
-
-#	InsertImage	2	kiren/left_surprise
-キレン「ま、まさか！？」/
-
-？？？「そう、そのまさかさ！」/
-
-#	RemoveImage	1	noel/left_angry
-#	InsertImage	1	yuma/left_surprise
-ユウマ「ず、ずっと邪気を遠くから操ってた、のか…？」/
-
-
-？？？「あははっ！　その通りだよ！　それにしてもキミ達、中々やるみたいだね。/
-いくら弱いといっても、オレサマを倒しちゃうんだからさ」/
-
-
-#	RemoveImage	2	kiren/left_surprise
-#	InsertImage	2	kira/left_angry
-キラ「あ！　き、消えちゃうよ！？」/
-
-#	RemoveImage	1	yuma/left_surprise
-#	InsertImage	1	noel/left_surprise
-ノエル「ま、待ちなさい！　目的は、目的はなんなのよ！/
-
+#	InsertImage	4	bkiren/normal
+？？？「ぐあっ！」%
+キラ「な、なんとか勝てたね…」%
+ノエル「さあ、もう十分でしょう？　アナタの目的を教えなさい！」%
+？？？「いやぁ、やっぱり『遠隔操作』じゃあ上手くいかないね」%
+キラ「え？　それってどういう…」%
+#	RemoveImage	4	bkiren/normal
+#	ChangeImage	2	kiren/left_surprise
+キレン「ま、まさか！？」%
+？？？「そう、そのまさかさ！」%
+#	ChangeImage	1	yuma/left_surprise
+ユウマ「ず、ずっと邪気を遠くから操ってた、のか…？」%
+？？？「あははっ！　その通りだよ！　それにしてもキミ達、中々やるみたいだね。%
+いくら弱いといっても、オレサマを倒しちゃうんだからさ」%
+#	ChangeImage	2	kira/left_angry
+キラ「あ！　き、消えちゃうよ！？」%
+#	ChangeImage	1	noel/left_surprise
+ノエル「ま、待ちなさい！　目的は、目的はなんなのよ！%
 #	ChangeImage	1	noel/left_sad
-街を、/
-
+ノエル	街を、%
 #	ChangeImage	1	noel/left_angry
-アルブを、世界樹を邪気で侵してなにがしたいのよ！！」/
-
-？？？「ああ、そういえば遊んでくれたら教えてあげる、って言ったんだっけ！　ごめんごめん、すっかり忘れてたよ」/
-「簡単なことさ。オレサマの目的はーー世界を邪気で満たすこと。それだけだよ」/
-「それじゃ、またね！　オレサマは世界樹にいるから、来れるもんなら来てみなよ！/
-ま、キミ達じゃ無理だろうけどね！　あははははっ！！」/
-
-#	InsertImage	2	kiren/left_dissatisfied
+ノエル	アルブを、世界樹を邪気で侵してなにがしたいのよ！！」%
+？？？	「ああ、そういえば遊んでくれたら教えてあげる、って言ったんだっけ！　ごめんごめん、すっかり忘れてたよ」%
+？？？	「簡単なことさ。オレサマの目的はーー世界を邪気で満たすこと。それだけだよ%
+？？？	「それじゃ、またね！　オレサマは世界樹にいるから、来れるもんなら来てみなよ！%
+？？？	ま、キミ達じゃ無理だろうけどね！　あははははっ！！」%
+#	ChangeImage	2	kiren/left_dissatisfied
 #	InsertImage	3	kira/right_angry
 #	InsertImage	4	yuma/right_sad			
-ユウマ「……結局、はぐらかされたな」/
-キラ「え？　なんで？　目的は教えて貰ったよ？」/
-
+ユウマ	「……結局、はぐらかされたな」%
+キラ	「え？　なんで？　目的は教えて貰ったよ？」%
 #	ChangeImage	1	noel/left_sad
-ノエル「あのねぇ…。/
-
+ノエル	「あのねぇ…。%
 #	ChangeImage	1	noel/left_angry
-アルブがほとんど邪気に覆われちゃってるんだから、邪気で満たそうとしてるのは一目瞭然でしょう！」/
-キレン「あの子は、どうしてそこまで邪気で世界を満たそうとしているのか。/
-
+ノエル	アルブがほとんど邪気に覆われちゃってるんだから、邪気で満たそうとしてるのは一目瞭然でしょう！」%
+キレン	「あの子は、どうしてそこまで邪気で世界を満たそうとしているのか。%
 #	ChangeImage	2	kiren/left_sad
-ボク達はそれが知りたかったのに……」/
-
+キレン	ボク達はそれが知りたかったのに……」%
 #	ChangeImage	4	yuma/right_normal
-ユウマ「でも、あいつの居場所はわかったな」/
-
+ユウマ	「でも、あいつの居場所はわかったな」%
 #	ChangeImage	3	kira/right_sad
-キラ「世界樹に居る、って言ってたよね。/
+キラ	「世界樹に居る、って言ってたよね。%
 #	ChangeImage	3	kira/right_surprise
-でも世界樹って今は邪気に覆われちゃってるんでしょ？」/
-
+キラ	でも世界樹って今は邪気に覆われちゃってるんでしょ？」%
 #	ChangeImage	2	kiren/left_normal
-キレン「うん。だから、この街だけじゃなくて、もっともっと浄化していかなくちゃいけないんだ」/
-
-
+キレン	「うん。だから、この街だけじゃなくて、もっともっと浄化していかなくちゃいけないんだ」%
 #	ChangeImage	1	noel/left_sad
-ノエル「……今よりもっと大変になるわ」/
-
+ノエル	「……今よりもっと大変になるわ」%
 #	ChangeImage	1	noel/left_angry
-「キラ、ユウマ。これからも手伝ってもらえないかしら…？」/
-
+ノエル	「キラ、ユウマ。これからも手伝ってもらえないかしら…？」%
 #	ChangeImage	3	kira/right_normal
-キラ「勿論だよ！　乗りかかった船だしね！/
+キラ	「勿論だよ！　乗りかかった船だしね！%
 #	ChangeImage	3	kira/right_laugh
-ね、ユウマ！」/
-
+キラ	ね、ユウマ！」%
 #	ChangeImage	4	yuma/right_sad
-ユウマ「…はぁ。/
+ユウマ	「…はぁ。%
 #	ChangeImage	4	yuma/right_normal
-キラが行くなら俺も行くよ。でも、安全第一だからな！」/
-
+ユウマ	キラが行くなら俺も行くよ。でも、安全第一だからな！」%
 #	ChangeImage	2	kiren/left_normal
-キレン「うん、/
+キレン	「うん、%
 #	ChangeImage	2	kiren/left_laugh
-ありがとう二人共！！」/
-
+キレン	ありがとう二人共！！」%
 #	ChangeImage	1	noel/left_normal
-ノエル「それじゃあ、/
+ノエル	「それじゃあ、%
 #	ChangeImage	1	noel/left_angry
-世界樹を目指して頑張るわよ！」/
-
+ノエル	世界樹を目指して頑張るわよ！」%
 #	ChangeImage	1	noel/left_laugh
 #	ChangeImage	2	kiren/left_laugh
 #	ChangeImage	3	kira/right_laugh
 #	ChangeImage	4	yuma/right_laugh
-『おぉー！』/
-
-
-こうして、彼らの旅は始まりました。
-世界を救う、長い長い旅が。
-
-これから彼らは、様々な仲間に出会い、別れ、世界樹へと至る道を進んでいきますが、それはまた、別のお話。
+ノエル	『おぉー！』%
+ 	こうして、彼らの旅は始まりました。%
+ 	世界を救う、長い長い旅が。%
+ 	これから彼らは、様々な仲間に出会い、別れ、世界樹へと至る道を進んでいきますが、それはまた、別のお話。%
 
 
 

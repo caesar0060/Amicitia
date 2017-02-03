@@ -111,49 +111,52 @@ public class WalkMode : RootController
             s_defaultRot = cameraSupport.transform.localRotation;
             p_animator = pr.p_jb.gameObject.GetComponentInChildren<Animator>();
         }
-        #region キャラクターのコントロール
-        //移動用vector3
-        Vector3 move_vector = Vector3.zero;
-        //移動中かどうか
-        bool isMoved = false;
-        if (Input.GetKey(KeyCode.A))
-        {	//左
-            pr.p_jb.transform.Rotate
-            (Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {	//右
-			pr.p_jb.transform.Rotate
-            (Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {	//上
-            move_vector += pr.p_jb.transform.forward * Time.deltaTime;
-            isMoved = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {	//下
-            move_vector -= pr.p_jb.transform.forward * Time.deltaTime;
-            isMoved = true;
-        }
-        //移動vector3を正規化して,移動方向を求める
-		//pr.p_jb.transform.Translate(move_vector, Space.Self);
-        move_vector = Vector3.Normalize(move_vector);
-        move_vector.y -= 1;
-        pr.p_jb.GetComponent<CharacterController>().Move(move_vector * MOVE_SPEED * Time.deltaTime);
-        //移動したら
-        if (move_vector.magnitude > 0.01f)
+        if (!FadeManager.Instance.isFading)
         {
-            //Playerの向きを移動方向に変える
-            ReturnDefault();
-        }
-        else
-        {
-            isMoved = false;
-        }
-        p_animator.SetBool("isMoved", isMoved);
+            #region キャラクターのコントロール
+            //移動用vector3
+            Vector3 move_vector = Vector3.zero;
+            //移動中かどうか
+            bool isMoved = false;
+            if (Input.GetKey(KeyCode.A))
+            {	//左
+                pr.p_jb.transform.Rotate
+                (Vector3.down * ROTATE_SPEED * Time.deltaTime, Space.Self);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {	//右
+                pr.p_jb.transform.Rotate
+                (Vector3.up * ROTATE_SPEED * Time.deltaTime, Space.Self);
+            }
+            if (Input.GetKey(KeyCode.W))
+            {	//上
+                move_vector += pr.p_jb.transform.forward * Time.deltaTime;
+                isMoved = true;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {	//下
+                move_vector -= pr.p_jb.transform.forward * Time.deltaTime;
+                isMoved = true;
+            }
+            //移動vector3を正規化して,移動方向を求める
+            //pr.p_jb.transform.Translate(move_vector, Space.Self);
+            move_vector = Vector3.Normalize(move_vector);
+            move_vector.y -= 1;
+            pr.p_jb.GetComponent<CharacterController>().Move(move_vector * MOVE_SPEED * Time.deltaTime);
+            //移動したら
+            if (move_vector.magnitude > 0.01f)
+            {
+                //Playerの向きを移動方向に変える
+                ReturnDefault();
+            }
+            else
+            {
+                isMoved = false;
+            }
+            p_animator.SetBool("isMoved", isMoved);
 
-        #endregion
+            #endregion
+        }
         #region カメラのコントロール
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -282,10 +285,13 @@ public class TalkMode : RootController
         }
         if (Input.GetMouseButtonDown(0) && !sm.isScenario)
         {
-            sm.hukidasi.GetComponentInChildren<Text>().text = "";
+            GameObject.FindGameObjectWithTag("Text").GetComponent<Text>().text = "";
+            GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = "";
 			sm.ItweenMoveTo(sm.hukidasi, new Vector3(0, -600, 0), 0.5f, "easeInOutBack");
             if(SceneManager.GetActiveScene().name == "NormalScene")
                 pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, WalkMode.Instance));
+            else
+                pr.StartCoroutine(pr.GetComponent<FadeManager>().CloseTalkUI(0.5f, BattelMode.Instance));
         }
     }
     override public void Exit(PlayerRoot pr = null)

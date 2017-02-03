@@ -33,13 +33,13 @@ public class YumaControl : RootController
         isBtnShow = false;
         d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
         TutorialRoot.Instance.msg = "「まずはユウマをクリックして、";
-        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach(var player in PlayerRoot.Instance.partyList)
         {
             if (player.GetComponent<JobBase>()._type == JobType.Attacker)
                 yajirusi.transform.SetParent(player.transform);
         }
-        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        yajirusi.transform.localPosition = new Vector3(0, 0, 0);
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -125,13 +125,13 @@ public class KiraControl : RootController
         isBtnShow = false;
         d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
         TutorialRoot.Instance.msg = "「さっきと同じようにキラをクリックして、";
-        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach (var player in PlayerRoot.Instance.partyList)
         {
             if (player.GetComponent<JobBase>()._type == JobType.Defender)
                 yajirusi.transform.SetParent(player.transform);
         }
-        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        yajirusi.transform.localPosition = new Vector3(0, 0, 0);
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -220,13 +220,13 @@ public class KirenControl : RootController
         isBtnShow = false;
         d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
         TutorialRoot.Instance.msg = "「ボクの周りに浮遊する精霊クリック。";
-        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach (var player in PlayerRoot.Instance.partyList)
         {
             if (player.GetComponent<JobBase>()._type == JobType.Leader)
                 yajirusi.transform.SetParent(player.transform);
         }
-        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        yajirusi.transform.localPosition = new Vector3(0, 0, 0);
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -322,13 +322,13 @@ public class Kiren2Control : RootController
         isBtnShow = false;
         d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
         TutorialRoot.Instance.msg = "「また精霊をクリックする。";
-        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach (var player in PlayerRoot.Instance.partyList)
         {
             if (player.GetComponent<JobBase>()._type == JobType.Leader)
                 yajirusi.transform.SetParent(player.transform);
         }
-        yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+        yajirusi.transform.localPosition = new Vector3(0, 0, 0);
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -424,12 +424,12 @@ public class t_targetMode : RootController
     #endregion
     override public void Enter(PlayerRoot pr = null)
     {
-        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/yajirusi"));
+        yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         if (pr.previous_controller == YumaControl.Instance)
         {
             TutorialRoot.Instance.msg = "スラッシュを魔物までドラッグ！」";
             yajirusi.transform.SetParent(PlayerRoot.Instance.enemyList[1].transform);
-            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+            yajirusi.transform.localPosition = new Vector3(0, 0, 0);
         }
         if (pr.previous_controller == KiraControl.Instance)
         {
@@ -439,7 +439,7 @@ public class t_targetMode : RootController
                 if (player.GetComponent<JobBase>()._type == JobType.Attacker)
                     yajirusi.transform.SetParent(player.transform);
             }
-            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+            yajirusi.transform.localPosition = new Vector3(0, 0, 0);
         }
         if (pr.previous_controller == KirenControl.Instance)
         {
@@ -449,7 +449,7 @@ public class t_targetMode : RootController
                 if (player.GetComponent<JobBase>()._type == JobType.Magician)
                     yajirusi.transform.SetParent(player.transform);
             }
-            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+            yajirusi.transform.localPosition = new Vector3(0, 0, 0);
         }
         if (pr.previous_controller == Kiren2Control.Instance)
         {
@@ -459,7 +459,7 @@ public class t_targetMode : RootController
                 if (player.GetComponent<JobBase>()._type == JobType.Magician)
                     yajirusi.transform.SetParent(player.transform);
             }
-            yajirusi.transform.localPosition = new Vector3(0, 1, 0);
+            yajirusi.transform.localPosition = new Vector3(0, 0, 0);
         }
         //初期化
         switch (pr.s_script.s_targetype)

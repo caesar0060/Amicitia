@@ -23,7 +23,7 @@ public class TextControl : MonoBehaviour
 		try
 		{
 			if (_uiText == null)
-				_uiText = GameObject.FindGameObjectWithTag("TalkUI").GetComponentInChildren<Text>();
+				_uiText = GameObject.FindGameObjectWithTag("Text").GetComponent<Text>();
 		}
 		catch (NullReferenceException)
 		{

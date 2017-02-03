@@ -161,32 +161,35 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 string[] words =text.Split();
                 if (words[0] == "#")
                 {
-				    switch(words[1])
-				    {
-					    case "ChangeImage":
-					    ChangeImage(int.Parse(words[2]) - 1, words[3]);
-					    break;
-					    case "RemoveImage":
-					    RemoveImage(int.Parse(words[2]) - 1);
-					    break;
-					    case "InsertImage":
-					    InsertImage(int.Parse(words[2]) - 1, words[3]);
-					    break;
-					    case "SwayImage":
-					    StartCoroutine(SwayImage(int.Parse(words[2])));
-					    break;
+                    switch (words[1])
+                    {
+                        case "ChangeImage":
+                            ChangeImage(int.Parse(words[2]) - 1, words[3]);
+                            break;
+                        case "RemoveImage":
+                            RemoveImage(int.Parse(words[2]) - 1);
+                            break;
+                        case "InsertImage":
+                            InsertImage(int.Parse(words[2]) - 1, words[3]);
+                            break;
+                        case "SwayImage":
+                            StartCoroutine(SwayImage(int.Parse(words[2])));
+                            break;
                         case "ReceiveEvent":
-                        ReceiveEvent(words[2], int.Parse(words[3]));
-                        break;
+                            ReceiveEvent(words[2], int.Parse(words[3]));
+                            break;
                         case "CompleteEvent":
-                        CompleteEvent(int.Parse(words[2]));
-                        break;
-				    }
+                            CompleteEvent(int.Parse(words[2]));
+                            break;
+                    }
                     m_currentLine++;
                     lineBulider.AppendLine(CommandProcess(m_scenarios[m_currentLine]));
                 }
                 else
-                    lineBulider.AppendLine(text);
+                {
+                    GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = words[0];
+                    lineBulider.AppendLine(words[1]);
+                }
             }
         }
         return lineBulider.ToString();

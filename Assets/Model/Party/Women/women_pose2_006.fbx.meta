@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 93ac029237828c2498a862ce87745fad
+timeCreated: 1486102050
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: women2
+    100002: women2_butu
+    100004: women2_butu1
+    100006: women2_fuku1
+    100008: women2_fuku2
+    100010: women2_fuku4
+    100012: women2_ha2
+    100014: women2_ha_1
+    100016: women2_ha_2
+    100018: women2_hada1
+    100020: women2_kami1
+    100022: women2_kami2
+    100024: women2_kami3
+    100026: women2_kami_5
+    100028: women2_kamikazari1
+    100030: women2_kao1
+    100032: women2_kazari1
+    100034: women2_kazari2
+    100036: women2_kazari3
+    100038: women2_ke
+    100040: women2_matuge1
+    100042: women2_matuge_2
+    100044: women2_matuge_3
+    100046: women2_matuge_4
+    100048: women2_matuge_5
+    100050: women2_sukado1
+    100052: women2_sukado2
+    100054: women2_te1
+    100056: women2_te2
+    100058: //RootNode
+    400000: women2
+    400002: women2_butu
+    400004: women2_butu1
+    400006: women2_fuku1
+    400008: women2_fuku2
+    400010: women2_fuku4
+    400012: women2_ha2
+    400014: women2_ha_1
+    400016: women2_ha_2
+    400018: women2_hada1
+    400020: women2_kami1
+    400022: women2_kami2
+    400024: women2_kami3
+    400026: women2_kami_5
+    400028: women2_kamikazari1
+    400030: women2_kao1
+    400032: women2_kazari1
+    400034: women2_kazari2
+    400036: women2_kazari3
+    400038: women2_ke
+    400040: women2_matuge1
+    400042: women2_matuge_2
+    400044: women2_matuge_3
+    400046: women2_matuge_4
+    400048: women2_matuge_5
+    400050: women2_sukado1
+    400052: women2_sukado2
+    400054: women2_te1
+    400056: women2_te2
+    400058: //RootNode
+    2300000: women2_butu
+    2300002: women2_butu1
+    2300004: women2_fuku1
+    2300006: women2_fuku2
+    2300008: women2_ha_1
+    2300010: women2_ha_2
+    2300012: women2_kami1
+    2300014: women2_kami2
+    2300016: women2_kami3
+    2300018: women2_kami_5
+    2300020: women2_kamikazari1
+    2300022: women2_kao1
+    2300024: women2_kazari1
+    2300026: women2_kazari2
+    2300028: women2_kazari3
+    2300030: women2_matuge_2
+    2300032: women2_matuge_3
+    2300034: women2_matuge_4
+    2300036: women2_matuge_5
+    2300038: women2_sukado1
+    2300040: women2_sukado2
+    2300042: women2_te1
+    2300044: women2_te2
+    3300000: women2_butu
+    3300002: women2_butu1
+    3300004: women2_fuku1
+    3300006: women2_fuku2
+    3300008: women2_ha_1
+    3300010: women2_ha_2
+    3300012: women2_kami1
+    3300014: women2_kami2
+    3300016: women2_kami3
+    3300018: women2_kami_5
+    3300020: women2_kamikazari1
+    3300022: women2_kao1
+    3300024: women2_kazari1
+    3300026: women2_kazari2
+    3300028: women2_kazari3
+    3300030: women2_matuge_2
+    3300032: women2_matuge_3
+    3300034: women2_matuge_4
+    3300036: women2_matuge_5
+    3300038: women2_sukado1
+    3300040: women2_sukado2
+    3300042: women2_te1
+    3300044: women2_te2
+    4300000: women2_fuku1
+    4300002: women2_fuku2
+    4300004: women2_sukado2
+    4300006: women2_sukado1
+    4300008: women2_kazari3
+    4300010: women2_kazari2
+    4300012: women2_kazari1
+    4300014: women2_kamikazari1
+    4300016: women2_butu
+    4300018: women2_butu1
+    4300020: women2_kao1
+    4300022: women2_te2
+    4300024: women2_te1
+    4300026: women2_ha_1
+    4300028: women2_ha_2
+    4300030: women2_kami1
+    4300032: women2_kami2
+    4300034: women2_kami3
+    4300036: women2_kami_5
+    4300038: women2_matuge_2
+    4300040: women2_matuge_4
+    4300042: women2_matuge_3
+    4300044: women2_matuge_5
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

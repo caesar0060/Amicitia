@@ -1,0 +1,1062 @@
+fileFormatVersion: 2
+guid: 24cfbf67d77ca214ab113a1efeb4222d
+timeCreated: 1486093751
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Center
+    100002: doutai
+    100004: Down_Jaw01
+    100006: Down_Jaw02
+    100008: //RootNode
+    100010: DragonMeshFF
+    100012: DragpnSpine01
+    100014: Head
+    100016: L_Ball
+    100018: L_Elbow
+    100020: L_Knee
+    100022: L_Parm
+    100024: L_Pinger
+    100026: L_Shouder
+    100028: L_Tight
+    100030: L_Toe
+    100032: L_Twist
+    100034: L_Wing01
+    100036: L_Wing02
+    100038: L_Wing03
+    100040: L_Wing04
+    100042: L_Wing05
+    100044: Neck01
+    100046: Neck02
+    100048: Neck03
+    100050: pCube50
+    100052: pCube53
+    100054: pCube58
+    100056: pCube59
+    100058: pCube60
+    100060: pCube61
+    100062: pCube62
+    100064: pCube63
+    100066: pCube64
+    100068: pCube65
+    100070: pCube66
+    100072: pCube67
+    100074: pCube68
+    100076: pCube69
+    100078: pCube70
+    100080: pCube71
+    100082: pCube73
+    100084: pCube74
+    100086: pCube76
+    100088: pCube77
+    100090: pCube79
+    100092: polySurface32
+    100094: polySurface33
+    100096: polySurface34
+    100098: polySurface35
+    100100: polySurface37
+    100102: polySurface38
+    100104: polySurface39
+    100106: polySurface40
+    100108: polySurface41
+    100110: R_Ball
+    100112: R_Elbow
+    100114: R_Knee
+    100116: R_Parm
+    100118: R_Pinger
+    100120: R_Shouder
+    100122: R_Tight
+    100124: R_Toe
+    100126: R_Twist
+    100128: R_Wing01
+    100130: R_Wing02
+    100132: R_Wing03
+    100134: R_Wing04
+    100136: R_Wing05
+    100138: Rwing
+    100140: Spine02
+    100142: Spine03
+    100144: Tail01
+    100146: Tail02
+    100148: Tail03
+    100150: Tail04
+    100152: Tail05
+    100154: Tail06
+    100156: Tail07
+    100158: Up_Jaw01
+    100160: Up_Jaw02
+    400000: Center
+    400002: doutai
+    400004: Down_Jaw01
+    400006: Down_Jaw02
+    400008: //RootNode
+    400010: DragonMeshFF
+    400012: DragpnSpine01
+    400014: Head
+    400016: L_Ball
+    400018: L_Elbow
+    400020: L_Knee
+    400022: L_Parm
+    400024: L_Pinger
+    400026: L_Shouder
+    400028: L_Tight
+    400030: L_Toe
+    400032: L_Twist
+    400034: L_Wing01
+    400036: L_Wing02
+    400038: L_Wing03
+    400040: L_Wing04
+    400042: L_Wing05
+    400044: Neck01
+    400046: Neck02
+    400048: Neck03
+    400050: pCube50
+    400052: pCube53
+    400054: pCube58
+    400056: pCube59
+    400058: pCube60
+    400060: pCube61
+    400062: pCube62
+    400064: pCube63
+    400066: pCube64
+    400068: pCube65
+    400070: pCube66
+    400072: pCube67
+    400074: pCube68
+    400076: pCube69
+    400078: pCube70
+    400080: pCube71
+    400082: pCube73
+    400084: pCube74
+    400086: pCube76
+    400088: pCube77
+    400090: pCube79
+    400092: polySurface32
+    400094: polySurface33
+    400096: polySurface34
+    400098: polySurface35
+    400100: polySurface37
+    400102: polySurface38
+    400104: polySurface39
+    400106: polySurface40
+    400108: polySurface41
+    400110: R_Ball
+    400112: R_Elbow
+    400114: R_Knee
+    400116: R_Parm
+    400118: R_Pinger
+    400120: R_Shouder
+    400122: R_Tight
+    400124: R_Toe
+    400126: R_Twist
+    400128: R_Wing01
+    400130: R_Wing02
+    400132: R_Wing03
+    400134: R_Wing04
+    400136: R_Wing05
+    400138: Rwing
+    400140: Spine02
+    400142: Spine03
+    400144: Tail01
+    400146: Tail02
+    400148: Tail03
+    400150: Tail04
+    400152: Tail05
+    400154: Tail06
+    400156: Tail07
+    400158: Up_Jaw01
+    400160: Up_Jaw02
+    4300000: pCube50
+    4300002: doutai
+    4300004: polySurface35
+    4300006: Rwing
+    4300008: polySurface37
+    4300010: polySurface32
+    4300012: polySurface33
+    4300014: polySurface34
+    4300016: polySurface38
+    4300018: polySurface39
+    4300020: polySurface40
+    4300022: polySurface41
+    4300024: pCube59
+    4300026: pCube60
+    4300028: pCube61
+    4300030: pCube62
+    4300032: pCube63
+    4300034: pCube64
+    4300036: pCube65
+    4300038: pCube66
+    4300040: pCube67
+    4300042: pCube68
+    4300044: pCube69
+    4300046: pCube70
+    4300048: pCube53
+    4300050: pCube58
+    4300052: pCube71
+    4300054: pCube73
+    4300056: pCube74
+    4300058: pCube76
+    4300060: pCube77
+    4300062: pCube79
+    7400000: Stay
+    7400002: Attack
+    7400004: Break
+    7400006: Dead
+    9500000: //RootNode
+    13700000: doutai
+    13700002: pCube50
+    13700004: pCube53
+    13700006: pCube58
+    13700008: pCube59
+    13700010: pCube60
+    13700012: pCube61
+    13700014: pCube62
+    13700016: pCube63
+    13700018: pCube64
+    13700020: pCube65
+    13700022: pCube66
+    13700024: pCube67
+    13700026: pCube68
+    13700028: pCube69
+    13700030: pCube70
+    13700032: pCube71
+    13700034: pCube73
+    13700036: pCube74
+    13700038: pCube76
+    13700040: pCube77
+    13700042: pCube79
+    13700044: polySurface32
+    13700046: polySurface33
+    13700048: polySurface34
+    13700050: polySurface35
+    13700052: polySurface37
+    13700054: polySurface38
+    13700056: polySurface39
+    13700058: polySurface40
+    13700060: polySurface41
+    13700062: Rwing
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Stay
+      takeName: Take 001
+      firstFrame: 11
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DragonMeshFF
+        weight: 1
+      - path: DragonMeshFF/doutai
+        weight: 1
+      - path: DragonMeshFF/pCube50
+        weight: 1
+      - path: DragonMeshFF/pCube53
+        weight: 1
+      - path: DragonMeshFF/pCube58
+        weight: 1
+      - path: DragonMeshFF/pCube59
+        weight: 1
+      - path: DragonMeshFF/pCube60
+        weight: 1
+      - path: DragonMeshFF/pCube61
+        weight: 1
+      - path: DragonMeshFF/pCube62
+        weight: 1
+      - path: DragonMeshFF/pCube63
+        weight: 1
+      - path: DragonMeshFF/pCube64
+        weight: 1
+      - path: DragonMeshFF/pCube65
+        weight: 1
+      - path: DragonMeshFF/pCube66
+        weight: 1
+      - path: DragonMeshFF/pCube67
+        weight: 1
+      - path: DragonMeshFF/pCube68
+        weight: 1
+      - path: DragonMeshFF/pCube69
+        weight: 1
+      - path: DragonMeshFF/pCube70
+        weight: 1
+      - path: DragonMeshFF/pCube71
+        weight: 1
+      - path: DragonMeshFF/pCube73
+        weight: 1
+      - path: DragonMeshFF/pCube74
+        weight: 1
+      - path: DragonMeshFF/pCube76
+        weight: 1
+      - path: DragonMeshFF/pCube77
+        weight: 1
+      - path: DragonMeshFF/pCube79
+        weight: 1
+      - path: DragonMeshFF/polySurface32
+        weight: 1
+      - path: DragonMeshFF/polySurface33
+        weight: 1
+      - path: DragonMeshFF/polySurface34
+        weight: 1
+      - path: DragonMeshFF/polySurface35
+        weight: 1
+      - path: DragonMeshFF/polySurface37
+        weight: 1
+      - path: DragonMeshFF/polySurface38
+        weight: 1
+      - path: DragonMeshFF/polySurface39
+        weight: 1
+      - path: DragonMeshFF/polySurface40
+        weight: 1
+      - path: DragonMeshFF/polySurface41
+        weight: 1
+      - path: DragonMeshFF/Rwing
+        weight: 1
+      - path: DragpnSpine01
+        weight: 1
+      - path: DragpnSpine01/Center
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07
+        weight: 1
+      - path: DragpnSpine01/L_Tight
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball/L_Toe
+        weight: 1
+      - path: DragpnSpine01/R_Tight
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball/R_Toe
+        weight: 1
+      - path: DragpnSpine01/Spine02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04/L_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04/R_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm/L_Pinger
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01/Down_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01/Up_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm/R_Pinger
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DragonMeshFF
+        weight: 1
+      - path: DragonMeshFF/doutai
+        weight: 1
+      - path: DragonMeshFF/pCube50
+        weight: 1
+      - path: DragonMeshFF/pCube53
+        weight: 1
+      - path: DragonMeshFF/pCube58
+        weight: 1
+      - path: DragonMeshFF/pCube59
+        weight: 1
+      - path: DragonMeshFF/pCube60
+        weight: 1
+      - path: DragonMeshFF/pCube61
+        weight: 1
+      - path: DragonMeshFF/pCube62
+        weight: 1
+      - path: DragonMeshFF/pCube63
+        weight: 1
+      - path: DragonMeshFF/pCube64
+        weight: 1
+      - path: DragonMeshFF/pCube65
+        weight: 1
+      - path: DragonMeshFF/pCube66
+        weight: 1
+      - path: DragonMeshFF/pCube67
+        weight: 1
+      - path: DragonMeshFF/pCube68
+        weight: 1
+      - path: DragonMeshFF/pCube69
+        weight: 1
+      - path: DragonMeshFF/pCube70
+        weight: 1
+      - path: DragonMeshFF/pCube71
+        weight: 1
+      - path: DragonMeshFF/pCube73
+        weight: 1
+      - path: DragonMeshFF/pCube74
+        weight: 1
+      - path: DragonMeshFF/pCube76
+        weight: 1
+      - path: DragonMeshFF/pCube77
+        weight: 1
+      - path: DragonMeshFF/pCube79
+        weight: 1
+      - path: DragonMeshFF/polySurface32
+        weight: 1
+      - path: DragonMeshFF/polySurface33
+        weight: 1
+      - path: DragonMeshFF/polySurface34
+        weight: 1
+      - path: DragonMeshFF/polySurface35
+        weight: 1
+      - path: DragonMeshFF/polySurface37
+        weight: 1
+      - path: DragonMeshFF/polySurface38
+        weight: 1
+      - path: DragonMeshFF/polySurface39
+        weight: 1
+      - path: DragonMeshFF/polySurface40
+        weight: 1
+      - path: DragonMeshFF/polySurface41
+        weight: 1
+      - path: DragonMeshFF/Rwing
+        weight: 1
+      - path: DragpnSpine01
+        weight: 1
+      - path: DragpnSpine01/Center
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07
+        weight: 1
+      - path: DragpnSpine01/L_Tight
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball/L_Toe
+        weight: 1
+      - path: DragpnSpine01/R_Tight
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball/R_Toe
+        weight: 1
+      - path: DragpnSpine01/Spine02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04/L_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04/R_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm/L_Pinger
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01/Down_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01/Up_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm/R_Pinger
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Break
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DragonMeshFF
+        weight: 1
+      - path: DragonMeshFF/doutai
+        weight: 1
+      - path: DragonMeshFF/pCube50
+        weight: 1
+      - path: DragonMeshFF/pCube53
+        weight: 1
+      - path: DragonMeshFF/pCube58
+        weight: 1
+      - path: DragonMeshFF/pCube59
+        weight: 1
+      - path: DragonMeshFF/pCube60
+        weight: 1
+      - path: DragonMeshFF/pCube61
+        weight: 1
+      - path: DragonMeshFF/pCube62
+        weight: 1
+      - path: DragonMeshFF/pCube63
+        weight: 1
+      - path: DragonMeshFF/pCube64
+        weight: 1
+      - path: DragonMeshFF/pCube65
+        weight: 1
+      - path: DragonMeshFF/pCube66
+        weight: 1
+      - path: DragonMeshFF/pCube67
+        weight: 1
+      - path: DragonMeshFF/pCube68
+        weight: 1
+      - path: DragonMeshFF/pCube69
+        weight: 1
+      - path: DragonMeshFF/pCube70
+        weight: 1
+      - path: DragonMeshFF/pCube71
+        weight: 1
+      - path: DragonMeshFF/pCube73
+        weight: 1
+      - path: DragonMeshFF/pCube74
+        weight: 1
+      - path: DragonMeshFF/pCube76
+        weight: 1
+      - path: DragonMeshFF/pCube77
+        weight: 1
+      - path: DragonMeshFF/pCube79
+        weight: 1
+      - path: DragonMeshFF/polySurface32
+        weight: 1
+      - path: DragonMeshFF/polySurface33
+        weight: 1
+      - path: DragonMeshFF/polySurface34
+        weight: 1
+      - path: DragonMeshFF/polySurface35
+        weight: 1
+      - path: DragonMeshFF/polySurface37
+        weight: 1
+      - path: DragonMeshFF/polySurface38
+        weight: 1
+      - path: DragonMeshFF/polySurface39
+        weight: 1
+      - path: DragonMeshFF/polySurface40
+        weight: 1
+      - path: DragonMeshFF/polySurface41
+        weight: 1
+      - path: DragonMeshFF/Rwing
+        weight: 1
+      - path: DragpnSpine01
+        weight: 1
+      - path: DragpnSpine01/Center
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07
+        weight: 1
+      - path: DragpnSpine01/L_Tight
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball/L_Toe
+        weight: 1
+      - path: DragpnSpine01/R_Tight
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball/R_Toe
+        weight: 1
+      - path: DragpnSpine01/Spine02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04/L_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04/R_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm/L_Pinger
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01/Down_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01/Up_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm/R_Pinger
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Dead
+      takeName: Take 001
+      firstFrame: 210
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DragonMeshFF
+        weight: 1
+      - path: DragonMeshFF/doutai
+        weight: 1
+      - path: DragonMeshFF/pCube50
+        weight: 1
+      - path: DragonMeshFF/pCube53
+        weight: 1
+      - path: DragonMeshFF/pCube58
+        weight: 1
+      - path: DragonMeshFF/pCube59
+        weight: 1
+      - path: DragonMeshFF/pCube60
+        weight: 1
+      - path: DragonMeshFF/pCube61
+        weight: 1
+      - path: DragonMeshFF/pCube62
+        weight: 1
+      - path: DragonMeshFF/pCube63
+        weight: 1
+      - path: DragonMeshFF/pCube64
+        weight: 1
+      - path: DragonMeshFF/pCube65
+        weight: 1
+      - path: DragonMeshFF/pCube66
+        weight: 1
+      - path: DragonMeshFF/pCube67
+        weight: 1
+      - path: DragonMeshFF/pCube68
+        weight: 1
+      - path: DragonMeshFF/pCube69
+        weight: 1
+      - path: DragonMeshFF/pCube70
+        weight: 1
+      - path: DragonMeshFF/pCube71
+        weight: 1
+      - path: DragonMeshFF/pCube73
+        weight: 1
+      - path: DragonMeshFF/pCube74
+        weight: 1
+      - path: DragonMeshFF/pCube76
+        weight: 1
+      - path: DragonMeshFF/pCube77
+        weight: 1
+      - path: DragonMeshFF/pCube79
+        weight: 1
+      - path: DragonMeshFF/polySurface32
+        weight: 1
+      - path: DragonMeshFF/polySurface33
+        weight: 1
+      - path: DragonMeshFF/polySurface34
+        weight: 1
+      - path: DragonMeshFF/polySurface35
+        weight: 1
+      - path: DragonMeshFF/polySurface37
+        weight: 1
+      - path: DragonMeshFF/polySurface38
+        weight: 1
+      - path: DragonMeshFF/polySurface39
+        weight: 1
+      - path: DragonMeshFF/polySurface40
+        weight: 1
+      - path: DragonMeshFF/polySurface41
+        weight: 1
+      - path: DragonMeshFF/Rwing
+        weight: 1
+      - path: DragpnSpine01
+        weight: 1
+      - path: DragpnSpine01/Center
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06
+        weight: 1
+      - path: DragpnSpine01/Center/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07
+        weight: 1
+      - path: DragpnSpine01/L_Tight
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball
+        weight: 1
+      - path: DragpnSpine01/L_Tight/L_Knee/L_Twist/L_Ball/L_Toe
+        weight: 1
+      - path: DragpnSpine01/R_Tight
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball
+        weight: 1
+      - path: DragpnSpine01/R_Tight/R_Knee/R_Twist/R_Ball/R_Toe
+        weight: 1
+      - path: DragpnSpine01/Spine02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/L_Wing01/L_Wing02/L_Wing03/L_Wing04/L_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04
+        weight: 1
+      - path: DragpnSpine01/Spine02/R_Wing01/R_Wing02/R_Wing03/R_Wing04/R_Wing05
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/L_Shouder/L_Elbow/L_Parm/L_Pinger
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Down_Jaw01/Down_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/Neck01/Neck02/Neck03/Head/Up_Jaw01/Up_Jaw02
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm
+        weight: 1
+      - path: DragpnSpine01/Spine02/Spine03/R_Shouder/R_Elbow/R_Parm/R_Pinger
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

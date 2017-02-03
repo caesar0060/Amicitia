@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
@@ -6,18 +7,28 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
     public int counter = 1;
     public string msg = "";
     private bool onLesson = false;
+    public GameObject hukidasi_prefab;
+    private GameObject hukidasi;
+    private Vector3 h_pos = new Vector3(0, 350, 0);
 	// Use this for initialization
 	void Start () {
-        /* 
-        TODO: stop monster AI
-        */
-
+        hukidasi = Instantiate(hukidasi_prefab, h_pos, Quaternion.identity) as GameObject;
+        hukidasi.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
+        hukidasi.transform.localPosition = h_pos;
+        hukidasi.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        hukidasi.transform.localScale = new Vector3(1, 1, 1);
 	}
     void OnGUI()
     {
         if (msg != "")
         {
-            GUI.Label (new Rect (10, 90, 200, 20), msg);
+            hukidasi.SetActive(true);
+            hukidasi.GetComponentInChildren<Text>().text = msg;
+        }
+        else
+        {
+            hukidasi.SetActive(false);
+            hukidasi.GetComponentInChildren<Text>().text = "";
         }
     }
 	
@@ -34,7 +45,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                         eb.StopCoroutine(eb.coroutine);
                     }
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-                    this.GetComponent<ScenarioScript>().fileName = "T1";
+                    this.GetComponent<ScenarioScript>().fileName = "Tutorial/T1";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
                     counter++;
                     break;
@@ -49,7 +60,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                 case 3:
                     onLesson = false;
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-                    this.GetComponent<ScenarioScript>().fileName = "T2";
+                    this.GetComponent<ScenarioScript>().fileName = "Tutorial/T2";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
                     counter++;
                     break;
@@ -64,7 +75,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                 case 5:
                     onLesson = false;
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-                    this.GetComponent<ScenarioScript>().fileName = "T3";
+                    this.GetComponent<ScenarioScript>().fileName = "Tutorial/T3";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
                     counter++;
                     break;
@@ -88,7 +99,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                     break;
                 case 8:
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-                    this.GetComponent<ScenarioScript>().fileName = "T4";
+                    this.GetComponent<ScenarioScript>().fileName = "Tutorial/T4";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
                     counter++;
                     break;
@@ -103,13 +114,14 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                 case 10:
                     onLesson = false;
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
-                    this.GetComponent<ScenarioScript>().fileName = "T5";
+                    this.GetComponent<ScenarioScript>().fileName = "Tutorial/T5";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
                     counter++;
                     break;
                 default :
                     if (!onLesson)
                     {
+                        Destroy(hukidasi);
                         onLesson = true;
                         PlayerRoot.Instance.ChangeMode(BattelMode.Instance);
                         EnemyBase eb = PlayerRoot.Instance.enemyList[0].GetComponent<EnemyBase>();
