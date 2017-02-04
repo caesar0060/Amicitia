@@ -29,7 +29,9 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	   };
 	private static Vector3[][] pos_list = new Vector3[][]{
 	   pos1, pos2, pos3, pos4
-	   };
+	   }; 
+    private static Color GRAY = new Color(0.5f, 0.5f, 0.5f);
+    private static Color WHITE = new Color(1f, 1f, 1f);
     [HideInInspector]
     public bool isScenario = false;	//シナリオ中かどうかを判断
     [HideInInspector]
@@ -187,8 +189,10 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 }
                 else
                 {
+                    GrayAllImage();
+                    ColorImage(int.Parse(words[1]) - 1);
                     GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = words[0];
-                    lineBulider.AppendLine(words[1]);
+                    lineBulider.AppendLine(words[2]);
                 }
             }
         }
@@ -330,5 +334,31 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 p_event.is_finish = true;
             }
         }
+    }
+    /// <summary>
+    /// 全ての画像をグレーにする
+    /// </summary>
+    private void GrayAllImage()
+    {
+        for (int i = 0; i < img_list.Length; i++ )
+        {
+            GrayImage(i);
+        }
+    }
+    /// <summary>
+    /// 画像をグレーにする
+    /// </summary>
+    /// <param name="id">img_list index</param>
+    private void GrayImage(int id)
+    {
+        img_list[id].color = GRAY;
+    }
+    /// <summary>
+    /// 画像の色を元に戻す
+    /// </summary>
+    /// <param name="id">img_list index</param>
+    private void ColorImage(int id)
+    {
+        img_list[id].color = WHITE;
     }
 }
