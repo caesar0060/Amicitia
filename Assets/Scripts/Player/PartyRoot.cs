@@ -190,4 +190,12 @@ public class PartyRoot : MonoBehaviour {
 			yield return new WaitForEndOfFrame ();
 		}
 	}
+    /// <summary>
+    /// Restart Game
+    /// </summary>
+    private void RestartGame()
+    {
+        FadeManager.Instance.LoadLevel("TopScene", 5);
+        Destroy(this.gameObject);
+    }
 }

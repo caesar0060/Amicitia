@@ -1,0 +1,20 @@
+{
+	"events" : 
+    [
+		{
+			"all_event_id" : 3,
+			"e_id" : 3,
+			"e_name" : "村人に尋ねる",
+			"target_type" : "talk",
+			"target_name" : "",
+			"target_num" : 0,
+			"target_count" : 0,
+            "prefab_name" : "",
+            "target_pos_X" : 0,
+            "target_pos_Y" : 0,
+            "target_pos_Z" : 0,
+			"e_present" : 1,
+			"is_finish" :  false
+        }
+	]
+}

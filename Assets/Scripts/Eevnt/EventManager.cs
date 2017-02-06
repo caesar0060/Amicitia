@@ -107,6 +107,9 @@ public class EventManager : SingletonMonoBehaviour<EventManager> {
                     {
                         if (e.target_num == e.target_count)
                             key = "complete" + ec.events[i].all_event_id.ToString();
+                        else
+                            key = ec.events[i].all_event_id.ToString();
+                        return key;
                     }
                 }
             }

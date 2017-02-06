@@ -1,0 +1,10 @@
+﻿@0
+#	InsertImage	1	kiren/left_normal				
+#	InsertImage	2	noel/left_surprise				
+#	InsertImage	3	kira/right_surprise				
+#	InsertImage	4	yuma/right_dissatisfied													
+ユウマ	4	「…ん？　あそこに人が集まって…」%				
+キラ	3	「あ！　あれ全部邪気に侵されてる人じゃない！？」%		
+ノエル	2	「よ、よくわからないけど、浄化するわよ！」%
+#	ReceiveEvent	Tutorial	2
+@end

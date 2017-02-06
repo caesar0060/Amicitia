@@ -1,0 +1,22 @@
+﻿@0
+#	InsertImage	1	kiren/left_normal
+#	InsertImage	2	noel/left_normal
+#	InsertImage	4	murabito/women
+村人	4	こんにちは%
+キレン	1	こんにちは%
+ノエル	2	こんにちは%
+@end
+@complete3
+#	CompleteEvent	3
+#	InsertImage	1	kiren/left_normal
+#	InsertImage	2	noel/left_normal
+#	InsertImage	4	murabito/women
+キレン	1	すみません%
+キレン	1	鉢植えはどこいあるのがわかりますか？%
+村人	4	そちらの畑にあります%
+#	ChangeImage	1	kiren/left_laugh
+キレン	1	ありがどうございます%
+#	ChangeImage	2	noel/left_laugh
+ノエル	2	ありがどうございます%
+#	ReceiveEvent	Tutorial	4
+@end

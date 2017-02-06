@@ -1,0 +1,12 @@
+﻿@0
+#	CompleteEvent	4
+#	InsertImage	1	kiren/left_laugh
+#	InsertImage	2	noel/left_laugh
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_sad		
+キレン	1	「あった！　鉢植えだ！」%
+ノエル	2	「早速持って帰りましょう」%		
+キラ	3	「それじゃあ…ユウマ！」%		
+ユウマ	4	「…知ってたよ。持ってけばいいんだろ？」%
+#	ReceiveEvent	Tutorial	5
+@end

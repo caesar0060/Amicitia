@@ -1,0 +1,93 @@
+﻿@0
+#	InsertImage	1	noel/left_normal
+#	InsertImage	2	kiren/left_normal
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_normal
+キレン	1	世界樹の苗木です%
+@end
+@complete5
+#	CompleteEvent	5
+#	InsertImage	1	noel/left_normal
+#	InsertImage	2	kiren/left_normal
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_normal			
+キラ	3	「これでよし、っと！　/%				
+#	ChangeImage	3	kira/right_laugh
+#	ChangeImage	1	noel/left_surprise			
+キラ	3	うん、根っこも傷付いてないと思うよ」%	
+ノエル	2	「へぇー…。キラって植物を扱うのが上手いのね」%
+#	ChangeImage	4	yuma/right_laugh			
+ユウマ	4	「キラは庭で薬草を育ててるんだ。キラの育てた薬草は一味違うぞ」%
+キラ	3	「えへへ…」%
+#	ChangeImage	2	kiren/left_dissatisfied			
+キレン	1	「薬草に一味も二味もないと思うんだけどな……」%		
+？？？	0	「あーあ。せっかく襲わせたのに、そんな丁寧に扱ったら台無しじゃないか」%		
+#	ChangeImage	1	noel/left_surprise
+#	ChangeImage	2	kiren/left_surprise
+#	ChangeImage	3	kira/left_surprise
+#	ChangeImage	4	yuma/left_surprise
+皆	9	『！？』%		
+？？？	0	「まったく。苗木が見つかったっていうから指示を出したのに。嫌な予感がするから来てみればこれだよ」%			
+#	RemoveImage	3	kira/left_surprise
+#	ChangeImage	1	kira/left_surprise
+#	ChangeImage	2	yuma/left_surprise
+#	ChangeImage	4	bkiren/normal
+？？？	4	「やっぱり邪気の遠隔操作じゃ細かい命令は与えられないなー」%		
+#	ChangeImage	2	kiren/left_angry
+キレン	2	「邪気の操作って…！？」%
+キラ	1	「じゃ、じゃあこいつは！」%
+#	ChangeImage	4	bkiren/laugh
+？？？	4	「そうだよ、オレサマが世界樹を邪気で染めたんだ。%	
+#	ChangeImage	4	bkiren/normal	
+？？？	4	精霊使い共が抵抗してるけど、直に全員邪気に侵されるだろうけどね」%
+#	ChangeImage	2	noel/left_angry		
+ノエル	2	「…随分とお喋りなのね」%
+#	ChangeImage	4	bkiren/laugh		
+？？？	4	「あっはっは！　だってキミ達に何を言ったって無駄だろう？%
+？？？	4	この街の邪気ですら浄化するのに手こずってるんだからさ！」%		
+？？？	4	「世界樹も、何を思ってこんなヒヨッコを逃したんだろうね」%
+#	ChangeImage	2	yuma/left_angry	
+ユウマ	2	「何が目的なんだ！」%
+#	ChangeImage	4	bkiren/normal		
+？？？	4	「目的？　うーん、そうだなぁ…」%
+#	ChangeImage	4	bkirenlaugh		
+？？？	4	「オレサマと遊んでくれたら教えてあげようかなー♪」%			
+キラ	1	「えっ！？」%
+#	ChangeImage	2	noel/left_angry	
+ノエル	2	「それじゃあ今ココで捕まえてあげるわ！　キレン！」%
+？？？	4	「あははっ！　もっと広い場所で遊ぼうよ！　この奥にある広場で待ってるからさ！」%
+#	ChangeImage	1	yuma/left_angry
+ユウマ	1	「ま、待て！　逃げる気か！？」%	
+？？？	4	「オレサマは逃げも隠れもしないよ。待ってるからねー！」%	
+#	RemoveImage	4	kurokiren/right_laugh
+#	ChangeImage	2	kiren/left_angry			
+キレン	2	「……あいつ」%
+#	ChangeImage	1	yuma/left_dissatisfied
+ユウマ	1	「？」%
+#	ChangeImage	1	noel/left_normal
+#	ChangeImage	2	kiren/left_sad
+#	InsertImage	3	kira/right_normal
+#	InsertImage	4	yuma/right_normal
+キレン	2	「あいつ、ボクと同じ守護の一族だった……」%
+#	ChangeImage	3	kira/right_surprise		
+キラ	3	「似てるかも、って思ったけど、やっぱり同じ種族だったの？」%
+キレン	2	「うん…」%
+#	ChangeImage	1	noel/left_sad	
+ノエル	1	世界樹を守護するのが役目のはずなのに、どうして邪気なんかを操って……%
+ユウマ	4	「…ま、全部あいつをとっ捕まえて聞けばいいだろ。早く行こうぜ」%
+キラ	3	「そうだね。%
+#	ChangeImage	4	yuma/right_laugh
+キラ	3	待っててくれるみたいだし、早く捕まえよう！　ユウマもたまには良いこと言うね！」/%
+#	ChangeImage	4	yuma/right_dissatisfied	
+ユウマ	4	「たまにはってなんだよ！？」%
+#	ChangeImage	1	noel/left_normal
+ノエル	1	「……仲が良いわね」%
+#	ChangeImage	2	kiren/left_laugh
+キレン	2	「あはは…。%
+#	ChangeImage	2	kiren/left_sad		
+キレン	2	うん、でもそうだね。%
+#	ChangeImage	2	kiren/left_normal
+キレン	2	会って、話がしたいよ」%	
+ノエル	1	「ええ。行きましょう！」%
+#	ReceiveEvent	Tutorial	6
+@end

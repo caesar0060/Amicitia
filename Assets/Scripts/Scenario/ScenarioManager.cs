@@ -190,7 +190,17 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                 else
                 {
                     GrayAllImage();
-                    ColorImage(int.Parse(words[1]) - 1);
+                    switch (int.Parse(words[1]))
+                    {
+                        case 9:
+                            ColorAllImage();
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            ColorImage(int.Parse(words[1]) - 1);
+                            break;
+                    }
                     GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = words[0];
                     lineBulider.AppendLine(words[2]);
                 }
@@ -317,7 +327,18 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     {
         string js = EventManager.Instance.ReadFile(file_name);
         EventJson ej = EventManager.Instance.GetEvent(js, id);
+        foreach(var e in PlayerRoot.Instance.evnet_list)
+        {
+            if (e.all_event_id == id)
+                return;
+        }
         PlayerRoot.Instance.evnet_list.Add(ej);
+        if (ej.prefab_name != "")
+        {
+            string path = "Prefabs/" + ej.prefab_name;
+            Vector3 pos = new Vector3(ej.target_pos_X, ej.target_pos_Y, ej.target_pos_Z);
+            GameObject obj = Instantiate(Resources.Load<GameObject>(path), pos, Quaternion.identity) as GameObject;
+        }
     }
     /// <summary>
     /// Complete Event
@@ -352,6 +373,16 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     private void GrayImage(int id)
     {
         img_list[id].color = GRAY;
+    }
+    /// <summary>
+    /// ‘S‚Ä‚Ì‰æ‘œ‚ÌF‚ğŒ³‚É–ß‚·
+    /// </summary>
+    private void ColorAllImage()
+    {
+        for (int i = 0; i < img_list.Length; i++)
+        {
+            ColorImage(i);
+        }
     }
     /// <summary>
     /// ‰æ‘œ‚ÌF‚ğŒ³‚É–ß‚·
