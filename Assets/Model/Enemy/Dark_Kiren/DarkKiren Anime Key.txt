@@ -1,4 +1,0 @@
-1-100  Stay
-101-140 Skill
-141-170 Damaged
-171-230 Dead
