@@ -70,7 +70,7 @@ public class E_Magician : EnemyBase {
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
 		StartCoroutine( LerpMove (this.gameObject, this.transform.position, 
-			_target.transform.position, 1,"attack", target, skillList [0], "isBom"));
+			_target.transform.position, 1,"attack", target, skillList [0], "isAttack"));
 	}
 	/// <summary>
     /// エオロー
@@ -80,7 +80,8 @@ public class E_Magician : EnemyBase {
 	/// <param name="time">効果時間.</param>
     override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
-		Debug.Log ("Skill2");
+        this.GetComponentInChildren<Animator>().SetTrigger("isAttack");
+        StartCoroutine(MagicDamage(_target, skillList[0], 1f, "Prefabs/Magic/Explosion", 3f));
 	}
 	/// <summary>
     /// ハーガル
@@ -91,7 +92,7 @@ public class E_Magician : EnemyBase {
     override public void Skill3(GameObject target = null, float effectTime = 0)
 	{
 		JobBase jb = _target.GetComponent<JobBase> ();
-		this.GetComponentInChildren<Animator> ().SetTrigger ("isBom");
+        this.GetComponentInChildren<Animator>().SetTrigger("isAttack");
 		StartCoroutine (Damage (target, skillList [2], 1));
         jb.Set_c_Status(ConditionStatus.SLOW);
 		jb.StartCoroutine( jb.StatusCounter(ConditionStatus.SLOW, effectTime));
