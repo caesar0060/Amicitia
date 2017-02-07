@@ -21,6 +21,11 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	private Color color = Color.black;
     public bool onTalk = false;     // 会話中
 
+    // Use this for initialization
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     public void OnGUI()
     {
         if (!this.isFading)
@@ -59,9 +64,6 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	/// <param name="rc">変更したいRootController.</param>
 	private IEnumerator TransScene(string scene, float interval, RootController rc = null )
     {
-        // Rootのmodeを変更する
-        //if (rc != null)
-            //this.GetComponent<PlayerRoot>().ChangeMode(SceneChange.Instance);
         //だんだん暗く
         this.isFading = true;
         float time = 0;
@@ -76,7 +78,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 		SceneManager.LoadScene(scene);
         // Rootのmodeを変更する
         if(rc != null)
-            this.GetComponent<PlayerRoot>().ChangeMode(rc);
+            PlayerRoot.Instance.ChangeMode(rc);
 
         //だんだん明るく
         time = 0;
@@ -99,7 +101,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 	{
         onTalk = true;
 		Time.timeScale = 0;
-		this.GetComponent<PlayerRoot>().ChangeMode(rc);
+		PlayerRoot.Instance.ChangeMode(rc);
 		float time = 0;
 		while (time <= interval)
 		{
@@ -120,7 +122,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         if( rc != null)
         {
           
-                this.GetComponent<PlayerRoot>().ChangeMode(rc);
+                PlayerRoot.Instance.ChangeMode(rc);
         }
 		float time = 0;
         int count = ScenarioManager.Instance.img_list.Length;
@@ -138,9 +140,12 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 		Time.timeScale = 1;
         if (ScenarioManager.Instance.battelEnemyList.Count > 0)
         {
+            string sceneName = "BattelScene";
+            if (ScenarioManager.Instance.isTutorial)
+                sceneName = "TutorialScene";
             PlayerRoot.Instance.battelEnemyList = ScenarioManager.Instance.battelEnemyList;
             ScenarioManager.Instance.battelEnemyList = new List<GameObject>();
-            FadeManager.Instance.LoadLevel("TutorialScene", 2, BattelStart.Instance);
+            FadeManager.Instance.LoadLevel(sceneName, 2, BattelStart.Instance);
             PlayerRoot.Instance.transform.position = this.transform.position;
         }
 

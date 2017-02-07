@@ -50,7 +50,7 @@
 ユウマ	2	「何が目的なんだ！」%
 #	ChangeImage	4	bkiren/normal		
 ？？？	4	「目的？　うーん、そうだなぁ…」%
-#	ChangeImage	4	bkirenlaugh		
+#	ChangeImage	4	bkiren/laugh		
 ？？？	4	「オレサマと遊んでくれたら教えてあげようかなー♪」%			
 キラ	1	「えっ！？」%
 #	ChangeImage	2	noel/left_angry	
@@ -59,7 +59,7 @@
 #	ChangeImage	1	yuma/left_angry
 ユウマ	1	「ま、待て！　逃げる気か！？」%	
 ？？？	4	「オレサマは逃げも隠れもしないよ。待ってるからねー！」%	
-#	RemoveImage	4	kurokiren/right_laugh
+#	RemoveImage	4	bkiren/laugh
 #	ChangeImage	2	kiren/left_angry			
 キレン	2	「……あいつ」%
 #	ChangeImage	1	yuma/left_dissatisfied

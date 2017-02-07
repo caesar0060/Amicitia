@@ -1,5 +1,5 @@
 ﻿@0
-CompleteEvent	7
+#	CompleteEvent	7
 #	InsertImage	1	noel/left_angry
 #	InsertImage	2	kira/left_angry
 #	InsertImage	4	bkiren/normal
@@ -80,6 +80,7 @@ CompleteEvent	7
 謎の声	0	こうして、彼らの旅は始まりました。%
 謎の声	0	世界を救う、長い長い旅が。%
 謎の声	0	これから彼らは、様々な仲間に出会い、別れ、世界樹へと至る道を進んでいきますが、それはまた、別のお話。%
+#	Restart
 @end
 
 

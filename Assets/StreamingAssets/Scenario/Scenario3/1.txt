@@ -8,21 +8,21 @@
 ？？？	4	「あははっ。観念もなにも、オレサマは逃げないって言ったじゃないか」%
 キラ	2	「ね、ねえ。戦わないっていう選択肢はないのかな…？」%
 ？？？	4	「ん？　ここまで来て怖気づいたのかい？」5
-#	ChangeImage	2	yuma/rleft_normal
+#	ChangeImage	2	yuma/left_normal
 ユウマ	2	「キラは優しいからな。四対一だと気が引けるんだろ」%
 ？？？	4	「四対一、ねぇ…？」%
 ？？？	4	「じゃあまずは、その認識を改めてもらおうか、な！」%
-#	InsertImage	3	enemy
-#	InsertImage	4	enemy
+#	RemoveImage	3	enemy
+#	RemoveImage	4	enemy
 #	ChangeImage	2	kiren/left_surprise
 キレン	2	「ほ、本当に邪気を操って…！？」%
-？？？	4	「あっはっは！　察しが悪いなあ。キミ、本当にオレサマと同じ守護の一族かい？」%
+？？？	0	「あっはっは！　察しが悪いなあ。キミ、本当にオレサマと同じ守護の一族かい？」%
 #	ChangeImage	1	noel/left_surprise
 ノエル	1	「！　%
 #	ChangeImage	1	noel/left_angry
 ノエル	1	やっぱりアナタもキレンと同じ守護の一族なのね！？　どうしてこんなことを！！」%
-？？？	4	「だからそれは、オレサマと遊んでくれたら教えてあげるって言っただろ？」%
-？？？	4	「それじゃあ早速、遊ぼうよ！」%
+？？？	0	「だからそれは、オレサマと遊んでくれたら教えてあげるって言っただろ？」%
+？？？	0	「それじゃあ早速、遊ぼうよ！」%
 #	ChangeImage	1	yuma/rleft_norma
 ユウマ	1	「ッ！　みんな、来るぞ！！」%
 #	ReceiveEvent	Tutorial	7

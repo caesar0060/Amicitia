@@ -10,6 +10,7 @@ public class ScenarioScript : MonoBehaviour {
     public string event_file = null;    //event file name
     public bool autoDestory = false;    // Destroy when talk finish
     public bool use_for_complete = false;   // 任務完成用かどうか
+    public bool isTutorial = false;
     public int event_id;
     public List<GameObject> enemy_list = new List<GameObject>();     // Enemy Prefabs
 	// Use this for initialization

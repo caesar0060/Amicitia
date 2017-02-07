@@ -60,7 +60,7 @@ public class JobBase : StatusControl {
                 pr.p_jb._target = other_go;
                 if (other_go.GetComponentInParent<EnemyPoint>().battelEnemyList.Count > 0)
                     pr.battelEnemyList = other_go.GetComponentInParent<EnemyPoint>().battelEnemyList;
-                pr.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
+                FadeManager.Instance.LoadLevel("BattelScene", 2, BattelStart.Instance);
 				pr.transform.position = this.transform.position;
                 other_go.transform.GetComponentInParent<EnemyPoint>().isEnemyDead = true;
 				Destroy(other_go);

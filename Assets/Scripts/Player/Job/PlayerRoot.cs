@@ -51,16 +51,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// ------------------------------------------------------------------------------------
 	//										Debug用
 	void OnGUI() {
-       /* if (GUI.Button(new Rect(10, 10, 100, 20), "Battel Mode"))
-        {
-			this.GetComponent<FadeManager>().LoadLevel("BattelScene", 2, BattelStart.Instance);
-        }
-
-        if (GUI.Button(new Rect(10, 50, 100, 20), "Walk Mode"))
-        {
-            this.GetComponent<FadeManager>().LoadLevel("NormalScene", 2, WalkMode.Instance);
-        
-        }*/
 		GUI.Label (new Rect (10, 50, 200, 20), "Root: " + controller.ToString ());
 	}
 	//--------------------------------------------------------------------------------------
@@ -159,7 +149,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 				count++;
 		}
 		if (count == enemyList.Count && !endBattel) {
-			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 4, WalkMode.Instance);
+            FadeManager.Instance.LoadLevel("NormalScene", 4, WalkMode.Instance);
 			endBattel = true;
 		}
 	}
@@ -174,10 +164,17 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 				count++;
 		}
 		if (count == partyList.Count && !isGameOver) {
-			this.GetComponent<FadeManager> ().LoadLevel ("NormalScene", 2, WalkMode.Instance);
+            FadeManager.Instance.LoadLevel("NormalScene", 2, WalkMode.Instance);
 			isGameOver = true;
 		}
 	}
-
+    /// <summary>
+    /// Restart Game
+    /// </summary>
+    public void RestartGame()
+    {
+        FadeManager.Instance.LoadLevel("TopScene", 5);
+        Destroy(this.gameObject);
+    }
 	#endregion
 }

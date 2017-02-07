@@ -46,6 +46,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     [HideInInspector] public TextControl m_textControl;
     public List<GameObject> battelEnemyList = new List<GameObject>();
 	public Image[] img_list;	// ‰ï˜b—p‚ÌŠG
+    public bool isTutorial = false;
     #endregion
     // Use this for initialization
     void Start()
@@ -89,6 +90,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
     {
         if (ss.enemy_list.Count > 0)
             battelEnemyList = ss.enemy_list;
+        isTutorial = ss.isTutorial;
         if( ss.fileName != ""){
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Scenario/" + ss.fileName + ".txt");
             string scenarioText = File.ReadAllText(filePath);
@@ -182,6 +184,9 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                             break;
                         case "CompleteEvent":
                             CompleteEvent(int.Parse(words[2]));
+                            break;
+                        case "Restart":
+                            PlayerRoot.Instance.RestartGame();
                             break;
                     }
                     m_currentLine++;
@@ -338,6 +343,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
             string path = "Prefabs/" + ej.prefab_name;
             Vector3 pos = new Vector3(ej.target_pos_X, ej.target_pos_Y, ej.target_pos_Z);
             GameObject obj = Instantiate(Resources.Load<GameObject>(path), pos, Quaternion.identity) as GameObject;
+            obj.transform.SetParent(GameObject.FindGameObjectWithTag("PointRoot").transform);
         }
     }
     /// <summary>
