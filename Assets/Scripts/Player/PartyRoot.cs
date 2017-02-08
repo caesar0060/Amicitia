@@ -8,7 +8,7 @@ public class PartyRoot : MonoBehaviour {
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	private static float BATTEL_START_RECAST_TIME = 5.0f;
 	// メンバーとの距離
-	private static float DISTANCE = 1.8f;
+	private static float DISTANCE = 2f;
 	// HPゲージのX位置
 	private static float[] UI_POS = new float[] {-475, -160, 160, 475};
     private static float[] E_UI_POS = new float[] { 330, 270, 210, 150 };
@@ -94,7 +94,8 @@ public class PartyRoot : MonoBehaviour {
         //if (PlayerRoot.Instance.battelEnemyList.Count == 0)
         if (PlayerRoot.Instance.battelEnemyList.Count > 0)
         {
-            EnemyPrefabList = PlayerRoot.Instance.e_prefabList;
+            EnemyPrefabList = PlayerRoot.Instance.battelEnemyList;
+            PlayerRoot.Instance.battelEnemyList = new List<GameObject>();
 
         }
         else
@@ -133,7 +134,7 @@ public class PartyRoot : MonoBehaviour {
 		return JsonString;
 	}
     /// <summary>
-    /// Ge tEnemy Perfab list
+    /// Ge tEnemy Perfab list(バグってる、直す必要がある)
     /// </summary>
     /// <param name="ed">Enemy Date</param>
 	public void GetEnemyPerfabs(string ed)

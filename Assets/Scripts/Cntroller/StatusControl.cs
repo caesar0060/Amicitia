@@ -39,6 +39,7 @@ public enum ConditionStatus
 	ALL_DAMAGE_DOWN = 0x200,//全てダメージカット
     TAKE_OVER = 0x400,	//肩代わり
     POSION = 0x800,	    //毒
+    ALL_DAMAGE_DOWN_20 = 0x1000,//全てダメージカット
 }
 
 public class StatusControl : MonoBehaviour{
@@ -52,6 +53,8 @@ public class StatusControl : MonoBehaviour{
     public int _attack;
     //防御力
     public int _defence;
+    //防御力
+    public int _m_defence;
     //ターゲット
     [HideInInspector]
     public GameObject _target;

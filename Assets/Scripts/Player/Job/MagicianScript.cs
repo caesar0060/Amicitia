@@ -43,7 +43,7 @@ public class MagicianScript: JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger ("Attack");
-		StartCoroutine (MagicDamage (_target, sc, 1f,"Prefabs/Magic/Explosion",3f));
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Thunder", 2f));
 	}
 	/// <summary>
 	/// Skill2 the specified sc, target and effectTime.
@@ -53,8 +53,7 @@ public class MagicianScript: JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
-        this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Explosion", 3f));
+
 	}
 	/// <summary>
 	/// Skill3 the specified sc, target and effectTime.
@@ -64,9 +63,7 @@ public class MagicianScript: JobBase {
 	/// <param name="effectTime">Effect time.</param>
 	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
-        this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-        // Create attack Effect with script
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Explosion", 3f));
+
 	}
 	/// <summary>
 	/// Skill4 the specified sc, target and effectTime.
@@ -77,8 +74,7 @@ public class MagicianScript: JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
         this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-        // Create attack Effect with script
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/meteo", 3f));
+        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/meteo", 2.5f));
 	}
 	#endregion
 }

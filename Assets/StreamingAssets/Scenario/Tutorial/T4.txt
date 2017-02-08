@@ -3,9 +3,9 @@
 #	InsertImage	2	noel/left_surprise
 #	InsertImage	3	kira/right_surprise
 #	InsertImage	4	yuma/right_surprise
-ノエル	「きゃっ！」%
-キラ	「ノエル！？」%
-キレン	「ごめんノエル、指示が遅れちゃった！%
+ノエル	2	「きゃっ！」%
+キラ	3	「ノエル！？」%
+キレン	1	「ごめんノエル、指示が遅れちゃった！%
 #	ChangeImage	1	kiren/left_angry
-キレン	よくもノエルを！　今回復するね！」%
+キレン	1	よくもノエルを！　今回復するね！」%
 @end

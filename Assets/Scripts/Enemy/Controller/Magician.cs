@@ -488,13 +488,11 @@ public class M_Normal : E_Controller
 		if (eb.CanTakeAction ()) {
 			foreach (var target in eb.e_pr.partyList) {
 				JobBase jb = target.GetComponent<JobBase> ();
-                if (jb._hp / jb._maxHP * 100 < 30 && jb._hp / jb._maxHP * 100 > 0)
+                if (jb._hp / jb._maxHP * 100 < 30 && jb.battelStatus != BattelStatus.DEAD)
                 {
 					if (!eb.skillList [1].isRecast) {
-						if (!eb.skillList [0].isRecast) {
-							eb.StartCoroutine(eb.SkillUse (target, eb.skillList [0]));
-							return;
-						}
+							eb.StartCoroutine(eb.SkillUse (target, eb.skillList [1]));
+                            return;
 					}
                     else
                     {
@@ -507,7 +505,7 @@ public class M_Normal : E_Controller
 				}
 			}
             List<GameObject> targetCount = new List<GameObject>();
-            foreach (var target in eb.e_pr.partyList)
+            /*foreach (var target in eb.e_pr.partyList)
             {
                 JobBase jb = target.GetComponent<JobBase>();
                 if ((jb._type == JobType.Attacker || jb._type == JobType.Magician) && jb.battelStatus != BattelStatus.DEAD)
@@ -526,7 +524,7 @@ public class M_Normal : E_Controller
                     eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[2]));
                     return;
                 }
-            }
+            }*/
             foreach (var target in eb.e_pr.partyList)
             {
                 JobBase jb = target.GetComponent<JobBase>();
@@ -540,11 +538,8 @@ public class M_Normal : E_Controller
                 int ran = Random.Range(0, targetCount.Count);
                 if (!eb.skillList[1].isRecast)
                 {
-                    if (!eb.skillList[0].isRecast)
-                    {
-                        eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[0]));
+                        eb.StartCoroutine(eb.SkillUse(targetCount[ran], eb.skillList[1]));
                         return;
-                    }
                 }
                 else
                 {

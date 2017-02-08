@@ -220,7 +220,7 @@ MonoBehaviour:
   s_power: 0
   t_num: 1
   t_type: 0
-  s_effectTime: 40
+  s_effectTime: 20
   s_description: "\u5168\u653B\u6483\u30C0\u30E1\u30FC\u30B8\u91CF\u6E1B\u5C11"
   s_isRune: 0
   s_recast: 20
@@ -380,6 +380,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: s_effectTime
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

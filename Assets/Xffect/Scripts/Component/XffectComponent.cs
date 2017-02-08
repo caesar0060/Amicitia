@@ -568,10 +568,17 @@ namespace Xft
                     { 
                         case "meteo":
                             Destroy(this.transform.parent.gameObject);
+                            if (this.transform.parent.parent.gameObject.layer == LayerMask.NameToLayer("Player"))
+                                this.GetComponentInParent<JobBase>().ReturnPos();
+                            if (this.transform.parent.parent.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                                this.GetComponentInParent<EnemyBase>().ReturnPos();
                             break;
                         default:
-                        this.GetComponentInParent<JobBase>().ReturnPos();
-                        break;
+                            if(this.transform.parent.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                                this.GetComponentInParent<EnemyBase>().ReturnPos();
+                            if (this.transform.parent.gameObject.layer == LayerMask.NameToLayer("Player"))
+                                this.GetComponentInParent<JobBase>().ReturnPos();
+                            break;
                     }
                 }
 				Destroy (this.gameObject);

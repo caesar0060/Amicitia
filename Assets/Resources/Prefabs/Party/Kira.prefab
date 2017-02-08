@@ -2893,16 +2893,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f96656cb8af6d145af9dc170d1d03fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 500
-  _maxHP: 500
-  _attack: 100
-  _defence: 100
+  _hp: 400
+  _maxHP: 400
+  _attack: 20
+  _defence: 40
+  _m_defence: 30
   _target: {fileID: 0}
   _type: 2
   UI_hp_prefab: {fileID: 125502, guid: 32178c1f48f02f64892f25d73ae9e3c0, type: 2}
   UI_hp: {fileID: 0}
   p_skillList:
-  - {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
+  - {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
   - {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   skillUsing: {fileID: 0}
@@ -3863,19 +3864,19 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 733cffa6521c00644a37b15f84a12db5, type: 2}
     - target: {fileID: 0}
       propertyPath: _hp
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _maxHP
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _attack
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _defence
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _type
@@ -3888,7 +3889,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[0]
       value: 
-      objectReference: {fileID: 142622, guid: d207f15ac92721b44bc2ac7da32ab5db, type: 2}
+      objectReference: {fileID: 142622, guid: 1dc8ec58bc19af240932797c12d48a91, type: 2}
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[1]
       value: 
@@ -3901,6 +3902,10 @@ Prefab:
       propertyPath: p_skillList.Array.data[3]
       value: 
       objectReference: {fileID: 142622, guid: aec52093cddbe49498279c5b0ac226c1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _m_defence
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191608}

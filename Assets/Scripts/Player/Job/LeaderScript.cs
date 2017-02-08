@@ -10,7 +10,7 @@ public class LeaderScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill3, Skill4 };
+		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill4 };
 		Set_b_Status(BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
 		controller.Enter(this);
@@ -40,10 +40,7 @@ public class LeaderScript : JobBase {
 	public void Skill1(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-		JobBase jb = target.GetComponent<JobBase>();
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Power_up", 2f));
-		jb.Set_c_Status(ConditionStatus.POWER_UP);
-		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.POWER_UP, effectTime));
+        StartCoroutine(this.StatusMagic(_target, sc, 1f, "Prefabs/Magic/Power_up", 2f,ConditionStatus.POWER_UP));
 	}
 	/// <summary>
 	/// 魔力の精霊
@@ -53,10 +50,7 @@ public class LeaderScript : JobBase {
 	public void Skill2(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-		JobBase jb = target.GetComponent<JobBase>();
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Magic_up", 2f));
-		jb.Set_c_Status(ConditionStatus.MAGIC_UP);
-		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.MAGIC_UP, effectTime));
+        StartCoroutine(this.StatusMagic(_target, sc, 1f, "Prefabs/Magic/Magic_up", 2f, ConditionStatus.MAGIC_UP));
 	}
 	/// <summary>
 	/// 守りの精霊

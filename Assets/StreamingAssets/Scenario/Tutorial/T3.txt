@@ -3,12 +3,12 @@
 #	InsertImage	2	noel/left_angry
 #	InsertImage	3	kira/right_surprise
 #	InsertImage	4	yuma/right_surprise
-キラ	「ユウマ、大丈夫だった！？」%
-ユウマ	「おう、大丈夫だ！　ありがとなキラ！」%
-キレン	「ふぅ…よかった…。」%
+キラ	3	「ユウマ、大丈夫だった！？」%
+ユウマ	4	「おう、大丈夫だ！　ありがとなキラ！」%
+キレン	1	「ふぅ…よかった…。」%
 #	ChangeImage	1	kiren/left_angry
-キレン	「…よし、ノエル！　あれ、いくよ！」%
-ノエル	「ええ！　精霊強化ね！」%
+キレン	1	「…よし、ノエル！　あれ、いくよ！」%
+ノエル	2	「ええ！　精霊強化ね！」%
 @end
 
 

@@ -107,8 +107,8 @@ public class JobBase : StatusControl {
 		Vector3 pos;
 		Transform parent = this.transform.GetChild (0);
 		for (int i = 0; i < p_skillList.Length; i++) {
-			pos = new Vector3 (Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
-				Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
+			pos = new Vector3 (Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
+				Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
 			GameObject p_skillBtn = Instantiate (p_skillList [i],Vector3.zero,Camera.main.transform.rotation) as GameObject;
 			p_skillBtn.transform.SetParent (parent);
 			p_skillBtn.transform.localPosition = pos;
@@ -180,8 +180,21 @@ public class JobBase : StatusControl {
 	/// </summary>
 	public void ReturnPos(){
 		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2));
-		this.transform.rotation = Quaternion.Euler (Vector3.zero);
 	}
+    /// <summary>
+    /// 死亡しているかどうかをチェック
+    /// </summary>
+    public void CheckDead()
+    {
+        if (_hp <= 0)
+        {
+            this.Set_b_Status(BattelStatus.DEAD);
+            this.GetComponent<CapsuleCollider>().enabled = false;
+            PlayerRoot.Instance.partyList.Remove(this.gameObject);
+            this.GetComponentInChildren<Animator>().SetTrigger("Dead");
+            //Destroy (this.gameObject);
+        }
+    }
 	#endregion
 	#region Co-routine
 	/// <summary>
@@ -221,6 +234,8 @@ public class JobBase : StatusControl {
 	/// <param name="btn">ボタン.</param>
 	/// <param name="time">リーキャストタイム.</param>
 	public IEnumerator SkillRecast(GameObject btn, float time){
+        if (CheckFlag(ConditionStatus.SLOW))
+            time *= 2;
 		btn.GetComponent<SkillScript> ().isRecast = true;
 		Image img = btn.transform.FindChild("Image"). GetComponent<Image> ();
 		img.fillAmount = 1;
@@ -301,7 +316,7 @@ public class JobBase : StatusControl {
 		}
 	}
 	/// <summary>
-	/// Damage target
+	/// Damageを与える
 	/// </summary>
 	/// <param name="target">Target.</param>
 	/// <param name="sc">Skill Script.</param>
@@ -330,7 +345,7 @@ public class JobBase : StatusControl {
                             if (r_target.layer != LayerMask.NameToLayer("Enemy"))
                                 continue;
                             EnemyBase eb = r_target.GetComponent<EnemyBase>();
-                            int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                            int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
                             eb.Set_HP(damage);
                             r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                             Vector3 pos = target.transform.position;
@@ -341,7 +356,7 @@ public class JobBase : StatusControl {
                     else
                     {
                         EnemyBase eb = target.GetComponent<EnemyBase>();
-                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
                         eb.Set_HP(damage);
                         target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                         Vector3 pos = target.transform.position;
@@ -351,6 +366,7 @@ public class JobBase : StatusControl {
                     if (GameObject.FindGameObjectWithTag("Range"))
                         DeleteRange();
                     StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+                    ReturnPos();
 					yield break;
                 }
                 catch (MissingReferenceException)
@@ -361,6 +377,15 @@ public class JobBase : StatusControl {
 			yield return new WaitForEndOfFrame ();
 		}
 	}
+    /// <summary>
+    /// Magic Damageを与える
+    /// </summary>
+    /// <param name="target">Target</param>
+    /// <param name="sc">Skill Script</param>
+    /// <param name="a_time">エフェクトを出す時間</param>
+    /// <param name="effect">エフェクトのpath</param>
+    /// <param name="e_time">Damageを与える時間</param>
+    /// <returns></returns>
     public IEnumerator MagicDamage(GameObject target, SkillScript sc, float a_time, string effect, float e_time)
     {
 		
@@ -384,7 +409,6 @@ public class JobBase : StatusControl {
 			{
 				try
 				{ 
-				    // switch() 味方？敵？
 				    float s_power = 1;	//精霊の力
 				    if (CheckFlag(ConditionStatus.MAGIC_UP))
 					    s_power = 1.5f;
@@ -395,7 +419,7 @@ public class JobBase : StatusControl {
 						    if (r_target.layer != LayerMask.NameToLayer("Enemy"))
 							    continue;
 						    EnemyBase eb = r_target.GetComponent<EnemyBase>();
-						    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._defence, 0);
+						    int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
 						    eb.Set_HP(damage);
 						    r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                             Vector3 pos = target.transform.position;
@@ -413,7 +437,7 @@ public class JobBase : StatusControl {
                         }
                         else
                         {
-                            damage = Math.Max((int)((_attack + sc.s_power) * s_power) - status._defence, 0);
+                            damage = Math.Max((int)((_attack + sc.s_power) * s_power) - status._m_defence, 0);
                             target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
                             Vector3 pos = target.transform.position;
                             pos.y += target.GetComponent<CapsuleCollider>().height;
@@ -434,6 +458,72 @@ public class JobBase : StatusControl {
 			}
 			yield return new WaitForEndOfFrame();
 		}
+    }
+    /// <summary>
+    /// 異常状態を与える
+    /// </summary>
+    /// <param name="target">Target</param>
+    /// <param name="sc">Skill Script</param>
+    /// <param name="a_time">エフェクトを出す時間</param>
+    /// <param name="effect">エフェクトのpath</param>
+    /// <param name="e_time">Damageを与える時間</param>
+    /// <returns></returns>
+    public IEnumerator StatusMagic(GameObject target, SkillScript sc, float a_time, string effect, float e_time, ConditionStatus status)
+    {
+
+        if (sc.s_targetNum == TargetNum.MUTIPLE)
+        {
+            CreateRange();
+            GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
+        }
+        float timer = 0;
+        bool useMagic = false;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= a_time && !useMagic)
+            {
+                GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
+                effectObj.transform.parent = this.transform;
+                useMagic = true;
+            }
+            if (timer >= e_time)
+            {
+                try
+                {
+                    if (sc.s_targetNum == TargetNum.MUTIPLE)
+                    {
+                        foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+                        {
+                            // TODO: Player / Enemy を判断できるように
+                            if (r_target.layer != LayerMask.NameToLayer("Player"))
+                                continue;
+                            JobBase jb = r_target.GetComponent<JobBase>();
+                            jb.Set_c_Status(status);
+                            jb.StartCoroutine(jb.StatusCounter(status, sc.s_effectTime));
+                        }
+                    }
+                    else
+                    {
+                        if (target.layer == LayerMask.NameToLayer("Player"))
+                        {
+                            JobBase jb = target.GetComponent<JobBase>();
+                            jb.Set_c_Status(status);
+                            jb.StartCoroutine(jb.StatusCounter(status, sc.s_effectTime));
+                        }
+                    }
+                    if (GameObject.FindGameObjectWithTag("Range"))
+                        DeleteRange();
+                    StartCoroutine(SkillRecast(sc.gameObject, sc.s_recast));
+                    yield break;
+                }
+                catch (MissingReferenceException)
+                {
+                    yield break;
+                }
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 	#endregion
 }

@@ -166,6 +166,7 @@ public class EnemyBase : StatusControl {
 		if (_hp <= 0) {
 			Set_b_Status (BattelStatus.DEAD);
 			this.GetComponent<CapsuleCollider> ().enabled = false;
+            this.GetComponentInChildren<Animator>().SetTrigger("isDead");
 			e_pr.enemyList.Remove (this.gameObject);
             foreach (var e in PlayerRoot.Instance.evnet_list)
             {
@@ -250,6 +251,8 @@ public class EnemyBase : StatusControl {
 	/// <param name="skill">Skill.</param>
 	/// <param name="time">リーキャストタイム.</param>
 	public IEnumerator SkillRecast(Skill skill, float time){
+        if (CheckFlag(ConditionStatus.SLOW))
+            time *= 2;
 		skill.isRecast = true;
 		float startTime = Time.time;
 		while(true){
@@ -355,12 +358,16 @@ public class EnemyBase : StatusControl {
                         {
                             if (r_target.layer != LayerMask.NameToLayer("Player"))
                                 continue;
-                            JobBase jb = target.GetComponent<JobBase> ();
+                            JobBase jb = r_target.GetComponent<JobBase>();
 							int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+                            if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
+                                damage = damage * 80 / 100;
+                            else if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+                                damage = damage * 90 / 100;
 							jb.Set_HP(damage);
                             r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                            Vector3 pos = target.transform.position;
-                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            Vector3 pos = r_target.transform.position;
+                            pos.y += r_target.GetComponent<CapsuleCollider>().height;
                             GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
                         }
                     }
@@ -368,6 +375,10 @@ public class EnemyBase : StatusControl {
                     {
 						JobBase jb = target.GetComponent<JobBase> ();
 						int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+                        if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
+                            damage = damage * 80 / 100;
+                        else if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+                            damage = damage * 90 / 100;
 						jb.Set_HP(damage);
                         target.GetComponentInChildren<Animator>().SetTrigger("Damage");
                         Vector3 pos = target.transform.position;
@@ -377,6 +388,7 @@ public class EnemyBase : StatusControl {
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();
 					StartCoroutine (SkillRecast (skill, skill.s_recast));
+                    ReturnPos();
 					yield break;
 				}
 			}
@@ -423,12 +435,16 @@ public class EnemyBase : StatusControl {
 						{
 							if (r_target.layer != LayerMask.NameToLayer("Player"))
 								continue;
-							JobBase jb = target.GetComponent<JobBase>();
+                            JobBase jb = r_target.GetComponent<JobBase>();
 							int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
+                            if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
+                                damage = damage * 80 / 100;
+                            else if(jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+                                damage = damage * 90 / 100;
 							jb.Set_HP(damage);
 							r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                            Vector3 pos = target.transform.position;
-                            pos.y += target.GetComponent<CapsuleCollider>().height;
+                            Vector3 pos = r_target.transform.position;
+                            pos.y += r_target.GetComponent<CapsuleCollider>().height;
                             GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
 						}
 					}
@@ -436,13 +452,17 @@ public class EnemyBase : StatusControl {
 					{
                         StatusControl status = target.GetComponent<StatusControl>();
                         int damage = 0;
-                        if (target.layer == LayerMask.NameToLayer("Player"))
+                        if (target.layer == LayerMask.NameToLayer("Enemy"))
                         {
                             damage = (int)((_attack + skill.s_power) * s_power * -1);
                         }
                         else
                         {
                             damage = Math.Max((int)((_attack + skill.s_power) * s_power) - status._defence, 0);
+                            if (status.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
+                                damage = damage * 80 / 100;
+                            else if (status.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+                                damage = damage * 90 / 100;
                             target.GetComponentInChildren<Animator>().SetTrigger("Damage");
                             Vector3 pos = target.transform.position;
                             pos.y += target.GetComponent<CapsuleCollider>().height;
@@ -452,7 +472,7 @@ public class EnemyBase : StatusControl {
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();
-					StartCoroutine(SkillRecast(skill, skill.s_recast));
+                    StartCoroutine(SkillRecast(skill, skill.s_recast));
 					yield break;
 				}
 			}
@@ -463,6 +483,72 @@ public class EnemyBase : StatusControl {
 			yield return new WaitForEndOfFrame();
 		}
 	}
+    /// <summary>
+    /// 異常状態を与える
+    /// </summary>
+    /// <param name="target">Target</param>
+    /// <param name="sc">Skill Script</param>
+    /// <param name="a_time">エフェクトを出す時間</param>
+    /// <param name="effect">エフェクトのpath</param>
+    /// <param name="e_time">Damageを与える時間</param>
+    /// <returns></returns>
+    public IEnumerator StatusMagic(GameObject target, Skill skill, float a_time, string effect, float e_time, ConditionStatus status)
+    {
+
+        if (skill.s_range > 0)
+        {
+            CreateRange();
+            GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = skill.s_range;
+        }
+        float timer = 0;
+        bool useMagic = false;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= a_time && !useMagic)
+            {
+                GameObject effectObj = Instantiate(Resources.Load(effect), target.transform.position, Quaternion.identity) as GameObject;
+                effectObj.transform.parent = this.transform;
+                useMagic = true;
+            }
+            if (timer >= e_time)
+            {
+                try
+                {
+                    if (skill.s_range > 0)
+                    {
+                        foreach (var r_target in GameObject.FindGameObjectWithTag("Range").GetComponent<RangeDetect>().targets)
+                        {
+                            // TODO: Player / Enemy を判断できるように
+                            if (r_target.layer != LayerMask.NameToLayer("Enemy"))
+                                continue;
+                            EnemyBase eb = r_target.GetComponent<EnemyBase>();
+                            eb.Set_c_Status(status);
+                            eb.StartCoroutine(eb.StatusCounter(status, skill.s_effectTime));
+                        }
+                    }
+                    else
+                    {
+                        if (target.layer == LayerMask.NameToLayer("Enemy"))
+                        {
+                            EnemyBase eb = target.GetComponent<EnemyBase>();
+                            eb.Set_c_Status(status);
+                            eb.StartCoroutine(eb.StatusCounter(status, skill.s_effectTime));
+                        }
+                    }
+                    if (GameObject.FindGameObjectWithTag("Range"))
+                        DeleteRange();
+                    StartCoroutine(SkillRecast(skill, skill.s_recast));
+                    yield break;
+                }
+                catch (MissingReferenceException)
+                {
+                    yield break;
+                }
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
 	/// <summary>
 	/// Loading this instance.
 	/// </summary>
@@ -482,7 +568,8 @@ public class EnemyBase : StatusControl {
         float startTime = Time.time;
         GameObject icon = Instantiate(skillIcon) as GameObject;
         icon.transform.SetParent(this.transform.GetChild(0));
-        icon.transform.localPosition = new Vector3(0, 1, 0);
+        float y = this.GetComponent<CapsuleCollider>().height;
+        icon.transform.localPosition = new Vector3(0, y, 0);
         icon.GetComponentInChildren<Text>().text = skill.s_name;
         while (true)
         {

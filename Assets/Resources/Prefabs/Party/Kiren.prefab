@@ -2158,10 +2158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74ccf2f54031514883cb9c4b589b602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 500
-  _maxHP: 500
-  _attack: 100
-  _defence: 100
+  _hp: 250
+  _maxHP: 250
+  _attack: 25
+  _defence: 25
+  _m_defence: 25
   _target: {fileID: 0}
   _type: 6
   UI_hp_prefab: {fileID: 152286, guid: 193aca442632eef409e827e43196e01d, type: 2}
@@ -2169,7 +2170,6 @@ MonoBehaviour:
   p_skillList:
   - {fileID: 142622, guid: 7e1010a9f6130cb42b2f1b4315d66e71, type: 2}
   - {fileID: 142622, guid: 2db5b46c98e822041a0c5eda0e4622ae, type: 2}
-  - {fileID: 142622, guid: e08f01a9971f3e84d928d945d2d72dfa, type: 2}
   - {fileID: 142622, guid: 976663a089e000e4fb47b077119fbf1d, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   skillUsing: {fileID: 0}
@@ -2825,7 +2825,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
@@ -2837,19 +2837,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _hp
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _maxHP
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _attack
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _defence
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: UI_hp_prefab
@@ -2866,11 +2866,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[2]
       value: 
-      objectReference: {fileID: 142622, guid: e08f01a9971f3e84d928d945d2d72dfa, type: 2}
+      objectReference: {fileID: 142622, guid: 976663a089e000e4fb47b077119fbf1d, type: 2}
     - target: {fileID: 0}
       propertyPath: p_skillList.Array.data[3]
       value: 
       objectReference: {fileID: 142622, guid: 976663a089e000e4fb47b077119fbf1d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _m_defence
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157342}

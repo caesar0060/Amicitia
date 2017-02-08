@@ -51,7 +51,7 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 	// ------------------------------------------------------------------------------------
 	//										Debug用
 	void OnGUI() {
-		GUI.Label (new Rect (10, 50, 200, 20), "Root: " + controller.ToString ());
+		//GUI.Label (new Rect (10, 50, 200, 20), "Root: " + controller.ToString ());
 	}
 	//--------------------------------------------------------------------------------------
 	// Update is called once per frame

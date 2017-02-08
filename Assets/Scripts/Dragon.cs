@@ -19,7 +19,7 @@ public class Dragon : MonoBehaviour {
         this.transform.position = new Vector3(x, 20, z);
         Quaternion rotationPos = Quaternion.LookRotation(this.transform.position - old_pos);
         this.transform.rotation = rotationPos;
-        num = (Time.time - time);
+        num = (Time.time - time) / 2;
         if (num > 360)
             num = 0;
     }

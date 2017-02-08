@@ -154,7 +154,7 @@ public class KiraControl : RootController
                                     pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
                                     if (pr.p_jb.CanTakeAction())
                                     {
-                                        TutorialRoot.Instance.msg = "シールドをユウマにドラッグ！」";
+                                        TutorialRoot.Instance.msg = "イースをユウマにドラッグ！」";
                                         pr.p_jb.ShowSkillBtn();
                                         isBtnShow = true;
                                     }
@@ -166,7 +166,7 @@ public class KiraControl : RootController
                         if (isBtnShow)
                         {	// ボタンを選択したら
                             // 選択したボタンを保管
-                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "シールド")
+                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "イース")
                             {
                                 pr.btn = hit.collider.gameObject;
                                 pr.s_script = pr.btn.GetComponent<SkillScript>();

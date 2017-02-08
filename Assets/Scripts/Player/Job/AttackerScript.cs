@@ -75,7 +75,7 @@ public class AttackerScript : JobBase {
 	public void Skill4(SkillScript sc, GameObject target = null, float effectTime = 0)
 	{
         StartCoroutine(LerpMove(this.gameObject, this.transform.position, target.transform.position,
-            1, _target, sc, "Attack"));
+            1, _target, sc, "Attack3"));
 	}
 	#endregion
 }

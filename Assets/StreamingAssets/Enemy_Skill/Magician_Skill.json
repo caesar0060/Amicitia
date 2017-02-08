@@ -11,10 +11,10 @@
 	    },
 		{
 			"s_name" : "エオロー",
-			"s_power" : 5,
+			"s_power" : 30,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
-			"s_recast" : 3,
+            "s_recast": 20,
 			"isRecast" : false,
 			"s_range" :  0
 	    },
