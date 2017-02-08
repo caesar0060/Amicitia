@@ -2,7 +2,7 @@
 	"skills" : [
 		{
 			"s_name" : "ルーン",
-			"s_power" : 30,
+			"s_power" : 20,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
 			"s_recast" : 10,
@@ -14,7 +14,7 @@
 			"s_power" : 40,
 			"s_effectTime" : 0,
 			"s_isRune" : false,
-            "s_recast": 20,
+            "s_recast": 40,
 			"isRecast" : false,
 			"s_range" :  3
 	    },
