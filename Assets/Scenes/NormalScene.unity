@@ -10133,7 +10133,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 192484, guid: e311b0c80f7330b44adda62a69d9d171, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13537806, guid: e311b0c80f7330b44adda62a69d9d171, type: 2}
       propertyPath: m_Radius
@@ -10227,7 +10227,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 192484, guid: e311b0c80f7330b44adda62a69d9d171, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13537806, guid: e311b0c80f7330b44adda62a69d9d171, type: 2}
       propertyPath: m_Radius
