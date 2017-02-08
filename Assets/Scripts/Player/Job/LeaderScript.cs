@@ -10,7 +10,7 @@ public class LeaderScript : JobBase {
 	// Use this for initialization
 	void Start () {
 		startPos = this.transform.position;
-		p_funcList = new P_Delegate[] { Skill1, Skill2, Skill4 };
+		p_funcList = new P_Delegate[] { Skill4, Skill1, Skill2, Skill3 };
 		Set_b_Status(BattelStatus.NORMAL);
 		controller = ReadyMode.Instance;
 		controller.Enter(this);

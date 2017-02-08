@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 public class JobBase : StatusControl {
 	#region Properties
+    private static Vector3[] Kiren_BTN = new Vector3[] {new Vector3(0,0.6f,0),
+		new Vector3(-0.6f,0.5f,0), new Vector3(-0.6f,0,0), new Vector3(-0.5f,-0.5f,0)
+	};
 	// プレイヤー攻撃のときの移動の必要な時間
 	private static float PLAYER_MOVE_SPEED = 5.0f;
 	// ボタンの距離
@@ -110,6 +113,8 @@ public class JobBase : StatusControl {
 			pos = new Vector3 (Mathf.Cos (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 
 				Mathf.Sin (Mathf.Deg2Rad * a * i) * BUTTON_DISTANCE , 0);
 			GameObject p_skillBtn = Instantiate (p_skillList [i],Vector3.zero,Camera.main.transform.rotation) as GameObject;
+            if (this._type == JobType.Leader)
+                pos = Kiren_BTN[i];
 			p_skillBtn.transform.SetParent (parent);
 			p_skillBtn.transform.localPosition = pos;
 			p_skillBtn.GetComponentInChildren<Text> ().text = p_skillBtn.GetComponentInChildren<SkillScript> ().s_name;

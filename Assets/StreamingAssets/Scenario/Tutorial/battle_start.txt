@@ -16,7 +16,7 @@
 #	RemoveImage	4	yuma/left_Angry
 #	InsertImage	2	kira/left_angry
 キラ	2	「シールド！！」%
- 	0	火球魔法が飛んできて、キラの魔法障壁がそれを防ぐ。%
+---	0	火球魔法が飛んできて、キラの魔法障壁がそれを防ぐ。%
 #	ChangeImage	1	noel/left_surprise
 ノエル	1	「きゃあっ！」%
 #	RemoveImage	2	kira/left_angry

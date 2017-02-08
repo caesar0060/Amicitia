@@ -206,7 +206,10 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                             ColorImage(int.Parse(words[1]) - 1);
                             break;
                     }
-                    GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = words[0];
+                    string name = "";
+                    if (words[0] != "---")
+                        name = words[0];
+                    GameObject.FindGameObjectWithTag("Name").GetComponent<Text>().text = name;
                     lineBulider.AppendLine(words[2]);
                 }
             }
@@ -296,7 +299,6 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
 	/// <param name="img_name"></param>
 	public void InsertImage(int num, string img_name)
 	{
-        Debug.Log(num);
         string path = "Talk_Image/" + img_name;
         img_list[num].sprite = Resources.Load<Sprite>(path);
         ItweenMoveTo(img_list[num].gameObject, pos_list[num][0], 0);
