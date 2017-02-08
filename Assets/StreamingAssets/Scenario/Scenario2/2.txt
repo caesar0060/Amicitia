@@ -1,36 +1,34 @@
 ﻿@0
 #	CompleteEvent	2
-#	InsertImage	1	kiren/left_normal
-#	InsertImage	2	noel/left_normal
+#	InsertImage	1	noel/left_normal
+#	InsertImage	2	kiren/left_normal
 #	InsertImage	3	kira/right_dissatisfied
 #	InsertImage	4	yuma/right_sad		
-ノエル	2	「ふぅ…。一先ずなんとかなったわね…」%
-キラ	3	「それじゃあユウマ」%
-ユウマ	4	「はいはい。俺はこの人達を運んでくるよ」%
-#	ChangeImage	1	kiren/left_surprise
-#	RemoveImage	2	noel/left_normal
-#	RemoveImage	3	kira/right_dissatisfied
+ノエル	1	「ふぅ…。危なかったけど、なんとかなったわね…」%
+キレン	2	「みんな、ありがとう。もうこの人達は大丈夫だよ」%
+キラ	3	「良かったぁ。…それじゃあユウマ！」%
+ユウマ	4	「…はいはい。俺はこの人達を運んでくるよ」」%
+#	ChangeImage	2	kiren/left_surprise
 #	RemoveImage	4	yuma/right_surprise
-キレン	1	「この人達はなんでここに集まって…こ、これは！」%
-#	InsertImage	2	noel/left_surprise
-ノエル	2	「この植物、もしかして…世界樹なの…？」%
+キレン	2	「そういえばこの人達はなんでここに集まって…こ、これは！」%
+#	InsertImage	1	noel/left_surprise
+ノエル	1	「え？　この植物、もしかして…世界樹、なの…？」%
 #	InsertImage	3	kira/right_surprise
 キラ	3	「え！？」%
 #	InsertImage	4	yuma/right_dissatisfied
 ユウマ	4	「世界樹って、あそこにあるでっかい木だろ？　あれの苗木なのかそれ」/%
-#	ChangeImage	1	kiren/left_normal
-キレン	1	「うん。世界を支える重要な樹なんだ。%
-#	ChangeImage	1	kiren/left_dissatisfied
-キレン	1	なんでここに世界樹の苗木があるのかはわからないけど、%
-#	ChangeImage	1	kiren/left_normal
-キレン	1	邪気に侵された人達はこれを狙ってたみたい」%
-#	ChangeImage	2	noel/left_angry
-ノエル	2	「なんとしても、私達が保護しないと！」%
+#	ChangeImage	2	kiren/left_normal
+キレン	2	「うん。この世界を支える大切な樹なんだけど…。%
+#	ChangeImage	2	kiren/left_dissatisfied
+キレン	2	なんでここに世界樹の苗木があるのかはわからないけど、%
+#	ChangeImage	1	noel/left_angry
+ノエル	1	「この苗木は、なんとしても私達が保護しないと！」%
 #	ChangeImage	3	kira/right_angry
-キラ	3	「だったら鉢植えを探そうよ！%
-キラ	3	この辺りはもう邪気に侵された人はいないはずだから、少しなら離れても大丈夫だと思うし」%
+キラ	3	「そうだね！　それじゃあまずは鉢植えを探そうよ！%
+キラ	3	この辺りの邪気はもう浄化できたんでしょ？　今のうちに探しに行こうよ！」%
 #	ChangeImage	4	yuma/right_normal
-ユウマ	4	「だったらこの先の道で鉢植えを探したほうがよさそうだな。今まで通った道では見なかったぞ」%
-キレン	1	「よし、じゃあ出来るだけ早く鉢植えを見つけて戻ってこよう！」%
+ユウマ	4	「それだったら、この先の道で鉢植えを探したほうがよさそうだな。」%
+ユウマ	4	少なくとも今まで通った道では見なかったぞ%
+キレン	2	「わかった、それじゃあ出来るだけ早く鉢植えを見つけて戻ってこよう！」%
 #	ReceiveEvent	Tutorial	3
 @end

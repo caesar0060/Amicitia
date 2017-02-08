@@ -116,6 +116,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                     PlayerRoot.Instance.StartCoroutine(FadeManager.Instance.ReadyTalkUI(0.5f, TalkMode.Instance));
                     this.GetComponent<ScenarioScript>().fileName = "Tutorial/T5";
                     ScenarioManager.Instance.UpdateLines(this.GetComponent<ScenarioScript>());
+                    msg = "※うまく指示を出して、残りの魔物も倒しましょう";
                     counter++;
                     break;
                 default :
@@ -130,6 +131,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
                             EnemyBase e_eb = enemy.GetComponent<EnemyBase>();
                             e_eb.StartCoroutine(e_eb.Loading(5.0f));
                         }
+                        msg = "";
                     }
                     break;
             }

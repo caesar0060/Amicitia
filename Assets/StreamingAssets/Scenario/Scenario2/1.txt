@@ -3,8 +3,9 @@
 #	InsertImage	2	noel/left_surprise				
 #	InsertImage	3	kira/right_surprise				
 #	InsertImage	4	yuma/right_dissatisfied													
-ユウマ	4	「…ん？　あそこに人が集まって…」%				
-キラ	3	「あ！　あれ全部邪気に侵されてる人じゃない！？」%		
-ノエル	2	「よ、よくわからないけど、浄化するわよ！」%
+ユウマ	4	「…なんだ？　人がたくさんいるぞ…？」%				
+キラ	3	「ね、ねえ！　あそこにいるの、みんな邪気に侵された人じゃない！？」%		
+ノエル	2	「そんな…！　急いで浄化するわよ！」%
+キレン	1	「さっきより強い邪気を感じる！　みんな、気を付けて！」%
 #	ReceiveEvent	Tutorial	2
 @end
