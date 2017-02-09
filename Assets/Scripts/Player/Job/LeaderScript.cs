@@ -15,13 +15,12 @@ public class LeaderScript : JobBase {
 		controller = ReadyMode.Instance;
 		controller.Enter(this);
 		skillBtnGenerate();
-		HideSkillBtn();
+        HideKirenBtn();
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
 		}*/
-		HideSkillBtn ();
 	}
 
 	// Update is called once per frame

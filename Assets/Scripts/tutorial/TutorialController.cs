@@ -218,8 +218,8 @@ public class KirenControl : RootController
         pr.s_script = null;
         pr.btn = null;
         isBtnShow = false;
-        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
-        TutorialRoot.Instance.msg = "「ボクの周りに浮遊する精霊クリック。";
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" , "Yousei"});
+        TutorialRoot.Instance.msg = "「ボクの周りに浮遊する青い精霊クリック。";
         yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach (var player in PlayerRoot.Instance.partyList)
         {
@@ -249,7 +249,7 @@ public class KirenControl : RootController
                                     pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
                                     if (pr.p_jb.CanTakeAction())
                                     {
-                                        TutorialRoot.Instance.msg = "精霊をノエルまでドラッグ！」";
+                                        
                                         pr.p_jb.ShowSkillBtn();
                                         isBtnShow = true;
                                     }
@@ -264,16 +264,14 @@ public class KirenControl : RootController
                             }
                         }
                         break;
-                    case 10: //Command
-                        if (isBtnShow)
-                        {	// ボタンを選択したら
-                            // 選択したボタンを保管
-                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "魔力の精霊")
-                            {
-                                pr.btn = hit.collider.gameObject;
-                                pr.s_script = pr.btn.GetComponent<SkillScript>();
-                                pr.ChangeMode(t_targetMode.Instance);
-                            }
+                    case 14: //Command
+                        if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "魔力の精霊")
+                        {
+                            TutorialRoot.Instance.msg = "精霊をノエルまでドラッグ！」";
+                            pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
+                            pr.btn = hit.collider.gameObject;
+                            pr.s_script = pr.btn.GetComponent<SkillScript>();
+                            pr.ChangeMode(t_targetMode.Instance);
                         }
                         break;
                 }
@@ -320,8 +318,8 @@ public class Kiren2Control : RootController
         pr.s_script = null;
         pr.btn = null;
         isBtnShow = false;
-        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
-        TutorialRoot.Instance.msg = "「また精霊をクリックする。";
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command", "Yousei" });
+        TutorialRoot.Instance.msg = "「次は緑色の精霊精霊をクリックする。";
         yajirusi = PlayerRoot.Instance.CreateObject(Resources.Load<GameObject>("Prefabs/UI/Tutorial/yajirusi"));
         foreach (var player in PlayerRoot.Instance.partyList)
         {
@@ -351,7 +349,7 @@ public class Kiren2Control : RootController
                                     pr.p_jb = hit.collider.gameObject.GetComponent<JobBase>();
                                     if (pr.p_jb.CanTakeAction())
                                     {
-                                        TutorialRoot.Instance.msg = "次は緑色の精霊をノエルにドラッグ！」";
+
                                         pr.p_jb.ShowSkillBtn();
                                         isBtnShow = true;
                                     }
@@ -366,16 +364,14 @@ public class Kiren2Control : RootController
                             }
                         }
                         break;
-                    case 10: //Command
-                        if (isBtnShow)
-                        {	// ボタンを選択したら
-                            // 選択したボタンを保管
-                            if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "癒しの精霊")
-                            {
-                                pr.btn = hit.collider.gameObject;
-                                pr.s_script = pr.btn.GetComponent<SkillScript>();
-                                pr.ChangeMode(t_targetMode.Instance);
-                            }
+                    case 14: //Yousei
+                        if (hit.collider.gameObject.GetComponent<SkillScript>().s_name == "癒しの精霊")
+                        {
+                            TutorialRoot.Instance.msg = "緑色の精霊をノエルにドラッグ！」";
+                            pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
+                            pr.btn = hit.collider.gameObject;
+                            pr.s_script = pr.btn.GetComponent<SkillScript>();
+                            pr.ChangeMode(t_targetMode.Instance);
                         }
                         break;
                 }
@@ -475,7 +471,7 @@ public class t_targetMode : RootController
                 break;
         }
         layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
-        d_layerMask = LayerMask.GetMask(new string[] { "Command" });
+        d_layerMask = LayerMask.GetMask(new string[] { "Command", "Yousei" });
         // ボタンの初期位置を保管する
         btnTempPos = pr.btn.transform.localPosition;
     }
@@ -574,10 +570,12 @@ public class t_targetMode : RootController
     /// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float effectTime = 0)
     {
+        if (btn.GetComponentInParent<JobBase>()._type == JobType.Leader)
+            btn.GetComponentInParent<JobBase>().HideKirenBtn();
         pr.p_jb.ChangeMode(t_SkillMode.Instance);
         pr.p_jb._target = target; pr.p_jb.skillUsing = pr.s_script;
         GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
-        pr.ChangeMode(BattelMode.Instance);
+        pr.ChangeMode(T_Wait.Instance);
     }
 }
 public class T_Wait : RootController

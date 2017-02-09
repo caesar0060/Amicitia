@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class JobBase : StatusControl {
 	#region Properties
     private static Vector3[] Kiren_BTN = new Vector3[] {new Vector3(0,0.6f,0),
-		new Vector3(-0.6f,0.5f,0), new Vector3(-0.6f,0,0), new Vector3(-0.5f,-0.5f,0)
+		new Vector3(-0.5f,0.5f,0), new Vector3(-0.6f,0,0), new Vector3(-0.5f,-0.5f,0)
 	};
 	// プレイヤー攻撃のときの移動の必要な時間
 	private static float PLAYER_MOVE_SPEED = 5.0f;
@@ -125,18 +125,25 @@ public class JobBase : StatusControl {
 	/// ボタンを隠す
 	/// </summary>
 	public void HideSkillBtn(){
-		Transform parent = this.transform.GetChild (0);
-		for (int i = 0; i < parent.childCount; i++) {
-            try
+        if (this._type != JobType.Leader)
+        {
+            Transform parent = this.transform.GetChild(0);
+            for (int i = 0; i < parent.childCount; i++)
             {
-                parent.GetChild(i).GetComponent<Collider>().enabled = false;
+                try
+                {
+                    parent.GetChild(i).GetComponent<Collider>().enabled = false;
+                    if (this._type == JobType.Leader)
+                        parent.GetChild(i).GetChild(2).gameObject.SetActive(false);
+                    
+                }
+                catch (MissingComponentException)
+                {
+                    continue;
+                }
             }
-            catch (MissingComponentException)
-            {
-                continue;
-            }
-		}
-		parent.GetComponent<Canvas> ().enabled = false;
+            parent.GetComponent<Canvas>().enabled = false;
+        }
 	}
 	/// <summary>
 	/// ボタンを削除する
@@ -158,19 +165,23 @@ public class JobBase : StatusControl {
 	/// ボタンを表す
 	/// </summary>
 	public void ShowSkillBtn(){
-		Transform parent = this.transform.GetChild (0);
-		for (int i = 0; i < parent.childCount; i++) {
-            try
+        if (this._type != JobType.Leader)
+        {
+            Transform parent = this.transform.GetChild(0);
+            for (int i = 0; i < parent.childCount; i++)
             {
-                if (parent.GetChild(i).GetComponent<SkillScript>().isRecast == false)
-                    parent.GetChild(i).GetComponent<Collider>().enabled = true;
+                try
+                {
+                    if (parent.GetChild(i).GetComponent<SkillScript>().isRecast == false)
+                        parent.GetChild(i).GetComponent<Collider>().enabled = true;
+                }
+                catch (NullReferenceException)
+                {
+                    continue;
+                }
             }
-            catch(NullReferenceException)
-            {
-                continue;
-            }
-		}
-		parent.GetComponent<Canvas> ().enabled = true;
+            parent.GetComponent<Canvas>().enabled = true;
+        }
 	}
 	/// <summary>
 	/// Rotates to target.
@@ -198,6 +209,50 @@ public class JobBase : StatusControl {
             PlayerRoot.Instance.partyList.Remove(this.gameObject);
             this.GetComponentInChildren<Animator>().SetTrigger("Dead");
             //Destroy (this.gameObject);
+        }
+    }
+    private void ShowKirenBtn()
+    {
+        if (this._type == JobType.Leader)
+        {
+            Transform parent = this.transform.GetChild(0);
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                try
+                {
+                    parent.GetChild(i).GetComponent<Collider>().enabled = true;
+                    if (this._type == JobType.Leader)
+                        parent.GetChild(i).GetChild(2).gameObject.SetActive(true);
+
+                }
+                catch (MissingComponentException)
+                {
+                    continue;
+                }
+            }
+            parent.GetComponent<Canvas>().enabled = true;
+        }
+    }
+    public void HideKirenBtn()
+    {
+        if (this._type == JobType.Leader)
+        {
+            Transform parent = this.transform.GetChild(0);
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                try
+                {
+                    parent.GetChild(i).GetComponent<Collider>().enabled = false;
+                    if (this._type == JobType.Leader)
+                        parent.GetChild(i).GetChild(2).gameObject.SetActive(false);
+
+                }
+                catch (MissingComponentException)
+                {
+                    continue;
+                }
+            }
+            parent.GetComponent<Canvas>().enabled = false;
         }
     }
 	#endregion
@@ -239,6 +294,11 @@ public class JobBase : StatusControl {
 	/// <param name="btn">ボタン.</param>
 	/// <param name="time">リーキャストタイム.</param>
 	public IEnumerator SkillRecast(GameObject btn, float time){
+        if (this._type == JobType.Leader)
+        {
+            ShowKirenBtn();
+            btn.transform.GetChild(2).gameObject.SetActive(false);
+        }
         if (CheckFlag(ConditionStatus.SLOW))
             time *= 2;
 		btn.GetComponent<SkillScript> ().isRecast = true;
@@ -250,6 +310,11 @@ public class JobBase : StatusControl {
             float rate = 1 - (Time.time - startTime) / time;
             if (rate <= 0)
             {
+                if (this._type == JobType.Leader)
+                {
+                    if (btn.GetComponentInParent<Canvas>().isActiveAndEnabled)
+                        btn.transform.GetChild(2).gameObject.SetActive(true);
+                }
                 img.fillAmount = rate;
                 btn.GetComponent<SkillScript>().isRecast = false;
                 if (btn.GetComponentInParent<Canvas>().isActiveAndEnabled)
