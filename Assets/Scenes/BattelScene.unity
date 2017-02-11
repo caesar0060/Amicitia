@@ -301,6 +301,14 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 310
       objectReference: {fileID: 0}
+    - target: {fileID: 11447472, guid: 625741d08102e08469c29d504df69cf9, type: 2}
+      propertyPath: focalLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282604, guid: 625741d08102e08469c29d504df69cf9, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 28bd7774885f61f4d984d7751b0b1876, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 625741d08102e08469c29d504df69cf9, type: 2}
   m_IsPrefabParent: 0

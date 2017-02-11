@@ -168,13 +168,6 @@ public class PlayerRoot : SingletonMonoBehaviour<PlayerRoot>
 			isGameOver = true;
 		}
 	}
-    /// <summary>
-    /// Restart Game
-    /// </summary>
-    public void RestartGame()
-    {
-        FadeManager.Instance.LoadLevel("TopScene", 5);
-        Destroy(this.gameObject);
-    }
+
 	#endregion
 }

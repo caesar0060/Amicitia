@@ -84,7 +84,7 @@
 			"target_name" : "",
 			"target_num" : 0,
 			"target_count" : 0,
-            "prefab_name" : "Event/Complete_Dark_Kiren",
+            "prefab_name" : "Event/Event_DarkKiren",
             "target_pos_X" : 2.68,
             "target_pos_Y" : 5.747,
             "target_pos_Z" : -15.49,
@@ -99,10 +99,10 @@
 			"target_name" : "キノコ",
 			"target_num" : 1,
 			"target_count" : 0,
-            "prefab_name" : "",
-            "target_pos_X" : 0,
-            "target_pos_Y" : 0,
-            "target_pos_Z" : 0,
+            "prefab_name" : "Event/Complete_Dark_Kiren",
+            "target_pos_X" : 2.68,
+            "target_pos_Y" : 5.747,
+            "target_pos_Z" : -15.49,
 			"e_present" : 1,
 			"is_finish" :  false
         }

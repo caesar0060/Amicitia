@@ -163,7 +163,7 @@ public class EnemyBase : StatusControl {
 	/// 死亡しているかどうかをチェック
 	/// </summary>
 	public void CheckDead(){
-		if (_hp <= 0) {
+		if (_hp <= 0 && this.battelStatus != BattelStatus.DEAD) {
 			Set_b_Status (BattelStatus.DEAD);
 			this.GetComponent<CapsuleCollider> ().enabled = false;
             this.GetComponentInChildren<Animator>().SetTrigger("isDead");

@@ -28,9 +28,8 @@ public class MagicianScript: JobBase {
 
 	// Update is called once per frame
 	void Update () {
-		//test-----
+        CheckDead();
 		controller.Excute (this);
-		//test-----
 	}
 	#region Function
 	/// <summary>

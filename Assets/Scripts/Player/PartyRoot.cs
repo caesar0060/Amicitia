@@ -8,13 +8,13 @@ public class PartyRoot : MonoBehaviour {
 	// バトルが始めて最初にすべてのスキルをリーキャストする時間
 	private static float BATTEL_START_RECAST_TIME = 5.0f;
 	// メンバーとの距離
-	private static float DISTANCE = 1.5f;
+	private static float DISTANCE = 1f;
 	// HPゲージのX位置
-	private static float[] UI_POS = new float[] {-475, -160, 160, 475};
-    private static float[] E_UI_POS = new float[] { 330, 270, 210, 150 };
+	private static float[] UI_POS = new float[] {-525, -325, -125, 75};
+    private static float[] E_UI_POS = new float[] { 360, 310, 260, 210 };
 	// 配置の最初値
-	public static Vector3[]  posArray= new Vector3[] {new Vector3(0,0,-1.5f),
-		new Vector3(-1,0,0), new Vector3(0,0,0), new Vector3(1,0,0)
+	public static Vector3[]  posArray= new Vector3[] {new Vector3(0,0,-2.25f),
+		new Vector3(-2f,0,-0.5f), new Vector3(0,0,0), new Vector3(2f,0,-0.5f)
 	};
 	//　敵の配置ポイント
 	public Transform enemyRoot;
@@ -53,7 +53,7 @@ public class PartyRoot : MonoBehaviour {
                     ReadyNextAttack();
 			}
 			catch(MissingReferenceException){
-				return;
+                ReadyNextAttack();
 			}
 		}
 	}
@@ -85,8 +85,8 @@ public class PartyRoot : MonoBehaviour {
 			GameObject hp_ui = Instantiate(jb.UI_hp_prefab) as GameObject;
 			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("HP_UI").transform);
 			hp_ui.transform.localRotation = Quaternion.Euler(Vector3.zero);
-			hp_ui.transform.localPosition = new Vector3(UI_POS[i], -300, 0);
-			hp_ui.transform.localScale = new Vector3(2.5f, 0.5f, 0);
+			hp_ui.transform.localPosition = new Vector3(UI_POS[i], -330, 0);
+			hp_ui.transform.localScale = new Vector3(1.5f, 0.3f, 0);
 			jb.UI_hp = hp_ui.GetComponentInChildren<Slider>();
 			jb.UI_hp.maxValue = jb._maxHP;
 			jb.UI_hp.value = jb._hp;
@@ -113,8 +113,8 @@ public class PartyRoot : MonoBehaviour {
 			GameObject hp_ui = Instantiate(eb.UI_hp_prefab) as GameObject;
 			hp_ui.transform.SetParent(GameObject.FindGameObjectWithTag("HP_UI").transform);
 			hp_ui.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            hp_ui.transform.localPosition = new Vector3(450, E_UI_POS[i], 0);
-			hp_ui.transform.localScale = new Vector3(3, 0.5f, 0);
+            hp_ui.transform.localPosition = new Vector3(550, E_UI_POS[i], 0);
+			hp_ui.transform.localScale = new Vector3(1.5f, 0.3f, 0);
 			eb.UI_hp = hp_ui.GetComponentInChildren<Slider>();
 			eb.UI_hp.maxValue = eb._maxHP;
 			eb.UI_hp.value = eb._hp;

@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448666}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476094}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479056}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402598}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C3_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473522}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Clavide_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486108}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint97 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499702}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426278}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint93
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484452}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435980}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint95 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444524}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A2_right 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495600}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436928}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B3_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437412}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Thigh_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425582}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_back_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420494}
   - 137: {fileID: 13778696}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455656}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:CTRL_Wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451080}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_kazeri
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439456}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupE_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468964}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418376}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Toepivot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487450}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407776}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404808}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupC_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 452592}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Ankle_end_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443210}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint91
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491968}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Anckle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462818}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint80
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Wirst_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 456608}
   - 137: {fileID: 13710268}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:pPlane3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446138}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C3_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495546}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupD_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424638}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495766}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440214}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Heel_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484598}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Ankle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496364}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422074}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427050}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Anckle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443070}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409438}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A3_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 417964}
   - 137: {fileID: 13718802}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:nurbsToPoly6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497334}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:hand_1_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475128}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint92
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480888}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint78
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478878}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupB_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491072}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_back_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,7 +716,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491784}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429612}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E3_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +746,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495478}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421390}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:CTRL_Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400048}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Wirst_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487266}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_1_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454272}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Toepivot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 471808}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownA_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472670}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupB_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,7 +851,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480852}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450580}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Anckle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +881,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417544}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint98 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460982}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:IKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448974}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownD_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457720}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint96
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441148}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443876}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint95
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 452092}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494736}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1016,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425998}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Clacide_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1031,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480938}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupA_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1046,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447550}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Knee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455066}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453936}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E3_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408704}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint95 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,7 +1106,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493878}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Toe_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432044}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468896}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Anckle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1151,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456090}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1166,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414464}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431914}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Toe_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452264}
   - 137: {fileID: 13719214}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495298}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yosei_face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1227,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480600}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupC_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1257,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472372}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Toe_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423234}
   - 137: {fileID: 13784492}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1293,7 +1293,7 @@ GameObject:
   - 114: {fileID: 11446064}
   - 114: {fileID: 11429372}
   - 65: {fileID: 6578342}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: L_Skill2
   m_TagString: SkillButton
   m_Icon: {fileID: 0}
@@ -1310,7 +1310,7 @@ GameObject:
   - 224: {fileID: 22407506}
   - 222: {fileID: 22216900}
   - 114: {fileID: 11444378}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456418}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupD_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451364}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint86
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 449304}
   - 137: {fileID: 13716226}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:pCube20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449984}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint97
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,7 +1386,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417286}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1401,7 +1401,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420690}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:elbow_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410344}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   - 224: {fileID: 22416570}
   - 222: {fileID: 22283074}
   - 114: {fileID: 11439500}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477090}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1463,7 +1463,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479576}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,7 +1478,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453610}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,7 +1493,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451986}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Toes_end_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,7 +1508,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489384}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1523,7 +1523,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429596}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownD_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1538,7 +1538,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406838}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Knee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472854}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1568,7 +1568,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463438}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,7 +1583,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460102}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint83
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1598,7 +1598,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451790}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:group_Heel_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1613,7 +1613,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422678}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:hand_2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1629,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450542}
   - 137: {fileID: 13752392}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1644,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426522}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint77
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1659,7 +1659,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468878}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Knee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1674,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418910}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,7 +1689,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_back_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1705,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421264}
   - 137: {fileID: 13760112}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1720,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480958}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownC_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1735,7 +1735,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430614}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_3_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1750,7 +1750,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400882}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint98
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1765,7 +1765,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430256}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Knee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1780,7 +1780,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473742}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,7 +1795,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409898}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,7 +1810,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498058}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D3_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1825,7 +1825,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404626}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_2END_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401304}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1855,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431664}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1870,7 +1870,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424622}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Thigh_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1885,7 +1885,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407370}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D3_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,7 +1900,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440646}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownA_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1915,7 +1915,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493032}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1930,7 +1930,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485480}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_1_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1945,7 +1945,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484470}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_End_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1960,7 +1960,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426946}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:shoulder_2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1975,7 +1975,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499142}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Elnow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1990,7 +1990,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451534}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478756}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownB_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2020,7 +2020,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412262}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2035,7 +2035,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461982}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_back_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2050,7 +2050,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459778}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:hand_2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472778}
   - 137: {fileID: 13770136}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:nurbsToPoly13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2081,7 +2081,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456774}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint79
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2096,7 +2096,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414000}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint84
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2111,7 +2111,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476164}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Toes_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,7 +2126,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488652}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496876}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:transform4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2156,7 +2156,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410178}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Joint_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2171,7 +2171,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492392}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2186,7 +2186,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444230}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownB_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2201,7 +2201,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438670}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2216,7 +2216,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439520}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Ankle_end_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2231,7 +2231,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430226}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint97 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2246,7 +2246,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455724}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2261,7 +2261,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400286}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Toe_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2276,7 +2276,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422712}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_back_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,7 +2291,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433202}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yosei
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2306,7 +2306,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430374}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Ankle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2321,7 +2321,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411230}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2338,7 +2338,7 @@ GameObject:
   - 4: {fileID: 487938}
   - 33: {fileID: 3396374}
   - 23: {fileID: 2327368}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2353,7 +2353,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477802}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_A_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,7 +2368,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403762}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Toes_end_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2384,7 +2384,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 462088}
   - 137: {fileID: 13754612}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:nurbsToPoly7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2399,7 +2399,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463544}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupA_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2414,7 +2414,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440426}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2429,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420362}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint96 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2444,7 +2444,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428930}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Ball_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2459,7 +2459,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475780}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingupE_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2474,7 +2474,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472228}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_C2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2489,7 +2489,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479400}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:ikHandle_Ball_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2505,7 +2505,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 482484}
   - 95: {fileID: 9543458}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: blue_yousei
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2520,7 +2520,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408788}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_wingdownC_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2535,7 +2535,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488178}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:hand_1_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2550,7 +2550,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446470}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_D_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2565,7 +2565,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431870}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2581,7 +2581,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 435732}
   - 137: {fileID: 13739140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:nurbsToPoly16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2596,7 +2596,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497312}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint81
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2611,7 +2611,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457930}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2626,7 +2626,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429870}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_head_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2641,7 +2641,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469986}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:Ctrl_Elnow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2656,7 +2656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470310}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2671,7 +2671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447896}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_hair_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2686,7 +2686,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418706}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,7 +2701,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481182}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_B3_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2716,7 +2716,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485356}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:transform3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2731,7 +2731,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406130}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2746,7 +2746,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404398}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint98 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2761,7 +2761,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416748}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint96 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2776,7 +2776,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_yubi_E2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2791,7 +2791,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431208}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint73
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2807,7 +2807,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 432986}
   - 137: {fileID: 13763198}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:pCube23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2822,7 +2822,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492162}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:yousei_Toes_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2837,7 +2837,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419646}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:youseihair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2852,7 +2852,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494558}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: character_rig_v3:joint74
   m_TagString: Untagged
   m_Icon: {fileID: 0}

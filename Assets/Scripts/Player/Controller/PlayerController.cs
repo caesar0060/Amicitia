@@ -380,7 +380,7 @@ public class BattelMode : RootController
         pr.s_script = null;
         pr.btn = null;
         isBtnShow = false;
-        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command" });
+        d_layerMask = LayerMask.GetMask(new string[] { "Player", "Command", "Yousei" });
     }
     override public void Excute(PlayerRoot pr = null)
     {
@@ -422,6 +422,14 @@ public class BattelMode : RootController
                             pr.s_script = pr.btn.GetComponent<SkillScript>();
                             pr.ChangeMode(_targetMode.Instance);
                         }
+                        break;
+                    case 14: //Yousei
+                        // 選択したボタンを保管
+                        pr.p_jb.HideSkillBtn();
+                        pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
+                        pr.btn = hit.collider.gameObject;
+                        pr.s_script = pr.btn.GetComponent<SkillScript>();
+                        pr.ChangeMode(_targetMode.Instance);
                         break;
                 }
             }
@@ -484,7 +492,7 @@ public class _targetMode : RootController
                 break;
         }
         layerMask = LayerMask.GetMask(new string[] { "Ground", "Player", "Enemy" });
-        d_layerMask = LayerMask.GetMask(new string[] { "Command" });
+        d_layerMask = LayerMask.GetMask(new string[] { "Command", "Yousei" });
         // ボタンの初期位置を保管する
         btnTempPos = pr.btn.transform.localPosition;
     }
@@ -510,6 +518,14 @@ public class _targetMode : RootController
                         break;
                     case 10: //Command
                         // 選択したボタンを保管
+                        pr.btn = hit.collider.gameObject;
+                        pr.s_script = pr.btn.GetComponent<SkillScript>();
+                        btnTempPos = pr.btn.transform.localPosition;
+                        break;
+                    case 14: //Yousei
+                        // 選択したボタンを保管
+                        pr.p_jb.HideSkillBtn();
+                        pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
                         pr.btn = hit.collider.gameObject;
                         pr.s_script = pr.btn.GetComponent<SkillScript>();
                         btnTempPos = pr.btn.transform.localPosition;
@@ -549,10 +565,11 @@ public class _targetMode : RootController
                         {
                             SkillUse(pr, hit.collider.gameObject, pr.btn, pr.s_script.s_effectTime);
                         }
-                        else
-                            //ボタンを初期位置に戻す
+                        else//ボタンを初期位置に戻す
+                        {
                             pr.StartCoroutine(pr.LerpMove(pr.btn,
                                 pr.btn.transform.localPosition, btnTempPos, 1));
+                        }
                     }
                     // SELFなら、即発動
                     else
@@ -562,8 +579,10 @@ public class _targetMode : RootController
                 }
             }
             else//ボタンを初期位置に戻す
+            {
                 pr.StartCoroutine(pr.LerpMove(pr.btn,
                     pr.btn.transform.localPosition, btnTempPos, 1));
+            }
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -589,9 +608,11 @@ public class _targetMode : RootController
     /// <param name="effectTime">Effect time.</param>
     private void SkillUse(PlayerRoot pr, GameObject target, GameObject btn, float effectTime = 0)
     {
+        GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
+        if (btn.GetComponentInParent<JobBase>()._type == JobType.Leader)
+            btn.GetComponentInParent<JobBase>().HideKirenBtn();
         pr.p_jb.ChangeMode(SkillMode.Instance);
         pr.p_jb._target = target; pr.p_jb.skillUsing = pr.s_script;
-        GameObject.FindGameObjectWithTag("PartyRoot").GetComponent<PartyRoot>().attackList.Add(pr.p_jb.gameObject);
         pr.ChangeMode(BattelMode.Instance);
     }
 }

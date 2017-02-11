@@ -12,7 +12,7 @@
 ユウマ	2	「キラは優しすぎるんだよ。それに、俺も四対一は不公平かなって思わなくもないしな」%
 ？？？	4	「四対一、ねぇ…？」%
 ？？？	4	「じゃあまずは、その認識を改めてもらおうか、な！」%
- 	0	邪気とともに魔物出現する%
+---	0	邪気とともに魔物出現する%
 #	RemoveImage	3	enemy
 #	RemoveImage	4	enemy
 #	ChangeImage	2	kiren/left_surprise
@@ -24,7 +24,7 @@
 ノエル	1	やっぱりアナタもキレンと同じ守護の一族なのね！？　どうしてこんなことを！！」%
 ？？？	0	「だからそれは、オレサマと遊んでくれたら教えてあげるって言っただろ？」%
 ？？？	0	「それじゃあ早速、遊ぼうよ！」%
-#	ChangeImage	1	yuma/rleft_norma
+#	ChangeImage	1	yuma/left_normal
 ユウマ	1	「ッ！　みんな、来るぞ！！」%
 #	ReceiveEvent	Tutorial	7
 @end

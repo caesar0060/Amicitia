@@ -15,20 +15,18 @@ public class LeaderScript : JobBase {
 		controller = ReadyMode.Instance;
 		controller.Enter(this);
 		skillBtnGenerate();
-		HideSkillBtn();
+        HideKirenBtn();
 		//---------		
 		/*foreach (ConditionStatus status in Enum.GetValues(typeof(ConditionStatus))) {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
 		}*/
-		HideSkillBtn ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//test-----
+        CheckDead();
 		controller.Excute (this);
-		//test-----
 	}
 
 	#region Skill
@@ -60,12 +58,8 @@ public class LeaderScript : JobBase {
 	public void Skill3(SkillScript sc, GameObject target = null, float effectTime = 0)
     {
 		this.GetComponentInChildren<Animator>().SetTrigger("Attack");
-		JobBase jb = target.GetComponent<JobBase>();
-        StartCoroutine(MagicDamage(_target, sc, 1f, "Prefabs/Magic/Defence_up", 2f));
-		jb.Set_c_Status(ConditionStatus.M_DEF_UP);
-		jb.Set_c_Status(ConditionStatus.P_DEF_UP);
-		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.M_DEF_UP, effectTime));
-		jb.StartCoroutine(jb.StatusCounter(ConditionStatus.P_DEF_UP, effectTime));
+        ConditionStatus[] status_array = {ConditionStatus.M_DEF_UP, ConditionStatus.P_DEF_UP};
+        StartCoroutine(this.StatusMagic(_target, sc, 1f, "Prefabs/Magic/Defence_up", 2f, status_array));
 	}
 	/// <summary>
 	/// 癒しの精霊
