@@ -69,7 +69,7 @@ public class E_Dragon : EnemyBase
     override public void Skill1(GameObject target = null, float effectTime = 0)
 	{
         this.GetComponentInChildren<Animator>().SetTrigger("isAttack");
-        StartCoroutine(MagicDamage(_target, skillList[0], 1f, "Prefabs/Magic/Abyss_Eye", 3f));
+        StartCoroutine(MagicDamage(_target, skillList[0], 1f, "Prefabs/Magic/Explosion", 2.5f));
 	}
 	/// <summary>
     /// エオロー

@@ -425,6 +425,7 @@ public class BattelMode : RootController
                         break;
                     case 14: //Yousei
                         // 選択したボタンを保管
+                        pr.p_jb.HideSkillBtn();
                         pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
                         pr.btn = hit.collider.gameObject;
                         pr.s_script = pr.btn.GetComponent<SkillScript>();
@@ -523,6 +524,8 @@ public class _targetMode : RootController
                         break;
                     case 14: //Yousei
                         // 選択したボタンを保管
+                        pr.p_jb.HideSkillBtn();
+                        pr.p_jb = hit.collider.gameObject.GetComponentInParent<JobBase>();
                         pr.btn = hit.collider.gameObject;
                         pr.s_script = pr.btn.GetComponent<SkillScript>();
                         btnTempPos = pr.btn.transform.localPosition;
@@ -564,7 +567,6 @@ public class _targetMode : RootController
                         }
                         else//ボタンを初期位置に戻す
                         {
-                            pr.btn = null;
                             pr.StartCoroutine(pr.LerpMove(pr.btn,
                                 pr.btn.transform.localPosition, btnTempPos, 1));
                         }
@@ -578,7 +580,6 @@ public class _targetMode : RootController
             }
             else//ボタンを初期位置に戻す
             {
-                pr.btn = null;
                 pr.StartCoroutine(pr.LerpMove(pr.btn,
                     pr.btn.transform.localPosition, btnTempPos, 1));
             }

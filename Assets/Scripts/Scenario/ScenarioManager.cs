@@ -186,7 +186,7 @@ public class ScenarioManager : SingletonMonoBehaviour<ScenarioManager>
                             CompleteEvent(int.Parse(words[2]));
                             break;
                         case "Restart":
-                            PlayerRoot.Instance.RestartGame();
+                            FadeManager.Instance.RestartGame();
                             break;
                     }
                     m_currentLine++;

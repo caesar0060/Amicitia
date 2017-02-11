@@ -22,14 +22,12 @@ public class TankScript : JobBase {
 			if (!CheckFlag (status))
 				Debug.Log (Enum.GetName (typeof(ConditionStatus), status));
 		}*/
-		HideSkillBtn ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//test-----
+        CheckDead();
 		controller.Excute (this);
-		//test-----
 	}
 
 	#region Skill

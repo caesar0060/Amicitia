@@ -12,6 +12,7 @@ public class TutorialRoot : SingletonMonoBehaviour<TutorialRoot>
     private Vector3 h_pos = new Vector3(0, 350, 0);
 	// Use this for initialization
 	void Start () {
+        PlayerRoot.Instance.ChangeMode(T_Wait.Instance);
         hukidasi = Instantiate(hukidasi_prefab, h_pos, Quaternion.identity) as GameObject;
         hukidasi.transform.SetParent(GameObject.FindGameObjectWithTag("ScenarioCanvas").transform);
         hukidasi.transform.localPosition = h_pos;

@@ -226,7 +226,8 @@ public class KirenControl : RootController
             if (player.GetComponent<JobBase>()._type == JobType.Leader)
                 yajirusi.transform.SetParent(player.transform);
         }
-        yajirusi.transform.localPosition = new Vector3(0, 0, 0);
+        yajirusi.transform.localPosition = new Vector3(0.96f, 0.2f, -0.68f);
+        yajirusi.transform.localScale = new Vector3(0.5f, 0.5f, 1.15f);
     }
     override public void Excute(PlayerRoot pr = null)
     {

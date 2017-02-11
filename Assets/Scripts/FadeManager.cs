@@ -44,6 +44,15 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 			return;
 		}
 	}
+    /// <summary>
+    /// Restart Game
+    /// </summary>
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("TopScene");
+       // LoadLevel("TopScene", 5);
+        Destroy(PlayerRoot.Instance.gameObject);
+    }
 
     /// <summary>
     /// 画面遷移

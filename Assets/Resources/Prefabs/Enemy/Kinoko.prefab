@@ -912,8 +912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c1683275fe3c04191daf2d473e36a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 200
-  _maxHP: 200
+  _hp: 50
+  _maxHP: 50
   _attack: 20
   _defence: 10
   _m_defence: 20
@@ -1135,11 +1135,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _hp
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _maxHP
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _attack

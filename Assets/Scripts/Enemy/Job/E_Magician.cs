@@ -81,7 +81,7 @@ public class E_Magician : EnemyBase {
     override public void Skill2(GameObject target = null, float effectTime = 0)
 	{
         this.GetComponentInChildren<Animator>().SetTrigger("isAttack2");
-        StartCoroutine(MagicDamage(_target, skillList[1], 1f, "Prefabs/Magic/Explosion", 3f));
+        StartCoroutine(MagicDamage(_target, skillList[1], 1f, "Prefabs/Magic/Explosion", 2.5f));
 	}
 	/// <summary>
     /// ハーガル
