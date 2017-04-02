@@ -8,7 +8,7 @@ using System.Collections.Generic;
 [Serializable]
 public class Set
 {
-	public float probability;	//確率
+	public float probability;	    //確率
 	public string[] enemy_set;		//配置
 }
 [Serializable]
@@ -67,7 +67,7 @@ public class EnemyBase : StatusControl {
     public bool isMove = false;
     public Coroutine coroutine;
 	#endregion
-
+    //　マップ上で探索範囲内のプレイヤーをターゲットにする
     public void OnTriggerStay(Collider other)
     {
         switch (battelStatus)
@@ -90,6 +90,7 @@ public class EnemyBase : StatusControl {
                 break;
         }
     }
+    // マップ上で探索範囲に離れたターゲットを外す
     public void OnTriggerExit(Collider other)
     {
         switch (battelStatus)
@@ -194,6 +195,26 @@ public class EnemyBase : StatusControl {
 	public void ReturnPos(){
 		StartCoroutine(LerpMove(this.gameObject, this.transform.position, startPos, 2, "return"));
 	}
+    /// <summary>
+    /// ターゲットへのダメージを計算する
+    /// </summary>
+    /// <param name="target">ターゲット</param>
+    /// <param name="power">スキルのパワー</param>
+    /// <param name="buff">妖精の力</param>
+    private void Target_Damage(GameObject target, float power, float buff)
+    {
+        JobBase jb = target.GetComponent<JobBase>();
+        int damage = Math.Max((int)((_attack + power) * buff) - jb._defence, 0);
+        if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
+            damage = damage * 80 / 100;
+        else if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
+            damage = damage * 90 / 100;
+        jb.Set_HP(damage);
+        target.GetComponentInChildren<Animator>().SetTrigger("Damage");
+        Vector3 pos = target.transform.position;
+        pos.y += target.GetComponent<CapsuleCollider>().height;
+        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+    }
 	#endregion
     #region Skill
     virtual public void Skill1(GameObject target = null, float effectTime = 0)
@@ -358,32 +379,12 @@ public class EnemyBase : StatusControl {
                         {
                             if (r_target.layer != LayerMask.NameToLayer("Player"))
                                 continue;
-                            JobBase jb = r_target.GetComponent<JobBase>();
-							int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
-                            if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
-                                damage = damage * 80 / 100;
-                            else if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                                damage = damage * 90 / 100;
-							jb.Set_HP(damage);
-                            r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                            Vector3 pos = r_target.transform.position;
-                            pos.y += r_target.GetComponent<CapsuleCollider>().height;
-                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                            Target_Damage(r_target, skill.s_power, s_power);
                         }
                     }
                     else
                     {
-						JobBase jb = target.GetComponent<JobBase> ();
-						int damage = Math.Max ((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
-                        if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
-                            damage = damage * 80 / 100;
-                        else if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                            damage = damage * 90 / 100;
-						jb.Set_HP(damage);
-                        target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                        Vector3 pos = target.transform.position;
-                        pos.y += target.GetComponent<CapsuleCollider>().height;
-                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                        Target_Damage(target, skill.s_power, s_power);
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();
@@ -435,17 +436,7 @@ public class EnemyBase : StatusControl {
 						{
 							if (r_target.layer != LayerMask.NameToLayer("Player"))
 								continue;
-                            JobBase jb = r_target.GetComponent<JobBase>();
-							int damage = Math.Max((int)((_attack + skill.s_power) * s_power) - jb._defence, 0);
-                            if (jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
-                                damage = damage * 80 / 100;
-                            else if(jb.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                                damage = damage * 90 / 100;
-							jb.Set_HP(damage);
-							r_target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                            Vector3 pos = r_target.transform.position;
-                            pos.y += r_target.GetComponent<CapsuleCollider>().height;
-                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                            Target_Damage(r_target, skill.s_power, s_power);
 						}
 					}
 					else
@@ -455,20 +446,12 @@ public class EnemyBase : StatusControl {
                         if (target.layer == LayerMask.NameToLayer("Enemy"))
                         {
                             damage = (int)((_attack + skill.s_power) * s_power * -1);
+                            status.Set_HP(damage);
                         }
                         else
                         {
-                            damage = Math.Max((int)((_attack + skill.s_power) * s_power) - status._defence, 0);
-                            if (status.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN_20))
-                                damage = damage * 80 / 100;
-                            else if (status.CheckFlag(ConditionStatus.ALL_DAMAGE_DOWN))
-                                damage = damage * 90 / 100;
-                            target.GetComponentInChildren<Animator>().SetTrigger("Damage");
-                            Vector3 pos = target.transform.position;
-                            pos.y += target.GetComponent<CapsuleCollider>().height;
-                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                            Target_Damage(target, skill.s_power, s_power);
                         }
-						status.Set_HP(damage);
 					}
 					if (GameObject.FindGameObjectWithTag("Range"))
 						DeleteRange();

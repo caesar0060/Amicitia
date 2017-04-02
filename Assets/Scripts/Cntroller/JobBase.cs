@@ -34,10 +34,12 @@ public class JobBase : StatusControl {
 	void Update () {
 		
 	}
+
 	public void OnTriggerStay(Collider other){
 		switch(battelStatus){
 		case BattelStatus.NOT_IN_BATTEL:
 			GameObject other_go = other.gameObject;
+            //　範囲内のＮＰＣをターゲットにする
 			if(other_go.layer == LayerMask.NameToLayer("NPC")){
 				if (_target == null) {
 					if (CheckIsFront (other_go))
@@ -56,6 +58,7 @@ public class JobBase : StatusControl {
         if (this.battelStatus == BattelStatus.NOT_IN_BATTEL)
         {
             GameObject other_go = other.gameObject;
+            //　モンスターを接触したら
             if (other_go.layer == LayerMask.NameToLayer("Enemy"))
             {
                 PlayerRoot pr = PlayerRoot.Instance;
@@ -206,12 +209,10 @@ public class JobBase : StatusControl {
         if (_hp <= 0 && this.battelStatus != BattelStatus.DEAD)
         {
                 this.Set_b_Status(BattelStatus.DEAD);
-                this.GetComponent<CapsuleCollider>().enabled = false;
                 PlayerRoot.Instance.partyList.Remove(this.gameObject);
                 this.GetComponentInChildren<Animator>().SetTrigger("Dead");
                 if (this._type == JobType.Leader)
                     HideKirenBtn();
-                //Destroy (this.gameObject);
         }
     }
     private void ShowKirenBtn()
@@ -258,48 +259,23 @@ public class JobBase : StatusControl {
             parent.GetComponent<Canvas>().enabled = false;
         }
     }
-    private void ShowKirenBtn()
+    /// <summary>
+    /// ターゲットへのダメージを計算する
+    /// </summary>
+    /// <param name="target">ターゲット</param>
+    /// <param name="power">スキルのパワー</param>
+    /// <param name="buff">妖精の力</param>
+    private void Target_Damage(GameObject target, float power, float buff)
     {
-        if (this._type == JobType.Leader)
+        EnemyBase eb = target.GetComponent<EnemyBase>();
+        if (eb.battelStatus != BattelStatus.DEAD)
         {
-            Transform parent = this.transform.GetChild(0);
-            for (int i = 0; i < parent.childCount; i++)
-            {
-                try
-                {
-                    parent.GetChild(i).GetComponent<Collider>().enabled = true;
-                    if (this._type == JobType.Leader)
-                        parent.GetChild(i).GetChild(2).gameObject.SetActive(true);
-
-                }
-                catch (MissingComponentException)
-                {
-                    continue;
-                }
-            }
-            parent.GetComponent<Canvas>().enabled = true;
-        }
-    }
-    public void HideKirenBtn()
-    {
-        if (this._type == JobType.Leader)
-        {
-            Transform parent = this.transform.GetChild(0);
-            for (int i = 0; i < parent.childCount; i++)
-            {
-                try
-                {
-                    parent.GetChild(i).GetComponent<Collider>().enabled = false;
-                    if (this._type == JobType.Leader)
-                        parent.GetChild(i).GetChild(2).gameObject.SetActive(false);
-
-                }
-                catch (MissingComponentException)
-                {
-                    continue;
-                }
-            }
-            parent.GetComponent<Canvas>().enabled = false;
+            int damage = Math.Max((int)((_attack + power) * buff) - eb._m_defence, 0);
+            eb.Set_HP(damage);
+            target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
+            Vector3 pos = target.transform.position;
+            pos.y += target.GetComponent<CapsuleCollider>().height;
+            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
         }
     }
 	#endregion
@@ -445,11 +421,6 @@ public class JobBase : StatusControl {
             CreateRange();
             GameObject.FindGameObjectWithTag("Range").GetComponent<SphereCollider>().radius = sc.s_range;
         }
-        /*else if (target.GetComponent<StatusControl>().battelStatus == BattelStatus.DEAD)
-        {
-            ReturnPos();
-            yield break;
-        }*/
 		float timer = 0;
 		while (true) {
 			timer += Time.deltaTime;
@@ -466,28 +437,12 @@ public class JobBase : StatusControl {
                         {
                             if (r_target.layer != LayerMask.NameToLayer("Enemy"))
                                 continue;
-                            EnemyBase eb = r_target.GetComponent<EnemyBase>();
-                            if (eb.battelStatus != BattelStatus.DEAD)
-                            {
-                                int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
-                                eb.Set_HP(damage);
-                                r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                                Vector3 pos = target.transform.position;
-                                pos.y += target.GetComponent<CapsuleCollider>().height;
-                                GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
-                            }
+                            Target_Damage(r_target, sc.s_power, s_power);
                         }
                     }
                     else
                     {
-                        EnemyBase eb = target.GetComponent<EnemyBase>();
-                        int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
-                        eb.Set_HP(damage);
-                        if (target.GetComponent<StatusControl>().battelStatus != BattelStatus.DEAD)
-                            target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                        Vector3 pos = target.transform.position;
-                        pos.y += target.GetComponent<CapsuleCollider>().height;
-                        GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                        Target_Damage(target, sc.s_power, s_power);
                     }
                     if (GameObject.FindGameObjectWithTag("Range"))
                         DeleteRange();
@@ -550,16 +505,7 @@ public class JobBase : StatusControl {
 					    {
 						    if (r_target.layer != LayerMask.NameToLayer("Enemy"))
 							    continue;
-						    EnemyBase eb = r_target.GetComponent<EnemyBase>();
-                            if (eb.battelStatus != BattelStatus.DEAD)
-                            {
-                                int damage = Math.Max((int)((_attack + sc.s_power) * s_power) - eb._m_defence, 0);
-                                eb.Set_HP(damage);
-                                r_target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                                Vector3 pos = target.transform.position;
-                                pos.y += target.GetComponent<CapsuleCollider>().height;
-                                GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
-                            }
+                            Target_Damage(r_target, sc.s_power, s_power);
 					    }
 				    }
 				    else
@@ -569,18 +515,13 @@ public class JobBase : StatusControl {
                         if (target.layer == LayerMask.NameToLayer("Player"))
                         {
                             damage = (int)((_attack + sc.s_power) * s_power * -1);
+                            status.Set_HP(damage);
                         }
                         else
                         {
-                            damage = Math.Max((int)((_attack + sc.s_power) * s_power) - status._m_defence, 0);
-                            if (target.GetComponent<StatusControl>().battelStatus != BattelStatus.DEAD)
-                            target.GetComponentInChildren<Animator>().SetTrigger("isDamage");
-                            Vector3 pos = target.transform.position;
-                            pos.y += target.GetComponent<CapsuleCollider>().height;
-                            GameObject effectObj = Instantiate(Resources.Load("Prefabs/Magic/Hit_Effect"), pos, Quaternion.identity) as GameObject;
+                            Target_Damage(target, sc.s_power, s_power);
 
                         }
-                        status.Set_HP(damage);
 				    }
 				    if (GameObject.FindGameObjectWithTag("Range"))
 					    DeleteRange();

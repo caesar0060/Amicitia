@@ -27,6 +27,10 @@ public class EnemyPoint : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 	}
+    /// <summary>
+    /// モンスター生成のコールチン
+    /// </summary>
+    /// <returns></returns>
     IEnumerator GenerateEnemy()
     {
         float time = Time.time;
@@ -65,6 +69,9 @@ public class EnemyPoint : MonoBehaviour
         else if (this.transform.childCount >= 1)
             Destroy(this.transform.GetChild(0).gameObject);
     }
+    /// <summary>
+    /// モンスター生成する
+    /// </summary>
     public void CreateEnemy()
     {
         enemy = Instantiate(prefabs[0]) as GameObject;

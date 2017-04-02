@@ -92,7 +92,6 @@ public class EventManager : SingletonMonoBehaviour<EventManager> {
     {
         string key = "0";
         var event_list = PlayerRoot.Instance.evnet_list;
-         //
         for(int i = 0; i < ec.events.Length; i++){
             foreach (var e in event_list)
             {
